@@ -1,11 +1,17 @@
 h2
   | Sign up
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  - resource.build_personal_info
   = devise_error_messages!
   .field
     = f.label :email
     br
     = f.email_field :email, autofocus: true
+  .field
+    = f.label :primary_phone_no
+    br
+    = f.text_field :primary_phone_no
+  = render partial: 'informable_fields', locals: {f: f}
   .field
     = f.label :password
     - if @minimum_password_length

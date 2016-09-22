@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922062628) do
+ActiveRecord::Schema.define(version: 20160922090029) do
+
+  create_table "personal_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "informable_type"
+    t.integer  "informable_id"
+    t.string   "first_name",      default: "", null: false
+    t.string   "middle_name",     default: "", null: false
+    t.string   "last_name",       default: "", null: false
+    t.date     "date_of_birth"
+    t.integer  "gender",          default: 0,  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["informable_type", "informable_id"], name: "index_personal_infos_on_informable_type_and_informable_id", using: :btree
+  end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
