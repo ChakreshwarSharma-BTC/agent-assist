@@ -6,6 +6,8 @@
           i.fa.fa-bars
       ul.nav.navbar-nav.navbar-right
         li
+          = link_to('Logout', destroy_user_session_path, method: :delete)
+        li
           a.user-profile.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="javascript:;" 
             img alt="" src="images/img.jpg" >/
             | John Doe

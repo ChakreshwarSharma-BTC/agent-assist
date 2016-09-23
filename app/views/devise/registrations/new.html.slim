@@ -1,30 +1,48 @@
-h2
-  | Sign up
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  h1 sign up
   - resource.build_personal_info
   = devise_error_messages!
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :primary_phone_no
-    br
-    = f.text_field :primary_phone_no
+  .form-group
+    label.control-label.col-md-4.align for="email" 
+      | Email
+      span.required *
+    .col-md-8
+      = f.email_field :email,class:"form-control", autofocus: true
+  .form-group
+    label.control-label.col-md-4.align for="phone_no" 
+      | Phone no.
+      span.required *
+    .col-md-8
+      = f.text_field :primary_phone_no,class:"form-control"    
   = render partial: 'informable_fields', locals: {f: f}
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      em
-        | (
-        = @minimum_password_length
-        |  characters minimum)
-    br
-    = f.password_field :password, autocomplete: "off"
-  .field
-    = f.label :password_confirmation
-    br
-    = f.password_field :password_confirmation, autocomplete: "off"
-  .actions
-    = f.submit "Sign up"
-= render "devise/shared/links"
+  .form-group
+    label.control-label.col-md-4.align for="last-name" 
+      | Password
+      span.required *
+    .col-md-8
+      = f.password_field :password,class:"form-control" 
+  .form-group
+    label.control-label.col-md-4.align for="last-name" 
+      | Confirm Password
+      span.required *
+    .col-md-8
+      = f.password_field :password,class:"form-control"
+  .form-group
+    .col-md-8
+      button.btn.btn-primary type="submit"
+        | Submit 
+      button.btn.btn-success.mrg-left-signup-cancel type="cancel" 
+        | Cancel
+  .link-font
+    = render "devise/shared/links"
+javascript:
+  $(document).ready(function(){
+    $("#user_personal_info_attributes_gender_male").click(function(){
+      $("#g1").removeClass( "btn btn-primary" ).addClass("btn btn-default");
+      $("#g2").addClass( "btn btn-primary" );
+    });
+    $("#user_personal_info_attributes_gender_female").click(function(){
+      $("#g1").addClass( "btn btn-primary" );
+      $("#g2").removeClass( "btn btn-primary" ).addClass("btn btn-default");
+    });
+  });
