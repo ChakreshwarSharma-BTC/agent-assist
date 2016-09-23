@@ -1,0 +1,24 @@
+= f.fields_for :personal_info do |p|
+  .field
+    = p.label :first_name
+    br
+    = p.text_field :first_name
+  .field
+    = p.label :middle_name
+    br
+    = p.text_field :middle_name
+  .field
+    = p.label :last_name
+    br
+    = p.text_field :last_name
+  .field
+    = p.label :date_of_birth
+    br
+    = p.date_field :date_of_birth
+  .field
+    = p.label :gender
+    br
+    = p.radio_button :gender, 'male'
+    = p.label 'Male'
+    = p.radio_button :gender, 'female'  
+    = p.label 'Female'
