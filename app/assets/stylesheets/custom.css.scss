@@ -1,8 +1,8 @@
-.mrg-right-5{
-  margin-right: 14cm;
+.signin-right{
+  margin-right: 2cm;
 }
-.mrg-left-5{
-  margin-left: 15cm;
+.signin-left{
+  margin-left: 440px;
 }
 .bottom{
   margin-top: 3cm;
@@ -13,4 +13,28 @@
 }
 .mrg-left-signup{
   margin-left: 102px;
+}
+.login_wrapper {
+  margin: 5% auto 0;
+  max-width: 350px;
+  position: relative;
+  right: -8cm !important;
+}
+.align{
+  text-align: left;
+}
+.x_panel1 {
+  background: #fff none repeat scroll 0 0 !important;
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-right: 150px !important;
+  opacity: 1;
+  transition: all 0.2s ease 0s;
+  width: 50% !important;
+  padding: 0cm,18cm,0cm,-20cm !important; 
+  text-align: center !important; 
+}
+.one {
+  border: 1px solid #e6e9ed !important;
+  text-align: center !important; 
 }
