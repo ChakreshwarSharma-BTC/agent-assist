@@ -1,0 +1,11 @@
+h2
+  | Family Member
+- family = customer.family.build
+- family.build_personal_info
+  = fields_for :family  do |f|
+    = render partial: 'devise/registrations/informable_fields', locals: {f: f}
+    br
+    = f.text_field :health, placeholder: 'Health'
+    = f.text_field :death_age, placeholder: 'Death Age'
+    = f.date_field :death_year, placeholder: 'Death Year'
+    = f.text_field :death_reason, placeholder: 'Death Reason'

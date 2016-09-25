@@ -10,7 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922062628) do
+ActiveRecord::Schema.define(version: 20160923071147) do
+
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "employer_id"
+    t.string   "street_1",     default: ""
+    t.string   "street_2",     default: ""
+    t.string   "city",         default: "", null: false
+    t.string   "state",        default: "", null: false
+    t.string   "pincode",      default: "", null: false
+    t.integer  "address_type", default: 0,  null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["employer_id"], name: "index_addresses_on_employer_id", using: :btree
+    t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
+  end
+
+  create_table "families", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "health",       default: "", null: false
+    t.integer  "death_age",                 null: false
+    t.date     "death_year",                null: false
+    t.string   "death_reason", default: "", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["user_id"], name: "index_families_on_user_id", using: :btree
+  end
+
+  create_table "personal_infos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "informable_type"
+    t.integer  "informable_id"
+    t.string   "first_name",      default: "", null: false
+    t.string   "middle_name",     default: "", null: false
+    t.string   "last_name",       default: "", null: false
+    t.date     "date_of_birth"
+    t.integer  "gender",          default: 0,  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["informable_type", "informable_id"], name: "index_personal_infos_on_informable_type_and_informable_id", using: :btree
+  end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
