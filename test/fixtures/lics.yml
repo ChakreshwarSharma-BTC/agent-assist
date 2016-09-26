@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  policy_term: 1
+  education_qualification: MyString
+  annual_income: 1.5
+  term_rider: false
+  critical_illness: false
+  with_aaccident_cover: false
+
+two:
+  policy_term: 1
+  education_qualification: MyString
+  annual_income: 1.5
+  term_rider: false
+  critical_illness: false
+  with_aaccident_cover: false

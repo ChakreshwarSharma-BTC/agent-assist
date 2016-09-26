@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_of_office: MyString
+  how_long: 1
+  plan_type: 1
+  policy: one
+
+two:
+  name_of_office: MyString
+  how_long: 1
+  plan_type: 1
+  policy: two
