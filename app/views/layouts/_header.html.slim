@@ -9,9 +9,9 @@
           = link_to('Logout', destroy_user_session_path, method: :delete)
         li
           a.user-profile.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="javascript:;" 
-            img alt="" src="images/img.jpg" >/
-            | John Doe
+            img alt="" src="images/img.jpg"
             span.fa.fa-angle-down
+            = User.first.email
           ul.dropdown-menu.dropdown-usermenu.pull-right
             li
               a href="javascript:;"  Profile

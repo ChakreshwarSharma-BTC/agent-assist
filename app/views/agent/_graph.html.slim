@@ -1,0 +1,17 @@
+= javascript_include_tag "https://www.google.com/jsapi"
+.x_content
+  .row
+    .col-md-12.col-sm-12.col-xs-12
+      .dashboard_graph
+        .row.x_title
+          .col-md-12
+            h3
+              | Network Activities
+              small Graph title sub-title    
+          .col-md-4
+            = line_chart User.all
+          .col-md-4
+            = line_chart User.all
+          .col-md-4
+            = line_chart User.all
+
