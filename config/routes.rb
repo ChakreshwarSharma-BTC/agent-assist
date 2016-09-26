@@ -11,9 +11,10 @@ Rails.application.routes.draw do
     get '/' => 'agent#dashboard', as: 'agent_dashboard' 
   end
 
-  resources :customer do
-    collection do
-      get 'new_member' => 'customer#new_family_member', as: 'new_family_member'
-    end
+  scope 'customer' do
+    get 'new_member' => 'customer#new_family_member', as: 'new_family_member'
+    get 'remove_member' => 'customer#remove_family_member', as: 'remove_family_member'
   end
+  
+  resources :customer, only: [:index, :new, :create]
 end

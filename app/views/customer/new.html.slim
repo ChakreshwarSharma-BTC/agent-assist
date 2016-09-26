@@ -16,7 +16,7 @@ h2
   = render partial: 'devise/registrations/address_fields', locals: {f: f}
 
   div id='new_member'
-  = link_to "Add Family", new_family_member_customer_index_path, remote: true
+  = link_to "Add Family", new_family_member_path, remote: true
   .actions
     = f.submit "Create"
 
