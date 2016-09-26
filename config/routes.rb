@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'policies/new'
+
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
