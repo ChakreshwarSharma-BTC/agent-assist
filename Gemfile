@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 gem 'mysql2'
 gem 'devise'
+gem 'config'
 gem 'rolify'
 gem 'cancancan'
 gem 'slim-rails'

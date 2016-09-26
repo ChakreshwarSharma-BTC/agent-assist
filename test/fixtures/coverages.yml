@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pakage: false
+  fire_only: false
+  fire_with_liabillity: false
+  theft_only: false
+  theft_with_liability: false
+  fire_and_theft_only: false
+  fire_and_theft_with_liability: false
+
+two:
+  pakage: false
+  fire_only: false
+  fire_with_liabillity: false
+  theft_only: false
+  theft_with_liability: false
+  fire_and_theft_only: false
+  fire_and_theft_with_liability: false

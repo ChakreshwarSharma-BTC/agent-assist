@@ -13,5 +13,6 @@
 //= require chartkick
 //= require jquery
 //= require jquery_ujs
+//= require common
 //= require turbolinks
 //= require SmartWizard

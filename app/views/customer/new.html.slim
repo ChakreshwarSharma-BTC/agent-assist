@@ -1,0 +1,26 @@
+h2
+  | Create Customer
+= form_for @customer, url: customer_index_path do |f|
+  - @customer.build_personal_info
+  - @customer.build_address
+  .field
+    = f.label :email
+    br
+    = f.email_field :email, autofocus: true
+  .field
+    = f.label :primary_phone_no
+    br
+    = f.text_field :primary_phone_no
+  = render partial: 'devise/registrations/informable_fields', locals: {f: f}
+  br
+  = render partial: 'devise/registrations/address_fields', locals: {f: f}
+
+  div id='new_member'
+  = link_to "Add Family", new_family_member_customer_index_path, remote: true
+  .actions
+    = f.submit "Create"
+
+= javascript_include_tag 'register'
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Settings.google.maps_api.key}&libraries=places"
+javascript:
+  AgentAssist.Register.autoCompleteLocation('#user_address_attributes_city');
