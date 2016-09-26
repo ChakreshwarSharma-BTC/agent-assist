@@ -10,7 +10,7 @@ class CreateBanks < ActiveRecord::Migration[5.0]
       t.string :account_type
       t.float :amount
       t.string :branch
-
+      t.belongs_to :policy, foreign_key: true
       t.timestamps
     end
   end

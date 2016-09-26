@@ -1,4 +1,4 @@
 class Lic < ApplicationRecord
-Blongs_to: family
-Blongs_to: policy
+  blongs_to :family
+  blongs_to :policy
 end
