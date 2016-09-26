@@ -1,0 +1,33 @@
+form.form-horizontal.form-label-left
+  .form-group
+    label.control-label.col-md-3 for="customer-name" 
+      | Customer Name
+      span.required *
+    .col-md-6
+      input#first-name.form-control.col-md-7 required="required" type="text" /
+  .form-group
+    label.control-label.col-md-3 Insurance Type
+    .col-md-6
+      select.form-control
+        option Choose option
+        option Option Lic
+        option Option Vehicle
+        option Option Fire
+  .form-group
+    label.control-label.col-md-3
+      | Start date
+      span.required *
+    .col-md-6
+      input#birthday.date-picker.form-control.col-md-7.col-xs-12 required="required" type="text" /
+  .form-group
+    label.control-label.col-md-3
+      | End date
+      span.required *
+    .col-md-6
+      input#birthday.date-picker.form-control.col-md-7.col-xs-12 required="required" type="text" /
+  .form-group
+    label.control-label.col-md-3
+      | Total Amount
+      span.required *
+    .col-md-6
+      input#total-amount.form-control.col-md-7 required="required" type="text" /

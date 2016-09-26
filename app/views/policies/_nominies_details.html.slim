@@ -1,0 +1,56 @@
+form.form-horizontal.form-label-left
+  .col-md-6
+    .form-group
+      label.control-label.col-md-3 for="first-name" 
+        | First Name
+        span.required *
+      .col-md-6
+        input#first-name.form-control.col-md-7 required="required" type="text" /
+    .form-group
+      label.control-label.col-md-3 for="middle-name"  Middle Name
+      .col-md-6
+        input#middle-name.form-control.col-md-7 name="middle-name" type="text" /
+    .form-group
+      label.control-label.col-md-3 Gender
+      .col-md-6
+        #gender.btn-group data-toggle="buttons" 
+          label.btn.btn-default data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" 
+            input name="gender" type="radio" value="male" /
+            | &nbsp; Male &nbsp;
+          label.btn.btn-primary data-toggle-class="btn-primary" data-toggle-passive-class="btn-default" 
+            input name="gender" type="radio" value="female" /
+            | Female
+    .form-group
+      label.control-label.col-md-3 for="email" 
+        | Email
+        span.required *
+      .col-md-6
+        input#email.form-control.col-md-7 required="required" type="text" /
+
+  .col-md-6      
+    .form-group
+      label.control-label.col-md-3 for="last-name" 
+        | Last Name
+        span.required *
+      .col-md-6
+        input#last-name.form-control.col-md-7 name="last-name" required="required" type="text" /
+    .form-group
+      label.control-label.col-md-3
+        | Date Of Birth
+        span.required *
+      .col-md-6
+        input#birthday.date-picker.form-control.col-md-7.col-xs-12 required="required" type="text" /
+    .form-group
+      label.control-label.col-md-3 Relationship
+      .col-md-6
+        select.form-control
+          option Choose option
+          option Option Spouse
+          option Option Sibling
+          option Option Parents
+    .form-group
+      label.control-label.col-md-3
+        | phone no.
+        span.required *
+      .col-md-6
+        input#birthday.date-picker.form-control.col-md-7 required="required" type="text" /
