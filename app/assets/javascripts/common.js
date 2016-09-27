@@ -12,4 +12,4 @@ documentOnReady: function (){
 };
 $(document).ready(function(){
    AgentAssist.Common.documentOnReady();
-  })
+})
