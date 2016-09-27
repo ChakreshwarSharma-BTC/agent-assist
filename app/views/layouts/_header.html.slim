@@ -9,9 +9,9 @@
           = link_to('Logout', destroy_user_session_path, method: :delete)
         li
           a.user-profile.dropdown-toggle aria-expanded="false" data-toggle="dropdown" href="javascript:;" 
-            img alt="" src="images/img.jpg"
+            img alt="" src="assets/images/img.jpg"
             span.fa.fa-angle-down
-            = User.first.email
+            = current_user.email
           ul.dropdown-menu.dropdown-usermenu.pull-right
             li
               a href="javascript:;"  Profile
@@ -29,6 +29,11 @@
           a.dropdown-toggle.info-number aria-expanded="false" data-toggle="dropdown" href="javascript:;" 
             i.fa.fa-envelope-o
             span.badge.bg-green 6
+        li.dropdown role="presentation" 
+          a.dropdown-toggle.info-number aria-expanded="false" data-toggle="dropdown" href="javascript:;" title="Add Customer" 
+            i.fa.fa-plus-circle
+      
+
           ul#menu1.dropdown-menu.list-unstyled.msg_list role="menu" 
             li
               a
