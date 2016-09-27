@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :find_company_by_id, only: [:show, :edit, :update, :destroy]
+  before_action :find_company_by_id,  except: [:new, :create, :index]
 
   def new
     @company = Company.new
@@ -25,7 +25,7 @@ class CompaniesController < ApplicationController
   end
 
   def update
-     if @company.update(company_params)
+    if @company.update(company_params)
       flash[:success] = t('.success')
     else
       flash[:error] = t('.error')
