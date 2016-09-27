@@ -10,8 +10,8 @@ html
       body.nav-md
         .container.body
           .main_container
-            = render :partial => 'layouts/header'
-            = render :partial => 'layouts/sidebar'
+            = render partial: 'layouts/header'
+            = render partial: 'layouts/sidebar'
             = yield    
     -else
       body.login
