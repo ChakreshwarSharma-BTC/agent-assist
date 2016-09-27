@@ -1,13 +1,12 @@
 AgentAssist = {};  
-
 AgentAssist.Common = {
 showDatePicker: function(){
- 	$('#dob').datetimepicker({
+  $('#dob').datetimepicker({
         format: "DD/MM/YYYY"
       });
  },
 documentOnReady: function (){
-	AgentAssist.Common.showDatePicker();
+  AgentAssist.Common.showDatePicker();
 }
 };
 $(document).ready(function(){
