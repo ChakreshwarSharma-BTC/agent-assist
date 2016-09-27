@@ -1,28 +1,26 @@
 class CustomerController < ApplicationController
-  before_action :set_user, only: [:new, :new_family_member]
+  before_action :set_customer, only: [:new, :new_family_member]
 
   def new
   end
 
   def create
+    binding.pry
     customer = User.new(customer_params)
-    customer.password = 'aaaaaa'
+    customer.password = Settings.user.password
+    customer.add_role :customer
     if customer.save!
       redirect_to agent_dashboard_path
+    else
+      render :new
     end
   end
 
   def new_family_member
     @family_member = @customer
-    respond_to do |format|
-      format.js
-    end
   end
 
-   def remove_family_member
-    respond_to do |format|
-      format.js
-    end
+  def remove_family_member
   end
 
   private
@@ -33,7 +31,7 @@ class CustomerController < ApplicationController
       address_attributes: [:street_1, :street_2, :city, :state, :pincode, :address_type])
   end
 
-  def set_user
+  def set_customer
     @customer = User.new
   end
 end
