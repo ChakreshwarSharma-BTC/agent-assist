@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  
+  get 'policies/index'
+
+  get 'policies/edit'
+
+  get 'policies/show'
+
   get 'policies/new'
 
   devise_for :users, controllers: {
