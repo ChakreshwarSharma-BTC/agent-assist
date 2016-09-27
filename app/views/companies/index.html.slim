@@ -1,0 +1,13 @@
+.right_col
+  .row
+    .col-md-6
+      .x_panel
+        .x_title
+          h2
+            | Company Details
+          .clearfix
+        .x_content
+          .table-responsive
+            table.table.table-striped.jambo_table.bulk_action
+              = render partial: 'list_header'
+              = render partial: 'list_body',  locals: { companies: @companies }
