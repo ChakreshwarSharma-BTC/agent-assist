@@ -1,0 +1,30 @@
+h2
+  | Address
+= f.fields_for :address do |a|
+  .field
+    = a.label :street_1
+    br
+    = a.text_field :street_1
+  .field
+    = a.label :street_2
+    br
+    = a.text_field :street_2
+  .field
+    = a.label :city
+    br
+    = a.text_field :city, class: 'form-control'
+  .field
+    = a.label :state
+    br
+    = a.text_field :state
+  .field
+    = a.label :pincode
+    br
+    = a.text_field :pincode
+  .field
+    = a.label :address_type
+    br
+    = a.radio_button :address_type, 'permanent'
+    = a.label 'Permanent'
+    = a.radio_button :address_type, 'temporary'  
+    = a.label 'Temporary'

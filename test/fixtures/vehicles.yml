@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  registration_number: MyString
+  name: MyString
+  ncb: MyString
+  idv_accessory: false
+  electrical_accessory: false
+  non_electrical_accessory: false
+  policy: one
+
+two:
+  registration_number: MyString
+  name: MyString
+  ncb: MyString
+  idv_accessory: false
+  electrical_accessory: false
+  non_electrical_accessory: false
+  policy: two
