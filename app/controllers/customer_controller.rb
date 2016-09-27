@@ -6,7 +6,7 @@ class CustomerController < ApplicationController
 
   def create
     customer = User.new(customer_params)
-    customer.password = 'aaaaaa'
+    customer.password = Settings.user.password
     if customer.save!
       redirect_to agent_dashboard_path
     end
