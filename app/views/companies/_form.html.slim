@@ -1,16 +1,10 @@
 = simple_form_for company,html:{ id: 'company_form'}  do |f|
-  - if company.errors.any?
-  #error_explanation
-    ul
-      - company.errors.full_messages.each do |message|
-        li
-          = message
   .form-group
     label.control-label.col-md-3 for="street_1" 
       | Name
       label-control
     .col-md-6
-      = f.input :name, autofocus: true, class: "form-control", placeholder: "Name", tabindex: 1
+      = f.input :name, autofocus: true, class: "form-control", placeholder: "Name", tabindex: 1, required: false, label: false
     .form-group
       .col-md-6.col-sm-6.col-xs-12.col-md-offset-3
         .pull-right
