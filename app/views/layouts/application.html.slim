@@ -14,10 +14,9 @@ html
             = render partial: 'layouts/sidebar'
             = yield    
     -else
-      body.login
-        div.x_panel
-          .col-md-6
-            .login_wrapper
-              .animate.form.login_form
-                section.login_content
-                  = yield
+       body.login
+        .col-md-6
+          .login_wrapper
+            .animate.form.login_form
+              section.login_content
+                = yield

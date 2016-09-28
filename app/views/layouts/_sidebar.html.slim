@@ -1,6 +1,6 @@
 .col-md-3.left_col.menu_fixed
   .left_col.scroll-view
-    .navbar.nav_title style=("border: 0;") 
+    .navbar.nav_title.side  
       a.site_title href="index.html" 
         i.fa.fa-paw
         span Agent Assist!
@@ -8,10 +8,10 @@
     /! menu profile quick info
     .profile
       .profile_pic
-        img.img-circle.profile_img alt="..." src="assets/images/img." 
+        = image_tag("logo.png", class: "logo-change ") 
       .profile_info
         span Welcome,
-        h2 John Doe
+        h2 = current_user.personal_info.first_name
     /! /menu profile quick info
     br/
     /! sidebar menu

@@ -9,6 +9,3 @@ documentOnReady: function (){
   AgentAssist.Common.showDatePicker();
 }
 };
-$(document).ready(function(){
-   AgentAssist.Common.documentOnReady();
-})

@@ -10,10 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require common
 //= require chartkick
+//= require bootstrap-datetimepicker
+//= require moment
 //= require jquery
+//= require jquery.validate.min
 //= require jquery_ujs
 //= require turbolinks
-//= require moment
-//= require bootstrap-datetimepicker
-//= require common
+//= require_tree .

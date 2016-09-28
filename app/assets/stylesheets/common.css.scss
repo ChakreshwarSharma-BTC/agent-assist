@@ -10,7 +10,6 @@
 }
 .login_wrapper {
   margin: 5% auto 0;
-  max-width: 350px;
   position: relative;
   right: -8cm !important;
 }
@@ -44,4 +43,31 @@
 .radio2{
   margin-left: -120px !important;
 }
+.sidebar{
+  border: 0;
+}
 
+.profile_img{
+  width: 70%;
+  background: #fff;
+  margin-left: 15%;
+  z-index: 1000;
+  position: inherit;
+  margin-top: 20px;
+  border: 1px solid rgba(52,73,94,0.44);
+  padding: 4px;
+}
+.logo-change{
+   width: 52px;
+   padding: -1px 15px;
+}
+.form-group label-control:after{
+  content: "*";
+  color: red;
+}
+.label {
+  color: #FB3A3A;
+  display: inline-block;
+  padding: 0;
+  text-align: left;
+}
