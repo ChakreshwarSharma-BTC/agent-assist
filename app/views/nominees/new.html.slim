@@ -1,0 +1,10 @@
+.right_col
+  .row
+    .col-md-6
+      .x_panel
+        .x_title
+          h2
+            | Nominee Detail 
+          .clearfix
+        .x_content
+          = render partial: 'nominee_form', locals: { nominee: @nominee } 
