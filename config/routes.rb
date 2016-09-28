@@ -18,4 +18,5 @@ Rails.application.routes.draw do
       get 'new_member' => 'customer#new_family_member', as: 'new_family_member'
     end
   end
+  resources :nominees 
 end

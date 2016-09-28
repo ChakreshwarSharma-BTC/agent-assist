@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# Creating Categories with the default information.
+
+CATEGORIES = [{name: "Life Insurance"}, {name: "Medical and Health"}, {name: "Vehicle"}, {name: "Fire"}, {name: "Accident"}]
+
+puts "Start creating the required categories data for application."
+CATEGORIES.each{ |categories| Category.find_or_create_by!(categories)}
+puts "All the required categories data has been added successfully."
