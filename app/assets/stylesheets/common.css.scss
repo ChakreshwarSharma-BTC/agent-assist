@@ -66,8 +66,21 @@
   color: red;
 }
 .label {
-  color: #FB3A3A;
   display: inline-block;
   padding: 0;
   text-align: left;
+}
+.registration_space{
+  max-width: 700px !important;
+}
+.login_space{
+  margin-top: 180px !important;
+  margin-left: 400px !important;
+}
+.login_button{
+  margin-left: 215px !important;
+}
+label.error {
+  display: inline;
+  color: #FB3A3A !important;
 }

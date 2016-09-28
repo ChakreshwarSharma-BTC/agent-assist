@@ -1,18 +1,16 @@
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  h1 Login
-  div
-    = f.email_field :email,class:"form-control",placeholder: "email", autofocus: true
-  div
-    = f.password_field :password,class:"form-control", placeholder: "password", autocomplete: "off"
-  div
-    .actions
-      = f.submit "Log in", class: "btn btn-default submit"
-    = render "devise/shared/links"
-  .clearfix
-  .separator
-    .clearfix
-    br/
-    div
-      h1
-        | Agentassist
-      p ©2016 All Rights Reserved. Agentassist! is a Insurance Company . Privacy and Terms
+.col-md-6
+  .login_wrapper.login_space
+    .animate.form.login_form
+      section.login_content
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          h1 Login
+          div
+            = f.email_field :email,class:"form-control",placeholder: "email", autofocus: true
+          div
+            = f.password_field :password,class:"form-control", placeholder: "password", autocomplete: "off"
+          div
+            .actions
+              = f.submit "Log in", class: "btn btn-default.login_button submit"
+            = render "devise/shared/links"
+          .clearfix
+          .separator
