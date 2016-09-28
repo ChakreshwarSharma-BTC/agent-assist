@@ -1,16 +1,18 @@
 = simple_form_for company,html:{ id: 'company_form'}  do |f|
+  - if company.errors.any?
+  #error_explanation
+    ul
+      - company.errors.full_messages.each do |message|
+        li
+          = message
   .form-group
     label.control-label.col-md-3 for="street_1" 
       | Name
-      span.required *
+      label-control
     .col-md-6
-      = f.text_field :name, autofocus: true, class: "form-control", placeholder: "Name", tabindex: 1
+      = f.input :name, autofocus: true, class: "form-control", placeholder: "Name", tabindex: 1
     .form-group
       .col-md-6.col-sm-6.col-xs-12.col-md-offset-3
         .pull-right
           =  f.submit  class: "btn btn-primary btn-space", tabindex: 2
           =  link_to "Cancel", companies_path, class: "btn btn-default btn-space", tabindex: 3
-javascript:
- (function($){
-   AgentAssist.Company.Validation.companyValidation();
-  })(jQuery);
