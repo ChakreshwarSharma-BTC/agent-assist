@@ -1,12 +1,2 @@
-div class='family_fields'
-  h2
-    | Family Member
-  - family = customer.family.build
-  - family.personal_info.build
-    = fields_for 'user[family_attributes][][]', family  do |f|
-      = render partial: 'personal_info'
-      = f.text_field :health, placeholder: 'Health'
-      = f.text_field :death_age, placeholder: 'Death Age'
-      = f.date_field :death_year, placeholder: 'Death Year'
-      = f.text_field :death_reason, placeholder: 'Death Reason'
-  = link_to 'remove', remove_family_member_path, remote: true, id: 'remove_div'
+= f.fields_for :family do |f|
+  = render 'common_family_fields', locals: {f: f}

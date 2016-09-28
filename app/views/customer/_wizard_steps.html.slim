@@ -1,0 +1,26 @@
+#step-1.content
+  = render partial: 'basic_fields', locals: {f: f} 
+  = render partial: 'devise/registrations/informable_fields', locals: {f: f}
+#step-2.content1
+  .form-group
+    .col-md-6.col-md-offset-4
+      #families
+        .links
+          = link_to_add_association 'add family member', f, :family
+#step-3.content1
+  = render partial: 'devise/registrations/address_fields', locals: {f: f}
+  
+javascript:
+  $(document).ready(function() {
+    $('#wizard').smartWizard();
+      $('#wizard_verticle').smartWizard({
+      transitionEffect: 'slide'
+    });
+    $('.buttonNext').addClass('btn btn-success');
+    $('.buttonPrevious').addClass('btn btn-primary');
+    $('.buttonFinish').addClass('btn btn-default');
+    $('.buttonFinish').on('click', function(){
+      console.log('dsdasdasd')
+      $('form').submit();
+    })
+  });

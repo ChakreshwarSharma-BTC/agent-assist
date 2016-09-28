@@ -7,11 +7,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :personal_info, as: :informable, dependent: :destroy
+  has_one :user_profile
   has_many :family, dependent: :destroy
   has_one :address, dependent: :destroy
-  accepts_nested_attributes_for :personal_info
-  accepts_nested_attributes_for :family
-  accepts_nested_attributes_for :address
+  accepts_nested_attributes_for :personal_info, :family, :address
 
   validates :primary_phone_no, presence: true
 

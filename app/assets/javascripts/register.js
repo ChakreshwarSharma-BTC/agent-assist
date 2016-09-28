@@ -31,7 +31,7 @@ AgentAssist.Register = {
             $('#user_address_attributes_pincode').val(val);
             break;
           default:
-        	$('#user_address_attributes_pincode').val('');
+        	  $('#user_address_attributes_pincode').val('');
             break;
         } 
       }

@@ -1,26 +1,39 @@
-h2
-  | Create Customer
-= form_for @customer, url: customer_index_path do |f|
-  - @customer.build_personal_info
-  - @customer.build_address
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true
-  .field
-    = f.label :primary_phone_no
-    br
-    = f.text_field :primary_phone_no
-  = render partial: 'devise/registrations/informable_fields', locals: {f: f}
-  br
-  = render partial: 'devise/registrations/address_fields', locals: {f: f}
-
-  div id='new_member'
-  = link_to "Add Family", new_family_member_path, remote: true
-  .actions
-    = f.submit "Create"
-
-= javascript_include_tag 'register'
-= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Settings.google.maps_api.key}&libraries=places"
-javascript:
-  AgentAssist.Register.autoCompleteLocation('#user_address_attributes_city');
+.right_col
+  .row
+    .col-md-12
+      .x_panel
+        .x_title
+          h2
+            | Customer Information 
+          .clearfix
+        .x_content
+          | ! Smart Wizard
+          p Personal Info
+          #wizard.form_wizard.wizard_horizontal
+            ul.wizard_steps.anchor
+              li
+                a.selected href="#step-1" isdone="1" rel="1" 
+                  span.step_no 1
+                  span.step_descr
+                    | Step 1
+                    br
+                    small Step 1 Personal Info
+              li
+                a.disabled href="#step-2" isdone="0" rel="2" 
+                  span.step_no 2
+                  span.step_descr
+                    | Step 2
+                    br
+                    small Step 2 Family details
+              li
+                a.disabled href="#step-3" isdone="0" rel="3" 
+                  span.step_no 3
+                  span.step_descr
+                    | Step 3
+                    br
+                    small Step 3 Tempoary Address
+            .stepContainer
+              = form_for @customer, url: customer_index_path do |f|
+                - @customer.build_personal_info
+                - @customer.build_address
+                = render partial: 'wizard_steps', locals: {f: f}

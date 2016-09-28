@@ -1,0 +1,5 @@
+= render partial: 'personal_info_fields', locals: {f: f}
+.new_family
+  .nested-fields
+    = render partial: 'devise/registrations/common_family_fields', locals: {f: f}
+  = link_to_remove_association "remove family member", f,  { wrapper_class: 'new_family' }
