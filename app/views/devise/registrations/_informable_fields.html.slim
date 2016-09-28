@@ -1,35 +1,34 @@
 = f.fields_for :personal_info do |p|
   .form-group
-    label.control-label.col-md-4.align for="First name" 
+    label.control-label.col-md-6
       | First name
-      span.required *
-    .col-md-8
-      = p.text_field :first_name,class:"form-control"
+      label-control
+    .col-md-6
+      = p.text_field :first_name, class:"form-control"
   .form-group
-    label.control-label.col-md-4.align for="middle name" 
+    label.control-label.col-md-6 
       | Middle name
-      span.required *
-    .col-md-8
-      = p.text_field :middle_name,class:"form-control"
+      label-control
+    .col-md-6
+      = p.text_field :middle_name, class:"form-control"
   .form-group
-    label.control-label.col-md-4.align for="Last name" 
+    label.control-label.col-md-6
       | Last name
-      span.required *
-    .col-md-8
-      = p.text_field :last_name,class:"form-control"
+      label-control
+    .col-md-6
+      = p.text_field :last_name, class:"form-control"
   .form-group
-    label.control-label.col-md-4.align for="Dath of birth" 
+    label.control-label.col-md-6
       | Date Of Birth
-      span.required *
-    .col-md-8
+      label-control
+    .col-md-6
       = p.text_field :date_of_birth, id:"dob", class:"form-control"
   .form-group
-    label.control-label.col-md-4.align for="gender" 
+    label.control-label.col-md-6.align for="gender" 
       | Gender
-      span.required *
-    .col-md-8
-        = p.radio_button :gender,'male', class:"radio1"
-        |&nbsp; Male
-        br
-        = p.radio_button :gender, 'female', class:"radio2"
-        |&nbsp; Female &nbsp;
+      label-control
+    .col-md-3
+        = p.radio_button :gender,'male', class:"radio-inline"
+        | Male
+        = p.radio_button :gender, 'female', class:"radio-inline"
+        |Female

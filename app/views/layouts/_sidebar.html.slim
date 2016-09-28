@@ -1,30 +1,33 @@
-.col-md-3.left_col.menu_fixed
-  .left_col.scroll-view
-    .navbar.nav_title style=("border: 0;") 
-      a.site_title href="index.html" 
-        i.fa.fa-paw
-        span Agent Assist!
-    .clearfix
-    /! menu profile quick info
-    .profile
-      .profile_pic
-        img.img-circle.profile_img alt="..." src="assets/images/img." 
-      .profile_info
-        span Welcome,
-        h2 John Doe
-    /! /menu profile quick info
-    br/
-    /! sidebar menu
-    #sidebar-menu.main_menu_side.hidden-print.main_menu
-      .menu_section
-        h3 General
-        ul.nav.side-menu
-          li
-            a href="form.html"  Customer
-          li
-            a href="form_advanced.html"  policies
-          li
-            = link_to 'Plan', plans_path
-          li
-            a href="form_wizards.html"  Reminder 
+body.nav-md
+  .container.body
+    .main_container
+      .col-md-3.left_col.menu_fixed
+        .left_col.scroll-view
+          .navbar.nav_title.side  
+            a.site_title href="index.html" 
+              i.fa.fa-paw
+              span Agent Assist!
+          .clearfix
+          /! menu profile quick info
+          .profile
+            .profile_pic
+              = image_tag("logo.png", class: "logo-change ") 
+            .profile_info
+              span Welcome,
+              h2 = current_user.personal_info.first_name
+          /! /menu profile quick info
+          br/
+          /! sidebar menu
+          #sidebar-menu.main_menu_side.hidden-print.main_menu
+            .menu_section
+              h3 General
+              ul.nav.side-menu
+                li
+                  a href="form.html"  Customer
+                li
+                  a href="form_advanced.html"  policies
+                li
+                  = link_to 'Plan', plans_path
+                li
+                  a href="form_wizards.html"  Reminder 
     

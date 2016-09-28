@@ -11,9 +11,12 @@
 // about supported directives.
 //
 //= require chartkick
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require moment
 //= require bootstrap-datetimepicker
+//= require moment
+//= require jquery
+//= require jquery.validate.min
+//= require jquery_ujs
 //= require common
+//= require turbolinks
+//= require SmartWizard
+//= require select2-full

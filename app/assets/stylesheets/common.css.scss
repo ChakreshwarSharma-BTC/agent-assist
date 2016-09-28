@@ -10,7 +10,6 @@
 }
 .login_wrapper {
   margin: 5% auto 0;
-  max-width: 350px;
   position: relative;
   right: -8cm !important;
 }
@@ -44,4 +43,49 @@
 .radio2{
   margin-left: -120px !important;
 }
+.btn-space{
+  margin-top: 25px;
+  width: 150px;
+}
+.checkbox1{
+  margin-left: -1px !important;
+  margin-top: 4px !important;
+}
 
+.profile_img{
+  width: 70%;
+  background: #fff;
+  margin-left: 15%;
+  z-index: 1000;
+  position: inherit;
+  margin-top: 20px;
+  border: 1px solid rgba(52,73,94,0.44);
+  width: 150px;
+}
+.logo-change{
+   width: 52px;
+   padding: -1px 15px;
+ }
+.form-group label-control:after{
+  content: "*";
+  color: red;
+}
+.label {
+  display: inline-block;
+  padding: 0;
+  text-align: left;
+}
+.registration_space{
+  max-width: 700px !important;
+}
+.login_space{
+  margin-top: 180px !important;
+  margin-left: 400px !important;
+}
+.login_button{
+  margin-left: 215px !important;
+}
+label.error {
+  display: inline;
+  color: #FB3A3A !important;
+}
