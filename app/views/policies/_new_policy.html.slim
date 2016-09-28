@@ -7,35 +7,3 @@
   = render partial: 'personal_details', locals: {f: f, personal_info: personal_info}
 #step-4.content1
   = render partial: 'address_details', locals: {f: f, address: address}
-= f.submit "save", class: "btn btn-primary  pull-right"
-javascript:
-  $(document).ready(function() {
-    $('#wizard').smartWizard();
-      $('#wizard_verticle').smartWizard({
-      transitionEffect: 'slide'
-    });
-    $(".select").select2().change(function(){
-        $(this).valid();
-    });
-    $('.buttonNext').addClass('btn btn-success');
-    $('.buttonPrevious').addClass('btn btn-primary');
-    $('.buttonFinish').addClass('btn btn-default');
-    $("#policy_plan_attributes_company_categories_id, #policy_CategoryCompany_company_id, #policy_plan_id").select2({});
-  });
-
-  $(document).ready(function() {
-    $('#vehicle').hide();
-    $('#policy_plan_attributes_company_categories_id').on('change',function(){
-      var x= $('#policy_plan_attributes_company_categories_id').val();
-      if (x == 1)
-      {
-        $('#vehicle').hide();
-        $('#lic').show();
-      } 
-      else if (x == 2)
-      {
-        $('#lic').hide();
-        $('#vehicle').show();
-      }
-    });
-  });

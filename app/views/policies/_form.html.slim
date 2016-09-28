@@ -31,11 +31,11 @@
             | Step 4
             br/
             small Step 4 Address
-    .s1
+    .stepContainer
       = form_for @policies , html: { id: 'policy_form', multipart: true } do |f|
         - vehicle = @policies.build_vehicle
         - plan = @policies.build_plan
-        - lic = @policies.build_lic
+        - lic = @policies.build_life_insurances
         - personal_info = @policies.build_personal_info
         - address = @policies.build_address
         = render partial: 'new_policy', locals: {f: f,vehicle: vehicle,plan: plan,personal_info: personal_info,address: address,lic: lic}

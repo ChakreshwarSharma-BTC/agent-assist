@@ -4,12 +4,12 @@ class Policy < ApplicationRecord
   has_one :medical_history
   has_one :vehicle
   has_one :employer
-  has_one :lic
+  has_one :life_insurances
   has_one :nominee 
   has_one :personal_info, as: :informable, dependent: :destroy
   has_one :user
-  has_one :address, as: :informable, dependent: :destroy
-  accepts_nested_attributes_for :lic
+  has_one :address, as: :addressable, dependent: :destroy
+  accepts_nested_attributes_for :life_insurances
   accepts_nested_attributes_for :vehicle
   accepts_nested_attributes_for :personal_info
   accepts_nested_attributes_for :plan

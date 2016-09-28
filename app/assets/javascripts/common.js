@@ -35,6 +35,9 @@ buttonOfForm: function(){
   $('.buttonNext').addClass('btn btn-success');
   $('.buttonPrevious').addClass('btn btn-primary');
   $('.buttonFinish').addClass('btn btn-default');
+  $('.buttonFinish').on('click', function(){
+    $('form').submit();
+  })
 },
 documentOnReady: function (){
   AgentAssist.Common.showDatePicker();
