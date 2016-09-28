@@ -43,8 +43,9 @@
 .radio2{
   margin-left: -120px !important;
 }
-.sidebar{
-  border: 0;
+.btn-space{
+  margin-top: 25px;
+  width: 150px;
 }
 
 .profile_img{
@@ -55,12 +56,12 @@
   position: inherit;
   margin-top: 20px;
   border: 1px solid rgba(52,73,94,0.44);
-  padding: 4px;
+  width: 150px;
 }
 .logo-change{
    width: 52px;
    padding: -1px 15px;
-}
+ }
 .form-group label-control:after{
   content: "*";
   color: red;
