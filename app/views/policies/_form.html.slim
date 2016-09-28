@@ -1,0 +1,42 @@
+.x_content
+  /! Smart Wizard
+  p Policy details
+  #wizard.form_wizard.wizard_horizontal
+    ul.wizard_steps.anchor
+      li
+        a.selected href="#step-1" isdone="1" rel="1" 
+          span.step_no 1
+          span.step_descr
+            | Step 1
+            br/
+            small Step 1 Policy Details
+      li
+        a.disabled href="#step-2" isdone="0" rel="2" 
+          span.step_no 2
+          span.step_descr
+            | Step 2
+            br/
+            small Step 2 Insurance Details
+      li
+        a.disabled href="#step-3" isdone="0" rel="3" 
+          span.step_no 3
+          span.step_descr
+            | Step 3
+            br/
+            small Step 3 Personal Details
+      li
+        a.disabled href="#step-4" isdone="0" rel="4" 
+          span.step_no 4
+          span.step_descr
+            | Step 4
+            br/
+            small Step 4 Address
+    .s1
+      = form_for @policies , html: { id: 'policy_form', multipart: true } do |f|
+        - vehicle = @policies.build_vehicle
+        - plan = @policies.build_plan
+        - lic = @policies.build_lic
+        - personal_info = @policies.build_personal_info
+        - address = @policies.build_address
+        = render partial: 'new_policy', locals: {f: f,vehicle: vehicle,plan: plan,personal_info: personal_info,address: address,lic: lic}
+        

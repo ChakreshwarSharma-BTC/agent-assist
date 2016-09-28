@@ -15,3 +15,5 @@
 //= require jquery_ujs
 //= require common
 //= require turbolinks
+//= require SmartWizard
+//= require select2-full
