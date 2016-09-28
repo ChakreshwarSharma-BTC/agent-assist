@@ -1,7 +1,7 @@
 class CreateAddresses < ActiveRecord::Migration[5.0]
   def change
     create_table :addresses do |t|
-      t.references :informable, polymorphic: true, index: true
+      t.references :addressable, polymorphic: true, index: true
       t.references :user
       t.references :employer, default: ''
       t.string :street_1, default: ''
