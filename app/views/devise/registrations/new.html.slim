@@ -1,48 +1,48 @@
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  h1 sign up
-  - resource.build_personal_info
-  = devise_error_messages!
-  .form-group
-    label.control-label.col-md-4.align for="email" 
-      | Email
-      span.required *
-    .col-md-8
-      = f.email_field :email,class:"form-control", autofocus: true
-  .form-group
-    label.control-label.col-md-4.align for="phone_no" 
-      | Phone no.
-      span.required *
-    .col-md-8
-      = f.text_field :primary_phone_no,class:"form-control"    
-  = render partial: 'informable_fields', locals: {f: f}
-  .form-group
-    label.control-label.col-md-4.align for="last-name" 
-      | Password
-      span.required *
-    .col-md-8
-      = f.password_field :password,class:"form-control" 
-  .form-group
-    label.control-label.col-md-4.align for="last-name" 
-      | Confirm Password
-      span.required *
-    .col-md-8
-      = f.password_field :password,class:"form-control"
-  .form-group
-    .col-md-8
-      button.btn.btn-primary type="submit"
-        | Submit 
-      button.btn.btn-success.mrg-left-signup-cancel type="cancel" 
-        | Cancel
-  .link-font
-    = render "devise/shared/links"
-javascript:
-  $(document).ready(function(){
-    $("#user_personal_info_attributes_gender_male").click(function(){
-      $("#g1").removeClass( "btn btn-primary" ).addClass("btn btn-default");
-      $("#g2").addClass( "btn btn-primary" );
-    });
-    $("#user_personal_info_attributes_gender_female").click(function(){
-      $("#g1").addClass( "btn btn-primary" );
-      $("#g2").removeClass( "btn btn-primary" ).addClass("btn btn-default");
-    });
-  });
+.col-md-6
+  .login_wrapper.registration_space
+    .animate.form.login_form
+      section.login_content
+        = form_for(resource, as: resource_name, url: registration_path(resource_name),  html: { id: 'user_form', class:"form-horizontal"}) do |f|
+          - resource.build_personal_info
+          = devise_error_messages!
+          h1 sign up
+          .form-group
+            label.control-label.col-md-6
+              =t('.email')
+              label-control
+            .col-md-6
+              = f.email_field :email,class:"form-control", autofocus: true
+            .col-md-2
+              label
+          .form-group
+            label.control-label.col-md-6
+              | Phone no.
+              label-control
+            .col-md-6
+              = f.text_field :primary_phone_no,class:"form-control"    
+          = render partial: 'informable_fields', locals: {f: f}
+          .form-group
+            label.control-label.col-md-6
+              | Password
+              label-control
+            .col-md-6
+              = f.password_field :password,class:"form-control" 
+          .form-group
+            label.control-label.col-md-6 
+              | Confirm Password
+              label-control
+            .col-md-6
+              = f.password_field :password_confirmation,class:"form-control"
+          .form-group
+            .col-md-12
+              .pull-right
+                button.btn.btn-primary.btn-space type="submit"
+                  | Submit 
+                button.btn.btn-success.mrg-left-signup-cancel.btn-space type="cancel" 
+                  | Cancel
+              .link-font
+                = render "devise/shared/links"
+        javascript:
+          (function($){
+            AgentAssist.Registration.Validation.registrationValidation();
+            })(jQuery);

@@ -1,0 +1,13 @@
+.right_col
+  .row
+    .col-md-6
+      .x_panel
+        .x_title
+          h2
+            = t('.company_details')
+          .clearfix
+        .x_content
+          .table-responsive
+            table.table.table-striped.jambo_table.bulk_action
+              = render partial: 'list_header'
+              = render partial: 'company_list',  locals: { companies: @companies }
