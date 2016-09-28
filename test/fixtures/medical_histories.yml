@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  height: MyString
+  weight: MyString
+  abd: MyString
+  chest: MyString
+  identification_mark: MyString
+  date: 2016-09-26
+  operation_detail: MyString
+
+two:
+  height: MyString
+  weight: MyString
+  abd: MyString
+  chest: MyString
+  identification_mark: MyString
+  date: 2016-09-26
+  operation_detail: MyString

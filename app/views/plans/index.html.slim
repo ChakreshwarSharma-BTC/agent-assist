@@ -1,0 +1,14 @@
+.right_col
+  .row
+    .col-md-12
+      .x_panel
+        .x_title
+          h2
+            | Plans
+          .clearfix
+          = link_to 'Add Plan', new_plan_path, class: "btn btn-primary pull-right"
+        .x_content 
+         .table-responsive
+         	table.table.table-striped.jambo_table.bulk_action 
+	         = render partial: 'list_header'
+	         = render partial: 'list_body' ,locals: { plans: @plans} 

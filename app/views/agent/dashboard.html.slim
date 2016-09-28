@@ -1,4 +1,11 @@
-| Hi Agent! #{current_user.email}
-br
-| add customer : 
-= link_to 'New Customer', new_customer_path
+.right_col
+  .row
+    .col-md-12
+      .x_panel
+        .x_title
+          h2
+            | Dashboard
+          .clearfix
+        .x_content 
+          = render :partial => 'agent/stastics'
+      = render :partial => 'agent/graph' 

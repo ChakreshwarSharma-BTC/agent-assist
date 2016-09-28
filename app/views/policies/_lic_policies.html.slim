@@ -1,0 +1,38 @@
+#lic.abc.form-horizontal.form-label-left
+  .col-md-6
+    = f.fields_for :lic do |p|
+      .form-group
+        label.control-label.col-md-3 for="policy-term"  Policy term
+        .col-md-6
+          = p.text_field :policy_term,class:"form-control col-md-7 col-xs-12"
+      .form-group
+        label.control-label.col-md-3 for="education-qualification"  Education qualification
+        .col-md-6
+          = p.text_field :education_qualification,class:"form-control col-md-7 col-xs-12"
+  .col-md-6
+    = f.fields_for :lic do |p|      
+      .form-group
+        label.control-label.col-md-3 for="annual-income" 
+          | Annual income
+          span.required *
+        .col-md-6
+          = p.text_field :annual_income,class:"form-control col-md-7 col-xs-12"
+      .form-group
+        label.control-label.col-md-3 for="last-name" 
+          | Total year
+          span.required *
+        .col-md-6
+          input#last-name.form-control.col-md-7 name="last-name" required="required" type="text" /
+      .form-group
+          label.control-label.col-md-3
+            | Rider
+          .col-md-6
+            .checkbox.bottom
+              = p.check_box :term_rider
+              | Term rider
+              br/
+              = p.check_box :critical_illness
+              | Criticle illness
+              br/
+              = p.check_box :with_aaccident_cover
+              | With Accidental cover

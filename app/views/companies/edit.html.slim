@@ -1,0 +1,10 @@
+.right_col
+  .row
+    .col-md-6
+      .x_panel
+        .x_title
+          h2
+            = t('.edit_company')
+          .clearfix
+        .x_content
+          = render partial: 'form', locals: { company: @company }

@@ -21,3 +21,21 @@
 
 en:
   hello: "Hello world"
+  companies:
+    form:
+      name: 'Name'
+    new:
+      add_company: 'Add Company'
+    edit:
+      edit_company: 'Edit Company'
+    index:
+      company_details: 'Company Details'
+    create:
+      success: 'You have created company successfully!'
+      error: 'You have not created company successfully!'
+    update:
+      success: 'You have updated company successfully!'
+      error: 'You have not updated company successfully!'
+    destroy:
+      success: 'You have deleted company successfully!'
+      error: 'You could not able to destroy company!'

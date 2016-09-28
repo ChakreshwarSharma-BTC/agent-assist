@@ -1,0 +1,91 @@
+.bottom{
+  margin-top: 3cm;
+  margin-right: 80px;
+}
+.mrg-left-signup-cancel{
+  margin-left: 20px;
+}
+.mrg-left-signup{
+  margin-left: 102px;
+}
+.login_wrapper {
+  margin: 5% auto 0;
+  position: relative;
+  right: -8cm !important;
+}
+.align{
+  text-align: right;
+}
+.x_panel1 {
+  background: #fff none repeat scroll 0 0 !important;
+  display: inline-block;
+  margin-bottom: 10px;
+  margin-right: 150px !important;
+  opacity: 1;
+  transition: all 0.2s ease 0s;
+  width: 50% !important;
+  padding: 0cm,18cm,0cm,-20cm !important; 
+  text-align: center !important; 
+}
+.one {
+  border: 1px solid #e6e9ed !important;
+  text-align: center !important; 
+}
+.link-font{
+  font-size: 29px;
+  text-decoration: underline;
+  margin-top: 5px !important;
+}
+.radio1{
+  margin-left: -141px !important;
+  margin-top: -10px !important;
+}
+.radio2{
+  margin-left: -120px !important;
+}
+.btn-space{
+  margin-top: 25px;
+  width: 150px;
+}
+.checkbox1{
+  margin-left: -1px !important;
+  margin-top: 4px !important;
+}
+
+.profile_img{
+  width: 70%;
+  background: #fff;
+  margin-left: 15%;
+  z-index: 1000;
+  position: inherit;
+  margin-top: 20px;
+  border: 1px solid rgba(52,73,94,0.44);
+  width: 150px;
+}
+.logo-change{
+   width: 52px;
+   padding: -1px 15px;
+ }
+.form-group label-control:after{
+  content: "*";
+  color: red;
+}
+.label {
+  display: inline-block;
+  padding: 0;
+  text-align: left;
+}
+.registration_space{
+  max-width: 700px !important;
+}
+.login_space{
+  margin-top: 180px !important;
+  margin-left: 400px !important;
+}
+.login_button{
+  margin-left: 215px !important;
+}
+label.error {
+  display: inline;
+  color: #FB3A3A !important;
+}

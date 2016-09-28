@@ -4,7 +4,12 @@ html
     title
       | AgentAssist
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    = yield
+    -if current_user
+      = render partial: 'layouts/header'
+      = render partial: 'layouts/sidebar'
+      = yield    
+    -else
+      body.login
+        = yield

@@ -1,0 +1,9 @@
+ - plans.each do | plan |
+   tr
+    td
+     = plan.name
+    td
+      = link_to(edit_plan_path(plan), class: "action-icon-company") do
+        i.fa.fa-edit[title="Edit"]
+      = link_to(plan_path(plan),method: :delete, data: {confirm: 'Are you sure you want to delete the plan?'}, class: "action-icon-company") do
+        i.fa.fa-remove[title="Delete"] 

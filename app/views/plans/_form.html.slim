@@ -1,0 +1,24 @@
+= form_for plan, html: {class: "form-horizontal form-label-left"} do |f|
+ .form-group
+  label.control-label.col-md-2
+    | Category Name
+    span.required *
+  .col-md-4
+    = select_tag :category_id, options_for_select(Category.all.map{ |c| [c.name, c.id]}), {class: "form-control select"}
+ .form-group
+    label.control-label.col-md-2
+      | Company Name
+      span.required *
+    .col-md-4
+      = select_tag :company_id, options_for_select(Company.all.map{ |c| [c.name, c.id]}), {class: "form-control select"}
+ .form-group
+    label.control-label.col-md-2
+      | Name
+      span.required *
+    .col-md-4
+      = f.text_field :name, autofocus: true, class: "form-control", placeholder: "Name", tabindex: 1
+ .form-group
+  .col-md-6
+    .pull-right
+      =  f.submit  class: "btn btn-primary"
+      =  link_to "Cancel", plans_path, class: "btn btn-default btn-space"
