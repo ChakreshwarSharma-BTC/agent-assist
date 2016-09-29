@@ -6,7 +6,6 @@ class CustomersController < ApplicationController
   end
 
   def create
-    binding.pry
     customer = User.new(customer_params)
     customer.password = Settings.user.password
     customer.add_role :customer
