@@ -16,7 +16,6 @@ class PoliciesController < ApplicationController
   def create
     @policies= Policy.new(policies_params)
     if @policies.save
-      binding.pry
       @policies.address.user_id=@policies.user_id
       redirect_to  policies_path
     else
