@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20160928135822) do
     t.datetime "updated_at",                         null: false
     t.index ["family_id"], name: "index_life_insurances_on_family_id", using: :btree
     t.index ["policy_id"], name: "index_life_insurances_on_policy_id", using: :btree
+    t.index ["policy_term"], name: "index_life_insurances_on_policy_term", using: :btree
   end
 
   create_table "medical_histories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -183,7 +184,11 @@ ActiveRecord::Schema.define(version: 20160928135822) do
     t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["end_date"], name: "index_policies_on_end_date", using: :btree
     t.index ["plan_id"], name: "index_policies_on_plan_id", using: :btree
+    t.index ["policy_number"], name: "index_policies_on_policy_number", using: :btree
+    t.index ["renewal_date"], name: "index_policies_on_renewal_date", using: :btree
+    t.index ["start_date"], name: "index_policies_on_start_date", using: :btree
     t.index ["user_id"], name: "index_policies_on_user_id", using: :btree
   end
 

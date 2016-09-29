@@ -1,7 +1,7 @@
 class CreateLifeInsurances < ActiveRecord::Migration[5.0]
   def change
     create_table :life_insurances do |t|
-      t.integer :policy_term
+      t.integer :policy_term, index: true
       t.string :education_qualification
       t.float :annual_income
       t.boolean :term_rider
