@@ -14,6 +14,7 @@
 //= require jquery.validate.min
 //= require jquery_ujs
 //= require common
+//= require custom
 //= require cocoon
 //= require turbolinks
 //= require SmartWizard
