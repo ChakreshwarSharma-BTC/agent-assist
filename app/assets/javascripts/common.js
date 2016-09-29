@@ -6,17 +6,26 @@ showDatePicker: function(){
       });
 },
 partialHideShow: function(){
-    $('#policy_plan_attributes_company_categories_id').on('change',function(){
-      var x= $('#policy_plan_attributes_company_categories_id').val();
-      if (x == 1){
-        $('.vehicle').remove();
-        $('.lic').add();
-      } 
-      else if (x == 2){
-        $('.lic').remove();
-        $('.vehicle').add();
-      }
+  $('#life_insurance,#vehicle').hide();
+  $('#policy_plan_attributes_company_categories_id').on('change', function(){
+    var selected = $('#policy_plan_attributes_company_categories_id :selected').text();
+    var list = $.map($('#policy_plan_attributes_company_categories_id option'), function(ele) {
+      return ele.value; 
     });
+    remain = jQuery.grep(list, function(value) {
+      return value != selected;
+    });
+   if ($.inArray(selected, list) > -1)
+    {
+      selected_option = selected.replace(/ /g, "_").toLowerCase(); 
+      $('#'+selected_option).show();
+      var i;
+      for (i = 0; i < remain.length; i++) {
+        other_option=remain[i].replace(/ /g, "_").toLowerCase();
+        $('#'+other_option).hide();
+      }
+    }
+  });
 },
 wizardSlideSteps: function(){
   $('#wizard').smartWizard();
@@ -34,6 +43,25 @@ buttonOfForm: function(){
   $('.buttonNext').addClass('btn btn-success');
   $('.buttonPrevious').addClass('btn btn-primary');
   $('.buttonFinish').addClass('btn btn-default');
+  $('#policy_plan_attributes_company_categories_id').on('change', function(){
+    var selected = $('#policy_plan_attributes_company_categories_id :selected').text();
+    var list = $.map($('#policy_plan_attributes_company_categories_id option'), function(ele) {
+      return ele.value; 
+    });
+    remain = jQuery.grep(list, function(value) {
+      return value != selected;
+    });
+   if ($.inArray(selected, list) > -1)
+    {
+      selected_option = selected.replace(/ /g, "_").toLowerCase(); 
+      $('#'+res).show();
+      var i;
+      for (i = 0; i < remain.length; i++) {
+        other_option=remain[i].replace(/ /g, "_").toLowerCase();
+        $('#'+res1).remove();
+      }
+    }
+  });
   $('.buttonFinish').on('click', function(){
     $('form').submit();
   })
