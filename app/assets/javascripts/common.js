@@ -6,17 +6,19 @@ showDatePicker: function(){
       });
 },
 partialHideShow: function(){
-    $('#policy_plan_attributes_company_categories_id').on('change',function(){
-      var x= $('#policy_plan_attributes_company_categories_id').val();
-      if (x == 1){
-        $('.vehicle').remove();
-        $('.lic').add();
-      } 
-      else if (x == 2){
-        $('.lic').remove();
-        $('.vehicle').add();
-      }
-    });
+  $('.vehicle').hide();
+  $('.lic').hide();
+  $('#policy_plan_attributes_company_categories_id').on('change',function(){
+    var x= $('#policy_plan_attributes_company_categories_id').val();
+    if (x == 1){
+      $('.vehicle').hide();
+      $('.lic').show();
+    } 
+    else if (x == 2){
+      $('.lic').hide();
+      $('.vehicle').show();
+    }
+  });
 },
 wizardSlideSteps: function(){
   $('#wizard').smartWizard();
@@ -35,7 +37,17 @@ buttonOfForm: function(){
   $('.buttonPrevious').addClass('btn btn-primary');
   $('.buttonFinish').addClass('btn btn-default');
   $('.buttonFinish').on('click', function(){
-    $('form').submit();
+    $('#policy_plan_attributes_company_categories_id').on('change',function(){
+      var x= $('#policy_plan_attributes_company_categories_id').val();
+      if (x == 1){
+        $('.vehicle').remove();
+        $('form').submit();
+      } 
+      else if (x == 2){
+        $('.lic').remove();
+      $('form').submit();
+    }
+  });
   })
 },
 documentOnReady: function (){
