@@ -4,7 +4,7 @@ class CreateEmployers < ActiveRecord::Migration[5.0]
       t.string :name_of_office, index: true
       t.integer :how_long
       t.integer :plan_type
-      t.belongs_to :policy, foreign_key: true
+      t.belongs_to :policy
 
       t.timestamps
     end

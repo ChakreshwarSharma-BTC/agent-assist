@@ -10,19 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926091415) do
+ActiveRecord::Schema.define(version: 20160928135822) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "addressable_type"
+    t.integer  "addressable_id"
     t.integer  "user_id"
     t.integer  "employer_id"
-    t.string   "street_1",     default: ""
-    t.string   "street_2",     default: ""
-    t.string   "city",         default: "", null: false
-    t.string   "state",        default: "", null: false
-    t.string   "pincode",      default: "", null: false
-    t.integer  "address_type", default: 0,  null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "street_1",         default: ""
+    t.string   "street_2",         default: ""
+    t.string   "city",             default: "", null: false
+    t.string   "state",            default: "", null: false
+    t.string   "pincode",          default: "", null: false
+    t.integer  "address_type",     default: 0,  null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
     t.index ["employer_id"], name: "index_addresses_on_employer_id", using: :btree
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
@@ -32,7 +35,7 @@ ActiveRecord::Schema.define(version: 20160926091415) do
     t.integer  "cheque_no"
     t.date     "date"
     t.integer  "micr_code"
-    t.string   "rfgs"
+    t.string   "rtgs"
     t.integer  "account_no"
     t.string   "account_type"
     t.float    "amount",       limit: 24
@@ -107,12 +110,11 @@ ActiveRecord::Schema.define(version: 20160926091415) do
     t.float    "annual_income",           limit: 24
     t.boolean  "term_rider"
     t.boolean  "critical_illness"
-    t.boolean  "with_aaccident_cover"
-    t.integer  "family_id"
+    t.boolean  "with_accident_cover"
     t.integer  "policy_id"
+    t.integer  "family_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.index ["annual_income"], name: "index_life_insurances_on_annual_income", using: :btree
     t.index ["family_id"], name: "index_life_insurances_on_family_id", using: :btree
     t.index ["policy_id"], name: "index_life_insurances_on_policy_id", using: :btree
     t.index ["policy_term"], name: "index_life_insurances_on_policy_term", using: :btree
@@ -176,9 +178,10 @@ ActiveRecord::Schema.define(version: 20160926091415) do
     t.float    "total_amount",    limit: 24
     t.date     "renewal_date"
     t.date     "last_renewed_on"
-    t.integer  "play_type"
+    t.integer  "plan_type"
     t.integer  "total_year"
     t.integer  "plan_id"
+    t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.index ["end_date"], name: "index_policies_on_end_date", using: :btree
@@ -186,6 +189,7 @@ ActiveRecord::Schema.define(version: 20160926091415) do
     t.index ["policy_number"], name: "index_policies_on_policy_number", using: :btree
     t.index ["renewal_date"], name: "index_policies_on_renewal_date", using: :btree
     t.index ["start_date"], name: "index_policies_on_start_date", using: :btree
+    t.index ["user_id"], name: "index_policies_on_user_id", using: :btree
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -244,17 +248,13 @@ ActiveRecord::Schema.define(version: 20160926091415) do
     t.index ["policy_id"], name: "index_vehicles_on_policy_id", using: :btree
   end
 
-  add_foreign_key "banks", "policies"
   add_foreign_key "company_categories", "categories"
   add_foreign_key "company_categories", "companies"
-  add_foreign_key "employers", "policies"
   add_foreign_key "life_insurances", "families"
   add_foreign_key "life_insurances", "policies"
-  add_foreign_key "medical_histories", "policies"
-  add_foreign_key "nominees", "policies"
   add_foreign_key "plans", "company_categories", column: "company_categories_id"
   add_foreign_key "policies", "plans"
+  add_foreign_key "policies", "users"
   add_foreign_key "vehicle_coverages", "coverages"
   add_foreign_key "vehicle_coverages", "vehicles"
-  add_foreign_key "vehicles", "policies"
 end

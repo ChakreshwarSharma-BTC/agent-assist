@@ -6,7 +6,9 @@ one:
   annual_income: 1.5
   term_rider: false
   critical_illness: false
-  with_aaccident_cover: false
+  with_accident_cover: false
+  policy: one
+  family: one
 
 two:
   policy_term: 1
@@ -14,4 +16,6 @@ two:
   annual_income: 1.5
   term_rider: false
   critical_illness: false
-  with_aaccident_cover: false
+  with_accident_cover: false
+  policy: two
+  family: two

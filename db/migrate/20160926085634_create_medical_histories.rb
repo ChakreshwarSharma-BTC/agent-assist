@@ -8,7 +8,7 @@ class CreateMedicalHistories < ActiveRecord::Migration[5.0]
       t.string :identification_mark
       t.date :date
       t.string :operation_detail
-      t.belongs_to :policy, foreign_key: true
+      t.belongs_to :policy
       t.timestamps
     end
   end

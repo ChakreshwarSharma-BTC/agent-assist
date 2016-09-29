@@ -1,3 +1,3 @@
 class Coverage < ApplicationRecord
-   has_and_belongs_to_many :vehicles
+  has_and_belongs_to_many :vehicles
 end
