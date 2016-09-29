@@ -1,33 +1,30 @@
-abc.form-horizontal.form-label-left
-  .col-md-12.col-sm-12.col-xs-12
-    .col-md-12
-      = f.fields_for :address do |p|
-        .form-group
-          label.control-label.col-md-3 for="city" 
-            | City
-            span.required *
-          .col-md-4
-            = p.text_field :city,class:"form-control col-md-7 col-xs-12"
-        .form-group
-          label.control-label.col-md-3 for="state" 
-            | State
-            span.required *
-          .col-md-4
-            = p.text_field :state,class:"form-control col-md-7 col-xs-12"
-        .form-group
-          label.control-label.col-md-3 for="pincode" 
-            | Pincode
-            span.required *
-          .col-md-4
-            = p.text_field :pincode,class:"form-control col-md-7 col-xs-12"
-        .form-group
-          label.control-label.col-md-3 for="street_1" 
-            | Street1
-            span.required *
-          .col-md-4
-            = p.text_field :street_1,class:"form-control col-md-7 col-xs-12"
-        .form-group
-          label.control-label.col-md-3 for="street_2" 
-            | Street2
-          .col-md-4
-            = p.text_field :street_2,class:"form-control col-md-7 col-xs-12"
+= f.fields_for :address do |p|
+  .form-group
+    label.control-label.col-md-3
+      | City
+      span.required *
+    .col-md-6
+      = p.text_field :city,class:"form-control"
+  .form-group
+    label.control-label.col-md-3 
+      | State
+      span.required *
+    .col-md-6
+      = p.text_field :state,class:"form-control"
+  .form-group
+    label.control-label.col-md-3 
+      | Pincode
+      span.required *
+    .col-md-6
+      = p.text_field :pincode,class:"form-control"
+  .form-group
+    label.control-label.col-md-3 
+      | Street1
+      span.required *
+    .col-md-6
+      = p.text_field :street_1,class:"form-control"
+  .form-group
+    label.control-label.col-md-3
+      | Street2
+    .col-md-6
+      = p.text_field :street_2,class:"form-control"

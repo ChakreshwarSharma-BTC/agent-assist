@@ -6,16 +6,15 @@ showDatePicker: function(){
       });
 },
 partialHideShow: function(){
-  $('#vehicle').hide();
     $('#policy_plan_attributes_company_categories_id').on('change',function(){
       var x= $('#policy_plan_attributes_company_categories_id').val();
       if (x == 1){
-        $('#vehicle').hide();
-        $('#lic').show();
+        $('.vehicle').remove();
+        $('.lic').add();
       } 
       else if (x == 2){
-        $('#lic').hide();
-        $('#vehicle').show();
+        $('.lic').remove();
+        $('.vehicle').add();
       }
     });
 },
@@ -29,12 +28,15 @@ selectDropDown: function(){
   $(".select").select2().change(function(){
     $(this).valid();
   });
-  $("#policy_plan_attributes_company_categories_id, #policy_CategoryCompany_company_id, #policy_plan_id").select2({});
+  $("#policy_plan_attributes_company_categories_id, #policy_plan_id").select2({});
 },
 buttonOfForm: function(){
   $('.buttonNext').addClass('btn btn-success');
   $('.buttonPrevious').addClass('btn btn-primary');
   $('.buttonFinish').addClass('btn btn-default');
+  $('.buttonFinish').on('click', function(){
+    $('form').submit();
+  })
 },
 documentOnReady: function (){
   AgentAssist.Common.showDatePicker();

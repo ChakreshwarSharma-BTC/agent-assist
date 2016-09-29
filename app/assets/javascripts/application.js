@@ -10,9 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require chartkick
-//= require bootstrap-datetimepicker
-//= require moment
 //= require jquery
 //= require jquery.validate.min
 //= require jquery_ujs
@@ -21,3 +18,6 @@
 //= require turbolinks
 //= require SmartWizard
 //= require select2-full
+//= require chartkick
+//= require moment
+//= require bootstrap-datetimepicker

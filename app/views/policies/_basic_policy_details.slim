@@ -1,50 +1,49 @@
-abc.form-horizontal.form-label-left
-  .col-md-12.col-sm-12.col-xs-12
-    .col-md-12
-      = f.fields_for :plan do |p|
-        .form-group
-          label.control-label.col-md-3 
-           | Category
-          .col-md-6
-            = p.select :company_categories_id, options_for_select(Category.all.map{ |c| [c.name, c.id]}), {class: "form-control select"}
-      = f.fields_for :CategoryCompany do |p|
-        .form-group
-          label.control-label.col-md-3
-            | Company name
-          .col-md-6
-            = p.select :company_id, options_for_select(Company.all.map{ |c| [c.name, c.id]}), {class: "form-control select"}
-      .form-group
-        label.control-label.col-md-3 
-         | Plan
-        .col-md-6
-         = f.select :plan_id, options_for_select(Plan.all.map{ |p| [p.name, p.id]}), {class: "form-control select"}
-      .form-group
-        label.control-label.col-md-3 for="start-date" 
-          | Start Date
-          span.required *
-        .col-md-4
-          = f.text_field :start_date,class:"form-control col-md-7 col-xs-12"
-      .form-group
-        label.control-label.col-md-3 for="end-date" 
-          | End Date
-          span.required *
-        .col-md-4
-          = f.text_field :end_date,class:"form-control col-md-7 col-xs-12"
-      .form-group
-        label.control-label.col-md-3
-          | Total year
-          span.required *
-        .col-md-4
-          = f.text_field :total_year,class:"form-control col-md-7 col-xs-12" 
-      .form-group
-        label.control-label.col-md-3
-          | Total Amount
-          span.required *
-        .col-md-4
-          = f.text_field :total_amount,class:"form-control col-md-7 col-xs-12"
-      .form-group
-        label.control-label.col-md-3
-          | Pay mode
-          span.required *
-        .col-md-4
-          = f.text_field :mod_of_payment,class:"form-control col-md-7 col-xs-12" 
+= f.fields_for :plan do |p|
+  .form-group
+    label.control-label.col-md-3 
+     | Category
+     span.required *
+    .col-md-6
+      = p.select :company_categories_id, options_for_select(Category.all.map{ |c| [c.name, c.id]}), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
+= f.fields_for :CategoryCompany do |p|
+  .form-group
+    label.control-label.col-md-3
+      | Company name
+      span.required *
+    .col-md-6
+      = p.select :company_id, options_for_select(Company.all.map{ |c| [c.name, c.id]}), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
+.form-group
+  label.control-label.col-md-3 
+   | Plan
+  .col-md-6
+   = f.select :plan_id, options_for_select(Plan.all.map{ |p| [p.name, p.id]}), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
+.form-group
+  label.control-label.col-md-3
+    | Start Date
+    span.required *
+  .col-md-6
+    = f.text_field :start_date,class:"form-control"
+.form-group
+  label.control-label.col-md-3
+    | End Date
+    span.required *
+  .col-md-6
+    = f.text_field :end_date,class:"form-control"
+.form-group
+  label.control-label.col-md-3
+    | Total year
+    span.required *
+  .col-md-6
+    = f.text_field :total_year,class:"form-control" 
+.form-group
+  label.control-label.col-md-3
+    | Total Amount
+    span.required *
+  .col-md-6
+    = f.text_field :total_amount,class:"form-control"
+.form-group
+  label.control-label.col-md-3
+    | Pay mode
+    span.required *
+  .col-md-6
+    = f.text_field :mod_of_payment,class:"form-control" 
