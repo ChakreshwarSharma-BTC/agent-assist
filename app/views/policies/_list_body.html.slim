@@ -1,8 +1,10 @@
 - policies.each do | policy |
   tbody
     tr
+      td 
+        = policy.id 
       td
-        = policy.personal_info.first_name
+        = policy.personal_info.full_name
       td
         = policy.plan.name
       td
@@ -11,4 +13,3 @@
         = policy.end_date
       td
         |action
-    
