@@ -7,8 +7,6 @@
             | Customer Information 
           .clearfix
         .x_content
-          | ! Smart Wizard
-          p Personal Info
           #wizard.form_wizard.wizard_horizontal
             ul.wizard_steps.anchor
               li
@@ -33,7 +31,13 @@
                     br
                     small Step 3 Tempoary Address
             .stepContainer
-              = form_for @customer, url: customer_index_path do |f|
+              = form_for @customer, url: customers_path  do |f|
                 - @customer.build_personal_info
-                - @customer.build_address
-                = render partial: 'wizard_steps', locals: {f: f}
+                - @customer.address.build
+                = render partial: 'wizard_steps', locals: {f: f, customer: @customer}
+
+= javascript_include_tag 'register'
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Settings.google.maps_api.key}&libraries=places"
+javascript:
+  AgentAssist.Register.autoCompleteLocation('#user_address_attributes_0_city');
+  AgentAssist.Register.autoCompleteLocation('#user_address_attributes_1_city');

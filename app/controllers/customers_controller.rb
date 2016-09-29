@@ -1,4 +1,4 @@
-class CustomerController < ApplicationController
+class CustomersController < ApplicationController
   before_action :authenticate_user!
   
   def new
@@ -6,7 +6,8 @@ class CustomerController < ApplicationController
   end
 
   def create
-   customer = User.new(customer_params)
+    binding.pry
+    customer = User.new(customer_params)
     customer.password = Settings.user.password
     customer.add_role :customer
     if customer.save!

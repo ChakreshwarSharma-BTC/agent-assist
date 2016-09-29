@@ -1,0 +1,30 @@
+.form-group
+  label.control-label.col-md-4.align for="Street 1"
+    | Street 1
+    span.required *
+  .col-md-6
+    = a.text_field :street_1, class: 'form-control'
+.form-group
+  label.control-label.col-md-4.align for="Street 2"
+    | Street 2
+    span.required *
+  .col-md-6
+    = a.text_field :street_2, class: 'form-control'
+.form-group
+  label.control-label.col-md-4.align for="City"
+    | City
+    span.required *
+  .col-md-6
+    = a.text_field :city, class: 'form-control auto_complete'
+.form-group
+  label.control-label.col-md-4.align for="State"
+    | State
+    span.required *
+  .col-md-6
+    = a.text_field :state, class: 'form-control'
+form-group
+  label.control-label.col-md-4.align for="Pincode"
+    | Pincode
+    span.required *
+  .col-md-6
+    = a.text_field :pincode, class: 'form-control'
