@@ -7,7 +7,7 @@ class CreateVehicles < ActiveRecord::Migration[5.0]
       t.boolean :idv_accessory
       t.boolean :electrical_accessory
       t.boolean :non_electrical_accessory
-      t.belongs_to :policy, foreign_key: true
+      t.belongs_to :policy
 	  t.timestamps
     end
   end

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LicTest < ActiveSupport::TestCase
+class LifeInsuranceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
