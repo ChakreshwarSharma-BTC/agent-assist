@@ -1,10 +1,11 @@
 class PoliciesController < ApplicationController
   before_action :policies_params,only: [:create]
   def new
-    @policies=Policy.new
+    @policies = Policy.new
   end
 
   def index
+    @policies = Policy.all
   end
 
   def edit

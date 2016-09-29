@@ -5,7 +5,7 @@ showDatePicker: function(){
         format: "DD/MM/YYYY"
       });
 },
-partialHideShow: function(){
+policyPartialHideShow: function(){
   $('#life_insurance,#vehicle').hide();
   $('#policy_plan_attributes_company_categories_id').on('change', function(){
     var selected_option = $('#policy_plan_attributes_company_categories_id :selected').text();
@@ -66,7 +66,7 @@ buttonOfForm: function(){
 },
 documentOnReady: function (){
   AgentAssist.Common.showDatePicker();
-  AgentAssist.Common.partialHideShow();
+  AgentAssist.Common.policyPartialHideShow();
   AgentAssist.Common.wizardSlideSteps();
   AgentAssist.Common.selectDropDown();
   AgentAssist.Common.buttonOfForm();

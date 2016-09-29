@@ -9,4 +9,7 @@ class PersonalInfo < ApplicationRecord
   validates :last_name, presence: true
   validates :date_of_birth, presence: true
   validates :gender, presence: true
+  def full_name
+    "#{first_name} #{middle_name} #{last_name}"
+  end
 end
