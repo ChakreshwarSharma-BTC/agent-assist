@@ -1,46 +1,14 @@
-tbody
-  tr
-    td
-      | policy jivan vima nigam
-    td
-      | Lic 
-    td
-      | Lic insurance companey pvt.ltd
-    td
-      | karan bamaniya
-    td
-      | 2/2/2006
-    td 
-      |2/2/2021
-    td
-      |action
-  tr
-    td
-      | policy jivan vima nigam
-    td
-      | Lic 
-    td
-      | Lic insurance companey pvt.ltd
-    td
-      | karan bamaniya
-    td
-      | 2/2/2006
-    td 
-      |2/2/2021
-    td
-      |action
-  tr
-    td
-      | policy jivan vima nigam
-    td
-      | Lic 
-    td
-      | Lic insurance companey pvt.ltd
-    td
-      | karan bamaniya
-    td
-      | 2/2/2006
-    td 
-      |2/2/2021
-    td
-      |action
+- policies.each do | policy |
+  tbody
+    tr
+      td
+        = policy.personal_info.first_name
+      td
+        = policy.plan.name
+      td
+        = policy.start_date
+      td 
+        = policy.end_date
+      td
+        |action
+    
