@@ -2,7 +2,10 @@ AgentAssist.Register = {
   autoCompleteLocation: function (selector) {
     $(selector).on('focus', function(){
       autocomplete = new google.maps.places.Autocomplete($(selector)[0],
-        {types: ['geocode']});      
+        {
+          types: ['geocode'],
+          componentRestrictions: {country: 'in'}
+        });
       autocomplete.addListener('place_changed', function (){
         AgentAssist.Register.getAddress(selector);
       });
@@ -55,6 +58,6 @@ AgentAssist.Register = {
         $('#user_address_attributes_0_address_type').val('temporary');
         $('#checked_form').show();
       }
-    });  
+    });
   }
 };

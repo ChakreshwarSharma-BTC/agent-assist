@@ -34,6 +34,7 @@
               = form_for @customer, url: customers_path  do |f|
                 - @customer.build_personal_info
                 - @customer.address.build
+                = f.hidden_field :user_type, value: 'customer'
                 = render partial: 'wizard_steps', locals: {f: f, customer: @customer}
 
 = javascript_include_tag 'register'
@@ -41,3 +42,4 @@
 javascript:
   AgentAssist.Register.autoCompleteLocation('#user_address_attributes_0_city');
   AgentAssist.Register.autoCompleteLocation('#user_address_attributes_1_city');
+  AgentAssist.Register.addressType();
