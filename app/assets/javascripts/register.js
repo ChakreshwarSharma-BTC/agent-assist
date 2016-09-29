@@ -29,17 +29,17 @@ AgentAssist.Register = {
       switch(addressType)
       {
         case 'locality':
-        $('#user_address_attributes_'+selector_id+'_city').val(val);
-        break;
+          $('#user_address_attributes_'+selector_id+'_city').val(val);
+          break;
         case 'administrative_area_level_1':
-        $('#user_address_attributes_'+selector_id+'_state').val(val);
-        break;
+          $('#user_address_attributes_'+selector_id+'_state').val(val);
+          break;
         case 'postal_code':
-        $('#user_address_attributes_'+selector_id+'_pincode').val(val);
-        break;
+          $('#user_address_attributes_'+selector_id+'_pincode').val(val);
+          break;
         default:
-        $('#user_address_attributes_'+selector_id+'_pincode').val('');
-        break;
+          $('#user_address_attributes_'+selector_id+'_pincode').val('');
+          break;
       }
     }
   },
