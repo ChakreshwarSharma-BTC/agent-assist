@@ -8,7 +8,7 @@ class Policy < ApplicationRecord
   has_one :nominee
   has_one :life_insurances
   has_one :personal_info, as: :informable, dependent: :destroy
-  has_one :address, as: :informable, dependent: :destroy
+  has_one :address, as: :addressable, dependent: :destroy
 
   accepts_nested_attributes_for :vehicle
   accepts_nested_attributes_for :personal_info   
