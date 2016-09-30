@@ -8,13 +8,16 @@ class Policy < ApplicationRecord
   has_one :nominee
   has_one :life_insurances
   has_one :personal_info, as: :informable, dependent: :destroy
-  has_one :address, as: :informable, dependent: :destroy
+  has_one :address, as: :addressable, dependent: :destroy
 
   accepts_nested_attributes_for :vehicle
   accepts_nested_attributes_for :personal_info   
   accepts_nested_attributes_for :plan    
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :life_insurances
+
+  # 0 for floater, 1 for individual and 2 for group plan type
+  enum plan_type: { floater: 0, individual: 1, policy_group: 2 }
 
   # Payment method 0 for cash and 1 for cheque
   enum mod_of_payment: { cash: 0, cheque: 1 }

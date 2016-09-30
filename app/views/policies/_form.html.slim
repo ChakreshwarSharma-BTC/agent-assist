@@ -39,4 +39,4 @@
         - personal_info = @policies.build_personal_info
         - address = @policies.build_address
         = render partial: 'new_policy', locals: {f: f,vehicle: vehicle,plan: plan,personal_info: personal_info,address: address,lic: lic}
-        
+= javascript_include_tag 'policy'
