@@ -6,5 +6,5 @@ class Address < ApplicationRecord
   enum address_type: { permanent: 0, temporary: 1 }
   #validation
   validates :pincode, length: { is: 6 }, numericality: { only_integer: true }
-  validates :street_1, :street_2, :city, :state, :pincode, presence: true
+  validates :street_1, :city, :state, :pincode, presence: true
 end
