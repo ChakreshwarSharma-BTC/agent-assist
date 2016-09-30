@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: {
     registrations: 'registrations'
   }
@@ -16,5 +15,5 @@ Rails.application.routes.draw do
   resources :nominees
   resources :companies
   resources :plans
-  resources :customer, only: [:index, :new, :create]
+  resources :customers, only: [:index, :new, :create]
 end

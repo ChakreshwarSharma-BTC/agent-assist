@@ -1,0 +1,5 @@
+.new_family  
+  = render partial: 'personal_info_fields', locals: {f: f}
+  .nested-fields
+    = render partial: 'devise/registrations/common_family_fields', locals: {f: f}
+  = link_to_remove_association "Remove Member", f,  { wrapper_class: 'new_family', class: 'btn btn-danger' }

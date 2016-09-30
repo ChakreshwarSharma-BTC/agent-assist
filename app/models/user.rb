@@ -10,12 +10,19 @@ class User < ApplicationRecord
   has_one :personal_info, as: :informable, dependent: :destroy
   has_one :user_profile
   has_many :family, dependent: :destroy
-  has_one :address, as: :addressable, dependent: :destroy
+  has_many :address, as: :addressable, dependent: :destroy
   accepts_nested_attributes_for :personal_info, :family, :address
 
-  validates :primary_phone_no, presence: true
+  attr_accessor :user_type
+  # validation
+  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :primary_phone_no, presence: true, numericality: true, length: {is: 10}
 
   def assign_role
-    add_role :agent if roles.blank?
+    if roles.blank? && user_type.blank?
+      add_role :agent
+    else
+      add_role user_type if user_type.present?
+    end
   end
 end

@@ -5,12 +5,12 @@ class CreateBanks < ActiveRecord::Migration[5.0]
       t.integer :cheque_no
       t.date :date
       t.integer :micr_code
-      t.string :rfgs
+      t.string :rtgs
       t.integer :account_no
       t.string :account_type
       t.float :amount
       t.string :branch
-      t.belongs_to :policy, foreign_key: true
+      t.belongs_to :policy
       t.timestamps
     end
   end
