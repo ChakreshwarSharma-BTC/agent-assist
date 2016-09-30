@@ -84,11 +84,11 @@ ActiveRecord::Schema.define(version: 20160928135822) do
 
   create_table "employers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name_of_office"
-    t.integer  "how_long"
+    t.integer  "how_long_working"
     t.integer  "plan_type"
     t.integer  "policy_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["name_of_office"], name: "index_employers_on_name_of_office", using: :btree
     t.index ["policy_id"], name: "index_employers_on_policy_id", using: :btree
   end
@@ -161,10 +161,10 @@ ActiveRecord::Schema.define(version: 20160928135822) do
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.integer  "company_categories_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.index ["company_categories_id"], name: "index_plans_on_company_categories_id", using: :btree
+    t.integer  "company_category_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["company_category_id"], name: "index_plans_on_company_category_id", using: :btree
     t.index ["name"], name: "index_plans_on_name", using: :btree
   end
 
@@ -252,7 +252,7 @@ ActiveRecord::Schema.define(version: 20160928135822) do
   add_foreign_key "company_categories", "companies"
   add_foreign_key "life_insurances", "families"
   add_foreign_key "life_insurances", "policies"
-  add_foreign_key "plans", "company_categories", column: "company_categories_id"
+  add_foreign_key "plans", "company_categories"
   add_foreign_key "policies", "plans"
   add_foreign_key "policies", "users"
   add_foreign_key "vehicle_coverages", "coverages"

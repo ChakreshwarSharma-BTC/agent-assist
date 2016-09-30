@@ -1,10 +1,11 @@
-.right_col
-  .row
-    .col-md-6
-      .x_panel
-        .x_title
-          h2
-            | Edit Nominee Detail 
-          .clearfix
-        .x_content
-          = render partial: 'nominee_form', locals: { nominee: @nominee } 
+.form-horizontal.form-label-left
+  .right_col
+    .row
+      .col-md-7
+        .x_panel
+          .x_title
+            h2
+              | Edit Nominee Detail 
+            .clearfix
+          .x_content
+            = render partial: 'update_nominee', locals: { nominee: @nominee } 

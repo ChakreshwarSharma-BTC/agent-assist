@@ -5,9 +5,11 @@
         .x_title
           h2
             | Nominee
+          = link_to 'Add Nominee', new_policy_nominee_path, class: "btn btn-primary pull-right"
           .clearfix
-        .x_content
-          .table-responsive
-            table.table.table-striped.jambo_table.bulk_action
-              = render partial: 'nominee_list_header'
-              = render partial: 'nominee_list', locals: { nominees: @nominees}
+        - if @nominees.present?
+          .x_content
+            .table-responsive
+              table.table.table-striped.jambo_table.bulk_action
+                = render partial: 'nominee_list_header'
+                = render partial: 'nominee_list', locals: { nominees: @nominees }

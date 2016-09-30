@@ -15,7 +15,7 @@
     td
       = nominee.relation
     td
-      = link_to(edit_nominee_path(nominee)) do
+      = link_to edit_policy_nominee_path(nominee.policy_id, nominee) do
         i.fa.fa-edit[title="Edit"]
-      = link_to nominee_path(nominee),method: :delete, data: {confirm: 'Are you sure you want to delete the nominee?'} do
+      = link_to policy_nominee_path(nominee.policy_id, nominee),method: :delete, data: {confirm: 'Are you sure you want to delete the nominee?'} do
         i.fa-remove[title="Delete"]

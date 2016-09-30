@@ -5,14 +5,16 @@ before_action :find_nominee_by_id, only: [:show, :edit, :update, :destroy]
   def create
     @nominee = Nominee.new(nominee_params)
     if @nominee.save
-      redirect_to nominees_path
+      redirect_to policy_nominees_path
     else
       render :new
     end 
   end
 
   def new
-    @nominee = Nominee.new
+    policy = Policy.find_by(params[:id])
+    @nominee = policy.build_nominee
+    @nominee.build_personal_info
   end
 
   def edit
@@ -20,9 +22,9 @@ before_action :find_nominee_by_id, only: [:show, :edit, :update, :destroy]
 
   def update
     if @nominee.update_attributes(nominee_params)
-      redirect_to nominees_path
+      redirect_to policy_nominees_path
     else
-      redirect_to nominees_path
+      redirect_to policy_nominees_path
     end
   end
 
@@ -31,7 +33,7 @@ before_action :find_nominee_by_id, only: [:show, :edit, :update, :destroy]
 
   def destroy
     if @nominee.destroy
-      redirect_to nominees_path
+      redirect_to policy_nominees_path
     end
   end
 

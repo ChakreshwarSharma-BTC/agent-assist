@@ -5,5 +5,5 @@ class Family < ApplicationRecord
   has_and_belongs_to_many :life_insurances
 
   #validation
-  validates :health, :death_age, :death_year, :death_reason, presence: true
+  validates :health, presence: true
 end
