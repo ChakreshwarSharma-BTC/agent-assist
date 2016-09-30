@@ -1,5 +1,6 @@
 class PoliciesController < ApplicationController
-  before_action :policies_params,only: [:create]
+  before_action :policies_params, only:[:create, :update]
+  before_action :find_by_policy_id, only:[:edit, :update ,:destroy]
   def new
     @policies = Policy.new
   end
@@ -9,6 +10,7 @@ class PoliciesController < ApplicationController
   end
 
   def edit
+    @category_id = @policy.plan.company_categories_id
   end
 
   def show
@@ -22,9 +24,23 @@ class PoliciesController < ApplicationController
     else
       redirect_to  new_policy_path
     end
-
   end
 
+ 	def update
+    if @policy.update(policies_params)
+      redirect_to policies_path
+    else
+      redirect_to new_policy_path
+    end
+  end
+
+  def destroy
+    if @policy.destroy
+      redirect_to policies_path
+    else
+      redirect_to new_policy_path
+    end
+  end
 
   private
   def policies_params
@@ -33,6 +49,10 @@ class PoliciesController < ApplicationController
      vehicle_attributes: [:registration_number,:name,:ncb,:idv_accessory,:electrical_accessory,:non_electrical_accessory],
      address_attributes: [:city,:state,:pincode,:street_1,:street_2],
      life_insurance_attributes: [:policy_term,:education_qualification,:annual_income,:term_rider,:critical_illness,:with_aaccident_cover])
+  end
+
+  def find_by_policy_id
+    @policy = Policy.find(params[:id])
   end
 end
 
