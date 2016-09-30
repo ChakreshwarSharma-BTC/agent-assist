@@ -1,40 +1,19 @@
+.x_title
+h2
+| Address 
 = f.fields_for :address do |a|
+  = render partial: 'devise/registrations/common_address_fields', locals: {a: a}
   .form-group
-    label.control-label.col-md-4.align for="Street 1"
-      | Street 1
-      span.required *
+    label.control-label.col-md-4.align
+      | same as permanent address
     .col-md-6
-      = a.text_field :street_1, class: 'form-control'
-  .form-group
-    label.control-label.col-md-4.align for="Street 2"
-      | Street 2
-      span.required *
-    .col-md-6
-      = a.text_field :street_2, class: 'form-control'
-  .form-group
-    label.control-label.col-md-4.align for="City"
-      | City
-      span.required *
-    .col-md-6
-      = a.text_field :city, class: 'form-control'
-  .form-group
-    label.control-label.col-md-4.align for="State"
-      | State
-      span.required *
-    .col-md-6
-      = a.text_field :state, class: 'form-control'
-  form-group
-    label.control-label.col-md-4.align for="Pincode"
-      | Pincode
-      span.required *
-    .col-md-6
-      = a.text_field :pincode, class: 'form-control'
-  form-group
-    label.control-label.col-md-4.align for="Address Type"
-      | Address Type
-      span.required *
-    .col-md-6
-      = a.radio_button :address_type, 'permanent'
-      = a.label 'Permanent'
-      = a.radio_button :address_type, 'temporary'  
-      = a.label 'Temporary'
+      = check_box_tag 'checkbox_check'
+        |DoNotDistrub
+      = a.hidden_field :address_type, value: 'temporary'
+#checked_form
+  .x_title1
+  h2
+  | Permanent Address
+  = f.fields_for :address do |a|  
+    = render partial: 'devise/registrations/common_address_fields', locals: {a: a}
+    = a.hidden_field :address_type, value: 'permanent'

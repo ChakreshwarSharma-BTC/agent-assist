@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   end
   resources :companies
   resources :plans
-  resources :customer, only: [:index, :new, :create]
+  resources :customers, only: [:index, :new, :create]
 end

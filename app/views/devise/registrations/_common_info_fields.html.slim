@@ -1,27 +1,32 @@
 .form-group
   label.control-label.col-md-6.align for="First name" 
     | First name
+    label-control
   .col-md-6
     = f.text_field :first_name, class:"form-control"
 .form-group
   label.control-label.col-md-6.align for="middle name" 
     | Middle name
+    label-control
   .col-md-6
     = f.text_field :middle_name,class:"form-control"
 .form-group
   label.control-label.col-md-6.align for="Last name" 
     | Last name
+    label-control
   .col-md-6
     = f.text_field :last_name,class:"form-control"
 .form-group
   label.control-label.col-md-6.align for="Dath of birth" 
     | Date Of Birth
+    label-control
   .col-md-6
-    = f.text_field :date_of_birth,class:"form-control"
+    = f.text_field :date_of_birth, class:"form-control"
 .form-group
   label.control-label.col-md-6.align for="gender" 
     | Gender
-  .col-md-3
+    label-control
+  .col-md-6
       = f.radio_button :gender,'male', class:"radio-inline"
       | Male
       = f.radio_button :gender, 'female', class:"radio-inline"
