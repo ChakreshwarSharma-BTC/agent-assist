@@ -1,0 +1,15 @@
+- unless flash.empty?
+  .flash-message-box
+    .flash_msg.alert_msg
+      ul.list-unstyled
+        li
+          - flash.each do |name, message|
+            - if message.present?
+              .align-center.alert *{:class => [bootstrap_class(name)]}
+                .close[data-dismiss="alert" aria-hidden="true"]
+                  | x
+                .left-text
+                  = message
+                end
+            end  
+  - flash.clear
