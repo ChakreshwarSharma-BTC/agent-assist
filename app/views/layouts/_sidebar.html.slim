@@ -1,18 +1,38 @@
 .col-md-3.left_col
   .left_col.scroll-view
     .navbar.nav_title.side  
-      a.site_title href="index.html" 
+      = link_to agent_dashboard_path, method: :get, class:"site_title" 
         i.fa.fa-paw
         span Agent Assist!
     .clearfix
     #sidebar-menu.main_menu_side.hidden-print.main_menu
       .menu_section
-        ul.nav.side-menu
+        ul.nav.side-menu style="" 
+          li.active
+            a
+              i.fa.fa-home
+              | Home
+              span.fa.fa-chevron-down
+            ul.nav.child_menu.sidebar_display 
+              li
+                = link_to "Dashboard", agent_dashboard_path, method: :get
           li
-            = link_to 'New Customer',  new_customer_path 
+            a
+              i.fa.fa-edit
+              | Customer
+              span.fa.fa-chevron-down
+            ul.nav.child_menu
+              li
+                = link_to 'New Customer',  new_customer_path, method: :get 
+              li
+                = link_to 'Customers', customers_path 
           li
-            = link_to 'Policies'
-          li
-            = link_to 'Plans'
-          li
-            = link_to 'Reminder'
+            a
+              i.fa.fa-desktop
+              | Policy
+              span.fa.fa-chevron-down
+            ul.nav.child_menu
+              li
+                = link_to 'New Policy', new_policy_path, method: :get
+              li
+                = link_to 'Policies', policies_path

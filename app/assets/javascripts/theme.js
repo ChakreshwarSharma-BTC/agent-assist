@@ -1,26 +1,17 @@
-var CURRENT_URL = window.location.href.split("?")[0],
-    $BODY = $("body"),
-    $MENU_TOGGLE = $("#menu_toggle"),
-    $SIDEBAR_MENU = $("#sidebar-menu"),
-    $SIDEBAR_FOOTER = $(".sidebar-footer"),
-    $LEFT_COL = $(".left_col"),
-    $RIGHT_COL = $(".right_col"),
-    $NAV_MENU = $(".nav_menu"),
-    $FOOTER = $("footer");
 $(document).ready(function() {
     var e = function() {
-        $RIGHT_COL.css("min-height", $(window).height());
-        var e = $BODY.outerHeight(),
-            t = $BODY.hasClass("footer_fixed") ? 0 : $FOOTER.height(),
-            n = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
+         $(".right_col").css("min-height", $(window).height());
+        var e = $("body").outerHeight(),
+            t = $("body").hasClass("footer_fixed") ? 0 : $("footer").height(),
+            n = $(".left_col").eq(1).height() + $(".sidebar-footer").height(),
             i = n > e ? n : e;
-        i -= $NAV_MENU.height() + t, $RIGHT_COL.css("min-height", i)
+        i -= $(".nav_menu").height() + t, $("right_col").css("min-height", i)
     };
-    $SIDEBAR_MENU.find("a").on("click", function(t) {
+    $("#sidebar-menu").find("a").on("click", function(t) {
         var n = $(this).parent();
         n.is(".active") ? (n.removeClass("active active-sm"), $("ul:first", n).slideUp(function() {
             e()
-        })) : (n.parent().is(".child_menu") || ($SIDEBAR_MENU.find("li").removeClass("active active-sm"), $SIDEBAR_MENU.find("li ul").slideUp()), n.addClass("active"), $("ul:first", n).slideDown(function() {
+        })) : (n.parent().is(".child_menu") || ($("#sidebar-menu").find("li").removeClass("active active-sm"), $("#sidebar-menu").find("li ul").slideUp()), n.addClass("active"), $("ul:first", n).slideDown(function() {
             e()
         }))
     }), $("#menu_toggle").on("click", function() {
