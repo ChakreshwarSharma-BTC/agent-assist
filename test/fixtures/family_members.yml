@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  health: MyString
+  death_age: 1
+  death_year: 2016-09-30
+  death_reason: MyString
+  realtion: 1
+  family: one
+
+two:
+  health: MyString
+  death_age: 1
+  death_year: 2016-09-30
+  death_reason: MyString
+  realtion: 1
+  family: two

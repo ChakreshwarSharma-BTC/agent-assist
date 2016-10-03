@@ -8,7 +8,6 @@ class CreateLifeInsurances < ActiveRecord::Migration[5.0]
       t.boolean :critical_illness
       t.boolean :with_accident_cover
       t.belongs_to :policy, foreign_key: true
-      t.belongs_to :family, foreign_key: true
 
       t.timestamps
     end

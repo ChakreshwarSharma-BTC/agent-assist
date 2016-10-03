@@ -21,5 +21,5 @@ class Policy < ApplicationRecord
   # Premium mod 0 for quarterly 1 for half year 2 for yesrly
   enum premium_mod: { quarterly: 0, half_year: 1,  yearly: 2 }
   #validation
-  validates :policy_number, :start_date, :end_date, :premium_amount, :total_amount, :total_year, presence: true
+  validates :policy_number, :start_date, :end_date, :premium_amount, :total_amount, presence: true
 end
