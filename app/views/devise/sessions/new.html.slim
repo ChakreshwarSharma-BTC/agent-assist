@@ -8,12 +8,12 @@
             label.control-label.col-md-6.log-in-email-label
               =t('.email')
               label-control
-            = f.email_field :email,class:"form-control", autofocus: true
+            = f.email_field :email, class:"form-control", autofocus: true
           .form-group
             label.control-label.col-md-6.log-in-password-label
               | Password
               label-control
-            = f.password_field :password,class:"form-control"
+            = f.password_field :password, class:"form-control"
           .form-group
             - if devise_mapping.rememberable? 
               .field.remember-me
