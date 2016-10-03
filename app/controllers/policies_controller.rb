@@ -23,8 +23,8 @@ class PoliciesController < ApplicationController
       redirect_to  policies_path
       flash[:success] = t('.success')
     else
+      flash[:error] = @policies.errors.full_messages.to_sentence
       redirect_to  new_policy_path
-      flash[:error] = t('.error')
     end
   end
 
@@ -32,7 +32,7 @@ class PoliciesController < ApplicationController
     if @policy.update(policies_params)
       flash[:success] = t('.success')
     else
-      flash[:error] = t('.error')
+      flash[:error] = @policy.errors.full_messages.to_sentence
     end
     redirect_to policies_path
   end
@@ -41,7 +41,7 @@ class PoliciesController < ApplicationController
     if @policy.destroy
       flash[:success] = t('.success')
     else
-      flash[:error] = t('.error')
+      flash[:error] = @policy.errors.full_messages.to_sentence
     end
     redirect_to policies_path
   end

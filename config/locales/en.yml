@@ -34,21 +34,15 @@ en:
     index:
       company_details: 'Company Details'
     create:
-      success: 'You have created company successfully!'
-      error: 'You have not created company successfully!'
+      success: 'Company created successfully!'
     update:
-      success: 'You have updated company successfully!'
-      error: 'You have not updated company successfully!'
+      success: 'Company updated successfully!'
     destroy:
-      success: 'You have deleted company successfully!'
-      error: 'You could not able to destroy company!'
+      success: 'Company deleted successfully!'
   policies:
     create:
-      success: 'You have created policy successfully!'
-      error: 'You have not created policy successfully!'
+      success: 'Policy created successfully!'
     update:
-      success: 'You have updated policy successfully!'
-      error: 'You have not updated ploicy  successfully!'
+      success: 'Policy updated successfully!'
     destroy:
-      success: 'You have deleted policy successfully!'
-      error: 'You could not able to destroy policy!'
+      success: 'Policy deleted successfully!'
