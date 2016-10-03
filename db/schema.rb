@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930125730) do
+ActiveRecord::Schema.define(version: 20161003131025) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "addressable_type"
@@ -107,9 +107,9 @@ ActiveRecord::Schema.define(version: 20160930125730) do
     t.integer  "death_age"
     t.date     "death_year"
     t.string   "death_reason"
-    t.integer  "realtion"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "relation_with_customer"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "life_insurances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -195,6 +195,13 @@ ActiveRecord::Schema.define(version: 20160930125730) do
     t.index ["renewal_date"], name: "index_policies_on_renewal_date", using: :btree
     t.index ["start_date"], name: "index_policies_on_start_date", using: :btree
     t.index ["user_id"], name: "index_policies_on_user_id", using: :btree
+  end
+
+  create_table "relations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "relation_type"
+    t.string   "string"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
