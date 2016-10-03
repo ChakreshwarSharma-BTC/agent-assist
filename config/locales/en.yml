@@ -42,3 +42,13 @@ en:
     destroy:
       success: 'You have deleted company successfully!'
       error: 'You could not able to destroy company!'
+  policies:
+    create:
+      success: 'You have created policy successfully!'
+      error: 'You have not created policy successfully!'
+    update:
+      success: 'You have updated policy successfully!'
+      error: 'You have not updated ploicy  successfully!'
+    destroy:
+      success: 'You have deleted policy successfully!'
+      error: 'You could not able to destroy policy!'

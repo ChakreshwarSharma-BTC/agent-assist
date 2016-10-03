@@ -21,25 +21,29 @@ class PoliciesController < ApplicationController
     if @policies.save
       @policies.address.user_id=@policies.user_id
       redirect_to  policies_path
+      flash[:success] = t('.success')
     else
       redirect_to  new_policy_path
+      flash[:error] = t('.error')
     end
   end
 
   def update
     if @policy.update(policies_params)
-      redirect_to policies_path
+      flash[:success] = t('.success')
     else
-      redirect_to new policies_path
+      flash[:error] = t('.error')
     end
+    redirect_to policies_path
   end
 
   def destroy
     if @policy.destroy
-      redirect_to policies_path
+      flash[:success] = t('.success')
     else
-      redirect_to new_policy_path
+      flash[:error] = t('.error')
     end
+    redirect_to policies_path
   end
 
   private
