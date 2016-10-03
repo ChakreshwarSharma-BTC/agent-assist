@@ -22,9 +22,13 @@ class PoliciesController < ApplicationController
     else
       redirect_to  new_policy_path
     end
-
   end
 
+  def policy_reminder
+    @policy = Policy.order("end_date DESC")
+    @policies_expire = @policies.weekly_expire_policy
+    @policy_all = @policy - @policies_expire
+  end
 
   private
   def policies_params
@@ -35,43 +39,3 @@ class PoliciesController < ApplicationController
      life_insurance_attributes: [:policy_term,:education_qualification,:annual_income,:term_rider,:critical_illness,:with_aaccident_cover])
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

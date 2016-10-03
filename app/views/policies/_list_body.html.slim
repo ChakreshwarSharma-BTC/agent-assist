@@ -1,15 +1,14 @@
-- policies.each do | policy |
-  tbody
-    tr
-      td 
-        = policy.policy_number
-      td
-        = policy.personal_info.full_name
-      td
-        = policy.plan.name
-      td
-        = policy.start_date
-      td 
-        = policy.end_date
-      td
-        |action
+- if policies.present?
+  - policies.each do | policy |
+    tbody
+      tr
+        td 
+          = policy.policy_number
+        td
+          = policy.user.personal_info.full_name
+        td
+          = policy.plan.name
+        td
+          = policy.start_date
+        td 
+          = policy.end_date

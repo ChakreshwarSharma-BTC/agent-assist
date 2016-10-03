@@ -1,0 +1,13 @@
+.right_col
+  .row
+    .col-md-12
+      .x_panel
+        .x_title
+          h2
+            | Policies Details
+          .clearfix
+        .x_content
+          .table-responsive
+            table.table.table-striped.jambo_table.bulk_action
+              = render partial: 'list_header'
+              = render partial: 'policy_reminder_list', locals: { policies_expire: @policies_expire }

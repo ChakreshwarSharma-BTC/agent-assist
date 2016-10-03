@@ -1,0 +1,14 @@
+- policies_expire.each do | policy |
+  tbody
+    tr.policy_color
+      td
+        = policy.policy_number
+      td
+        = policy.user.personal_info.full_name
+      td
+        = policy.plan.name
+      td
+        = policy.start_date
+      td
+        = policy.end_date
+= render partial: 'list_body', locals: { policies: @policy_all }

@@ -22,4 +22,8 @@ class Policy < ApplicationRecord
   enum premium_mod: { quarterly: 0, half_year: 1,  yearly: 2 }
   #validation
   validates :policy_number, :start_date, :end_date, :premium_amount, :total_amount, presence: true
+  #scope
+  scope :weekly_expire_policy, -> { time_range = (DateTime.now.beginning_of_day...7.days.from_now.beginning_of_day)
+  where(end_date: time_range) }
+
 end
