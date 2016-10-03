@@ -34,15 +34,15 @@ en:
     index:
       company_details: 'Company Details'
     create:
-      success: 'Company created successfully!'
+      success: 'Company added successfully!'
     update:
       success: 'Company updated successfully!'
     destroy:
-      success: 'Company deleted successfully!'
+      success: 'Company removed successfully!'
   policies:
     create:
-      success: 'Policy created successfully!'
+      success: 'Policy added successfully!'
     update:
       success: 'Policy updated successfully!'
     destroy:
-      success: 'Policy deleted successfully!'
+      success: 'Policy removed successfully!'
