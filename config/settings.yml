@@ -3,3 +3,7 @@ google:
   key: AIzaSyAon-KMT_orBu3JkNlvAFtUipF7F-FDoPA
 user:
   password: aaaaaa
+policy:
+  day: 7
+pagination:
+  default: 4

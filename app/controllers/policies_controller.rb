@@ -5,7 +5,7 @@ class PoliciesController < ApplicationController
   end
 
   def index
-    @policies = Policy.all
+    @policies = paginated(Policy)
   end
 
   def edit
@@ -25,7 +25,7 @@ class PoliciesController < ApplicationController
   end
 
   def policy_reminder
-    @policy = Policy.policy_desc_order
+    @policy = paginated(Policy.policy_desc_order)
     @policies_expire = @policy.weekly_expire_policy
     @policy_all = @policy - @policies_expire
   end

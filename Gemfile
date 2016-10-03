@@ -20,6 +20,7 @@ gem 'devise'
 gem 'config'
 gem 'rolify'
 gem 'cancancan'
+gem 'kaminari'
 gem 'slim-rails'
 gem 'select2-rails',  git: 'https://github.com/argerim/select2-rails.git'
 # Use jquery as the JavaScript library
