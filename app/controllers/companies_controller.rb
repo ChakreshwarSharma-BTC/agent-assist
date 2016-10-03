@@ -18,7 +18,7 @@ class CompaniesController < ApplicationController
       flash[:success] = t('.success')
     else
       render :new
-      flash[:error] = t('.error')
+      flash[:error] = @company.errors.full_messages.to_sentence
     end
   end
 
@@ -29,7 +29,7 @@ class CompaniesController < ApplicationController
     if @company.update(company_params)
       flash[:success] = t('.success')
     else
-      flash[:error] = t('.error')
+      flash[:error] = @company.errors.full_messages.to_sentence
     end
     redirect_to companies_path
   end
@@ -38,7 +38,7 @@ class CompaniesController < ApplicationController
      if @company.destroy
       flash[:success] = t('.success')
     else
-      flash[:error] = t('.error')
+      flash[:error] = @company.errors.full_messages.to_sentence
     end
     redirect_to companies_path
   end

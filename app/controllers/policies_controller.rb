@@ -1,5 +1,6 @@
 class PoliciesController < ApplicationController
-  before_action :policies_params,only: [:create]
+  before_action :policies_params, only: [:create, :update]
+  before_action :set_policy, only: [:edit, :update , :destroy]
   def new
     @policies = Policy.new
   end
@@ -9,6 +10,7 @@ class PoliciesController < ApplicationController
   end
 
   def edit
+    @category_id = @policy.plan.company_category_id
   end
 
   def show
@@ -19,12 +21,32 @@ class PoliciesController < ApplicationController
     if @policies.save
       @policies.address.user_id=@policies.user_id
       redirect_to  policies_path
+      flash[:success] = t('.success')
     else
+      flash[:error] = @policies.errors.full_messages.to_sentence
       redirect_to  new_policy_path
     end
   end
 
-  def policy_reminder
+  def update
+    if @policy.update(policies_params)
+      flash[:success] = t('.success')
+    else
+      flash[:error] = @policy.errors.full_messages.to_sentence
+    end
+    redirect_to policies_path
+  end
+
+  def destroy
+    if @policy.destroy
+      flash[:success] = t('.success')
+    else
+      flash[:error] = @policy.errors.full_messages.to_sentence
+    end
+    redirect_to policies_path
+  end
+
+   def policy_reminder
     @policy = paginated(Policy.policy_desc_order)
     @policies_expire = @policy.weekly_expire_policy
     @policy_all = @policy - @policies_expire
@@ -37,5 +59,9 @@ class PoliciesController < ApplicationController
      vehicle_attributes: [:registration_number,:name,:ncb,:idv_accessory,:electrical_accessory,:non_electrical_accessory],
      address_attributes: [:city,:state,:pincode,:street_1,:street_2],
      life_insurance_attributes: [:policy_term,:education_qualification,:annual_income,:term_rider,:critical_illness,:with_aaccident_cover])
+  end
+
+  def set_policy
+    @policy = Policy.find(params[:id])
   end
 end

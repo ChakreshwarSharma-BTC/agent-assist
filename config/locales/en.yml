@@ -21,6 +21,9 @@
 
 en:
   hello: "Hello world"
+  date:
+    formats:
+      short: '%d/%m/%Y'
   companies:
     form:
       name: 'Name'
@@ -31,11 +34,15 @@ en:
     index:
       company_details: 'Company Details'
     create:
-      success: 'You have created company successfully!'
-      error: 'You have not created company successfully!'
+      success: 'Company added successfully!'
     update:
-      success: 'You have updated company successfully!'
-      error: 'You have not updated company successfully!'
+      success: 'Company updated successfully!'
     destroy:
-      success: 'You have deleted company successfully!'
-      error: 'You could not able to destroy company!'
+      success: 'Company removed successfully!'
+  policies:
+    create:
+      success: 'Policy added successfully!'
+    update:
+      success: 'Policy updated successfully!'
+    destroy:
+      success: 'Policy removed successfully!'
