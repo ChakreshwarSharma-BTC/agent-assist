@@ -20,4 +20,5 @@
 //= require select2-full
 //= require chartkick
 //= require moment
+//= require bootstrap
 //= require bootstrap-datetimepicker

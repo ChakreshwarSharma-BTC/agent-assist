@@ -11,7 +11,6 @@ class CreatePolicies < ActiveRecord::Migration[5.0]
       t.date :renewal_date, index: true
       t.date :last_renewed_on
       t.integer :plan_type
-      t.integer :total_year
       t.belongs_to :plan, foreign_key: true
       t.belongs_to :user, foreign_key: true
 

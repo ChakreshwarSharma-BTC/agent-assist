@@ -4,13 +4,26 @@
       section.login_content
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           h1 Login
-          div
-            = f.email_field :email,class:"form-control",placeholder: "email", autofocus: true
-          div
-            = f.password_field :password,class:"form-control", placeholder: "password", autocomplete: "off"
-          div
+          .form-group
+            label.control-label.col-md-6.log-in-email-label
+              =t('.email')
+              label-control
+            = f.email_field :email, class:"form-control", autofocus: true
+          .form-group
+            label.control-label.col-md-6.log-in-password-label
+              | Password
+              label-control
+            = f.password_field :password, class:"form-control"
+          .form-group
+            - if devise_mapping.rememberable? 
+              .field.remember-me
+                = f.check_box :remember_me, checked: false
+                |  remember me
             .actions
-              = f.submit "Log in", class: "btn btn-default submit"
-            = render "devise/shared/links"
+              = f.submit "Sign in", class: "btn btn-primary"
+          .form-group.
+            .col-md-5.col-sm-offset-8.forgot-password
+              - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+                = link_to "Forgot password?", new_password_path(resource_name)
           .clearfix
           .separator
