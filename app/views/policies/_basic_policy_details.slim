@@ -4,7 +4,7 @@
      | Category
      span.required *
     .col-md-6
-      = p.select :company_categories_id, options_for_select(Category.all.map{ |c| [c.name, c.id]},selected: @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
+      = p.select :company_category_id, options_for_select(Category.all.map{ |c| [c.name, c.name]},selected: @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
 = f.fields_for :CategoryCompany do |p|
   .form-group
     label.control-label.col-md-3
@@ -28,7 +28,7 @@
     | End Date
     span.required *
   .col-md-6
-    = f.text_field :end_date,class:"form-control", value: end_date
+    = f.text_field :end_date,class:"form-control",value: end_date
 .form-group
   label.control-label.col-md-3
     | Total Amount

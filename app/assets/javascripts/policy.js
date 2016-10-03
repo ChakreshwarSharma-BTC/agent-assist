@@ -1,11 +1,11 @@
 AgentAssist.Policy = {
   policyCategories: function(){
-    $('#policy_plan_attributes_company_categories_id').on('change', function(){
+    $('#policy_plan_attributes_company_category_id').on('change', function(){
       $.ajax({
         type: "GET",
         url: " /policies/category",
         data: {
-          category : $('#policy_plan_attributes_company_categories_id').val()
+          category : $('#policy_plan_attributes_company_category_id').val()
         }
       });
     });

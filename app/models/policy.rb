@@ -14,7 +14,7 @@ class Policy < ApplicationRecord
   accepts_nested_attributes_for :life_insurance
   has_one :personal_info, as: :informable, dependent: :destroy
   accepts_nested_attributes_for :personal_info
-  has_one :address, as: :addressable, dependent: :destroy     
+  has_one :address, as: :addressable, dependent: :destroy  
   accepts_nested_attributes_for :address
   
   # 0 for floater, 1 for individual and 2 for group plan type
@@ -31,10 +31,9 @@ class Policy < ApplicationRecord
 
   def self.search(search)
     if search
-      @policies=Policy.joins(:plan).where('name LIKE ?', "%#{search}%")
+      joins(:plan).where('name LIKE ?', "%#{search}%")
     else
       scoped
     end
   end
-
 end

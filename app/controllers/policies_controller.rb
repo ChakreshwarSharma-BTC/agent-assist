@@ -1,16 +1,16 @@
 class PoliciesController < ApplicationController
   before_action :authenticate_user!
+  before_action :new_policy,only: [:new, :user_list, :category_fields]
   before_action :policies_params, only: [:create, :update]
   before_action :set_policy, only: [:edit, :update , :destroy]
   def new
-    @policy = Policy.new
   end
 
   def index
     if (params[:search])
-      @policies = Policy.search(params[:search]).paginate(per_page: 2, page: params[:page]).order(created_at: :asc)
+      @policies = Policy.search(params[:search]).order(created_at: :asc)
     else
-      @policies = Policy.all.paginate(per_page: 2, page: params[:page]).order(created_at: :asc)
+      @policies = Policy.all.order(created_at: :asc)
     end
   end
 
@@ -31,7 +31,7 @@ class PoliciesController < ApplicationController
       flash[:success] = t('.success')
 
     else
-      flash[:error] = @policies.errors.full_messages.to_sentence
+      flash[:error] = @policy.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -54,14 +54,16 @@ class PoliciesController < ApplicationController
     redirect_to policies_path
   end
   
-  def find_user_list
+  def user_list
     @user=User.find_by(id: params[:user_id])
-    @policy =Policy.new
   end
 
   def category_fields
-    @policy = Policy.new
     @category =params[:category]
+  end
+
+  def new_policy
+    @policy = Policy.new
   end
 
   private
@@ -76,5 +78,5 @@ class PoliciesController < ApplicationController
 
   def set_policy
     @policy = Policy.find(params[:id])
-  end  
+  end
 end
