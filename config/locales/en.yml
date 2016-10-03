@@ -42,4 +42,3 @@ en:
     destroy:
       success: 'You have deleted company successfully!'
       error: 'You could not able to destroy company!'
-
