@@ -1,6 +1,6 @@
 class PoliciesController < ApplicationController
-  before_action :policies_params, only:[:create, :update]
-  before_action :find_by_policy_id, only:[:edit, :update ,:destroy]
+  before_action :policies_params, only: [:create, :update]
+  before_action :set_policy, only: [:edit, :update , :destroy]
   def new
     @policies = Policy.new
   end
@@ -10,7 +10,7 @@ class PoliciesController < ApplicationController
   end
 
   def edit
-    @category_id = @policy.plan.company_categories_id
+    @category_id = @policy.plan.company_category_id
   end
 
   def show
@@ -26,11 +26,11 @@ class PoliciesController < ApplicationController
     end
   end
 
- 	def update
+  def update
     if @policy.update(policies_params)
       redirect_to policies_path
     else
-      redirect_to new_policy_path
+      redirect_to new policies_path
     end
   end
 
@@ -51,7 +51,7 @@ class PoliciesController < ApplicationController
      life_insurance_attributes: [:policy_term,:education_qualification,:annual_income,:term_rider,:critical_illness,:with_aaccident_cover])
   end
 
-  def find_by_policy_id
+  def set_policy
     @policy = Policy.find(params[:id])
   end
 end

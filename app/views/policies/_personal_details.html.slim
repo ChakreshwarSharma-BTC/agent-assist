@@ -27,7 +27,7 @@
       | Date Of Birth
       span.required *
     .col-md-6
-      = p.text_field :date_of_birth,class:"form-control",value: @policy.present? ? formatted_date(@policy.personal_info.date_of_birth) : ""
+      = p.text_field :date_of_birth,class:"form-control",value: policy_holder_birth_date
   .form-group
     label.control-label.col-md-3
       | Gender
