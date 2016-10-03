@@ -25,5 +25,7 @@ class Policy < ApplicationRecord
   #scope
   scope :weekly_expire_policy, -> { time_range = (DateTime.now.beginning_of_day...7.days.from_now.beginning_of_day)
   where(end_date: time_range) }
+  #display policy list in desending order
+  scope :policy_desc_order, -> {order("end_date DESC")}
 
 end
