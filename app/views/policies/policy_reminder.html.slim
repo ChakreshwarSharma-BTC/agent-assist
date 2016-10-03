@@ -5,16 +5,14 @@
         .x_title
           h2
             | Policies Details
-          li.pull-right
-            = link_to('Add policies',  new_policy_path )
           .clearfix
         .x_content
           .table-responsive
             table.table.table-striped.jambo_table.bulk_action
               = render partial: 'list_header'
-              = render partial: 'list_body', locals: { policies: @policies }
+              = render partial: 'policy_reminder_list', locals: { policies: @policies_expire }
           .box-footer.clearfix
-            .pagination.pagination-sm.no-margin.pull-right
+            .pagination.pull-right
               .text-right
-                = paginate @policies
+                = paginate @policy
 = javascript_include_tag 'sidebar'

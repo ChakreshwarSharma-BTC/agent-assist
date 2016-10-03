@@ -6,7 +6,7 @@ class PoliciesController < ApplicationController
   end
 
   def index
-    @policies = Policy.all
+    @policies = paginated(Policy)
   end
 
   def edit
@@ -44,6 +44,12 @@ class PoliciesController < ApplicationController
       flash[:error] = @policy.errors.full_messages.to_sentence
     end
     redirect_to policies_path
+  end
+
+   def policy_reminder
+    @policy = paginated(Policy.policy_desc_order)
+    @policies_expire = @policy.weekly_expire_policy
+    @policy_all = @policy - @policies_expire
   end
 
   private
