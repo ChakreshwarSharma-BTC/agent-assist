@@ -21,6 +21,9 @@
 
 en:
   hello: "Hello world"
+  date:
+    formats:
+      short: '%d/%m/%Y'
   companies:
     form:
       name: 'Name'
@@ -39,3 +42,4 @@ en:
     destroy:
       success: 'You have deleted company successfully!'
       error: 'You could not able to destroy company!'
+

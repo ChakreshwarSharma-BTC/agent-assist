@@ -1,5 +1,5 @@
 .form-group
-  label.control-label.col-md-3 
+  label.control-label.col-md-3
    | Customer
   .col-md-6
     = f.select :user_id, options_for_select(User.all.map{ |u| [u.personal_info.full_name, u.id]}), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
@@ -27,7 +27,7 @@
       | Date Of Birth
       span.required *
     .col-md-6
-      = p.text_field :date_of_birth,class:"form-control"
+      = p.text_field :date_of_birth,class:"form-control",value: @policy.present? ? formatted_date(@policy.personal_info.date_of_birth) : ""
   .form-group
     label.control-label.col-md-3
       | Gender
