@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928135822) do
+ActiveRecord::Schema.define(version: 20160930125730) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "addressable_type"
@@ -84,24 +84,32 @@ ActiveRecord::Schema.define(version: 20160928135822) do
 
   create_table "employers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name_of_office"
-    t.integer  "how_long"
+    t.integer  "how_long_working"
     t.integer  "plan_type"
     t.integer  "policy_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["name_of_office"], name: "index_employers_on_name_of_office", using: :btree
     t.index ["policy_id"], name: "index_employers_on_policy_id", using: :btree
   end
 
   create_table "families", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.string   "health",       default: "", null: false
-    t.integer  "death_age",                 null: false
-    t.date     "death_year",                null: false
-    t.string   "death_reason", default: "", null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "family_member_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["family_member_id"], name: "index_families_on_family_member_id", using: :btree
     t.index ["user_id"], name: "index_families_on_user_id", using: :btree
+  end
+
+  create_table "family_members", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "health"
+    t.integer  "death_age"
+    t.date     "death_year"
+    t.string   "death_reason"
+    t.integer  "realtion"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "life_insurances", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -112,10 +120,8 @@ ActiveRecord::Schema.define(version: 20160928135822) do
     t.boolean  "critical_illness"
     t.boolean  "with_accident_cover"
     t.integer  "policy_id"
-    t.integer  "family_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.index ["family_id"], name: "index_life_insurances_on_family_id", using: :btree
     t.index ["policy_id"], name: "index_life_insurances_on_policy_id", using: :btree
     t.index ["policy_term"], name: "index_life_insurances_on_policy_term", using: :btree
   end
@@ -161,10 +167,10 @@ ActiveRecord::Schema.define(version: 20160928135822) do
 
   create_table "plans", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.integer  "company_categories_id"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.index ["company_categories_id"], name: "index_plans_on_company_categories_id", using: :btree
+    t.integer  "company_category_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["company_category_id"], name: "index_plans_on_company_category_id", using: :btree
     t.index ["name"], name: "index_plans_on_name", using: :btree
   end
 
@@ -179,7 +185,6 @@ ActiveRecord::Schema.define(version: 20160928135822) do
     t.date     "renewal_date"
     t.date     "last_renewed_on"
     t.integer  "plan_type"
-    t.integer  "total_year"
     t.integer  "plan_id"
     t.integer  "user_id"
     t.datetime "created_at",                 null: false
@@ -250,9 +255,10 @@ ActiveRecord::Schema.define(version: 20160928135822) do
 
   add_foreign_key "company_categories", "categories"
   add_foreign_key "company_categories", "companies"
-  add_foreign_key "life_insurances", "families"
+  add_foreign_key "families", "family_members"
+  add_foreign_key "families", "users"
   add_foreign_key "life_insurances", "policies"
-  add_foreign_key "plans", "company_categories", column: "company_categories_id"
+  add_foreign_key "plans", "company_categories"
   add_foreign_key "policies", "plans"
   add_foreign_key "policies", "users"
   add_foreign_key "vehicle_coverages", "coverages"
