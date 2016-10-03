@@ -26,7 +26,7 @@ class PoliciesController < ApplicationController
 
   def policy_reminder
     @policy = Policy.order("end_date DESC")
-    @policies_expire = @policies.weekly_expire_policy
+    @policies_expire = @policy.weekly_expire_policy
     @policy_all = @policy - @policies_expire
   end
 
