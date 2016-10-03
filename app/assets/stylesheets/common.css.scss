@@ -125,3 +125,18 @@ label.error {
 .confirm-password-label{
   margin-left: -22px;
 }
+.select2-container .select2-selection--single{
+  width: 465px !important;
+}
+.select2-search--dropdown{
+  width: 465px !important;
+}
+.select2-container--open .select2-dropdown {
+  width: 465px !important;
+}
+.customer_btn .select2-container--default .select2-selection--single .select2-selection__arrow {
+  right: -365px !important;
+}
+.left-side{
+  margin-left: -146px !important;
+}

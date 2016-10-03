@@ -31,12 +31,6 @@
     = f.text_field :end_date,class:"form-control", value: end_date
 .form-group
   label.control-label.col-md-3
-    | Total year
-    span.required *
-  .col-md-6
-    = f.text_field :total_year,class:"form-control" 
-.form-group
-  label.control-label.col-md-3
     | Total Amount
     span.required *
   .col-md-6
@@ -46,4 +40,16 @@
     | Pay mode
     span.required *
   .col-md-6
-    = f.text_field :mod_of_payment,class:"form-control" 
+    = f.text_field :mod_of_payment,class:"form-control"
+.form-group
+  label.control-label.col-md-3
+    | Premium amount
+    span.required *
+  .col-md-6
+    = f.text_field :premium_amount,class:"form-control" 
+.form-group
+  label.control-label.col-md-3
+    | Premium Mod
+    span.required *
+  .col-md-6
+    = f.text_field :premium_mod,class:"form-control" 

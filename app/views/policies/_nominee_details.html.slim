@@ -1,0 +1,10 @@
+- nominee_info = nominee.build_personal_info
+.col-md-10.left-side
+  = f.fields_for :personal_info do |f|
+      = render partial: 'devise/registrations/common_info_fields', locals: {f: f}
+  = f.fields_for :nominee do |p|
+      label.control-label.col-md-6.align
+        | relation
+      .col-md-6
+        = p.text_field :relation, class:"form-control", placeholder: "Relation"
+

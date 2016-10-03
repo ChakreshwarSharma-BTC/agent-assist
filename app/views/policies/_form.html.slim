@@ -30,23 +30,20 @@
           span.step_descr
             | Step 4
             br/
-            small Step 4 Address
+            small Step 4 Nominee Details
+      li
+        a.disabled href="#step-5" isdone="0" rel="5" 
+          span.step_no 5
+          span.step_descr
+            | Step 5
+            br/
+            small Step 5 Address
+
     .stepContainer
-      - if params[:action] == "new"
-        = form_for @policies , html: { id: 'policy_form', multipart: true } do |f|
-          - vehicle = @policies.build_vehicle
-          - plan = @policies.build_plan
-          - lic = @policies.build_life_insurances
-          - personal_info = @policies.build_personal_info
-          - address = @policies.build_address
-          = render partial: 'new_policy', locals: {f: f,vehicle: vehicle,plan: plan,personal_info: personal_info,address: address,lic: lic}
-      - else     
-        = form_for @policy , html: { id: 'policy_form', multipart: true } do |f|
-          - vehicle = @policy.vehicle
-          - plan = @policy.plan
-          - lic = @policy.life_insurances
-          - personal_info = @policy.personal_info
-          - address = @policy.address
-          = render partial: 'new_policy', locals: {f: f,vehicle: vehicle,plan: plan,personal_info: personal_info,address: address,lic: lic}
-          
+      = form_for @policy , html: { id: 'policy_form', multipart: true } do |f|
+        - plan = @policy.build_plan
+        - personal_info = @policy.build_personal_info
+        - address = @policy.build_address
+        - nominee = @policy.build_nominee
+        = render partial: 'new_policy', locals: {f: f, plan: plan,personal_info: personal_info,address: address, nominee: nominee}
 = javascript_include_tag 'policy'

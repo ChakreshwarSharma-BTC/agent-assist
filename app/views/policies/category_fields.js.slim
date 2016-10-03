@@ -1,0 +1,4 @@
+- if (@category == 'Life Insurance')
+    |$("#step-2").html("#{escape_javascript(render partial: 'life_insurance_policies', locals: { policy: @policy })}");
+- if (@category == 'Vehicle')
+    |$("#step-2").html("#{escape_javascript(render partial: 'vehicle_policies', locals: { policy: @policy })}");

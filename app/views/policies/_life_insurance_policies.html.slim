@@ -1,5 +1,12 @@
-.lic
-  = f.fields_for :lic do |p|
+= form_for @policy , html: { id: 'policy_form', multipart: true } do |f|
+  .form-group
+    label.control-label.col-md-3
+      | Policy number
+      span.required *
+    .col-md-6
+      = f.text_field :policy_number,class:"form-control col-md-7 col-xs-12"   
+  - life_insurance = @policy.build_life_insurance
+  = f.fields_for :life_insurance  do |p|
     .form-group
       label.control-label.col-md-3 for="policy-term"  Policy term
       .col-md-6
@@ -15,12 +22,6 @@
       .col-md-6
         = p.text_field :annual_income,class:"form-control col-md-7 col-xs-12"
     .form-group
-      label.control-label.col-md-3 for="last-name" 
-        | Total year
-        span.required *
-      .col-md-6
-        input#last-name.form-control.col-md-7 name="last-name" required="required" type="text" /
-    .form-group
         label.control-label.col-md-3
           | Rider
         .col-md-6
@@ -31,5 +32,5 @@
             = p.check_box :critical_illness
             | &nbsp; Criticle illness
             br/
-            = p.check_box :with_aaccident_cover
+            = p.check_box :with_accident_cover
             | &nbsp; With Accidental cover
