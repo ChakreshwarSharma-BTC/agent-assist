@@ -1,33 +1,35 @@
 .vehicle
-  .form-group
-    label.control-label.col-md-3
-      | Policy number
-      span.required *
-    .col-md-6
-      = f.text_field :policy_number,class:"form-control col-md-7 col-xs-12" 
-  = f.fields_for :vehicle do |p|
+  = form_for @policy , html: { id: 'policy_form', multipart: true } do |f|
     .form-group
-      label.control-label.col-md-3 for="registration-number"  Registration Number
+      label.control-label.col-md-3
+        | Policy number
+        span.required *
       .col-md-6
-        = p.text_field :registration_number,class:"form-control col-md-7 col-xs-12"
-    .form-group
-      label.control-label.col-md-3 for="name"  Vehicle name
-      .col-md-6
-        = p.text_field :name,class:"form-control col-md-7 col-xs-12"
-    .form-group
-      label.control-label.col-md-3 for="ncb"  Ncb
-      .col-md-6
-        = p.text_field :ncb,class:"form-control col-md-7 col-xs-12"
-    .form-group
-      label.control-label.col-md-3 
-        | Accessory
-      .col-md-6
-        .checkbox1
-          = p.check_box :idv_accessory
-          | &nbsp; Idv accessory
-          br
-          = p.check_box :electrical_accessory
-          | &nbsp; Electrical accessory
-          br
-          = p.check_box :non_electrical_accessory
-          | &nbsp; Non Electrical Accessory
+        = f.text_field :policy_number,class:"form-control col-md-7 col-xs-12" 
+    - vehicle = @policy.build_vehicle
+    = f.fields_for :vehicle do |p|
+      .form-group
+        label.control-label.col-md-3 for="registration-number"  Registration Number
+        .col-md-6
+          = p.text_field :registration_number,class:"form-control col-md-7 col-xs-12"
+      .form-group
+        label.control-label.col-md-3 for="name"  Vehicle name
+        .col-md-6
+          = p.text_field :name,class:"form-control col-md-7 col-xs-12"
+      .form-group
+        label.control-label.col-md-3 for="ncb"  Ncb
+        .col-md-6
+          = p.text_field :ncb,class:"form-control col-md-7 col-xs-12"
+      .form-group
+        label.control-label.col-md-3 
+          | Accessory
+        .col-md-6
+          .checkbox1
+            = p.check_box :idv_accessory
+            | &nbsp; Idv accessory
+            br
+            = p.check_box :electrical_accessory
+            | &nbsp; Electrical accessory
+            br
+            = p.check_box :non_electrical_accessory
+            | &nbsp; Non Electrical Accessory

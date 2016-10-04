@@ -1,4 +1,10 @@
 .form-group
+  label.control-label.col-md-3.align for="Relation With Customer" 
+    | Relation With Customer
+    label-control
+  .col-md-6
+    = f.select :relation_with_customer, options_for_select(Relation.all.collect { |r| [  r.relation_type, r.id] } ), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, { class: 'form-control' }
+.form-group
   label.control-label.col-md-3.align for="Health" 
     | Health
     label-control

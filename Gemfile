@@ -20,6 +20,7 @@ gem 'devise'
 gem 'config'
 gem 'rolify'
 gem 'cancancan'
+gem 'kaminari'
 gem 'slim-rails'
 gem 'select2-rails',  git: 'https://github.com/argerim/select2-rails.git'
 # Use jquery as the JavaScript library
@@ -32,6 +33,7 @@ gem "chartkick"
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'simple_form'
+gem 'will_paginate', '~> 3.1.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -44,6 +46,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'pry-rails'
+  gem 'pry-nav'
 end
 
 group :development do

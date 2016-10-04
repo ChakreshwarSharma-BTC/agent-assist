@@ -5,7 +5,7 @@ class CreateFamilyMembers < ActiveRecord::Migration[5.0]
       t.integer :death_age
       t.date :death_year
       t.string :death_reason
-      t.integer :realtion
+      t.integer :relation_with_customer
 
       t.timestamps
     end

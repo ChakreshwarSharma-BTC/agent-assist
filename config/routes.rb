@@ -14,9 +14,17 @@ Rails.application.routes.draw do
   resources :policies do
     resources :nominees
     get 'premium_reminder'
+    collection do
+      get 'find_policy_list'
+      get 'find_user_list'
+      get 'category' =>  'policies#category_fields'
+    end  
+    # get 'policies/start_date_sorting'
   end
 
+    
   resources :companies
   resources :plans
   resources :customers, only: [:index, :new, :create]
+  get :policy_reminder, to: 'policies#policy_reminder'
 end
