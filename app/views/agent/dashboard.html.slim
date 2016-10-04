@@ -6,5 +6,5 @@
           h2
             | Dashboard
           .clearfix
-        = render partial: 'form',locals: { company_count: @company_count, policy_count: @policy_count, customer_count: @customer_count  }
+        = render partial: 'dashboard_statistics',locals: { company_count: @company_count, policy_count: @policy_count, customer_count: @customer_count  }
 = javascript_include_tag 'sidebar'

@@ -19,6 +19,8 @@ class User < ApplicationRecord
   # validation
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :primary_phone_no, presence: true, numericality: true, length: {is: 10}
+  #cout the user
+  scope :user_count, -> {count}
 
   def assign_role
     if roles.blank? && user_type.blank?
