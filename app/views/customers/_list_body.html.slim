@@ -10,9 +10,7 @@ tbody
       td
         = user.personal_info.date_of_birth
       td
-        - user.address.each do |a|
-            = a.city
-            br
+        = user.policy.count
       td
         = link_to edit_customer_path(user) do
           i.fa.fa-edit[title='Edit']
