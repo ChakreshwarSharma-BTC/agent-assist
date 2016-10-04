@@ -2,16 +2,17 @@ tbody
   - @customers.each do |user|
     tr
       td
-        = user.personal_info.first_name
+        = user.personal_info.full_name
       td
         = user.primary_phone_no
       td
         = user.email
       td
         = user.personal_info.date_of_birth
-      - user.address.each do |a|
-        td
-          = a.city if a.address_type == 'permanent'
+      td
+        - user.address.each do |a|
+            = a.city
+            br
       td
         = link_to edit_customer_path(user) do
           i.fa.fa-edit[title='Edit']

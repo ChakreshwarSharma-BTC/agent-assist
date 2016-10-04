@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_customer, except: [:index, :new]
+  before_action :set_customer, except: [:index, :new, :create]
   before_action :set_family_member, only: [:show_member, :edit_member, :update_member, :destroy_member]
 
   def index
@@ -24,8 +24,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    customer = User.new(customer_params)
-    customer.password = Settings.user.password
+    customer = User.new(customer_params.merge!({password: Settings.user.password}))
     if customer.save!
       redirect_to agent_dashboard_path
     else
@@ -39,10 +38,12 @@ class CustomersController < ApplicationController
   end
 
   def create_member
-    family_member = FamilyMember.new(family_member_params)
-    if family_member.save
+    @family_member = FamilyMember.new(family_member_params)
+    if @family_member.save
       Family.create(user_id: @customer.id, family_member_id: family_member.id)  
       redirect_to customer_path
+    else
+      render 'customers/family/new'
     end
   end
 

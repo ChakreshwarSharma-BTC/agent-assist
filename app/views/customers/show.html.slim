@@ -17,17 +17,7 @@
           = @customer.personal_info.date_of_birth
           br
           | Address : 
-          - @customer.address.each do |a|
-            br
-            = a.street_1
-            br
-            = a.street_2
-            br
-            = a.city
-            br
-            = a.state
-            br
-            = a.pincode
+          = render partial: 'address'
         .clearfix
         .separator
         h2
