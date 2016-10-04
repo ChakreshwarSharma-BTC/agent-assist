@@ -25,10 +25,8 @@ AgentAssist.Policy = {
     })
   },
    showDatePicker: function(){
-    $('#policy_start_date').datetimepicker({
-      format: "DD/MM/YYYY",
-      useCurrent: true,
-      minDate: moment()
+    $('#policy_personal_info_attributes_date_of_birth').datetimepicker({
+      format: "DD/MM/YYYY"
     });
     $('#policy_start_date').datetimepicker({
       format: "DD/MM/YYYY",
