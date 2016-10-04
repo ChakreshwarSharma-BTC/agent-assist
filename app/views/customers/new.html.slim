@@ -36,11 +36,3 @@
                 - @customer.address.build
                 = f.hidden_field :user_type, value: 'customer'
                 = render partial: 'wizard_steps', locals: {f: f, customer: @customer}
-
-= javascript_include_tag 'register'
-= javascript_include_tag 'sidebar'
-= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Settings.google.maps_api.key}&libraries=places"
-javascript:
-  AgentAssist.Register.autoCompleteLocation('#user_address_attributes_0_city');
-  AgentAssist.Register.autoCompleteLocation('#user_address_attributes_1_city');
-  AgentAssist.Register.addressType();

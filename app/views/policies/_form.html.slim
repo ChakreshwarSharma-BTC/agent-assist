@@ -46,4 +46,10 @@
         - address = @policy.build_address
         - nominee = @policy.build_nominee
         = render partial: 'new_policy', locals: {f: f, plan: plan,personal_info: personal_info,address: address, nominee: nominee}
+= javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'
+javascript:
+  AgentAssist.policy.policyCategories();
+  AgentAssist.Policy.showDatePicker();
+  AgentAssist.Policy.wizardSlideSteps();
+  AgentAssist.Policy.formSubmit();

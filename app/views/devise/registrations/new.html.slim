@@ -40,3 +40,8 @@
                   | Cancel
               .link-font
                 = render "devise/shared/links"
+= javascript_include_tag 'register'
+javascript:
+  (function($){
+    AgentAssist.Register.showDatePicker();
+  })(jQuery)
