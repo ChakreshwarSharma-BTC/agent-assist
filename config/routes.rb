@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   resources :companies
   resources :plans
   resources :customers, only: [:index, :new, :create]
+  get :policy_reminder, to: 'policies#policy_reminder'
 end

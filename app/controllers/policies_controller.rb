@@ -8,9 +8,9 @@ class PoliciesController < ApplicationController
 
   def index
     if (params[:search])
-      @policies = Policy.search(params[:search]).order(created_at: :asc)
+      @policies = paginated(Policy.search(params[:search]).order(created_at: :asc))
     else
-      @policies = Policy.all.order(created_at: :asc)
+      @policies = paginated(Policy.all.order(created_at: :asc))
     end
   end
 
@@ -64,6 +64,12 @@ class PoliciesController < ApplicationController
 
   def new_policy
     @policy = Policy.new
+  end
+
+  def policy_reminder
+    @policy = paginated(Policy.policy_desc_order)
+    @policies_expire = @policy.weekly_expire_policy
+    @policy_all = @policy - @policies_expire
   end
 
   private

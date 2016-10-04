@@ -2,4 +2,8 @@ google:
  maps_api:
   key: AIzaSyAon-KMT_orBu3JkNlvAFtUipF7F-FDoPA
 user:
-  password: aaaaaa
+  password: aaaaaaaa
+policy:
+  day: 7
+pagination:
+  default: 4

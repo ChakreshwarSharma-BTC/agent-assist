@@ -6,12 +6,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :family, dependent: :destroy
+  has_many :family_member, through: :family, dependent: :destroy
   has_many :policy
+  has_many :address, as: :addressable, dependent: :destroy
   has_one :personal_info, as: :informable, dependent: :destroy
   has_one :user_profile
-  has_one :family, dependent: :destroy
-  has_many :address, as: :addressable, dependent: :destroy
-  accepts_nested_attributes_for :personal_info, :family, :address
+
+  accepts_nested_attributes_for :personal_info, :family_member, :address
 
   attr_accessor :user_type
   # validation
