@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   resources :policies do
     resources :nominees
+    get 'premium_reminder'
   end
+
   resources :companies
   resources :plans
   resources :customers, only: [:index, :new, :create]
