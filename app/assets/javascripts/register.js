@@ -1,4 +1,23 @@
 AgentAssist.Register = {
+  wizardSlideSteps: function(){
+    $('#wizard').smartWizard();
+      $('#wizard_verticle').smartWizard({
+      transitionEffect: 'slide'
+    });
+  },
+  formSubmit: function(){
+    $('.buttonNext').addClass('btn btn-success');
+    $('.buttonPrevious').addClass('btn btn-primary');
+    $('.buttonFinish').addClass('btn btn-default');
+    $('.buttonFinish').on('click', function(){
+      $('form').submit();
+    })
+  },
+   showDatePicker: function(){
+    $('#user_personal_info_attributes_date_of_birth').datetimepicker({
+      format: "DD/MM/YYYY"
+    });
+  },
   autoCompleteLocation: function (selector) {
     $(selector).on('focus', function(){
       autocomplete = new google.maps.places.Autocomplete($(selector)[0],
@@ -59,5 +78,16 @@ AgentAssist.Register = {
         $('#checked_form').show();
       }
     });
+  },
+  documentOnReady: function (){
+    AgentAssist.Register.autoCompleteLocation('#user_address_attributes_0_city');
+    AgentAssist.Register.autoCompleteLocation('#user_address_attributes_1_city');
+    AgentAssist.Register.addressType();
+    AgentAssist.Register.showDatePicker();
+    AgentAssist.Register.wizardSlideSteps();
+    AgentAssist.Register.formSubmit();
   }
 };
+$(document).ready(function(){
+  AgentAssist.Register.documentOnReady();
+});
