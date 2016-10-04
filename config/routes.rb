@@ -12,9 +12,14 @@ Rails.application.routes.draw do
   end
 
   resources :policies do
-    resources :nominees
+    collection do
+      get 'find_policy_list'
+      get 'find_user_list'
+      get 'category' =>  'policies#category_fields'
+    end
   end
 
+  resources :nominees
   resources :companies
   resources :plans
 
