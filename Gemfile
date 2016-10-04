@@ -14,7 +14,6 @@ gem 'cocoon'
 gem 'font-awesome-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'simple_form'
 gem 'mysql2'
 gem 'devise'
 gem 'config'
@@ -33,7 +32,6 @@ gem "chartkick"
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'
 gem 'simple_form'
-gem 'will_paginate', '~> 3.1.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

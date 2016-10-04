@@ -16,13 +16,23 @@ Rails.application.routes.draw do
       get 'find_policy_list'
       get 'find_user_list'
       get 'category' =>  'policies#category_fields'
-    end  
-    # get 'policies/start_date_sorting'
+    end
   end
 
   resources :nominees
   resources :companies
   resources :plans
-  resources :customers, only: [:index, :new, :create]
+
+  resources :customers do
+    member do
+      get 'family_member/new' => 'customers#new_member', as: 'new_family_member'
+      post 'family_member/create' => 'customers#create_member', as: 'create_family_member'
+      get 'family_member/:member_id/edit' => 'customers#edit_member', as: 'edit_family_member'
+      patch 'family_member/update/:member_id' => 'customers#update_member', as: 'update_family_member'
+      get 'family_member/show/:member_id' => 'customers#show_member', as: 'show_family_member'
+      delete 'family_member/destroy/:member_id' => 'customers#destroy_member', as: 'destroy_family_member'
+    end
+  end
+
   get :policy_reminder, to: 'policies#policy_reminder'
 end
