@@ -1,0 +1,26 @@
+.right_col
+  .row
+    .col-md-12
+      .x_panel
+        .x_title
+          h2
+            | Show 
+          .clearfix
+        .x_content
+          | Name : 
+          = @customer.personal_info.full_name
+          br
+          | Email : 
+          = @customer.email
+          br
+          | Date of Birth : 
+          = @customer.personal_info.date_of_birth
+          br
+          | Address : 
+          = render partial: 'address'
+        .clearfix
+        .separator
+        h2
+          | Family List
+          .separator
+        = render partial: 'customers/family/index', locals: {family: @family, customer: @customer}

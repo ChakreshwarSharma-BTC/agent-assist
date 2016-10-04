@@ -1,0 +1,13 @@
+.right_col
+  .row
+    .col-md-12
+      .x_panel
+        .x_title
+          h2
+            | Edit 
+          .clearfix
+        .x_content
+          = form_for @customer, url: customer_path do |f|
+            = f.fields_for :personal_info do |f|
+              = render partial: 'devise/registrations/common_info_fields', locals: {f: f}
+            = f.submit 'Update', class: 'btn btn-info'
