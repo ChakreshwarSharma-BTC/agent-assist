@@ -25,6 +25,15 @@ module ApplicationHelper
   def option
     Category.all.map{ |c| [c.name, c.name]}
   end
+  def mod_of_payment
+    mode = ['cash','check']
+  end
+  def premium_mod
+    premium = ['quarterly', 'half_year', 'yearly']
+  end
+  def relation
+    relation = ['parents', 'spouse', 'sibling', 'children']
+  end
   # def sortable(column, title = nil)
   #   title ||= column.titleize
   #   css_class = column == sort_column ? "current #{sort_direction}" : nil

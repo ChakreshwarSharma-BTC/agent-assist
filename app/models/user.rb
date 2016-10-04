@@ -27,4 +27,9 @@ class User < ApplicationRecord
       add_role user_type if user_type.present?
     end
   end
+  def full_name_with_email
+    if personal_info.present?
+      "#{personal_info.first_name} #{personal_info.middle_name} #{personal_info.last_name} #{email}"
+    end
+  end
 end
