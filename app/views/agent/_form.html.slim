@@ -1,0 +1,31 @@
+.row.top_tiles
+  .animated.flipInY.col-md-4
+    .tile-stats
+      .icon
+        i.fa.fa-group
+      .count
+        = @customer_count
+      h3
+        | Total Customer
+      p
+        | display all customer
+  .animated.flipInY.col-md-4
+    .tile-stats
+      .icon
+        i.fa.fa-file-powerpoint-o
+      .count
+        = @policy_count
+      h3
+        | Total Policy
+      p
+        | display all policy
+  .animated.flipInY.col-md-4
+    .tile-stats
+      .icon
+        i.fa.fa-building-o
+      .count
+        = @company_count
+      h3
+        | Total Company
+      p
+        | display all company
