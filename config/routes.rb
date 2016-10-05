@@ -32,6 +32,9 @@ Rails.application.routes.draw do
       get 'family_member/show/:member_id' => 'customers#show_member', as: 'show_family_member'
       delete 'family_member/destroy/:member_id' => 'customers#destroy_member', as: 'destroy_family_member'
     end
+    collection do
+      get 'filter_customers' => 'customers#filter_customers', as: 'filter'
+    end
   end
 
   get :policy_reminder, to: 'policies#policy_reminder'

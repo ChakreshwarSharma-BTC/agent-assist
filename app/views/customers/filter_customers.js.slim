@@ -1,0 +1,3 @@
+| $('#customer_list_head').html("#{j render(partial: 'customers/list_header')}");
+| $('#customer_list_body').html("#{j render(partial: 'customers/list_body', locals: { customers: @customers }) }");
+| $('.pagination').html('#{escape_javascript(paginate(@customers, params: {controller: 'customers', action: 'filter_customers'}, remote: true))if @customers.present?}');

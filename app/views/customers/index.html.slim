@@ -9,7 +9,15 @@
             = link_to 'Add Customer', new_customer_path
           .clearfix
         .x_content
+          = form_tag filter_customers_path, method: :get, remote: true do
+            = text_field_tag 'customer_name', nil, placeholder: 'Customer Name'
+            = text_field_tag 'email', nil, placeholder: 'Email'
+            = button_tag 'Search'
           .table-responsive
             table.table.table-striped.jambo_table.bulk_action
-              = render partial: 'list_header'
-              = render partial: 'list_body'
+              thead#customer_list_head
+                = render partial: 'list_header'
+              tbody#customer_list_body
+                = render partial: 'list_body', locals: {customers: @customers}
+        .pull-right
+          = paginate @customers, controller: 'customers', action: 'index', remote: true

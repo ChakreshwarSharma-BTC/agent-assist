@@ -7,7 +7,10 @@
             | Edit 
           .clearfix
         .x_content
-          = form_for @customer, url: customer_path do |f|
-            = f.fields_for :personal_info do |f|
-              = render partial: 'devise/registrations/common_info_fields', locals: {f: f}
-            = f.submit 'Update', class: 'btn btn-info'
+          .stepContainer
+            = form_for @customer, url: customer_path do |f|
+              .form-horizontal.form-label-left
+                = render partial: 'basic_fields', locals: {f: f}
+                = f.fields_for :personal_info do |f|
+                  = render partial: 'devise/registrations/common_info_fields', locals: {f: f}
+              = f.submit 'Update', class: 'btn btn-info'
