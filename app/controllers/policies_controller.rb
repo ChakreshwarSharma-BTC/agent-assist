@@ -1,6 +1,6 @@
 class PoliciesController < ApplicationController
   before_action :authenticate_user!
-  before_action :new_policy,only: [:new, :user_list, :category_fields]
+  before_action :new_policy,only: [:new, :customer_list, :category_fields]
   before_action :policies_params, only: [:create, :update, :new_user]
   before_action :set_policy, only: [:edit, :update , :destroy]
   def new
@@ -22,21 +22,20 @@ class PoliciesController < ApplicationController
   end
 
   def new_user
-    @user=User.new
-    @user.email = params[:policy][:user_attributes][:email]
-    @user.password = Settings.user.password
-    @user.primary_phone_no = params[:policy][:user_attributes][:primary_phone_no]
-    @user.save!
+    @user=User.find_or_create_by(email: params[:policy][:user_attributes][:email]) do |u|
+      u.email = params[:policy][:user_attributes][:email]
+      u.password = Settings.user.password
+      u.primary_phone_no = params[:policy][:user_attributes][:primary_phone_no]
+      u.add_role :customer
+    end
     @policy.user_id = params[:policy][:user_id] = @user.id
   end
 
   def create
     @policy= Policy.new(policies_params)
-    if !(User.all.pluck(:email).include? params[:policy][:user_attributes][:email])
-      new_user
-    end
+    new_user
     if @policy.save
-      @policy.address.user_id=@policy.user_id
+      @policy.address.user = @policy.user
       redirect_to  policies_path
       flash[:success] = t('.success')
     else
@@ -63,14 +62,19 @@ class PoliciesController < ApplicationController
     redirect_to policies_path
   end
   
-  def user_list
+  def customer_list
     user = @policy.build_user
     personal_info = @policy.build_personal_info
     @user=User.find_by(id: params[:user])
+    respond_to do |format|
+      format.json  { render :json => {:user => @user, 
+                                  :personal_info => @user.personal_info }}
+    end
   end
 
   def category_fields
     @category =params[:category]
+    @companies = Category.find_by(name: "Life Insurance").companies.pluck(:id)
   end
 
   def new_policy

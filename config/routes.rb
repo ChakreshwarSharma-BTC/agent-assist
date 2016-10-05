@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     collection do
       get 'find_policy_list'
       get 'category' =>  'policies#category_fields'
-      get 'user_list' => 'policies#user_list'
+      get 'customer_list' => 'policies#customer_list'
     end  
     # get 'policies/start_date_sorting'
   end
