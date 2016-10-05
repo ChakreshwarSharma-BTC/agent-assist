@@ -23,18 +23,17 @@ class PoliciesController < ApplicationController
 
   def new_user
     @user=User.find_or_create_by(email: params[:policy][:user_attributes][:email]) do |u|
-      u.email = params[:policy][:user_attributes][:email]
       u.password = Settings.user.password
       u.primary_phone_no = params[:policy][:user_attributes][:primary_phone_no]
       u.add_role :customer
     end
-    @policy.user_id = params[:policy][:user_id] = @user.id
   end
 
   def create
     @policy= Policy.new(policies_params)
     new_user
     if @policy.save
+      @policy.user = @user
       @policy.address.user = @policy.user
       redirect_to  policies_path
       flash[:success] = t('.success')
@@ -74,7 +73,6 @@ class PoliciesController < ApplicationController
 
   def category_fields
     @category =params[:category]
-    @companies = Category.find_by(name: "Life Insurance").companies.pluck(:id)
   end
 
   def new_policy
