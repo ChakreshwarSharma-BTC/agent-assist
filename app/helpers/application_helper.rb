@@ -26,10 +26,6 @@ module ApplicationHelper
     Category.all.map{ |c| [c.name, c.name]}
   end
   def page_class(lbl)
-    if current_page?(controller: 'customers', action: 'new')
-      content_tag(:label, lbl, class: "control-label col-md-3 align")
-    else
-      content_tag(:label, lbl, class: "control-label col-md-6 align")
-    end
+    current_page?(controller: 'customers', action: 'new') ? content_tag(:label, lbl, class: "control-label col-md-3 align"): content_tag(:label, lbl, class: "control-label col-md-6 align")
   end
 end
