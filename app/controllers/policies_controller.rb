@@ -1,6 +1,6 @@
 class PoliciesController < ApplicationController
   before_action :authenticate_user!
-  before_action :new_policy,only: [:new, :customer_list, :category_fields]
+  before_action :new_policy,only: [:new, :customer_list, :category_fields, :company_fields, :plan_fields]
   before_action :policies_params, only: [:create, :update, :new_user]
   before_action :set_policy, only: [:edit, :update , :destroy]
   def new
@@ -72,7 +72,23 @@ class PoliciesController < ApplicationController
   end
 
   def category_fields
-    @category =params[:category]
+    @category = params[:category]
+    @company = Category.find_by(name: params[:category]).companies
+    @company_category = Category.find_by(name: params[:category]).company_categories
+    @plan = @company_category.each_with_index.map{|m,i| m.plans[i]}
+  end
+
+  def company_fields
+    @company = params[:company]
+    @category = Company.find_by(name: params[:company]).categories
+    @company_category = Company.find_by(name: params[:company]).company_categories
+    @plan = @company_category.each_with_index.map{|m,i| m.plans[i]}
+  end
+
+  def plan_fields
+    @plan = Plan.find_by(id: params[:plan])
+    @company = [@plan.company_category.company]
+    @category = [@plan.company_category.category]
   end
 
   def new_policy

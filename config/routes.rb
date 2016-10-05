@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       get 'find_policy_list'
       get 'category' =>  'policies#category_fields'
       get 'customer_list' => 'policies#customer_list'
+      get 'company' =>  'policies#company_fields'
+      get 'plan' => 'policies#plan_fields'
     end
   end
 
