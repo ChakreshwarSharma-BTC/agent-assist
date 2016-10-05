@@ -1,14 +1,14 @@
-thead
-  tr.headings
-    th.column-title
-      | Name
-    th.column-title
-      | phone No 
-    th.column-title
-      | Email
-    th.column-title
-      | Date Of Birth
-    th.column-title
-      | Total Policies 
-    th.column-title
-      | Action
+- no_sort_link = @customers.blank?
+tr.headings
+  th.column-title
+    = resource_sortable(resource_class: PersonalInfo,  resources_path: :filter_customers_path, column: 'first_name', title: 'Name' , no_link: no_sort_link)
+  th.column-title
+    | phone No 
+  th.column-title
+    = resource_sortable(resource_class: User,  resources_path: :filter_customers_path, column: 'email', title: 'Email', no_link: no_sort_link)
+  th.column-title
+    | Date Of Birth
+  th.column-title
+    | Total Policies 
+  th.column-title
+    | Action
