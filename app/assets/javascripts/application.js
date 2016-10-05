@@ -22,24 +22,3 @@
 //= require moment
 //= require bootstrap
 //= require bootstrap-datetimepicker
-// Fadout the flash messages.
-$(document).ready(function(){
-  $("#flash-message").delay(5000).slideUp(500).fadeOut();
-});
-
-// Show the Ajax loader image during the ajax calls.
-$(document).ready(function () {
-    $(document).ajaxStart(function () {
-        $.blockUI({ css: {
-            border: 'none',
-            padding: '15px',
-            backgroundColor: '#000',
-            '-webkit-border-radius': '10px',
-            '-moz-border-radius': '10px',
-            opacity: .5,
-            color: '#fff'
-        } });
-    }).ajaxStop(function () {
-        $.unblockUI();
-    });
-});
