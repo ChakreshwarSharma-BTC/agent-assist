@@ -6,5 +6,5 @@
       label.control-label.col-md-6.align
         | relation
       .col-md-6
-        = p.text_field :relation, class:"form-control", placeholder: "Relation"
+        = p.select :relation, options_for_select(relation), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
 

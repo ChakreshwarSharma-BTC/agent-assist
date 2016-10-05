@@ -1,0 +1,48 @@
+= form_for @policy , html: { id: 'policy_form', multipart: true } do |f|
+  = f.fields_for :user do |u|
+    .form-group
+      label.control-label.col-md-3
+        | Email
+        span.required *
+      .col-md-6
+        = u.text_field :email, class:"form-control", value: user.email
+    .form-group
+      label.control-label.col-md-3
+        | Mobile No.
+        span.required *
+      .col-md-6
+        = u.text_field :primary_phone_no, class:"form-control", value: user.primary_phone_no   
+  = f.fields_for :personal_info do |p|
+    .form-group
+      label.control-label.col-md-3
+        | First name
+        span.required *
+      .col-md-6
+        = p.text_field :first_name,class:"form-control", value: personal_info.first_name
+    .form-group
+      label.control-label.col-md-3
+        | Middle name
+        span.required *
+      .col-md-6
+        = p.text_field :middle_name,class:"form-control", value: personal_info.middle_name
+    .form-group
+      label.control-label.col-md-3
+        | Last name
+        span.required *
+      .col-md-6
+        = p.text_field :last_name,class:"form-control", value: personal_info.last_name
+    .form-group
+      label.control-label.col-md-3 
+        | Date Of Birth
+        span.required *
+      .col-md-6
+        = p.text_field :date_of_birth,class:"form-control", value: personal_info.date_of_birth
+    .form-group
+      label.control-label.col-md-3
+        | Gender
+        span.required *
+      .col-md-6
+          = p.radio_button :gender,'male'
+          |&nbsp; Male &nbsp;
+          = p.radio_button :gender, 'female'
+          |&nbsp; Female &nbsp;

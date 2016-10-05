@@ -25,7 +25,17 @@ module ApplicationHelper
   def option
     Category.all.map{ |c| [c.name, c.name]}
   end
-  def page_class(lbl)
+  def mod_of_payment
+    mode = ['cash','check']
+  end
+  def premium_mod
+    premium = ['quarterly', 'half_year', 'yearly']
+  end
+  def relation
+    relation = ['parents', 'spouse', 'sibling', 'children']
+  end
+   def page_class(lbl)
     current_page?(controller: 'customers', action: 'new') ? content_tag(:label, lbl, class: "control-label col-md-3 align"): content_tag(:label, lbl, class: "control-label col-md-6 align")
   end
+  
 end

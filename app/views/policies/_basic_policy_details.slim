@@ -40,7 +40,7 @@
     | Pay mode
     span.required *
   .col-md-6
-    = f.text_field :mod_of_payment,class:"form-control"
+    = f.select :mod_of_payment, options_for_select(mod_of_payment), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
 .form-group
   label.control-label.col-md-3
     | Premium amount
@@ -52,4 +52,4 @@
     | Premium Mod
     span.required *
   .col-md-6
-    = f.text_field :premium_mod,class:"form-control" 
+    = f.select :premium_mod, options_for_select(premium_mod), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}

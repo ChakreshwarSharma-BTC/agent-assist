@@ -19,12 +19,19 @@ class User < ApplicationRecord
   # validation
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :primary_phone_no, presence: true, numericality: true, length: {is: 10}
+  #cout the user
+  scope :user_count, -> {count}
 
   def assign_role
     if roles.blank? && user_type.blank?
       add_role :agent
     else
       add_role user_type if user_type.present?
+    end
+  end
+  def full_name_with_email
+    if personal_info.present?
+      "#{personal_info.first_name} #{personal_info.middle_name} #{personal_info.last_name} #{email}"
     end
   end
 end

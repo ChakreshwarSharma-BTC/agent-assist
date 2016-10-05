@@ -1,16 +1,16 @@
 class PoliciesController < ApplicationController
   before_action :authenticate_user!
-  before_action :new_policy,only: [:new, :user_list, :category_fields]
-  before_action :policies_params, only: [:create, :update]
+  before_action :new_policy,only: [:new, :customer_list, :category_fields]
+  before_action :policies_params, only: [:create, :update, :new_user]
   before_action :set_policy, only: [:edit, :update , :destroy]
   def new
   end
 
   def index
     if (params[:search])
-      @policies = paginated(Policy.search(params[:search]).order(created_at: :asc))
+      @policies = (Policy.search(params[:search]).order(created_at: :asc))
     else
-      @policies = paginated(Policy.all.order(created_at: :asc))
+      @policies = (Policy.all.order(created_at: :asc))
     end
   end
 
@@ -21,15 +21,22 @@ class PoliciesController < ApplicationController
   def show
   end
 
+  def new_user
+    @user=User.find_or_create_by(email: params[:policy][:user_attributes][:email]) do |u|
+      u.password = Settings.user.password
+      u.primary_phone_no = params[:policy][:user_attributes][:primary_phone_no]
+      u.add_role :customer
+    end
+  end
+
   def create
     @policy= Policy.new(policies_params)
-    # user_id = User.find_or_create_by(email: params[:policy][:user_attributes][:email]).id
-    # @policies.user_id = user_id
+    new_user
     if @policy.save
-      @policy.address.user_id=@policy.user_id
+      @policy.user = @user
+      @policy.address.user = @policy.user
       redirect_to  policies_path
       flash[:success] = t('.success')
-
     else
       flash[:error] = @policy.errors.full_messages.to_sentence
       render :new
@@ -54,8 +61,14 @@ class PoliciesController < ApplicationController
     redirect_to policies_path
   end
   
-  def user_list
-    @user=User.find_by(id: params[:user_id])
+  def customer_list
+    user = @policy.build_user
+    personal_info = @policy.build_personal_info
+    @user=User.find_by(id: params[:user])
+    respond_to do |format|
+      format.json  { render :json => {:user => @user, 
+                                  :personal_info => @user.personal_info }}
+    end
   end
 
   def category_fields
@@ -79,7 +92,7 @@ class PoliciesController < ApplicationController
      vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory],
      address_attributes: [:city, :state, :pincode, :street_1, :street_2],
      life_insurance_attributes: [:policy_term, :education_qualification, :annual_income, :term_rider, :critical_illness, :with_accident_cover],
-     nominee_attributes: [ :relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender ]}])
+     nominee_attributes: [:relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender ]}])
   end
 
   def set_policy

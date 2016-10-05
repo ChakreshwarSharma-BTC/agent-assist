@@ -4,7 +4,7 @@ AgentAssist.Common = {
     $(".select").select2().change(function(){
       $(this).valid();
     });
-    $("#policy_plan_attributes_company_categories_id, #policy_plan_id").select2({});
+    $("#policy_plan_attributes_company_category_id, #policy_plan_id, policy_CategoryCompany_company_id").select2({});
   },
   Flash_message: function(){
     $(".flash_msg").delay(5000).slideUp(3000).fadeOut();
