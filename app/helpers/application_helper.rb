@@ -25,10 +25,11 @@ module ApplicationHelper
   def option
     Category.all.map{ |c| [c.name, c.name]}
   end
-  # def sortable(column, title = nil)
-  #   title ||= column.titleize
-  #   css_class = column == sort_column ? "current #{sort_direction}" : nil
-  #   direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-  #   link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
-  # end
+  def page_class(lbl)
+    if current_page?(controller: 'customers', action: 'new')
+      content_tag(:label, lbl, class: "control-label col-md-3 align")
+    else
+      content_tag(:label, lbl, class: "control-label col-md-6 align")
+    end
+  end
 end

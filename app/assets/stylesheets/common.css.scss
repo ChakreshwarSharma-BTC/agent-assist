@@ -144,3 +144,10 @@ label.error {
   background-color: #B20000 !important;
   color: #fcf8e3 !important;
 }
+.flash-message-box{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
