@@ -2,16 +2,13 @@ class PoliciesController < ApplicationController
   before_action :authenticate_user!
   before_action :new_policy,only: [:new, :customer_list, :category_fields]
   before_action :policies_params, only: [:create, :update, :new_user]
-  before_action :set_policy, only: [:edit, :update , :destroy]
+  before_action :set_policy, only: [:show ,:edit, :update , :destroy]
+
   def new
   end
 
   def index
-    if (params[:search])
-      @policies = (Policy.search(params[:search]).order(created_at: :asc))
-    else
-      @policies = (Policy.all.order(created_at: :asc))
-    end
+    @policies = Policy.all.order(created_at: :asc)
   end
 
   def edit
@@ -83,6 +80,22 @@ class PoliciesController < ApplicationController
     @policy = paginated(Policy.policy_desc_order)
     @policies_expire = @policy.weekly_expire_policy
     @policy_all = @policy - @policies_expire
+  end
+
+  def search
+    if params[:search].present?
+     @policy = Policy.joins(:plan).where("name LIKE :search OR policy_number like :search",{search: "%#{params[:search]}%"})
+     @company = Company.find_by(name: params[:search])
+     if @company.present?
+        ids = @company.company_categories.ids
+        @policy =Policy.joins(:plan).where("company_category_id in (?)",ids)
+     end
+     @category = Category.find_by(name: params[:search])
+     if @category.present?
+        ids = @category.company_categories.ids
+        @policy = Policy.joins(:plan).where("company_category_id in (?)",ids)
+      end 
+    end      
   end
 
   private

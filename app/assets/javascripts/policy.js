@@ -66,6 +66,26 @@ AgentAssist.Policy = {
         $('#policy_start_date').data("DateTimePicker").maxDate(e.date);
     });
   },
+  policySearch: function(){
+    $('#search_tag').on('click', function(){
+      $.ajax({
+        type: "GET",
+        url: "/policies/search",
+        cache: false,
+        dataType: 'script',
+        data: {
+          search : $('#search').val()
+        }
+      });
+    });
+  },
+  policySerachEnterKeyPressEvent: function(){
+    $("#search").keyup(function(event) {
+      if (event.keyCode == 13) {
+        $("#search_tag").click();
+        }
+    });
+  },
   documentOnReady: function (){
     AgentAssist.Policy.policyCategories();
     AgentAssist.Policy.showDatePicker();
@@ -73,6 +93,8 @@ AgentAssist.Policy = {
     AgentAssist.Policy.formSubmit();
     AgentAssist.Policy.userDetails();
     AgentAssist.Policy.buttonSubmit();
+    AgentAssist.Policy.policySearch();
+    AgentAssist.Policy.policySerachEnterKeyPressEvent();
   }
 };
 $(document).ready(function(){

@@ -1,0 +1,30 @@
+table.table
+  tbody
+    tr
+      th Number:
+      td
+       = @policy.policy_number
+    tr 
+      th Plan Name
+      td
+       = @policy.plan.name     
+    tr
+      th Start Date
+      td
+       = @policy.start_date
+    tr
+      th End Date
+      td 
+       = @policy.end_date
+    tr
+      th Policy holder name
+      td 
+       = @policy.user.personal_info.full_name
+    tr 
+      th Renewal Date
+      td
+      = @policy.renewal_date
+    tr
+      th Last Renewal Date
+      td 
+      = @policy.last_renewed_on

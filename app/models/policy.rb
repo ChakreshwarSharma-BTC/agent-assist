@@ -10,7 +10,7 @@ class Policy < ApplicationRecord
   has_one :employer
   has_one :nominee
   accepts_nested_attributes_for :nominee
-  has_one :life_insurance
+  has_one :life_insurance, dependent: :destroy
   accepts_nested_attributes_for :life_insurance
   has_one :personal_info, as: :informable, dependent: :destroy
   accepts_nested_attributes_for :personal_info
@@ -34,14 +34,4 @@ class Policy < ApplicationRecord
   where(end_date: time_range) }
   #display policy list in desending order
   scope :policy_desc_order, -> {order("end_date DESC")}
-  #cout the policy
-  scope :policy_count, -> {count}
- 
-  def self.search(search)
-    if search
-      joins(:plan).where('name LIKE ?', "%#{search}%")
-    else
-      scoped
-    end
-  end
 end
