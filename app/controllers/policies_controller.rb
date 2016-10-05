@@ -46,6 +46,7 @@ class PoliciesController < ApplicationController
   def update
     if @policy.update(policies_params)
       flash[:success] = t('.success')
+      AgentMailer.update_policy(@policy, current_user).deliver_now
     else
       flash[:error] = @policy.errors.full_messages.to_sentence
     end

@@ -15,9 +15,9 @@ class ApplicationController < ActionController::Base
 
   def policies
     @policy_renewal_date = Policy.policy_renewal
+    @user = User.first
     @policy_renewal_date.each do |i|
-      binding.pry
-      AgentMailer.renewal_reminder(i,current_user).deliver
+      AgentMailer.renewal_reminder(i,@user).deliver_now
     end
   end
 end
