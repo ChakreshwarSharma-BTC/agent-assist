@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/BoTreeConsultingTeam/blockuijs-rails.git
+  revision: 56e727429fa876fa03eade459404c98d74bf32e8
+  specs:
+    blockuijs-rails (0.1.0)
+      rails (>= 3.1)
+
+GIT
   remote: https://github.com/argerim/select2-rails.git
   revision: 8a77cfc2f667994ea2271d316c83e7df55004d2f
   specs:
@@ -124,6 +131,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-nav (0.2.4)
+      pry (>= 0.9.10, < 0.11.0)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     puma (3.6.0)
@@ -215,6 +224,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blockuijs-rails!
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.17.37)
   byebug
@@ -231,6 +241,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   momentjs-rails (>= 2.9.0)
   mysql2
+  pry-nav
   pry-rails
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)

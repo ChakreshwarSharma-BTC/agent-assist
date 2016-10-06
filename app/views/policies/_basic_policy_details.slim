@@ -3,19 +3,19 @@
     label.control-label.col-md-3 
      | Category
      span.required *
-    .col-md-6
+    #category-selection.col-md-6
       = p.select :company_category_id, options_for_select(Category.all.map{ |c| [c.name, c.name]},selected: @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
 = f.fields_for :CategoryCompany do |p|
   .form-group
     label.control-label.col-md-3
       | Company name
       span.required *
-    .col-md-6
-      = p.select :company_id, options_for_select(Company.all.map{ |c| [c.name, c.id]},selected: @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
+    #company-selection.col-md-6
+      = p.select :company_id, options_for_select(Company.all.map{ |c| [c.name, c.name]},selected: @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
 .form-group
   label.control-label.col-md-3 
    | Plan
-  .col-md-6
+  #plan-selection.col-md-6
    = f.select :plan_id, options_for_select(Plan.all.map{ |p| [p.name, p.id]}, selected: plan.id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"} 
 .form-group
   label.control-label.col-md-3

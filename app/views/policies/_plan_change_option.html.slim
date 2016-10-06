@@ -1,0 +1,2 @@
+= form_for @policy , html: { id: 'policy_form', multipart: true } do |f|  
+  = f.select :plan_id, options_for_select(plan.map{ |p| [p.name, p.id]}), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"} 

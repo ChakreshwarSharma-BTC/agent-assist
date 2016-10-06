@@ -1,4 +1,5 @@
-- policies.each do | policy |
+- if policies.present?
+ - policies.each do | policy |
   tr
     td 
       = policy.policy_number

@@ -10,6 +10,28 @@ AgentAssist.Policy = {
       });
     });
   },
+  policyCompanies: function(){
+    $('#policy_CategoryCompany_company_id').on('change', function(){
+      $.ajax({
+        type: "GET",
+        url: " /policies/company",
+        data: {
+          company : $('#policy_CategoryCompany_company_id').val()
+        }
+      });
+    });
+  },
+  policyPlans: function(){
+    $('#policy_plan_id').on('change', function(){
+      $.ajax({
+        type: "GET",
+        url: " /policies/plan",
+        data: {
+          plan : $('#policy_plan_id').val()
+        }
+      });
+    });
+  },
   userDetails: function(){
     $('#policy_user_id').on('change', function(){
       $.ajax({
@@ -88,13 +110,13 @@ AgentAssist.Policy = {
   },
   documentOnReady: function (){
     AgentAssist.Policy.policyCategories();
+    AgentAssist.Policy.policyCompanies();
     AgentAssist.Policy.showDatePicker();
     AgentAssist.Policy.wizardSlideSteps();
     AgentAssist.Policy.formSubmit();
     AgentAssist.Policy.userDetails();
     AgentAssist.Policy.buttonSubmit();
-    AgentAssist.Policy.policySearch();
-    AgentAssist.Policy.policySerachEnterKeyPressEvent();
+    AgentAssist.Policy.policyPlans();
   }
 };
 $(document).ready(function(){
