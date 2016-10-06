@@ -41,8 +41,8 @@
     .stepContainer
       = form_for @policy do |f|
         - plan = @policy.build_plan
-        - address = @policy.build_address
-        = render partial: 'wizard_steps', locals: {f: f, plan: plan, address: address}
+        - @policy.build_address
+        = render partial: 'wizard_steps', locals: {f: f, plan: plan}
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'
 javascript:

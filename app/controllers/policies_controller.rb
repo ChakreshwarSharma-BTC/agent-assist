@@ -28,15 +28,15 @@ class PoliciesController < ApplicationController
   end
 
   def create
-    @policy= Policy.new(policies_params)
+    policy= Policy.new(policies_params)
     new_user
-    if @policy.save
-      @policy.user = @user
-      @policy.address.user = @policy.user
+    policy.user = @user
+    policy.user.personal_info = policy.personal_info
+    if policy.save!
       redirect_to policies_path
       flash[:success] = t('.success')
     else
-      flash[:error] = @policy.errors.full_messages.to_sentence
+      flash[:error] = policy.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -119,7 +119,7 @@ class PoliciesController < ApplicationController
   private
   def policies_params
     params.require(:policy).permit(
-      :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id, :city, :state, :pincode, :street_1, :street_2,
+      :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id,
       plan_attributes: [ :company_category_id, { CategoryCompany: [:company_id]}],
      user_attributes: [:email, :primary_phone_no],
      personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender],
