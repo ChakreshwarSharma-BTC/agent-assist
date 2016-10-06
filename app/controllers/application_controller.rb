@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :sort_column, :sort_direction
   before_action :policies
 
   def after_sign_in_path_for(resource)
@@ -13,11 +14,34 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def policies
-    @policy_renewal_date = Policy.policy_renewal
-    @user = User.first
-    @policy_renewal_date.each do |i|
-      AgentMailer.renewal_reminder(i,@user).deliver_now
+  def sort_by_options(resources)
+    if params[:sort] == 'first_name'
+      resources.order("first_name #{sort_direction}")
+    else
+      resources.order("#{sort_column(resources.first.class)} #{sort_direction}")
     end
   end
+
+  def sort_and_paginate(resources)
+    paginated(sort_by_options(resources))
+  end
+
+  def sort_column(resource, default_column = 'created_at')
+    if resource.present? && resource != NilClass
+      resource.column_names.include?(params[:sort]) ? params[:sort] : "#{resource.table_name}.#{default_column}"
+    else
+      default_column
+    end
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+  end
+
+   def policies
+   	@policy_renewal_date = Policy.policy_renewal
+  	@user = User.first
+    @policy_renewal_date.each do |i|
+     AgentMailer.renewal_reminder(i,@user).deliver_now
+   end
 end
