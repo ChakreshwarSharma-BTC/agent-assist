@@ -14,5 +14,6 @@ thead
       | Start date 
     th.column-title
       | End date
-    th.colum-title
-      | Action 
+    - if current_page?(controller: 'policies', action: 'index')
+      th.colum-title
+        | Action 
