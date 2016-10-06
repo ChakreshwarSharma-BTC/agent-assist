@@ -1,0 +1,28 @@
+ #modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close[type="button" data-dismiss="modal"]
+          | ×
+        h4.modal-title
+          | Premium Reminder
+      .modal-body
+        table.table.table-bordered
+          tbody
+            = render partial: 'policies/list_header'
+            = render partial: 'policies/list_body', locals: { policies: @premium_reminder }
+      .modal-footer
+        = check_box_tag 'notification_checked'
+        | DoNotDistrub
+ javascript:
+  (function($){
+    AgentAssist.Common.notification();
+     if(#{current_user.notification} == false)
+        {
+          $('#modal').show();
+        }
+      $('#notification_checked').on('click', function() {
+        #{User.do_not_disturb(current_user)}
+        $('#modal').modal('hide');
+    });
+  })(jQuery);

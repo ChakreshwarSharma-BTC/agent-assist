@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'registrations'
+    registrations: 'registrations',
+    passwords: 'passwords'
   }
 
   devise_scope :user do
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   resources :policies do
+    resources :nominees
     collection do
       get 'find_policy_list'
       get 'category' =>  'policies#category_fields'
@@ -22,7 +24,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :nominees
   resources :companies
   resources :plans
 
@@ -41,4 +42,5 @@ Rails.application.routes.draw do
   end
 
   get :policy_reminder, to: 'policies#policy_reminder'
+  get :premium_reminder, to: 'policies#premium_reminder'
 end

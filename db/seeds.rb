@@ -22,9 +22,9 @@ puts "Start creating the required categories data for application."
 CATEGORIES.each{ |categories| Category.find_or_create_by!(categories)}
 puts "All the required categories data has been added successfully."
 
-# puts "Start creating the required relations data for application."
-# RELATIONS.each{ |relations| Relation.find_or_create_by!(relations)}
-# puts "All the required relations data has been added successfully."
+puts "Start creating the required relations data for application."
+RELATIONS.each{ |relations| Relation.find_or_create_by!(relations)}
+puts "All the required relations data has been added successfully."
 
 puts "Start creating the required Companies data for application."
 COMPANIES.each{ |companies| Company.find_or_create_by!(companies)}

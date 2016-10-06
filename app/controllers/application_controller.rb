@@ -2,9 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :sort_column, :sort_direction
   before_action :policies
+  before_action :premium_reminder
 
   def after_sign_in_path_for(resource)
-    agent_dashboard_path  
+    resource.update_attributes(notification: false)
+    agent_dashboard_path
   end
 
   # Method for pagination in all list pages
@@ -44,5 +46,12 @@ class ApplicationController < ActionController::Base
     @policy_renewal_date.each do |i|
      AgentMailer.renewal_reminder(i,@user).deliver_now
    end
+  end
+
+  #Premium notification popup when use logged in
+  def premium_reminder
+    if Policy.present?
+      @premium_reminder = Policy.weekly_premium_date
+    end
   end
 end

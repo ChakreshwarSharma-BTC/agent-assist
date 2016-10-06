@@ -32,6 +32,7 @@ class Policy < ApplicationRecord
   #scope
   scope :weekly_expire_policy, -> { time_range = (DateTime.now.beginning_of_day...Settings.policy.day.days.from_now.beginning_of_day)
   where(end_date: time_range) }
+
   #display policy list in desending order
   scope :policy_desc_order, -> {order("end_date DESC")}
   #cout the policy
@@ -40,6 +41,14 @@ class Policy < ApplicationRecord
   scope :policy_renewal, -> {where(renewal_date: Date.current - Settings.policy.day)}
   scope :search_by_name, -> (search){ joins(:plan).where('name LIKE :search OR policy_number like :search',{search: "%#{search}%"}) }
   scope :company_category, -> (company_category_ids) { joins(:plan).where('company_category_id in :ids', ids: company_category_ids) }
+
+  # Weekly premium date
+  def self.weekly_premium_date
+    date_range = (Date.today...Settings.policy.day.days.from_now)
+    Policy.all.each do |policy|
+      policy if date_range.include?(policy.renewal_date)   
+    end
+  end
 
   def self.search(search)
     if search

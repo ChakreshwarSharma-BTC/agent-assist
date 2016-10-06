@@ -27,6 +27,16 @@ AgentAssist.Common = {
       $.unblockUI();
     });
   },
+  notification: function(){
+    $('#notification_checked').on('change', function(){
+      var notification_value = $(this).is(':checked');
+      $.ajax({
+        type:'GET',
+        url: '/premium_reminder',
+        data: {notification: notification_value}
+      });
+    });
+  },
   documentOnReady: function (){
     AgentAssist.Common.selectDropDown();
     AgentAssist.Common.Flash_message();

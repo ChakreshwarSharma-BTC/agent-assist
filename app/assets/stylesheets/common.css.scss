@@ -144,6 +144,25 @@ label.error {
   background-color: #B20000 !important;
   color: #fcf8e3 !important;
 }
+.modal {
+  display:block;
+}
+.modal_footer{
+  padding: 15px;
+  text-align: left;
+  border-top: 1px solid #E5E5E5;  
+}
+.modal_display {
+  overflow-y: initial !important;
+  width: 600px !important;
+  margin: 200px auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index:1050;
+  outline: 0;
+}
 .flash-message-box{
   position: absolute;
   top: 0;

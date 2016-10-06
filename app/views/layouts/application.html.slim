@@ -13,7 +13,14 @@ html
           .main_container
             = render partial: 'layouts/header'
             = render partial: 'layouts/sidebar'
-            = yield    
+            - if Policy.present?
+              - if !current_user.notification
+                = render partial: "shared/premium_reminder", locals: { policies: @premium_reminder }
+            = yield 
     -else
       body.login
         = yield
+javascript:
+  (function($){
+    $("#modal").modal("show");
+  })(jQuery);
