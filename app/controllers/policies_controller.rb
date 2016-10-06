@@ -8,8 +8,10 @@ class PoliciesController < ApplicationController
 
   def index
     if (params[:search])
+      @policies = Policy.search(params[:search]).order(created_at: :asc)
       @policies = paginated(Policy.search(params[:search]).order(created_at: :asc))
     else
+      @policies = Policy.all.order(created_at: :asc)
       @policies = paginated(Policy.all.order(created_at: :asc))
     end
   end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    registrations: 'registrations'
+    registrations: 'registrations',
+    passwords: 'passwords'
   }
 
   devise_scope :user do
@@ -13,7 +14,6 @@ Rails.application.routes.draw do
 
   resources :policies do
     resources :nominees
-    get 'premium_reminder'
     collection do
       get 'find_policy_list'
       get 'find_user_list'
@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     
   resources :companies
   resources :plans
-  resources :customers, only: [:index, :new, :create]
+  resources :customers
+
   get :policy_reminder, to: 'policies#policy_reminder'
+  get :premium_reminder, to: 'policies#premium_reminder'
 end

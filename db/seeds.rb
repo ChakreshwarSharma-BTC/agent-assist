@@ -9,9 +9,26 @@
 
 CATEGORIES = [{name: "Life Insurance"}, {name: "Vehicle"}, {name: "Medical and Health"}, {name: "Fire"}, {name: "Accident"}]
 RELATIONS = [{ relation_type: 'Brother' }, { relation_type: 'Mother' }, { relation_type: 'Father' }, { relation_type: 'Sister' }, { relation_type: 'Son' }, { relation_type: 'Daughter' }, { relation_type: 'Grand-Mother' }, { relation_type: 'Grand-Father' }, { relation_type: 'Father-In-Law' }, { relation_type: 'Mother-In-Law'}]
+COMPANIES = [{ name: 'allianzbajaj'}, { name: 'Bharti AXA'}, { name: 'Birla Sun Life'}]
+PLANS = [{ name: 'Waiver of premium on 
+total & permanent disability'}, { name: 'Life cover of Rs.1 Cr.
+at just Rs.13.97* per day'}, { name: 'Additional Sum Assured with 
+e-Accidental Death Benefit Rider'}, { name: 'Choice of recurring or 
+immediate payout'}, { name: '98.29%# Claim 
+Settlement Ratio​'} ]
 
 puts "Start creating the required categories data for application."
 CATEGORIES.each{ |categories| Category.find_or_create_by!(categories)}
 puts "All the required categories data has been added successfully."
 
+puts "Start creating the required relations data for application."
 RELATIONS.each{ |relations| Relation.find_or_create_by!(relations)}
+puts "All the required relations data has been added successfully."
+
+puts "Start creating the required Companies data for application."
+COMPANIES.each{ |companies| Company.find_or_create_by!(companies)}
+puts "All the required Companies data has been added successfully."
+
+puts "Start creating the required Plans data for application."
+PLANS.each{ |plans| Plan.find_or_create_by!(plans)}
+puts "All the required Plans data has been added successfully."

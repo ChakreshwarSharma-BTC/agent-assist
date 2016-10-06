@@ -23,13 +23,24 @@ AgentAssist.Common = {
     $('.buttonFinish').addClass('btn btn-default');
     $('.buttonFinish').on('click', function(){
       $('form').submit();
-    })
+    });
+  },  
+  notification: function(){
+    $('#notification_checked').on('change', function(){
+      var notification_value = $(this).is(':checked');
+      $.ajax({
+        type:'GET',
+        url: '/premium_reminder',
+        data: {notification: notification_value}
+      });
+    });
   },
   documentOnReady: function (){
     AgentAssist.Common.showDatePicker();
     AgentAssist.Common.wizardSlideSteps();
     AgentAssist.Common.selectDropDown();
     AgentAssist.Common.formSubmit();
+    $("#modal").modal("show");
   }
 };
 $(document).ready(function(){

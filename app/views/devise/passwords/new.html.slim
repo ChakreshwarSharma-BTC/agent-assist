@@ -2,14 +2,13 @@
   .login_wrapper.login_space
     .animate.form.login_form
       section.login_content
-        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :post } do |f|
           h1 Forgot Password
-          = devise_error_messages!
           .form-group
             label.control-label.col-md-3.email-label
               =t('.email')
               label-control
-            = f.email_field :email, class: "form-control", autofocus: true
+            = f.input :email, class: "form-control", autofocus: true, required: true, label: false
           .form-group
             .col-md-6.col-sm-offset-7
               button.btn.btn-primary type = "submit"

@@ -2,21 +2,20 @@
   .login_wrapper.login_space
     .animate.form.login_form
       section.login_content
-        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+        = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |f|
           h1 Change your password
-          = devise_error_messages!
           = f.hidden_field :reset_password_token
           .form-group
             label.control-label.col-md-6.log-in-password-label
               | Password
               label-control
             br
-            = f.password_field :password, class: "form-control"
+            = f.input :password, class: "form-control", required: true, label: false
           .form-group
             label.control-label.col-md-6.confirm-password-label
               | Confirm Password
               label-control
-            = f.password_field :password_confirmation, class: "form-control"
+            = f.input :password_confirmation, class: "form-control", required: true, label: false
           .form-group
             .col-md-5.col-sm-offset-6
               button.btn.btn-primary type = "submit"
