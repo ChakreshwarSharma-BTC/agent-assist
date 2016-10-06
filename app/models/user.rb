@@ -22,6 +22,9 @@ class User < ApplicationRecord
   #cout the user
   scope :user_count, -> {count}
 
+  scope :search_by_name, ->(search) { joins(:personal_info).where("personal_infos.first_name like :first_name or personal_infos.last_name like :last_name or concat(personal_infos.first_name, ' ', personal_infos.last_name) like :full_name", first_name: "%#{search}%", last_name: "%#{search}%", full_name: "%#{search}%") }
+  scope :search_by_email, ->(search) { where('email like :email', email: "%#{search}%") }
+
   def assign_role
     if roles.blank? && user_type.blank?
       add_role :agent

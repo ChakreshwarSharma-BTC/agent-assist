@@ -3,4 +3,4 @@ mailer:
   from: <%= ENV['DEFAULT_FROM_EMAIL'] %>
   username: <%= ENV['SMTP_USER_NAME'] %>
   password: <%= ENV['SMTP_PASSWORD'] %>
-  host: <%= ENV['HOST'] %>
+  host: <%= ENV['HOST'] %> 

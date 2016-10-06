@@ -36,6 +36,8 @@ class Policy < ApplicationRecord
   scope :policy_desc_order, -> {order("end_date DESC")}
   #cout the policy
   scope :policy_count, -> {count}
+  #count renewal policy
+  scope :policy_renewal, -> {where(renewal_date: Date.current - Settings.policy.day)}
  
   def self.search(search)
     if search
