@@ -1,10 +1,10 @@
 class PoliciesController < ApplicationController
   before_action :authenticate_user!
-  before_action :new_policy,only: [:new, :customer_list, :category_fields, :company_fields, :plan_fields]
-  before_action :policies_params, only: [:create, :update, :new_user]
+  before_action :new_policy, only: [:new, :customer_list, :category_fields, :company_fields, :plan_fields]
   before_action :set_policy, only: [:show ,:edit, :update , :destroy]
 
   def new
+    @policy = Policy.new
   end
 
   def index
@@ -19,9 +19,10 @@ class PoliciesController < ApplicationController
   end
 
   def new_user
-    @user=User.find_or_create_by(email: params[:policy][:user_attributes][:email]) do |u|
+    user_attributes = params[:policy][:user_attributes]
+    @user = User.find_or_create_by(email: user_attributes[:email]) do |u|
       u.password = Settings.user.password
-      u.primary_phone_no = params[:policy][:user_attributes][:primary_phone_no]
+      u.primary_phone_no = user_attributes[:primary_phone_no]
       u.add_role :customer
     end
   end
@@ -32,7 +33,7 @@ class PoliciesController < ApplicationController
     if @policy.save
       @policy.user = @user
       @policy.address.user = @policy.user
-      redirect_to  policies_path
+      redirect_to policies_path
       flash[:success] = t('.success')
     else
       flash[:error] = @policy.errors.full_messages.to_sentence
@@ -85,8 +86,8 @@ class PoliciesController < ApplicationController
 
   def plan_fields
     @plan = Plan.find_by(id: params[:plan])
-    @company = [@plan.company_category.company]
-    @category = [@plan.company_category.category]
+    @company = @plan.company_category.company
+    @category = @plan.company_category.category
   end
 
   def new_policy
@@ -101,23 +102,26 @@ class PoliciesController < ApplicationController
 
   def search
     if params[:search].present?
-     @policy = Policy.joins(:plan).where("name LIKE :search OR policy_number like :search",{search: "%#{params[:search]}%"})
-     @company = Company.find_by(name: params[:search])
-     if @company.present?
+      @policy = Policy.search_by_name(params[:search])
+      @company = Company.find_by(name: params[:search])
+      if @company.present?
         ids = @company.company_categories.ids
-        @policy =Policy.joins(:plan).where("company_category_id in (?)",ids)
-     end
-     @category = Category.find_by(name: params[:search])
-     if @category.present?
+        @policy = Policy.company_category(ids)
+      end
+      @category = Category.find_by(name: params[:search])
+      if @category.present?
         ids = @category.company_categories.ids
-        @policy = Policy.joins(:plan).where("company_category_id in (?)",ids)
+        @policy = Policy.company_category(ids)
       end 
     end      
   end
 
   private
   def policies_params
-    params.require(:policy).permit(:mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id, :city, :state, :pincode, :street_1, :street_2,
+    params.require(:policy).permit(
+      :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id, :city, :state, :pincode, :street_1, :street_2,
+      plan_attributes: [ :company_category_id, { CategoryCompany: [:company_id]}],
+     user_attributes: [:email, :primary_phone_no],
      personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender],
      vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory],
      address_attributes: [:city, :state, :pincode, :street_1, :street_2],

@@ -1,0 +1,10 @@
+policy.form-horizontal.form-label-left
+  #step-1.content 
+    = render partial: 'basic_policy_details', locals: {f: f, plan: plan}
+  #step-2.content
+  #step-3.content
+    = render partial: 'personal_details', locals: {f: f}
+  #step-4.content
+    = render partial: 'nominee_details', locals: {f: f}
+  #step-5.content
+    = render partial: 'address_details', locals: {f: f, address: address}

@@ -38,7 +38,9 @@ class Policy < ApplicationRecord
   scope :policy_count, -> {count}
   #count renewal policy
   scope :policy_renewal, -> {where(renewal_date: Date.current - Settings.policy.day)}
- 
+  scope :search_by_name, -> (search){ joins(:plan).where('name LIKE :search OR policy_number like :search',{search: "%#{search}%"}) }
+  scope :company_category, -> (company_category_ids) { joins(:plan).where('company_category_id in :ids', ids: company_category_ids) }
+
   def self.search(search)
     if search
       joins(:plan).where('name LIKE ?', "%#{search}%")

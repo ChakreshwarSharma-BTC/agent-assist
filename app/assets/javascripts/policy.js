@@ -2,8 +2,8 @@ AgentAssist.Policy = {
   policyCategories: function(){
     $('#policy_plan_attributes_company_category_id').on('change', function(){
       $.ajax({
-        type: "GET",
-        url: " /policies/category",
+        type: 'GET',
+        url: '/policies/category',
         data: {
           category : $('#policy_plan_attributes_company_category_id').val()
         }
@@ -41,13 +41,13 @@ AgentAssist.Policy = {
           user : $('#policy_user_id').val()
         },
         success: function (response) {
-          console.log(response.personal_info.gender)
           $('#policy_user_attributes_email').val(response.user.email);
           $('#policy_user_attributes_primary_phone_no').val(response.user.primary_phone_no);
           $('#policy_personal_info_attributes_first_name').val(response.personal_info.first_name);
           $('#policy_personal_info_attributes_last_name').val(response.personal_info.last_name);
           $('#policy_personal_info_attributes_middle_name').val(response.personal_info.middle_name);
           $('#policy_personal_info_attributes_date_of_birth').val(response.personal_info.date_of_birth);
+          $('#policy_personal_info_attributes_gender').val(response.personal_info.gender);          
         }
       });
     });
