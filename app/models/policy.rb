@@ -36,6 +36,14 @@ class Policy < ApplicationRecord
   #display policy list in desending order
   scope :policy_desc_order, -> {order("end_date DESC")}
 
+  # Weekly premium date
+  def self.weekly_premium_date
+    date_range = (Date.today...Settings.policy.day.days.from_now)
+    Policy.all.each do |policy|
+      policy if date_range.include?(policy.renewal_date)   
+    end
+  end
+
   def self.search(search)
     if search
       joins(:plan).where('name LIKE ?', "%#{search}%")

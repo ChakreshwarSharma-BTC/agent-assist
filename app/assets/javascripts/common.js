@@ -40,7 +40,6 @@ AgentAssist.Common = {
     AgentAssist.Common.wizardSlideSteps();
     AgentAssist.Common.selectDropDown();
     AgentAssist.Common.formSubmit();
-    $("#modal").modal("show");
   }
 };
 $(document).ready(function(){

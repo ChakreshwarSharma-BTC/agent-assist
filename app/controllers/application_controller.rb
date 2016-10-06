@@ -17,12 +17,7 @@ class ApplicationController < ActionController::Base
   #Premium notification popup when use logged in
   def premium_reminder
     if Policy.present?
-      @premium_reminder = []
-      date_range = (Date.today...Settings.policy.day.days.from_now)
-      Policy.all.each do |policy|
-        @premium_reminder << policy if date_range.include?(policy.renewal_date)       
-      end
+      @premium_reminder = Policy.weekly_premium_date
     end
-    @premium_reminder
   end
 end
