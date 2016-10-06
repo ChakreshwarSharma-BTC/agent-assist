@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     # get 'policies/start_date_sorting'
   end
 
-    
   resources :companies
   resources :plans
   resources :customers

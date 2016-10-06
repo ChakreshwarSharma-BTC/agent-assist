@@ -23,7 +23,6 @@ class PasswordsController < Devise::PasswordsController
     user = resource_class.with_reset_password_token(params[:reset_password_token])
     if user.blank? || !user.reset_password_period_valid?
       flash[:error] = 'Password link is expired. Please reset password again.'
-
     end
   end
 
