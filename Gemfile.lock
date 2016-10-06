@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/BoTreeConsultingTeam/blockuijs-rails.git
+  revision: 56e727429fa876fa03eade459404c98d74bf32e8
+  specs:
+    blockuijs-rails (0.1.0)
+      rails (>= 3.1)
+
+GIT
   remote: https://github.com/argerim/select2-rails.git
   revision: 8a77cfc2f667994ea2271d316c83e7df55004d2f
   specs:
@@ -218,6 +225,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  blockuijs-rails!
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.17.37)
   byebug

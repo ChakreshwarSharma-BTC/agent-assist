@@ -1,0 +1,16 @@
+= link_to 'Add Member', new_family_member_customer_path, class: 'btn btn-info'
+-if family.present?
+  tbody
+    - family.each do |family|
+      tr
+        td
+          = family.family_member.personal_info.full_name
+        td
+          = family.family_member.personal_info.date_of_birth
+        td
+          = link_to edit_family_member_customer_path(member_id: family.family_member_id) do
+            i.fa.fa-edit[title='Edit']
+          = link_to show_family_member_customer_path(member_id: family.family_member_id) do
+            i.fa.fa-file-text-o[title='show']
+          = link_to 'delete', destroy_family_member_customer_path(member_id: family.family_member_id), method: :delete, data: {confirm: 'Are you sure you want to delete the Customer?'}
+= javascript_include_tag 'sidebar'

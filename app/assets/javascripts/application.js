@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery.validate.min
 //= require jquery_ujs
+//= require jquery.blockUI
 //= require common
 //= require cocoon
 //= require turbolinks

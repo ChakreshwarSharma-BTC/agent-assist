@@ -19,12 +19,22 @@ class User < ApplicationRecord
   # validation
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :primary_phone_no, presence: true, numericality: true, length: {is: 10}
+  #cout the user
+  scope :user_count, -> {count}
+
+  scope :search_by_name, ->(search) { joins(:personal_info).where("personal_infos.first_name like :first_name or personal_infos.last_name like :last_name or concat(personal_infos.first_name, ' ', personal_infos.last_name) like :full_name", first_name: "%#{search}%", last_name: "%#{search}%", full_name: "%#{search}%") }
+  scope :search_by_email, ->(search) { where('email like :email', email: "%#{search}%") }
 
   def assign_role
     if roles.blank? && user_type.blank?
       add_role :agent
     else
       add_role user_type if user_type.present?
+    end
+  end
+  def full_name_with_email
+    if personal_info.present?
+      "#{personal_info.first_name} #{personal_info.middle_name} #{personal_info.last_name} #{email}"
     end
   end
 end

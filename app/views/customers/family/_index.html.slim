@@ -1,0 +1,5 @@
+.table-responsive
+  table.table.table-striped.jambo_table.bulk_action
+    = render partial: 'customers/family/list_header'
+    = render partial: 'customers/family/list_body', locals: {family: family, customer: customer}
+= javascript_include_tag 'sidebar'

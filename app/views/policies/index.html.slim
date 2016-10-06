@@ -5,13 +5,21 @@
         .x_title
           h2
             | Policies Details
-            = render partial: 'search'
-          li.pull-right
-            = link_to('Add policies',  new_policy_path )
+          .pull-right
+            = link_to new_policy_path do
+              i.fa.fa-user
           .clearfix
         .x_content
+          .pull-right
+            = render partial: 'search'
+          .list-space
           .table-responsive
             table.table.table-striped.jambo_table.bulk_action
               = render partial: 'list_header'
-              = render partial: 'list_body', locals: { policies: @policies }
+              tbody#policy_list_body
+               = render partial: 'list_body', locals: { policies: @policies }
+          .box-footer.clearfix
+            .pagination.pagination-sm.no-margin.pull-right
+              .text-right
 = javascript_include_tag 'sidebar'
+= javascript_include_tag 'policy'

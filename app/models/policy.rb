@@ -10,7 +10,7 @@ class Policy < ApplicationRecord
   has_one :employer
   has_one :nominee
   accepts_nested_attributes_for :nominee
-  has_one :life_insurance
+  has_one :life_insurance, dependent: :destroy
   accepts_nested_attributes_for :life_insurance
   has_one :personal_info, as: :informable, dependent: :destroy
   accepts_nested_attributes_for :personal_info
@@ -35,6 +35,12 @@ class Policy < ApplicationRecord
 
   #display policy list in desending order
   scope :policy_desc_order, -> {order("end_date DESC")}
+  #cout the policy
+  scope :policy_count, -> {count}
+  #count renewal policy
+  scope :policy_renewal, -> {where(renewal_date: Date.current - Settings.policy.day)}
+  scope :search_by_name, -> (search){ joins(:plan).where('name LIKE :search OR policy_number like :search',{search: "%#{search}%"}) }
+  scope :company_category, -> (company_category_ids) { joins(:plan).where('company_category_id in :ids', ids: company_category_ids) }
 
   # Weekly premium date
   def self.weekly_premium_date

@@ -1,5 +1,5 @@
 .x_content
-  /! Smart Wizard
+  Smart Wizard
   p Policy details
   #wizard.form_wizard.wizard_horizontal
     ul.wizard_steps.anchor
@@ -8,42 +8,44 @@
           span.step_no 1
           span.step_descr
             | Step 1
-            br/
+            br
             small Step 1 Policy Details
       li
         a.disabled href="#step-2" isdone="0" rel="2" 
           span.step_no 2
           span.step_descr
             | Step 2
-            br/
+            br
             small Step 2 Insurance Details
       li
         a.disabled href="#step-3" isdone="0" rel="3" 
           span.step_no 3
           span.step_descr
             | Step 3
-            br/
+            br
             small Step 3 Personal Details
       li
         a.disabled href="#step-4" isdone="0" rel="4" 
           span.step_no 4
           span.step_descr
             | Step 4
-            br/
+            br
             small Step 4 Nominee Details
       li
         a.disabled href="#step-5" isdone="0" rel="5" 
           span.step_no 5
           span.step_descr
             | Step 5
-            br/
+            br
             small Step 5 Address
-
     .stepContainer
-      = form_for @policy , html: { id: 'policy_form', multipart: true } do |f|
+      = form_for @policy do |f|
         - plan = @policy.build_plan
-        - personal_info = @policy.build_personal_info
         - address = @policy.build_address
-        - nominee = @policy.build_nominee
-        = render partial: 'new_policy', locals: {f: f, plan: plan,personal_info: personal_info,address: address, nominee: nominee}
+        = render partial: 'wizard_steps', locals: {f: f, plan: plan, address: address}
+= javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'
+javascript:
+  AgentAssist.Policy.showDatePicker();
+  AgentAssist.Policy.wizardSlideSteps();
+  AgentAssist.Policy.formSubmit();

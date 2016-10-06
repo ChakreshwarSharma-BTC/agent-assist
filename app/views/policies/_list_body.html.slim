@@ -1,14 +1,27 @@
 - if policies.present?
-  - policies.each do | policy |
-    tbody
-      tr
-        td 
-          = policy.policy_number
-        td
-          = policy.user.personal_info.full_name
-        td
-          = policy.plan.name
-        td
-          = policy.start_date
-        td 
-          = policy.end_date
+ - policies.each do | policy |
+  tr
+    td 
+      = policy.policy_number
+    td 
+      = policy.plan.company_category.category.name
+    td
+      = policy.plan.company_category.company.name
+    td
+      = policy.user.personal_info.full_name
+    td
+      = policy.plan.name
+    td
+      = policy.start_date
+    td 
+      = policy.end_date
+    td 
+
+      = link_to(policy_path(policy), class: "action-icon-company") do
+       i.fa.fa-eye.action-space[title="show"]
+
+      = link_to(edit_policy_path(policy), class: "action-icon-company") do
+       i.fa.fa-edit.action-space[title="Edit"]
+
+      = link_to(policy_path(policy),method: :delete, data: {confirm: 'Are you sure you want to delete the plan?'}, class: "action-icon-company") do
+       i.fa.fa-trash.action-space[title="Delete"] 

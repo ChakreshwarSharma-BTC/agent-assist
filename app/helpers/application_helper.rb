@@ -22,13 +22,36 @@ module ApplicationHelper
       flash_type.to_s
     end
   end
+
   def option
     Category.all.map{ |c| [c.name, c.name]}
   end
-  # def sortable(column, title = nil)
-  #   title ||= column.titleize
-  #   css_class = column == sort_column ? "current #{sort_direction}" : nil
-  #   direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-  #   link_to title, params.merge(:sort => column, :direction => direction, :page => nil), {:class => css_class}
-  # end
+
+  def mod_of_payment
+    mode = ['cash','check']
+  end
+  
+  def premium_mod
+    premium = ['quarterly', 'half_year', 'yearly']
+  end
+  
+  def relation
+    relation = ['parents', 'spouse', 'sibling', 'children']
+  end
+  
+  def page_class(lbl)
+    current_page?(controller: 'registrations', action: 'new')  ? content_tag(:label, lbl, class: "control-label col-md-6 align") : content_tag(:label, lbl, class: "control-label col-md-3 align")
+  end
+
+  def resource_sortable(resource_class:,  resources_path:, column: , title: nil, no_link: false)
+    if no_link
+      title
+    else
+      title ||= column.titleize
+      css_class = column == sort_column(resource_class) ? "fa fa-sort-#{sort_direction} active" : "fa fa-sort-desc"
+      direction = column == sort_column(resource_class) && sort_direction == "asc" ? "desc" : "asc"
+      link_to "#{title} #{content_tag(:i, '', class: css_class)}".html_safe,
+        send(resources_path, params.merge(sort: column, direction: direction, q: params[:q]).permit!), remote: true
+    end
+  end
 end
