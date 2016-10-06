@@ -40,7 +40,7 @@ module ApplicationHelper
   end
   
   def page_class(lbl)
-    current_page?(controller: 'customers', action: 'new') || current_page?(controller: 'customers', action: 'new_member')  || current_page?(controller: 'customers', action: 'edit_member') || current_page?(controller: 'customers', action: 'edit') ? content_tag(:label, lbl, class: "control-label col-md-3 align") : content_tag(:label, lbl, class: "control-label col-md-6 align")
+    current_page?(controller: 'registrations', action: 'new')  ? content_tag(:label, lbl, class: "control-label col-md-6 align") : content_tag(:label, lbl, class: "control-label col-md-3 align")
   end
 
   def resource_sortable(resource_class:,  resources_path:, column: , title: nil, no_link: false)

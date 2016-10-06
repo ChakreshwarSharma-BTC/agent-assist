@@ -5,11 +5,14 @@
         .x_title
           h2
             | Policies Details
-          li.pull-right
-            = link_to('Add policies',  new_policy_path )
+          .pull-right
+            = link_to new_policy_path do
+              i.fa.fa-user
           .clearfix
         .x_content
-          = render partial: 'search'
+          .pull-right
+            = render partial: 'search'
+          .list-space
           .table-responsive
             table.table.table-striped.jambo_table.bulk_action
               = render partial: 'list_header'

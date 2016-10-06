@@ -5,14 +5,17 @@
         .x_title
           h2
             | Customer Details
-          li.pull-right
-            = link_to 'Add Customer', new_customer_path
+          .pull-right
+              = link_to new_customer_path do
+                i.fa.fa-user
           .clearfix
         .x_content
-          = form_tag filter_customers_path, method: :get, remote: true do
-            = text_field_tag 'customer_name', nil, placeholder: 'Customer Name'
-            = text_field_tag 'email', nil, placeholder: 'Email'
-            = button_tag 'Search'
+          .pull-right
+            = form_tag filter_customers_path, method: :get, remote: true do
+              = text_field_tag 'customer_name', nil, placeholder: 'Customer Name'
+              = text_field_tag 'email', nil, placeholder: 'Email'
+              = button_tag 'Search'
+          .list-space
           .table-responsive
             table.table.table-striped.jambo_table.bulk_action
               thead#customer_list_head
@@ -21,3 +24,4 @@
                 = render partial: 'list_body', locals: {customers: @customers}
         .pull-right
           = paginate @customers, controller: 'customers', action: 'index', remote: true
+= javascript_include_tag 'sidebar'
