@@ -44,4 +44,5 @@ class ApplicationController < ActionController::Base
     @policy_renewal_date.each do |i|
      AgentMailer.renewal_reminder(i,@user).deliver_now
    end
+  end
 end
