@@ -15,10 +15,10 @@ CATEGORIES = [{name: "Life Insurance"}, {name: "Vehicle"}, {name: "Medical and H
 RELATIONS = [{ relation_type: 'Brother' }, { relation_type: 'Mother' }, { relation_type: 'Father' }, { relation_type: 'Sister' }, { relation_type: 'Son' }, { relation_type: 'Daughter' }, { relation_type: 'Grand-Mother' }, { relation_type: 'Grand-Father' }, { relation_type: 'Father-In-Law' }, { relation_type: 'Mother-In-Law'}]
 COMPANIES = [{ name: 'allianzbajaj'}, { name: 'Bharti AXA'}, { name: 'Birla Sun Life'},{ name: 'Bhartsasai AXA'},{ name: 'Bhartiasa AXA'}]
 PLANS = ['Waiver of premium on 
-total & permanent disability'],['Life cover of Rs.1 Cr.
-at just Rs.13.97* per day'],['Additional Sum Assured with 
-e-Accidental Death Benefit Rider'],['Choice of recurring or 
-immediate payout'],['98.29%# Claim 
+total & permanent disability','Life cover of Rs.1 Cr.
+at just Rs.13.97* per day','Additional Sum Assured with 
+e-Accidental Death Benefit Rider','Choice of recurring or 
+immediate payout','98.29%# Claim 
 Settlement Ratio​']
 
 puts "Start creating the required categories data for application."
