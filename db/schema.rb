@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20161003131025) do
   end
 
   create_table "nominees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "relation"
+    t.integer  "relation"
     t.integer  "policy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
