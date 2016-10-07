@@ -31,6 +31,7 @@ class PoliciesController < ApplicationController
     policy= Policy.new(policies_params)
     new_user
     policy.user = @user
+    @user.personal_info = PersonalInfo.new(params[:policy][:personal_info_attributes])
     if policy.save!
       redirect_to policies_path
       flash[:success] = t('.success')

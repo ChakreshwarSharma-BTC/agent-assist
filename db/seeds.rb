@@ -6,11 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # Creating Categories with the default information.
-
+User.find_or_create_by(email:"agent@gmail.com") do |u|
+      u.password = "12345678"
+      u.primary_phone_no = "0123456789"
+      u.add_role :customer
+    end
 CATEGORIES = [{name: "Life Insurance"}, {name: "Vehicle"}, {name: "Medical and Health"}, {name: "Fire"}, {name: "Accident"}]
 RELATIONS = [{ relation_type: 'Brother' }, { relation_type: 'Mother' }, { relation_type: 'Father' }, { relation_type: 'Sister' }, { relation_type: 'Son' }, { relation_type: 'Daughter' }, { relation_type: 'Grand-Mother' }, { relation_type: 'Grand-Father' }, { relation_type: 'Father-In-Law' }, { relation_type: 'Mother-In-Law'}]
-COMPANIES = [{ name: 'allianzbajaj'}, { name: 'Bharti AXA'}, { name: 'Birla Sun Life'}]
-COMPANYCATEGORY = [{company_id: 1,category_id: 1}, {company_id: 2,category_id: 2}, company_id: 3,category_id: 3]
+COMPANIES = [{ name: 'allianzbajaj'}, { name: 'Bharti AXA'}, { name: 'Birla Sun Life'},{ name: 'Bhartsasai AXA'},{ name: 'Bhartiasa AXA'}]
 PLANS = [{ name: 'Waiver of premium on 
 total & permanent disability',company_category_id: 1}, { name: 'Life cover of Rs.1 Cr.
 at just Rs.13.97* per day',company_category_id: 2}, { name: 'Additional Sum Assured with 
@@ -30,9 +33,15 @@ puts "Start creating the required Companies data for application."
 COMPANIES.each{ |companies| Company.find_or_create_by!(companies)}
 puts "All the required Companies data has been added successfully."
 
-puts "Start creating the required CompanyCategory data for application."
-COMPANYCATEGORY.each{ |companycategory| CompanyCategory.find_or_create_by!(companycategory)}
-puts "All the required CompanyCategory data has been added successfully."
+Company.all.each do |i|
+  Category.all.each do |j|
+      CompanyCategory.find_or_create_by!(category_id:j,company_id: i)
+    end
+  end
+
+CompanyCategory.all.each do |company|
+  Plan.find_or_create_by!(company_category_id: company, name:"dfsdedasd")
+end
 
 puts "Start creating the required Plans data for application."
 PLANS.each{ |plans| Plan.find_or_create_by!(plans)}

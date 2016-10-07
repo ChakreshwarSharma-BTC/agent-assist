@@ -7,17 +7,24 @@
             | Show 
           .clearfix
         .x_content
-          | Name : 
-          = @customer.personal_info.full_name
-          br
-          | Email : 
-          = @customer.email
-          br
-          | Date of Birth : 
-          = @customer.personal_info.date_of_birth
-          br
-          | Address : 
-          = render partial: 'address'
+        table.table
+          tbody
+            tr
+              th Name :
+              td 
+               = @customer.personal_info.full_name
+            tr
+              th Email : 
+              td
+              = @customer.email
+            tr
+              th Date of Birth :
+              td 
+              = @customer.personal_info.date_of_birth
+            tr
+              th Address :
+              td 
+              = render partial: 'address'
         .clearfix
         .separator
         h2
