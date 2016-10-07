@@ -50,6 +50,17 @@ class Policy < ApplicationRecord
     end
   end
 
+  def self.formatted_mod_of_payment
+    mod_of_payments.keys.map{ |j,k| [j.titleize, j]}
+  end
+  
+  def self.formatted_premium_mod
+    premium_mods.keys.map{ |j,k| [j.titleize, j]}
+  end
+
+  def self.formatted_plan_type
+    plan_types.keys.map{ |j,k| [j.titleize, j]}
+  end
   def self.search(search)
     if search
       joins(:plan).where('name LIKE ?', "%#{search}%")

@@ -5,4 +5,8 @@ class Nominee < ApplicationRecord
 
   #validation
   validates :relation, presence: true
+  enum relation: { parents_ch: 0, children: 1, sifdbling: 2, sdspouse: 3 }
+  def self.formatted_relation
+    relations.keys.map{ |j,k| [j.titleize, j]}
+  end
 end

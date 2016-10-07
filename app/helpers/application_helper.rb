@@ -22,23 +22,7 @@ module ApplicationHelper
       flash_type.to_s
     end
   end
-
-  def option
-    Category.all.map{ |c| [c.name, c.name]}
-  end
-
-  def mod_of_payment
-    mode = ['cash','check']
-  end
-  
-  def premium_mod
-    premium = ['quarterly', 'half_year', 'yearly']
-  end
-  
-  def relation
-    relation = ['parents', 'spouse', 'sibling', 'children']
-  end
-  
+   
   def page_class(lbl)
     current_page?(controller: 'registrations', action: 'new')  ? content_tag(:label, lbl, class: "control-label col-md-6 align") : content_tag(:label, lbl, class: "control-label col-md-3 align")
   end
