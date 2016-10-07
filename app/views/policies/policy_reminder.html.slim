@@ -14,5 +14,6 @@
           .box-footer.clearfix
             .pagination.pull-right
               .text-right
+              - if @policy.present?
                 = paginate @policy
 = javascript_include_tag 'sidebar'
