@@ -13,10 +13,18 @@ AgentAssist.Register = {
       $('form').submit();
     })
   },
-   showDatePicker: function(){
+  dateTimePicker: function(){
     $('#user_personal_info_attributes_date_of_birth').datetimepicker({
-      format: "DD/MM/YYYY"
-    });
+      format: 'DD/MM/YYYY'
+    }); 
+  },
+  showDatePicker: function(){
+    var db_date = $('#user_personal_info_attributes_date_of_birth').attr('value');
+    if(db_date != null){
+      var set_date =  db_date.split('-').reverse().join('/');
+      $('#user_personal_info_attributes_date_of_birth').val(set_date);
+    }
+    AgentAssist.Register.dateTimePicker();
   },
   autoCompleteLocation: function (selector) {
     $(selector).on('focus', function(){

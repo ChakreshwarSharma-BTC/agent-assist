@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
   has_many :family, dependent: :destroy
   has_many :family_member, through: :family, dependent: :destroy
-  has_many :policy
+  has_many :policy, dependent: :destroy
   has_many :address, as: :addressable, dependent: :destroy
   has_one :personal_info, as: :informable, dependent: :destroy
 

@@ -24,6 +24,7 @@ class PoliciesController < ApplicationController
       u.password = Settings.user.password
       u.primary_phone_no = user_attributes[:primary_phone_no]
       u.add_role :customer
+      u.personal_info = PersonalInfo.new(params[:policy][:personal_info_attributes])
     end
   end
 
@@ -112,7 +113,7 @@ class PoliciesController < ApplicationController
         ids = @category.company_categories.ids
         @policy = Policy.company_category(ids)
       end 
-    end      
+    end
   end
 
   private
