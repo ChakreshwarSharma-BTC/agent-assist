@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_many :policy
   has_many :address, as: :addressable, dependent: :destroy
   has_one :personal_info, as: :informable, dependent: :destroy
-  has_one :user_profile
 
   accepts_nested_attributes_for :personal_info, :family_member, :address
   scope :do_not_disturb, ->(current_user) { current_user.update_attributes(notification: true) }
@@ -20,7 +19,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
   validates :primary_phone_no, presence: true, numericality: true, length: {is: 10}
   #cout the user
-  scope :user_count, -> {count}
+  scope :customers, -> { with_role :customer }
 
   scope :search_by_name, ->(search) { joins(:personal_info).where("personal_infos.first_name like :first_name or personal_infos.last_name like :last_name or concat(personal_infos.first_name, ' ', personal_infos.last_name) like :full_name", first_name: "%#{search}%", last_name: "%#{search}%", full_name: "%#{search}%") }
   scope :search_by_email, ->(search) { where('email like :email', email: "%#{search}%") }

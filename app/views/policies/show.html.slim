@@ -3,44 +3,43 @@
     .col-md-12
       .x_panel
         .x_title
-          h2.btn.btn_info data-toggle="collapse" href= "#policy_detail"
-            | Policy Details
+          h2
+          | Policy Details
           .clearfix
-        #policy_detail.collapse.x_content
-          .table-responsive
-             = render partial: 'policy_show'
+          .x_content
+            .table-responsive
+              = render partial: 'policy_show'
       .x_panel
         .x_title
-          h2.btn.btn_info data-toggle="collapse" href= "#personal_detail"
-            | Personal Details
+          h2
+          | Personal Details
           .clearfix
-        #personal_detail.collapse.x_content   
-          .table-responsive       
-            = render partial: 'personal_detail_show'
+          .x_content   
+            .table-responsive       
+              = render partial: 'personal_detail_show'
       - if @policy.life_insurance.present?      
         .x_panel
           .x_title
-            h2.btn.btn_info data-toggle="collapse" href= "#life_insurance_detail"
-              | Life Insuranes
+            h2
+            | Life Insuranes
             .clearfix
-          #life_insurance_detail.collapse.x_content     
-            .table-responsive       
-              = render partial: 'life_insurance_show' 
+            .x_content     
+              .table-responsive       
+                = render partial: 'life_insurance_show' 
       - if @policy.vehicle.present?      
         .x_panel
           .x_title
-            h2.btn.btn_info data-toggle="collapse" href= "#vehicle_detail"
-              | Vehicle details
-            .clearfix
-          #vehicle_detail.collapse.x_content     
+          | Vehicle details
+          .clearfix
+          .x_content     
             .table-responsive       
               = render partial: 'vehicle_detail_show'                
       - if @policy.nominee.present?        
         .x_panel
           .x_title
-            h2.btn.btn_info data-toggle="collapse" href= "#nominee_detail"
-              | Nominee detail
+            h2
+            | Nominee detail
             .clearfix
-          #nominee_detail.collapse.x_content     
-            .table-responsive       
-              = render partial: 'nominee_detail_show'           
+              .x_content     
+                .table-responsive       
+                  = render partial: 'nominee_detail_show'           
