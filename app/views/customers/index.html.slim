@@ -23,5 +23,5 @@
               tbody#customer_list_body
                 = render partial: 'list_body', locals: {customers: @customers}
         .pull-right
-          = paginate @customers, controller: 'customers', action: 'index', remote: true
+          = paginate @customers, controller: 'customers', action: 'index', remote: true if @customers.present?
 = javascript_include_tag 'sidebar'

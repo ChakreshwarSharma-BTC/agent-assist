@@ -8,7 +8,7 @@
       h3
         | Total Customer
       p
-        = link_to customers_path('customer'), class: "small-box-footer mrg-right-5" do
+        = link_to customers_path, class: "small-box-footer mrg-right-5" do
          | display all customer
   .animated.flipInY.col-md-4
     .tile-stats
@@ -19,7 +19,7 @@
       h3
         | Total Policy
       p
-        = link_to policies_path('policy'), class: "small-box-footer mrg-right-5" do
+        = link_to policies_path, class: "small-box-footer mrg-right-5" do
           | display all policies
   .animated.flipInY.col-md-4
     .tile-stats
@@ -30,5 +30,5 @@
       h3
         | Total Company
       p
-        = link_to companies_path('company'), class: "small-box-footer mrg-right-5" do
+        = link_to companies_path, class: "small-box-footer mrg-right-5" do
           | display all companies

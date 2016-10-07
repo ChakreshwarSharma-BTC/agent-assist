@@ -3,7 +3,7 @@ class AgentController < ApplicationController
 
   def dashboard
     @policy_count = Policy.policy_count
-    @customer_count = User.user_count
+    @customer_count = User.customers.count
     @company_count = Company.company_count
   end
 end
