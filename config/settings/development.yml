@@ -4,3 +4,6 @@ mailer:
   username: <%= ENV['SMTP_USER_NAME'] %>
   password: <%= ENV['SMTP_PASSWORD'] %>
   host: <%= ENV['HOST'] %> 
+google:
+ maps_api:
+  key: AIzaSyC0LhT2ttkS1GSsAV6mNoW_vQyi0L4RZMk

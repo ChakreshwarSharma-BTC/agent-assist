@@ -6,20 +6,22 @@
           h2
             | Policies Details
           .pull-right
-            = link_to new_policy_path do
-              i.fa.fa-user
+            = link_to 'Add', new_policy_path, class: "btn btn-primary pull-right add-btn-padding"
           .clearfix
         .x_content
-          .pull-right
-            = render partial: 'search'
-          .list-space
-          .table-responsive
-            table.table.table-striped.jambo_table.bulk_action
-              = render partial: 'list_header'
-              tbody#policy_list_body
-               = render partial: 'list_body', locals: { policies: @policies }
-          .box-footer.clearfix
-            .pagination.pagination-sm.no-margin.pull-right
-              .text-right
+          - if @policies.present?
+            .pull-right
+              = render partial: 'search'
+            .list-space
+            .table-responsive
+              table.table.table-striped.jambo_table.bulk_action
+                = render partial: 'list_header'
+                tbody#policy_list_body
+                 = render partial: 'list_body', locals: { policies: @policies }
+            .box-footer.clearfix
+              .pagination.pagination-sm.no-margin.pull-right
+                .text-right
+          - else
+            = render partial: "shared/no_data_available_message", locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'

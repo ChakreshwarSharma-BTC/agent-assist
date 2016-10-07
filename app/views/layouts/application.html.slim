@@ -13,7 +13,7 @@ html
           .main_container
             = render partial: 'layouts/header'
             = render partial: 'layouts/sidebar'
-            - if Policy.present?
+            - if Policy.any?
               - if !current_user.notification
                 = render partial: "shared/premium_reminder", locals: { policies: @premium_reminder }
             = yield 

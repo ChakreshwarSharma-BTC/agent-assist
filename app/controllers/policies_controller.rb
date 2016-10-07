@@ -32,7 +32,7 @@ class PoliciesController < ApplicationController
     policy= Policy.new(policies_params)
     new_user
     policy.user = @user
-    @user.personal_info = PersonalInfo.new(params[:policy][:personal_info_attributes])
+     @user.build_personal_info = PersonalInfo.new(params[:policy][:personal_info_attributes])
     if policy.save!
       redirect_to policies_path
       flash[:success] = t('.success')
@@ -96,10 +96,10 @@ class PoliciesController < ApplicationController
   end
 
   def policy_reminder
-    @policy = paginated(Policy.policy_desc_order)
     if @policy.present?
-    @policies_expire = @policy.weekly_expire_policy
-    @policy_all = @policy - @policies_expire
+      @policy = paginated(Policy.policy_desc_order)
+      @policies_expire = @policy.weekly_expire_policy
+      @policy_all = @policy - @policies_expire
     end
   end
 

@@ -31,15 +31,16 @@ class CustomersController < ApplicationController
   def create
     customer = User.new(customer_params.merge!({password: Settings.user.password}))
     if customer.save!
-      redirect_to agent_dashboard_path
+      redirect_to customers_path
     else
       render :new
     end
   end
 
   def destroy
-    @customer.destroy!
-    redirect_to customers_path 
+    if @customer.destroy!
+      redirect_to customers_path 
+    end
   end
 
   def new_member

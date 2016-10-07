@@ -6,22 +6,24 @@
           h2
             | Customer Details
           .pull-right
-              = link_to new_customer_path do
-                i.fa.fa-user
+              = link_to 'Add', new_customer_path, class: "btn btn-primary pull-right add-btn-padding"
           .clearfix
         .x_content
-          .pull-right
-            = form_tag filter_customers_path, method: :get, remote: true do
-              = text_field_tag 'customer_name', nil, placeholder: 'Customer Name'
-              = text_field_tag 'email', nil, placeholder: 'Email'
-              = button_tag 'Search'
-          .list-space
-          .table-responsive
-            table.table.table-striped.jambo_table.bulk_action
-              thead#customer_list_head
-                = render partial: 'list_header'
-              tbody#customer_list_body
-                = render partial: 'list_body', locals: {customers: @customers}
-        .pull-right
-          = paginate @customers, controller: 'customers', action: 'index', remote: true if @customers.present?
+          - if @customers.present?
+            .pull-right
+              = form_tag filter_customers_path, method: :get, remote: true do
+                = text_field_tag 'customer_name', nil, placeholder: 'Customer Name'
+                = text_field_tag 'email', nil, placeholder: 'Email'
+                = button_tag 'Search'
+            .list-space
+            .table-responsive
+              table.table.table-striped.jambo_table.bulk_action
+                thead#customer_list_head
+                  = render partial: 'list_header'
+                tbody#customer_list_body
+                  = render partial: 'list_body', locals: {customers: @customers}
+            .pull-right
+              = paginate @customers, controller: 'customers', action: 'index', remote: true if @customers.present?
+          - else
+            = render partial: "shared/no_data_available_message", locals: { message: 'Plans' }
 = javascript_include_tag 'sidebar'

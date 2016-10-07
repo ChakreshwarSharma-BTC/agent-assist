@@ -8,7 +8,7 @@
   - life_insurance = @policy.build_life_insurance
   = f.fields_for :life_insurance  do |p|
     .form-group
-      label.control-label.col-md-3 for="policy-term"  Policy term
+      label.control-label.col-md-3 for="policy-term" Policy term  
       .col-md-6
         = p.text_field :policy_term,class:"form-control col-md-7 col-xs-12"
     .form-group
