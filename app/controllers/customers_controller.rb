@@ -37,6 +37,11 @@ class CustomersController < ApplicationController
     end
   end
 
+  def destroy
+    @customer.destroy!
+    redirect_to customers_path 
+  end
+
   def new_member
     @family_member = FamilyMember.new
     render 'customers/family/new'
