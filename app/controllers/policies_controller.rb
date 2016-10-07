@@ -20,11 +20,12 @@ class PoliciesController < ApplicationController
 
   def new_user
     user_attributes = params[:policy][:user_attributes]
+    personal_info = params[:policy][:personal_info_attributes].permit!
     @user = User.find_or_create_by(email: user_attributes[:email]) do |u|
       u.password = Settings.user.password
       u.primary_phone_no = user_attributes[:primary_phone_no]
       u.add_role :customer
-      u.personal_info = PersonalInfo.new(params[:policy][:personal_info_attributes])
+      u.personal_info = PersonalInfo.new(personal_info)
     end
   end
 
