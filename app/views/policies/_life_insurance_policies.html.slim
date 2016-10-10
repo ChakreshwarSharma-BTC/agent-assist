@@ -4,23 +4,24 @@
       | Policy number
       span.required *
     .col-md-6
-      = f.text_field :policy_number,class:"form-control col-md-7 col-xs-12"   
+      = f.text_field :policy_number,class:"form-control col-md-7 col-xs-12",value: @policy.policy_number   
   - life_insurance = @policy.build_life_insurance
   = f.fields_for :life_insurance  do |p|
     .form-group
       label.control-label.col-md-3 for="policy-term" Policy term  
       .col-md-6
-        = p.text_field :policy_term,class:"form-control col-md-7 col-xs-12"
+        = binding.pry
+        = p.text_field :policy_term,class:"form-control col-md-7 col-xs-12",value: @policy.life_insurance.policy_term
     .form-group
       label.control-label.col-md-3 for="education-qualification"  Educational
       .col-md-6
-        = p.text_field :education_qualification,class:"form-control col-md-7 col-xs-12"      
+        = p.text_field :education_qualification,class:"form-control col-md-7 col-xs-12", value: @policy.life_insurance.education_qualification      
     .form-group
       label.control-label.col-md-3 for="annual-income" 
         | Annual income
         span.required *
       .col-md-6
-        = p.text_field :annual_income,class:"form-control col-md-7 col-xs-12"
+        = p.text_field :annual_income,class:"form-control col-md-7 col-xs-12", value: @policy.life_insurance.annual_income
     .form-group
         label.control-label.col-md-3
           | Rider

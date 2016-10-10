@@ -5,7 +5,7 @@
         | Policy number
         span.required *
       .col-md-6
-        = f.text_field :policy_number,class:"form-control col-md-7 col-xs-12" 
+        = f.text_field :policy_number,class:"form-control col-md-7 col-xs-12",value: @policy.policy_number 
     - vehicle = @policy.build_vehicle
     = f.fields_for :vehicle do |p|
       .form-group

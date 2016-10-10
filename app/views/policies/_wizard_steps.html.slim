@@ -2,6 +2,10 @@ policy.form-horizontal.form-label-left
   #step-1.content 
     = render partial: 'basic_policy_details', locals: {f: f, plan: plan}
   #step-2.content
+    - if @category_id == "Life Insurance"
+      = render partial: 'life_insurance_policies'
+    - elsif @category_id == "Vehicle"
+      = render partial: "vehicle_policies"
   #step-3.content
     = render partial: 'personal_details', locals: {f: f}
   #step-4.content

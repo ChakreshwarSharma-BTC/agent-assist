@@ -12,7 +12,9 @@ class PoliciesController < ApplicationController
   end
 
   def edit
-    @category_id = @policy.plan.company_category_id
+    @category_id = @policy.plan.company_category.category.name
+    @company_id = @policy.plan.company_category.company.name
+    @plan_id = @policy.plan.name
   end
 
   def show
@@ -43,7 +45,8 @@ class PoliciesController < ApplicationController
   end
 
   def update
-    if @policy.update(policies_params)
+    binding.pry
+    if @policy.update_attributes(policies_params)
       flash[:success] = t('.success')
       AgentMailer.update_policy(@policy, current_user).deliver_now
     else
