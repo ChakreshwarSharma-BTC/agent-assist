@@ -91,7 +91,7 @@ AgentAssist.Register = {
     AgentAssist.Register.autoCompleteLocation('#user_address_attributes_0_city');
     AgentAssist.Register.autoCompleteLocation('#user_address_attributes_1_city');
     AgentAssist.Register.addressType();
-    AgentAssist.Register.showDatePicker();
+    AgentAssist.Register.showDatePicker('#policy_personal_info_attributes_date_of_birth');
     AgentAssist.Register.wizardSlideSteps();
     AgentAssist.Register.formSubmit();
   }
