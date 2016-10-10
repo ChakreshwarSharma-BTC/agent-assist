@@ -29,8 +29,8 @@ class CustomersController < ApplicationController
   end
 
   def create
-    customer = User.new(customer_params.merge!({password: Settings.user.password}))
-    if customer.save!
+    @customer = User.new(customer_params.merge!({password: Settings.user.password}))
+    if @customer.save
       redirect_to customers_path
     else
       render :new
