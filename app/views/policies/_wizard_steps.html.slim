@@ -1,14 +1,12 @@
 policy.form-horizontal.form-label-left
   #step-1.content 
-    = render partial: 'basic_policy_details', locals: {f: f, plan: plan}
+    = render partial: 'basic_policy_details', locals: {f: f, plan: @plan}
   #step-2.content
-    - if @category_id == "Life Insurance"
-      = render partial: 'life_insurance_policies'
-    - elsif @category_id == "Vehicle"
-      = render partial: "vehicle_policies"
+    = render partial: 'common_policy_fields', locals: {f: f}
+    #policy_fields
   #step-3.content
-    = render partial: 'personal_details', locals: {f: f}
+    = render partial: 'personal_details', locals: {f: f, personal_info: @personal_info}
   #step-4.content
-    = render partial: 'nominee_details', locals: {f: f}
+    = render partial: 'nominee_details', locals: {f: f, nominee: @nominee, nominee_personal_info: @nominee_personal_info }
   #step-5.content
-    = render partial: 'address_details', locals: {f: f}
+    = render partial: 'address_details', locals: {f: f, address: @address}

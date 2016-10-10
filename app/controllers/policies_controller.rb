@@ -1,10 +1,18 @@
 class PoliciesController < ApplicationController
   before_action :authenticate_user!
   before_action :new_policy, only: [:new, :customer_list, :category_fields, :company_fields, :plan_fields]
-  before_action :set_policy, only: [:show ,:edit, :update , :destroy]
+  before_action :set_policy , only: [:show ,:edit, :update , :destroy]
 
   def new
     @policy = Policy.new
+    @plan = @policy.build_plan
+    @address = @policy.build_address
+    @life_insurance = @policy.build_life_insurance
+    @vehicle = @policy.build_vehicle
+    @user = @policy.build_user
+    @personal_info = @policy.build_personal_info
+    @nominee = @policy.build_nominee
+    @nominee_personal_info = @nominee.build_personal_info
   end
 
   def index
@@ -15,6 +23,7 @@ class PoliciesController < ApplicationController
     @category_id = @policy.plan.company_category.category.name
     @company_id = @policy.plan.company_category.company.name
     @plan_id = @policy.plan.name
+    @nominee = @policy.nominee
   end
 
   def show
@@ -45,7 +54,6 @@ class PoliciesController < ApplicationController
   end
 
   def update
-    binding.pry
     if @policy.update_attributes(policies_params)
       flash[:success] = t('.success')
       AgentMailer.update_policy(@policy, current_user).deliver_now
