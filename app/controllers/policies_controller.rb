@@ -134,13 +134,13 @@ class PoliciesController < ApplicationController
   def policies_params
     params.require(:policy).permit(
      :id, :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id,
-     {plan_attributes: [:company_category_id, :id]},
+     # plan_attributes: [:company_category_id, :id],
      user_attributes: [:id, :email, :primary_phone_no],
-     personal_info_attributes: [:id, :first_name, :middle_name, :last_name, :date_of_birth, :gender],
+     personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id],
      vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory],
      address_attributes: [:id, :city, :state, :pincode, :street_1, :street_2],
-     life_insurance_attributes: [:policy_term, :education_qualification, :annual_income, :term_rider, :critical_illness, :with_accident_cover],
-     nominee_attributes: [:id, :relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender ]}])
+     life_insurance_attributes: [:policy_term, :education_qualification, :annual_income, :term_rider, :critical_illness, :with_accident_cover, :id],
+     nominee_attributes: [:id, :relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id ]}])
   end
 
   def set_policy
