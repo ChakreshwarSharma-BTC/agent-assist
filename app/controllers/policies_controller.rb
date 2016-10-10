@@ -20,9 +20,9 @@ class PoliciesController < ApplicationController
   end
 
   def edit
-    @category_id = @policy.plan.company_category.category.name
-    @company_id = @policy.plan.company_category.company.name
-    @plan_id = @policy.plan.name
+    @category_id = @policy.plan.company_category.category_id
+    @company_id = @policy.plan.company_category.company_id
+    @plan_id = @policy.plan_id
     @nominee = @policy.nominee
   end
 
