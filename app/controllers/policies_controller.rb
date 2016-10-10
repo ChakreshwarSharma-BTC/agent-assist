@@ -84,15 +84,15 @@ class PoliciesController < ApplicationController
 
   def category_fields
     @category = params[:category]
-    @company = Category.find_by(name: params[:category]).companies
-    @company_category = Category.find_by(name: params[:category]).company_categories
+    @company = Category.find(params[:category]).companies
+    @company_category = Category.find(params[:category]).company_categories
     @plan = @company_category.each_with_index.map{|m,i| m.plans[i]}
   end
 
   def company_fields
     @company = params[:company]
-    @category = Company.find_by(name: params[:company]).categories
-    @company_category = Company.find_by(name: params[:company]).company_categories
+    @category = Company.find(params[:company]).categories
+    @company_category = Company.find(params[:company]).company_categories
     @plan = @company_category.each_with_index.map{|m,i| m.plans[i]}
   end
 
@@ -133,13 +133,14 @@ class PoliciesController < ApplicationController
   private
   def policies_params
     params.require(:policy).permit(
-     :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id,
-     user_attributes: [:email, :primary_phone_no],
-     personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender],
+     :id, :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id,
+     {plan_attributes: [:company_category_id, :id]},
+     user_attributes: [:id, :email, :primary_phone_no],
+     personal_info_attributes: [:id, :first_name, :middle_name, :last_name, :date_of_birth, :gender],
      vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory],
-     address_attributes: [:city, :state, :pincode, :street_1, :street_2],
+     address_attributes: [:id, :city, :state, :pincode, :street_1, :street_2],
      life_insurance_attributes: [:policy_term, :education_qualification, :annual_income, :term_rider, :critical_illness, :with_accident_cover],
-     nominee_attributes: [:relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender ]}])
+     nominee_attributes: [:id, :relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender ]}])
   end
 
   def set_policy
