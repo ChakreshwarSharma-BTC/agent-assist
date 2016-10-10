@@ -137,7 +137,7 @@ class PoliciesController < ApplicationController
      # plan_attributes: [:company_category_id, :id],
      user_attributes: [:id, :email, :primary_phone_no],
      personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id],
-     vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory],
+     vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory, :id],
      address_attributes: [:id, :city, :state, :pincode, :street_1, :street_2],
      life_insurance_attributes: [:policy_term, :education_qualification, :annual_income, :term_rider, :critical_illness, :with_accident_cover, :id],
      nominee_attributes: [:id, :relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id ]}])
