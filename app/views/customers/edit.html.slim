@@ -15,3 +15,5 @@
                   = render partial: 'devise/registrations/common_info_fields', locals: {f: f}
               = f.submit 'Update', class: 'btn btn-info'
 = javascript_include_tag 'sidebar'
+javascript:
+  AgentAssist.Register.showDatePicker(' #user_personal_info_attributes_date_of_birth');

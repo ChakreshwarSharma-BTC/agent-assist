@@ -18,11 +18,11 @@ AgentAssist.Register = {
       format: 'DD/MM/YYYY'
     }); 
   },
-  showDatePicker: function(){
-    var db_date = $('#user_personal_info_attributes_date_of_birth').attr('value');
+  showDatePicker: function(selector=null){
+    var db_date = $(selector).attr('value');
     if(db_date != null){
       var set_date =  db_date.split('-').reverse().join('/');
-      $('#user_personal_info_attributes_date_of_birth').val(set_date);
+      $(selector).val(set_date);
     }
     AgentAssist.Register.dateTimePicker();
   },
