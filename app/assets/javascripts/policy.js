@@ -1,44 +1,49 @@
 AgentAssist.Policy = {
-  policyCategories: function(){
-    $('#policy_plan_attributes_company_category_id').on('change', function(){
-      $.ajax({
-        type: 'GET',
-        url: '/policies/category',
-        data: {
-          category : $('#policy_plan_attributes_company_category_id').val()
-        }
-      });
-    });
-  },
   policyCompanies: function(){
-    $('#policy_CategoryCompany_company_id').on('change', function(){
-      $.ajax({
-        type: "GET",
-        url: " /policies/company",
-        data: {
-          company : $('#policy_CategoryCompany_company_id').val()
-        }
-      });
+    $('#policy_plan_attributes_company_category_id').on('change', function(){
+      if($(this).prop('selectedIndex') == 0)
+      {
+        $('#companies').html('');
+        $('#plans').html('');
+      }
+      else
+      { 
+        $.ajax({
+          type: 'GET',
+          url: '/policies/companies',
+          data: {
+            category: $(this).val()
+          }
+        });
+      }
     });
   },
   policyPlans: function(){
-    $('#policy_plan_id').on('change', function(){
-      $.ajax({
-        type: "GET",
-        url: " /policies/plan",
-        data: {
-          plan : $('#policy_plan_id').val()
-        }
-      });
+    $('#comapny_name').on('change', function(){
+      if($(this).prop('selectedIndex') == 0)
+      {
+        $('#plans').html('');
+      }
+      else
+      {
+        $.ajax({
+          type: 'GET',
+          url: '/policies/plans',
+          data: {
+            category: $('#policy_plan_attributes_company_category_id').val(),
+            company: $(this).val()
+          }
+        });
+      }
     });
   },
   userDetails: function(){
     $('#policy_user_id').on('change', function(){
       $.ajax({
         type: "GET",
-        url: " /policies/customer_list",
+        url: "/policies/customer_list",
         data: {
-          user : $('#policy_user_id').val()
+          id : $(this).val()
         },
         success: function (response) {
           $('#policy_user_attributes_email').val(response.user.email);
@@ -131,14 +136,12 @@ AgentAssist.Policy = {
     });
   },
   documentOnReady: function (){
-    AgentAssist.Policy.policyCategories();
     AgentAssist.Policy.policyCompanies();
     AgentAssist.Policy.showDatePicker();
     AgentAssist.Policy.wizardSlideSteps();
     AgentAssist.Policy.formSubmit();
     AgentAssist.Policy.userDetails();
     AgentAssist.Policy.buttonSubmit();
-    AgentAssist.Policy.policyPlans();
     AgentAssist.Policy.policyType();
   }
 };

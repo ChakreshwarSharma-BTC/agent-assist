@@ -1,10 +1,9 @@
 class PoliciesController < ApplicationController
   before_action :authenticate_user!
-  before_action :new_policy, only: [:new, :customer_list, :category_fields, :company_fields, :plan_fields]
+  before_action :new_policy, only: [:new, :customer_list, :category_fields, :companies, :plans]
   before_action :set_policy , only: [:show ,:edit, :update , :destroy]
 
   def new
-    @policy = Policy.new
     @plan = @policy.build_plan
     @address = @policy.build_address
     @life_insurance = @policy.build_life_insurance
@@ -23,6 +22,9 @@ class PoliciesController < ApplicationController
     @category_id = @policy.plan.company_category.category_id
     @company_id = @policy.plan.company_category.company_id
     @plan_id = @policy.plan_id
+    @companies = Category.find(@company_id).companies
+    company_categories = CompanyCategory.find_by(company: @company_id, category_id: @category_id)
+    @plans = company_categories.plans
     @nominee = @policy.nominee
   end
 
@@ -75,31 +77,20 @@ class PoliciesController < ApplicationController
   def customer_list
     user = @policy.build_user
     personal_info = @policy.build_personal_info
-    @user=User.find_by(id: params[:user])
+    @user = User.find(params[:id])
     respond_to do |format|
       format.json  { render :json => {:user => @user, 
                                   :personal_info => @user.personal_info }}
     end
   end
 
-  def category_fields
-    @category = params[:category]
-    @company = Category.find(params[:category]).companies
-    @company_category = Category.find(params[:category]).company_categories
-    @plan = @company_category.each_with_index.map{|m,i| m.plans[i]}
+  def companies
+    @companies = Category.find(params[:category]).companies
   end
 
-  def company_fields
-    @company = params[:company]
-    @category = Company.find(params[:company]).categories
-    @company_category = Company.find(params[:company]).company_categories
-    @plan = @company_category.each_with_index.map{|m,i| m.plans[i]}
-  end
-
-  def plan_fields
-    @plan = Plan.find_by(id: params[:plan])
-    @company = @plan.company_category.company
-    @category = @plan.company_category.category
+  def plans
+    company_categories = CompanyCategory.find_by(company: params[:company], category_id: params[:category])
+    @plans = company_categories.plans
   end
 
   def new_policy
@@ -134,7 +125,6 @@ class PoliciesController < ApplicationController
   def policies_params
     params.require(:policy).permit(
      :id, :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id,
-     # plan_attributes: [:company_category_id, :id],
      user_attributes: [:id, :email, :primary_phone_no],
      personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id],
      vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory, :id],

@@ -1,34 +1,28 @@
 = f.fields_for :plan do |p|
   .form-group
     label.control-label.col-md-3 
-     | Category
-     span.required *
-    #category-selection.col-md-6
-     = p.select :company_category_id, options_for_select(Category.all.map{|c| [c.name, c.id]}, @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
-= f.fields_for :CategoryCompany do |p|
-  .form-group
-    label.control-label.col-md-3
-      | Company name
+      | Category
       span.required *
-    #company-selection.col-md-6
-      = p.select :company_id, options_for_select(Company.all.map{ |c| [c.name, c.id]},@company_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
-.form-group
-  label.control-label.col-md-3 
-   | Plan
-  #plan-selection.col-md-6
-    = f.select :plan_id, options_for_select(Plan.all.map{ |p| [p.name, p.id]}, @plan_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"} 
+    .col-md-6
+      = p.select :company_category_id, options_for_select(Category.all.map{|c| [c.name, c.id]}, @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
+  - if action_name == 'edit'
+    = render partial: 'companies'
+    = render partial: 'plans'
+  - else
+    #companies
+    #plans
 .form-group
   label.control-label.col-md-3
     | Start Date
     span.required *
   .col-md-6
-    = f.text_field :start_date,class:"form-control date_picker",value: start_date
+    = f.text_field :start_date,class:"form-control",value: start_date
 .form-group
   label.control-label.col-md-3
     | End Date
     span.required *
   .col-md-6
-    = f.text_field :end_date,class:"form-control date_picker",value: end_date
+    = f.text_field :end_date,class:"form-control",value: end_date
 .form-group
   label.control-label.col-md-3
     | Total Amount
@@ -53,6 +47,3 @@
     span.required *
   .col-md-6
     = f.select :premium_mod, options_for_select(Policy.formatted_premium_mod, @policy.premium_mod), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
-
-javascript:
-  AgentAssist.Common.showDatePicker('.date_picker');
