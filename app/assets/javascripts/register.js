@@ -14,15 +14,15 @@ AgentAssist.Register = {
     })
   },
   dateTimePicker: function(){
-    $('#user_personal_info_attributes_date_of_birth').datetimepicker({
+    $('.datepicker').datetimepicker({
       format: 'DD/MM/YYYY'
-    }); 
+    });
   },
-  showDatePicker: function(selector=null){
-    var db_date = $(selector).attr('value');
+  showDatePicker: function(){
+    var db_date = $('.datepicker').attr('value');
     if(db_date != null){
       var set_date =  db_date.split('-').reverse().join('/');
-      $(selector).val(set_date);
+      $('.datepicker').val(set_date);
     }
     AgentAssist.Register.dateTimePicker();
   },

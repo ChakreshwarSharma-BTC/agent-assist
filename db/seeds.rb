@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Creating Categories with the default information.
 User.find_or_create_by(email:"agent@gmail.com") do |u|
-      u.password = "12345678"
-      u.primary_phone_no = "0123456789"
-      u.add_role :customer
-    end
+  u.password = '12345678'
+  u.primary_phone_no = '0123456789'
+  u.add_role :agent
+end
 CATEGORIES = [{name: "Life Insurance"}, {name: "Vehicle"}, {name: "Medical and Health"}, {name: "Fire"}, {name: "Accident"}]
 RELATIONS = [{ relation_type: 'Brother' }, { relation_type: 'Mother' }, { relation_type: 'Father' }, { relation_type: 'Sister' }, { relation_type: 'Son' }, { relation_type: 'Daughter' }, { relation_type: 'Grand-Mother' }, { relation_type: 'Grand-Father' }, { relation_type: 'Father-In-Law' }, { relation_type: 'Mother-In-Law'}]
 COMPANIES = [{ name: 'allianzbajaj'}, { name: 'Bharti AXA'}, { name: 'Birla Sun Life'},{ name: 'Bhartsasai AXA'},{ name: 'Bhartiasa AXA'}]
