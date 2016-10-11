@@ -24,7 +24,11 @@ module ApplicationHelper
   end
    
   def page_class(lbl)
-    current_page?(controller: 'registrations', action: 'new')  ? content_tag(:label, lbl, class: "control-label col-md-6 align") : content_tag(:label, lbl, class: "control-label col-md-3 align")
+    if (lbl == "Middle Name")
+      current_page?(controller: 'registrations', action: 'new')  ? content_tag(:label, lbl, class: "label-control col-md-6 align") : content_tag(:label, lbl, class: "label-control col-md-3 align")
+    else
+      current_page?(controller: 'registrations', action: 'new')  ? content_tag(:label, lbl, class: "control-label col-md-6 align") : content_tag(:label, lbl, class: "control-label col-md-3 align")
+    end
   end
 
   def resource_sortable(resource_class:,  resources_path:, column: , title: nil, no_link: false)

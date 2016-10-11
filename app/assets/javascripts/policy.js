@@ -19,7 +19,7 @@ AgentAssist.Policy = {
     });
   },
   policyPlans: function(){
-    $('#comapny_name').on('change', function(){
+    $('#company_name').on('change', function(){
       if($(this).prop('selectedIndex') == 0)
       {
         $('#plans').html('');
@@ -79,8 +79,7 @@ AgentAssist.Policy = {
     });
     $('#policy_start_date').datetimepicker({
       format: "DD/MM/YYYY",
-      useCurrent: true,
-      minDate: moment()
+      useCurrent: true
     });
     $('#policy_end_date').datetimepicker({
       format: "DD/MM/YYYY",

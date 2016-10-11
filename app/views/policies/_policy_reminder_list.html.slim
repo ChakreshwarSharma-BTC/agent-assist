@@ -16,4 +16,5 @@
           = policy.start_date
         td 
           = policy.end_date
-= render partial: 'list_body', locals: { policies: @policy_all }
+- if @policy_all.present?
+  = render partial: 'list_body', locals: { policies: @policy_all }

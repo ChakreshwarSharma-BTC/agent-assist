@@ -6,10 +6,7 @@
       .count
         = customer_count
       h3
-        | Total Customer
-      p
-        = link_to customers_path, class: "small-box-footer mrg-right-5" do
-         | display all customer
+         = link_to "Total Customer", customers_path
   .animated.flipInY.col-md-4
     .tile-stats
       .icon
@@ -17,10 +14,7 @@
       .count
         = policy_count
       h3
-        | Total Policy
-      p
-        = link_to policies_path, class: "small-box-footer mrg-right-5" do
-          | display all policies
+        = link_to "Total Policy", policies_path
   .animated.flipInY.col-md-4
     .tile-stats
       .icon
@@ -28,7 +22,4 @@
       .count
         = company_count
       h3
-        | Total Company
-      p
-        = link_to companies_path, class: "small-box-footer mrg-right-5" do
-          | display all companies
+        = link_to "Total Company", companies_path

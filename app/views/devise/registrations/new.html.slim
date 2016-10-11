@@ -2,7 +2,7 @@
   .login_wrapper.registration_space
     .animate.form.login_form
       section.login_content
-        = form_for(resource, as: resource_name, url: registration_path(resource_name),  html: { id: 'user_form', class:"form-horizontal"}) do |f|
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name),  html: { id: 'user_form', class:"form-horizontal"}) do |f|
           - resource.build_personal_info
           = devise_error_messages!
           h1 sign up
@@ -11,7 +11,7 @@
               =t('.email')
               label-control
             .col-md-6
-              = f.email_field :email,class:"form-control", autofocus: true
+              = f.input :email,class:"form-control", autofocus: true, label:false,  required: false
           .form-group
             label.control-label.col-md-6
               | Phone no.
@@ -34,9 +34,5 @@
           .form-group
             .col-md-12
               .pull-right
-                button.btn.btn-primary.btn-space type="submit"
-                  | Submit 
-                button.btn.btn-success.mrg-left-signup-cancel.btn-space type="cancel" 
-                  | Cancel
-              .link-font
-                = render "devise/shared/links"
+                =  f.submit  class: "btn btn-primary"
+                =  link_to "Cancel", user_session_path, class: "btn btn-success"
