@@ -15,8 +15,8 @@
         = policy.start_date
       td 
         = policy.end_date
-      td 
-        - if current_page?(controller: 'policies', action: 'index')
+      - unless action_name == 'new' || action_name == 'premium_reminder'
+        td 
           = link_to(policy_path(policy), class: "action-icon-company") do
            i.fa.fa-eye.action-space[title="show"]
 

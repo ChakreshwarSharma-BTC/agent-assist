@@ -1,35 +1,26 @@
-.vehicle
-  = simple_form_for @policy , html: { id: 'policy_form', multipart: true } do |f|
-    .form-group
-      label.control-label.col-md-3
-        | Policy number
-        span.required *
-      .col-md-6
-        = f.input :policy_number,class:"form-control col-md-7 col-xs-12", required: true, label: false, required: true, label: false, required: true, label: false, required: true, label: false 
-    - vehicle = @policy.build_vehicle
-    = f.fields_for :vehicle do |p|
-      .form-group
-        label.control-label.col-md-3 for="registration-number"  Registration Number
-        .col-md-6
-          = p.input :registration_number,class:"form-control col-md-7 col-xs-12", required: true, label: false, required: true, label: false, required: true, label: false
-      .form-group
-        label.control-label.col-md-3 for="name"  Vehicle name
-        .col-md-6
-          = p.input :name,class:"form-control col-md-7 col-xs-12", required: true, label: false, required: true, label: false
-      .form-group
-        label.control-label.col-md-3 for="ncb"  Ncb
-        .col-md-6
-          = p.input :ncb,class:"form-control col-md-7 col-xs-12", required: true, label: false
-      .form-group
-        label.control-label.col-md-3 
-          | Accessory
-        .col-md-6
-          .checkbox1
-            = p.check_box :idv_accessory
-            | &nbsp; Idv accessory
-            br
-            = p.check_box :electrical_accessory
-            | &nbsp; Electrical accessory
-            br
-            = p.check_box :non_electrical_accessory
-            | &nbsp; Non Electrical Accessory
+= f.simple_fields_for :vehicle do |f|
+  .form-group
+    label.control-label.col-md-3 for="registration-number"  Registration Number
+    .col-md-6
+      = f.input :registration_number,class:"form-control col-md-7 col-xs-12"
+  .form-group
+    label.control-label.col-md-3 for="name"  Vehicle name
+    .col-md-6
+      = f.input :name,class:"form-control col-md-7 col-xs-12"
+  .form-group
+    label.control-label.col-md-3 for="ncb"  Ncb
+    .col-md-6
+      = f.input :ncb,class:"form-control col-md-7 col-xs-12"
+  .form-group
+    label.control-label.col-md-3 
+      | Accessory
+    .col-md-6
+      .checkbox1
+        = f.check_box :idv_accessory
+        | &nbsp; Idv accessory
+        br
+        = f.check_box :electrical_accessory
+        | &nbsp; Electrical accessory
+        br
+        = f.check_box :non_electrical_accessory
+        | &nbsp; Non Electrical Accessory

@@ -1,7 +1,15 @@
 = simple_form_for @policy , html: { id: 'policy_form', multipart: true } do |f|
   .form-group
-    label.control-label.col-md-3
-      | Policy number
+    label.control-label.col-md-3 for="policy-term" Policy term  
+    .col-md-6
+      = f.text_field :policy_term,class:"form-control col-md-7 col-xs-12"
+  .form-group
+    label.control-label.col-md-3 for="education-qualification"  Educational
+    .col-md-6
+      = f.text_field :education_qualification,class:"form-control col-md-7 col-xs-12" 
+  .form-group
+    label.control-label.col-md-3 for="annual-income" 
+      | Annual income
       span.required *
     .col-md-6
       = f.input :policy_number,class:"form-control col-md-7 col-xs-12", required: true, label: false  
@@ -20,17 +28,17 @@
         | Annual income
         span.required *
       .col-md-6
-        = p.input :annual_income,class:"form-control col-md-7 col-xs-12", required: true, label: false
-    .form-group
-        label.control-label.col-md-3
-          | Rider
-        .col-md-6
-          .checkbox1
-            = p.check_box :term_rider
-            | &nbsp; Term rider
-            br/
-            = p.check_box :critical_illness
-            | &nbsp; Criticle illness
-            br/
-            = p.check_box :with_accident_cover
+      = f.text_field :annual_income,class:"form-control col-md-7 col-xs-12"
+  .form-group
+      label.control-label.col-md-3
+        | Rider
+      .col-md-6
+        .checkbox1
+          = f.check_box :term_rider
+          | &nbsp; Term rider
+          br/
+          = f.check_box :critical_illness
+          | &nbsp; Criticle illness
+          br/
+          = f.check_box :with_accident_cover
             | &nbsp; With Accidental cover

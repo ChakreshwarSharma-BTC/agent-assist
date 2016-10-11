@@ -37,10 +37,27 @@ AgentAssist.Common = {
       });
     });
   },
+  dateTimePicker: function(){
+    $('.date_picker').datetimepicker({
+      format: 'DD/MM/YYYY'
+    });
+  },
+  showDatePicker: function(){
+    $('.date_picker').each(function(index, date_picker){
+      var db_date = $(this).attr('value');
+      if(db_date != null)
+      {
+        var set_date =  db_date.split('-').reverse().join('/');
+        $(this).val(set_date);
+      }
+    });
+    AgentAssist.Common.dateTimePicker();
+  },
   documentOnReady: function (){
     AgentAssist.Common.selectDropDown();
     AgentAssist.Common.Flash_message();
     AgentAssist.Common.ajaxLoader();
+    AgentAssist.Common.showDatePicker('.date_picker');
   }
 };
 $(document).ready(function(){

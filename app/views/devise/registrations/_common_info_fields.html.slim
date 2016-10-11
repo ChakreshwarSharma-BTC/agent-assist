@@ -1,25 +1,25 @@
 .form-group
-  = page_class("First Name")
+  = page_class('First Name')
   .col-md-6
     = f.input :first_name, class:"form-control", required: true, label: false, required: true, label: false
     = f.error :first_name, id: 'first_name_error'
 .form-group
-  = page_class("Middle Name")
+  = page_class('Middle Name')
   .col-md-6
     = f.input :middle_name,class:"form-control", required: true, label: false
     = f.error :middle_name, id: 'middle_name_error'
 .form-group
-  = page_class("Last Name")
+  = page_class('Last Name')
   .col-md-6
     = f.input :last_name,class:"form-control", required: true, label: false
     = f.error :last_name, id: 'last_name_error'
 .form-group
-  = page_class("Date of Birth")
+  = page_class('Date of Birth')
   .col-md-6
     = f.input :date_of_birth, class:"form-control", required: true, label: false
     = f.error :date_of_birth, id: 'date_of_birth_error'
 .form-group
-  = page_class("Gender")
+  = page_class('Gender')
   .col-md-6
     = f.radio_button :gender,'male', class:"radio-inline"
     | Male

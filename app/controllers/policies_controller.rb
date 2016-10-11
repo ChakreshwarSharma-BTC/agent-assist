@@ -1,10 +1,18 @@
 class PoliciesController < ApplicationController
   before_action :authenticate_user!
   before_action :new_policy, only: [:new, :customer_list, :category_fields, :company_fields, :plan_fields]
-  before_action :set_policy, only: [:show ,:edit, :update , :destroy]
+  before_action :set_policy , only: [:show ,:edit, :update , :destroy]
 
   def new
     @policy = Policy.new
+    @plan = @policy.build_plan
+    @address = @policy.build_address
+    @life_insurance = @policy.build_life_insurance
+    @vehicle = @policy.build_vehicle
+    @user = @policy.build_user
+    @personal_info = @policy.build_personal_info
+    @nominee = @policy.build_nominee
+    @nominee_personal_info = @nominee.build_personal_info
   end
 
   def index
@@ -12,7 +20,10 @@ class PoliciesController < ApplicationController
   end
 
   def edit
-    @category_id = @policy.plan.company_category_id
+    @category_id = @policy.plan.company_category.category_id
+    @company_id = @policy.plan.company_category.company_id
+    @plan_id = @policy.plan_id
+    @nominee = @policy.nominee
   end
 
   def show
@@ -33,7 +44,6 @@ class PoliciesController < ApplicationController
     policy= Policy.new(policies_params)
     new_user
     policy.user = @user
-     @user.build_personal_info = PersonalInfo.new(params[:policy][:personal_info_attributes])
     if policy.save!
       redirect_to policies_path
       flash[:success] = t('.success')
@@ -44,7 +54,7 @@ class PoliciesController < ApplicationController
   end
 
   def update
-    if @policy.update(policies_params)
+    if @policy.update_attributes(policies_params)
       flash[:success] = t('.success')
       AgentMailer.update_policy(@policy, current_user).deliver_now
     else
@@ -74,15 +84,15 @@ class PoliciesController < ApplicationController
 
   def category_fields
     @category = params[:category]
-    @company = Category.find_by(name: params[:category]).companies
-    @company_category = Category.find_by(name: params[:category]).company_categories
+    @company = Category.find(params[:category]).companies
+    @company_category = Category.find(params[:category]).company_categories
     @plan = @company_category.each_with_index.map{|m,i| m.plans[i]}
   end
 
   def company_fields
     @company = params[:company]
-    @category = Company.find_by(name: params[:company]).categories
-    @company_category = Company.find_by(name: params[:company]).company_categories
+    @category = Company.find(params[:company]).categories
+    @company_category = Company.find(params[:company]).company_categories
     @plan = @company_category.each_with_index.map{|m,i| m.plans[i]}
   end
 
@@ -123,13 +133,14 @@ class PoliciesController < ApplicationController
   private
   def policies_params
     params.require(:policy).permit(
-     :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id,
-     user_attributes: [:email, :primary_phone_no],
-     personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender],
-     vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory],
-     address_attributes: [:city, :state, :pincode, :street_1, :street_2],
-     life_insurance_attributes: [:policy_term, :education_qualification, :annual_income, :term_rider, :critical_illness, :with_accident_cover],
-     nominee_attributes: [:relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender ]}])
+     :id, :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id,
+     # plan_attributes: [:company_category_id, :id],
+     user_attributes: [:id, :email, :primary_phone_no],
+     personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id],
+     vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory, :id],
+     address_attributes: [:id, :city, :state, :pincode, :street_1, :street_2],
+     life_insurance_attributes: [:policy_term, :education_qualification, :annual_income, :term_rider, :critical_illness, :with_accident_cover, :id],
+     nominee_attributes: [:id, :relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id ]}])
   end
 
   def set_policy

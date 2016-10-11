@@ -11,24 +11,24 @@
       | Company name
       span.required *
     #company-selection.col-md-6
-      = p.select :company_id, options_for_select(Company.all.map{ |c| [c.name, c.name]},selected: @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
+      = p.select :company_id, options_for_select(Company.all.map{ |c| [c.name, c.id]},@company_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
 .form-group
   label.control-label.col-md-3 
    | Plan
   #plan-selection.col-md-6
-   = f.select :plan_id, options_for_select(Plan.all.map{ |p| [p.name, p.id]}, selected: plan.id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"} 
+    = f.select :plan_id, options_for_select(Plan.all.map{ |p| [p.name, p.id]}, @plan_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"} 
 .form-group
   label.control-label.col-md-3
     | Start Date
     span.required *
   .col-md-6
-    = f.input :start_date,class:"form-control",value: start_date, required: true, label: false
+    = f.input :start_date,class:"form-control date_picker",value: start_date, required: true, label: false
 .form-group
   label.control-label.col-md-3
     | End Date
     span.required *
   .col-md-6
-    = f.input :end_date,class:"form-control",value: end_date, required: true, label: false
+    = f.input :end_date,class:"form-control date_picker",value: end_date, required: true, label: false
 .form-group
   label.control-label.col-md-3
     | Total Amount
@@ -53,3 +53,6 @@
     span.required *
   .col-md-6
     = f.select :premium_mod, options_for_select(Policy.formatted_premium_mod, @policy.premium_mod), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
+
+javascript:
+  AgentAssist.Common.showDatePicker('.date_picker');

@@ -7,19 +7,19 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Creating Categories with the default information.
 User.find_or_create_by(email:"agent@gmail.com") do |u|
-      u.password = "12345678"
-      u.primary_phone_no = "0123456789"
-      u.add_role :customer
-    end
+  u.password = '12345678'
+  u.primary_phone_no = '0123456789'
+  u.add_role :agent
+end
 CATEGORIES = [{name: "Life Insurance"}, {name: "Vehicle"}, {name: "Medical and Health"}, {name: "Fire"}, {name: "Accident"}]
 RELATIONS = [{ relation_type: 'Brother' }, { relation_type: 'Mother' }, { relation_type: 'Father' }, { relation_type: 'Sister' }, { relation_type: 'Son' }, { relation_type: 'Daughter' }, { relation_type: 'Grand-Mother' }, { relation_type: 'Grand-Father' }, { relation_type: 'Father-In-Law' }, { relation_type: 'Mother-In-Law'}]
 COMPANIES = [{ name: 'allianzbajaj'}, { name: 'Bharti AXA'}, { name: 'Birla Sun Life'},{ name: 'Bhartsasai AXA'},{ name: 'Bhartiasa AXA'}]
-PLANS = [{ name: 'Waiver of premium on 
-total & permanent disability',company_category_id: 1}, { name: 'Life cover of Rs.1 Cr.
-at just Rs.13.97* per day',company_category_id: 2}, { name: 'Additional Sum Assured with 
-e-Accidental Death Benefit Rider',company_category_id: 3}, { name: 'Choice of recurring or 
-immediate payout'}, { name: '98.29%# Claim 
-Settlement Ratio​'} ]
+PLANS = ['Waiver of premium on 
+total & permanent disability','Life cover of Rs.1 Cr.
+at just Rs.13.97* per day','Additional Sum Assured with 
+e-Accidental Death Benefit Rider','Choice of recurring or 
+immediate payout','98.29%# Claim 
+Settlement Ratio​']
 
 puts "Start creating the required categories data for application."
 CATEGORIES.each{ |categories| Category.find_or_create_by!(categories)}
@@ -35,14 +35,12 @@ puts "All the required Companies data has been added successfully."
 
 Company.all.each do |i|
   Category.all.each do |j|
-      CompanyCategory.find_or_create_by!(category_id:j,company_id: i)
+      CompanyCategory.find_or_create_by!(category_id:j.id,company_id: i.id)
     end
   end
 
 CompanyCategory.all.each do |company|
-  Plan.find_or_create_by!(company_category_id: company, name:"dfsdedasd")
+  PLANS.each do |name|
+    Plan.find_or_create_by!(company_category_id: company.id, name: name )
+  end
 end
-
-puts "Start creating the required Plans data for application."
-PLANS.each{ |plans| Plan.find_or_create_by!(plans)}
-puts "All the required Plans data has been added successfully."

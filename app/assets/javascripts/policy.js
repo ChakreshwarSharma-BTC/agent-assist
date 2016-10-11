@@ -108,6 +108,28 @@ AgentAssist.Policy = {
         }
     });
   },
+  policyType: function (){
+    $('div#vehicle_fields input').prop('disabled', true);
+    $('#vehicle_fields').hide();
+    $('div#lic_fields input').prop('disabled', true);
+    $('#lic_fields').hide();
+    $('#policy_plan_attributes_company_category_id').on('change', function(){
+      if($(this).val() == 1)
+      { 
+        $('div#lic_fields input').prop('disabled', false);
+        $('#lic_fields').show();
+        $('div#vehicle_fields input').prop('disabled', true);
+        $('#vehicle_fields').hide();
+      }
+      if($(this).val() == 2)
+      {
+        $('div#vehicle_fields input').prop('disabled', false);
+        $('#vehicle_fields').show();
+        $('div#lic_fields input').prop('disabled', true);
+        $('#lic_fields').hide();
+      }
+    });
+  },
   documentOnReady: function (){
     AgentAssist.Policy.policyCategories();
     AgentAssist.Policy.policyCompanies();
@@ -117,6 +139,7 @@ AgentAssist.Policy = {
     AgentAssist.Policy.userDetails();
     AgentAssist.Policy.buttonSubmit();
     AgentAssist.Policy.policyPlans();
+    AgentAssist.Policy.policyType();
   }
 };
 $(document).ready(function(){
