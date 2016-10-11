@@ -3323,13 +3323,6 @@ form:after {
     text-shadow: 0 1px 0 #fff;
     min-width: 280px
 }
-.login_content a,
-.login_content .btn-default:hover {
-    text-decoration: none
-}
-.login_content a:hover {
-    text-decoration: underline
-}
 .login_content h1 {
     font: normal 25px Helvetica, Arial, sans-serif;
     letter-spacing: -0.05em;
@@ -3405,8 +3398,7 @@ form:after {
     background-position: 10px -53px !important
 }
 .login_content form div a {
-    font-size: 12px;
-    margin: 10px 15px 0 0
+    font-size: 14px
 }
 .reset_pass {
     margin-top: 10px !important
@@ -3437,17 +3429,13 @@ form:after {
     float: left;
     margin-left: 285px
 }
-.button a {
+.button {
     background: url(http://cssdeck.com/uploads/media/items/8/8bcLQqF.png) 0 -112px no-repeat;
     color: #7E7E7E;
     font-size: 17px;
     padding: 2px 0 2px 40px;
     text-decoration: none;
     transition: all 0.3s ease
-}
-.button a:hover {
-    background-position: 0 -135px;
-    color: #00aeef
 }
 header {
     width: 100%

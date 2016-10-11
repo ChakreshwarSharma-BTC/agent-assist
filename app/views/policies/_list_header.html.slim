@@ -14,6 +14,6 @@ thead
       | Start date 
     th.column-title
       | End date
-    - unless action_name == 'new' || action_name == 'premium_reminder'
+    - unless (action_name == 'policy_reminder' || action_name == 'premium_reminder')
       th.colum-title
         | Action 

@@ -39,7 +39,8 @@ AgentAssist.Common = {
   },
   dateTimePicker: function(){
     $('.date_picker').datetimepicker({
-      format: 'DD/MM/YYYY'
+      format: 'DD/MM/YYYY',
+      maxDate: moment()
     });
   },
   showDatePicker: function(){

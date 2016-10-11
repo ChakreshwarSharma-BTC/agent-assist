@@ -10,7 +10,6 @@
   .form-group
     label.control-label.col-md-3 for="annual-income" 
       | Annual income
-      span.required *
     .col-md-6
       = f.input :policy_number,class:"form-control col-md-7 col-xs-12", required: true, label: false  
   - life_insurance = @policy.build_life_insurance
@@ -36,9 +35,9 @@
         .checkbox1
           = f.check_box :term_rider
           | &nbsp; Term rider
-          br/
+          br
           = f.check_box :critical_illness
           | &nbsp; Criticle illness
-          br/
+          br
           = f.check_box :with_accident_cover
             | &nbsp; With Accidental cover
