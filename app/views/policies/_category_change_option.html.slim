@@ -1,5 +1,5 @@
-= form_for @policy , html: { id: 'policy_form', multipart: true } do |f|  
-  = f.fields_for :Plan do |p|
+= simple_form_for @policy , html: { id: 'policy_form', multipart: true } do |f|  
+  = f.simple_fields_for :Plan do |p|
     = p.select :company_category_id, options_for_select(@category.map{ |c| [c.name, c.name]},selected: @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
 
 

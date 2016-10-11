@@ -37,13 +37,12 @@
             br
             small Step 5 Address
     .stepContainer
-      = form_for @policy do |f|
+      = simple_form_for @policy do |f|
         - plan = @policy.build_plan
         - @policy.build_address
         = render partial: 'wizard_steps', locals: {f: f, plan: plan}
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'
 javascript:
-  AgentAssist.Policy.showDatePicker();
   AgentAssist.Policy.wizardSlideSteps();
   AgentAssist.Policy.formSubmit();

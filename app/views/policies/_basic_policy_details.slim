@@ -1,11 +1,11 @@
-= f.fields_for :plan do |p|
+= f.simple_fields_for :plan do |p|
   .form-group
     label.control-label.col-md-3 
      | Category
      span.required *
     #category-selection.col-md-6
       = p.select :company_category_id, options_for_select(Category.all.map{ |c| [c.name, c.name]},selected: @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
-= f.fields_for :CategoryCompany do |p|
+= f.simple_fields_for :CategoryCompany do |p|
   .form-group
     label.control-label.col-md-3
       | Company name
@@ -22,19 +22,19 @@
     | Start Date
     span.required *
   .col-md-6
-    = f.text_field :start_date,class:"form-control",value: start_date
+    = f.input :start_date,class:"form-control",value: start_date, required: true, label: false
 .form-group
   label.control-label.col-md-3
     | End Date
     span.required *
   .col-md-6
-    = f.text_field :end_date,class:"form-control",value: end_date
+    = f.input :end_date,class:"form-control",value: end_date, required: true, label: false
 .form-group
   label.control-label.col-md-3
     | Total Amount
     span.required *
   .col-md-6
-    = f.text_field :total_amount,class:"form-control"
+    = f.input :total_amount,class:"form-control", required: true, label: false
 .form-group
   label.control-label.col-md-3
     | Pay mode
@@ -46,7 +46,7 @@
     | Premium amount
     span.required *
   .col-md-6
-    = f.text_field :premium_amount,class:"form-control" 
+    = f.input :premium_amount,class:"form-control", required: true, label: false
 .form-group
   label.control-label.col-md-3
     | Premium Mod
