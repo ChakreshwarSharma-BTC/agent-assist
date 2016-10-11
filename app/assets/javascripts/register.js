@@ -13,19 +13,6 @@ AgentAssist.Register = {
       $('form').submit();
     })
   },
-  dateTimePicker: function(){
-    $('.datepicker').datetimepicker({
-      format: 'DD/MM/YYYY'
-    });
-  },
-  showDatePicker: function(){
-    var db_date = $('.datepicker').attr('value');
-    if(db_date != null){
-      var set_date =  db_date.split('-').reverse().join('/');
-      $('.datepicker').val(set_date);
-    }
-    AgentAssist.Register.dateTimePicker();
-  },
   autoCompleteLocation: function (selector) {
     $(selector).on('focus', function(){
       autocomplete = new google.maps.places.Autocomplete($(selector)[0],
@@ -91,7 +78,6 @@ AgentAssist.Register = {
     AgentAssist.Register.autoCompleteLocation('#user_address_attributes_0_city');
     AgentAssist.Register.autoCompleteLocation('#user_address_attributes_1_city');
     AgentAssist.Register.addressType();
-    AgentAssist.Register.showDatePicker('#policy_personal_info_attributes_date_of_birth');
     AgentAssist.Register.wizardSlideSteps();
     AgentAssist.Register.formSubmit();
   }

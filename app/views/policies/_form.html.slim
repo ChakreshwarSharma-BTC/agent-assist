@@ -41,8 +41,6 @@
         = render partial: 'wizard_steps', locals: {f: f, plan: @plan}
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'
-= javascript_include_tag 'register'
 javascript:
   AgentAssist.Policy.wizardSlideSteps();
   AgentAssist.Policy.formSubmit();
-  AgentAssist.Register.showDatePicker('#policy_personal_info_attributes_date_of_birth');
