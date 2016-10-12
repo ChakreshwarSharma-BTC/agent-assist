@@ -113,6 +113,7 @@ class PoliciesController < ApplicationController
   def filter_policies
     @policies = @policies.search_by_policy_number(params[:policy_number]) if params[:policy_number].present?
     @policies = @policies.search_by_date(params[:date].to_date) if params[:date].present?
+    @policies = @policies.select('plans.company_category_id, policies.*').joins(:plan) if params[:sort] == 'company_category_id'
     @policies = sort_and_paginate(@policies) if @policies.present?
     render 'policies/filter_policies'
   end

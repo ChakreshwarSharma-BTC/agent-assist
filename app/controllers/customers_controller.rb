@@ -79,9 +79,7 @@ class CustomersController < ApplicationController
   def filter_customers
     @customers = @customers.search_by_name(params[:customer_name]) if params[:customer_name].present?
     @customers = @customers.search_by_email(params[:email]) if params[:email].present?
-    if params[:sort] == 'first_name'
-      @customers = @customers.select('personal_infos.first_name, users.*').joins(:personal_info)
-    end
+    @customers = @customers.select('personal_infos.first_name, users.*').joins(:personal_info) if params[:sort] == 'first_name'
     @customers = sort_and_paginate(@customers) if @customers.present?
     render 'customers/filter_customers'
   end

@@ -3,13 +3,13 @@ tr.headings
   th.column-title
     | Policy number
   th.column-title
-    | Category
+    = resource_sortable(resource_class: Plan,  resources_path: :filter_policies_path, column: 'company_category_id', title: 'Category', no_link: no_sort_link)
   th.Company
-    | Company    
+    | Company
   th.column-title
     | Policy holder name
   th.column-title
-    | Plan name
+    | Plan Name
   th.column-title
     = resource_sortable(resource_class: Policy,  resources_path: :filter_policies_path, column: 'start_date', title: 'Start Date', no_link: no_sort_link)
   th.column-title
