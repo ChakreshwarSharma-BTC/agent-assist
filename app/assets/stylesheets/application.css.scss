@@ -1,12 +1,11 @@
 /*
 	 *= require_self
-	 *= require common.min
+   *= require 'common'
+   *= require 'common.min'
 */
-
-@import 'bootstrap-sprockets';
+$icon-font-path: "bootstrap/";
 @import 'bootstrap';
+@import 'bootstrap-sprockets';
 @import 'bootstrap-datetimepicker';
 @import 'font-awesome';
-@import 'bootstrap.min';
-@import 'common';
 @import 'select2';

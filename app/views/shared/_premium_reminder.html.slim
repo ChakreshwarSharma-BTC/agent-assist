@@ -14,16 +14,9 @@
       .modal-footer
         = check_box_tag 'notification_checked'
         | DoNotDistrub
-        
 javascript:
-  (function($){
-    AgentAssist.Common.notification();
-     if(#{current_user.notification} == false)
-        {
-          $('#modal').show();
-        }
-      $('#notification_checked').on('click', function() {
-        #{User.do_not_disturb(current_user)}
-        $('#modal').modal('hide');
-    });
-  })(jQuery);
+  if(#{current_user.notification} == false)
+    {
+      $('#modal').show();
+    }
+    AgentAssist.Common.notification();  

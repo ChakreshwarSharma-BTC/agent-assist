@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       get 'customer_list' => 'policies#customer_list'
       get 'companies' =>  'policies#companies'
       get 'plans' => 'policies#plans'
+      get 'filter_policies' => 'policies#filter_policies', as: 'filter'
+      get 'update_notification' => 'policies#update_notification'
     end
   end
 
@@ -39,5 +41,5 @@ Rails.application.routes.draw do
   end
 
   get :policy_reminder, to: 'policies#policy_reminder'
-  get :premium_reminder, to: 'policies#premium_reminder'
+
 end

@@ -3317,7 +3317,7 @@ form:after {
 }
 .login_content {
     margin: 0 auto;
-    padding: 25px 0 0;
+    padding: 50px 0 0;
     position: relative;
     text-align: center;
     text-shadow: 0 1px 0 #fff;
@@ -3398,7 +3398,9 @@ form:after {
     background-position: 10px -53px !important
 }
 .login_content form div a {
-    font-size: 14px
+    font-size: 14px;
+    width: 90px
+
 }
 .reset_pass {
     margin-top: 10px !important

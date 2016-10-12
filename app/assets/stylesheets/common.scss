@@ -78,7 +78,7 @@
   max-width: 700px !important;
 }
 .login_space{
-  margin-top: 180px !important;
+  margin-top: 200px !important;
 }
 .login_button{
   margin-left: 200px !important;
@@ -177,4 +177,15 @@ label.error {
 }
 .font-bold{
   font-weight: bold;
+}
+.table>thead>tr>td,
+.table>tbody>tr>td{
+  padding: 7px;
+}
+.scrollbar{
+  overflow: auto;
+  height: 240px;
+}
+.bn-space{
+  width: 100px;
 }

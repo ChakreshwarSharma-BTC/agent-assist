@@ -14,12 +14,12 @@
 //= require jquery.validate.min
 //= require jquery_ujs
 //= require jquery.blockUI
+//= require moment
+//= require bootstrap
+//= require bootstrap-datetimepicker
 //= require common
 //= require cocoon
 //= require turbolinks
 //= require SmartWizard
 //= require select2-full
 //= require chartkick
-//= require moment
-//= require bootstrap
-//= require bootstrap-datetimepicker

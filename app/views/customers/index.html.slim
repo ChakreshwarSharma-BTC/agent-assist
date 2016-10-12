@@ -22,8 +22,10 @@
                   = render partial: 'list_header'
                 tbody#customer_list_body
                   = render partial: 'list_body', locals: {customers: @customers}
-            .pull-right
-              = paginate @customers, controller: 'customers', action: 'index', remote: true if @customers.present?
+            .box-footer.clearfix
+              .pagination.pagination-sm.no-margin.pull-right
+                .pull-right
+                  = paginate @customers, controller: 'customers', action: 'index', remote: true if @customers.present?
           - else
             = render partial: "shared/no_data_available_message", locals: { message: 'Plans' }
 = javascript_include_tag 'sidebar'

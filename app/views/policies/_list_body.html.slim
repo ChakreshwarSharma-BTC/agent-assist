@@ -12,10 +12,10 @@
       td
         = policy.plan.name
       td
-        = policy.start_date
+        = formatted_date(policy.start_date)
       td 
-        = policy.end_date
-      - unless action_name == 'policy_reminder' || action_name == 'premium_reminder'
+        = formatted_date(policy.end_date)
+      - unless action_name == 'policy_reminder' || action_name == 'dashboard'
         td 
           = link_to(policy_path(policy), class: "action-icon-company") do
            i.fa.fa-eye.action-space[title="show"]
