@@ -1,22 +1,22 @@
 .form-group
-  label.control-label.col-md-3.align for="Relation With Customer" 
+  label.control-label.col-md-3.align
     | Relation With Customer
     label-control
   .col-md-6
-    = f.select :relation_with_customer, options_for_select(Relation.all.collect { |r| [r.relation_type, r.id] }, selected: f.object.relation_with_customer), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, { class: 'form-control' }
+    = f.select :relation_with_customer, options_for_select(Relation.all.collect { |r| [r.relation_type, r.id] }, selected: f.object.relation_with_customer), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, { class: 'form-control' , required: true, label: false}
 .form-group
-  label.control-label.col-md-3.align for="Health" 
+  label.control-label.col-md-3.align
     | Health
     label-control
   .col-md-6
-    = f.text_field :health, placeholder: 'Health', class: 'form-control'
+    = f.input :health, placeholder: 'Health', class: 'form-control', required: true, label: false
 .form-group
-  label.label-control.col-md-3.align for="Death Age" 
+  label.label-control.col-md-3.align
     | Death Age
   .col-md-6
-    = f.text_field :death_age, placeholder: 'Death Age', class: 'form-control'
+    = f.input :death_age, placeholder: 'Death Age', class: 'form-control', required: false, label: false
 .form-group
-  label.label-control.col-md-3.align for="Death Year" 
+  label.label-control.col-md-3.align
     | Death Year
   .col-md-6
     = f.text_field :death_year, placeholder: 'Death Year', class: 'form-control'
@@ -24,4 +24,4 @@
   label.label-control.col-md-3.align for="Death Reason" 
     | Death Reason
   .col-md-6
-    = f.text_field :death_reason, placeholder: 'Death Reason', class: 'form-control'
+    = f.input :death_reason, placeholder: 'Death Reason', class: 'form-control', required: false, label: false

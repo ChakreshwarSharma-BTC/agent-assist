@@ -37,7 +37,7 @@
             br
             small Step 5 Address
     .stepContainer
-      = form_for @policy do |f|
+      = simple_form_for @policy do |f|
         = render partial: 'wizard_steps', locals: {f: f, plan: @plan}
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'

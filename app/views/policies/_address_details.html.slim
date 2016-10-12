@@ -1,2 +1,2 @@
-= f.fields_for :address do |a|
+= f.simple_fields_for :address do |a|
   = render partial: 'devise/registrations/common_address_fields', locals: {a: a}

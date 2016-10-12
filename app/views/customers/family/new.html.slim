@@ -10,7 +10,7 @@
           .stepContainer
             - if @family_member.errors.any?
               = @family_member.errors.messages
-            = form_for @family_member, url: create_family_member_customer_path(@customer) do |f|
+            = simple_form_for @family_member, url: create_family_member_customer_path(@customer) do |f|
               .form-horizontal.form-label-left
                 = render partial: 'personal_info_fields', locals: {f: f}
                 = render partial: 'devise/registrations/common_family_fields', locals: {f: f}

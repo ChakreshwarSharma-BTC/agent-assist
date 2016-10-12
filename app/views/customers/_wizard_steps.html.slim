@@ -5,9 +5,9 @@
 #step-2.content1
   step_2.form-horizontal.form-label-left
     .form-group
-        #families
-          .links
-            = link_to_add_association "<i class='fa fa-plus-square-o fa-lg'></i> Add Member".html_safe, f, :family_member, class: 'btn btn-success'
+      #families
+        .links
+          = link_to_add_association "<i class='fa fa-plus-square-o fa-lg'></i> Add Member".html_safe, f, :family_member, class: 'btn btn-success'
 #step-3.content1
   step_3.form-horizontal.form-label-left
     = render partial: 'devise/registrations/address_fields', locals: {f: f}

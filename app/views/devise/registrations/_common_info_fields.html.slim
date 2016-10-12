@@ -1,15 +1,15 @@
 .form-group
   = page_class('First Name')
   .col-md-6
-    = f.text_field :first_name, class: 'form-control'
+    = f.input :first_name, class:"form-control", required: true, label: false, required: true, label: false
 .form-group
   = page_class('Middle Name')
   .col-md-6
-    = f.text_field :middle_name,class: 'form-control'
+    = f.input :middle_name,class:"form-control", required: false, label: false
 .form-group
   = page_class('Last Name')
   .col-md-6
-    = f.text_field :last_name,class: 'form-control'
+    = f.input :last_name,class:"form-control", required: true, label: false
 .form-group
   = page_class('Date of Birth')
   .col-md-6
@@ -17,10 +17,8 @@
 .form-group
   = page_class('Gender')
   .col-md-6
-      = f.radio_button :gender,'male', class: 'radio-inline'
-      | Male
-      = f.radio_button :gender, 'female', class: 'radio-inline'
-      | Female
+    = f.radio_button :gender,'male', class:"radio-inline"
+    | Male
+    = f.radio_button :gender, 'female', class:"radio-inline"
+    | Female
 = javascript_include_tag 'register'
-javascript:
-  AgentAssist.Common.showDatePicker('.date_picker');

@@ -2,4 +2,4 @@
   label.control-label.col-md-3
     | Policy number
   .col-md-6
-    = f.text_field :policy_number,class:"form-control col-md-7 col-xs-12"
+    = f.input :policy_number,class:"form-control", required: true, label: false

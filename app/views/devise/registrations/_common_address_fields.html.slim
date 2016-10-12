@@ -3,28 +3,28 @@
     | Street 1
     label-control
   .col-md-6
-    = a.text_field :street_1, class: 'form-control'
+    = a.input :street_1, class: 'form-control', required: true, label: false
 .form-group
   label.label-control.col-md-3.align for="Street 2"
     | Street 2
     label-control
   .col-md-6
-    = a.text_field :street_2, class: 'form-control'
+    = a.input :street_2, class: 'form-control', required: false, label: false
 .form-group
   label.control-label.col-md-3.align for="City"
     | City
     label-control
   .col-md-6
-    = a.text_field :city, class: 'form-control auto_complete'
+    = a.input :city, class: 'form-control auto_complete', required: true, label: false
 .form-group
   label.control-label.col-md-3.align for="State"
     | State
     label-control
   .col-md-6
-    = a.text_field :state, class: 'form-control'
+    = a.input :state, class: 'form-control', required: true, label: false
 form-group
   label.control-label.col-md-3.align for="Pincode"
     | Pincode
     label-control
   .col-md-6
-    = a.text_field :pincode, class: 'form-control'
+    = a.input :pincode, class: 'form-control', required: true, label: false

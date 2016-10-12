@@ -1,17 +1,19 @@
-= f.fields_for :life_insurance do |f|
+= f.simple_fields_for :life_insurance do |f|
   .form-group
-    label.control-label.col-md-3 for="policy-term" Policy term  
+    label.control-label.col-md-3
+      | Policy term  
     .col-md-6
-      = f.text_field :policy_term,class:"form-control col-md-7 col-xs-12"
+      = f.input :policy_term,class:"form-control", required: true, label: false
   .form-group
-    label.control-label.col-md-3 for="education-qualification"  Educational
+    label.control-label.col-md-3
+      | Educational
     .col-md-6
-      = f.text_field :education_qualification,class:"form-control col-md-7 col-xs-12" 
+      = f.input :education_qualification,class:"form-control", required: true, label: false 
   .form-group
-    label.control-label.col-md-3 for="annual-income" 
+    label.control-label.col-md-3
       | Annual income
     .col-md-6
-      = f.text_field :annual_income,class:"form-control col-md-7 col-xs-12"
+      = f.input :annual_income,class:"form-control", required: true, label: false
   .form-group
       label.control-label.col-md-3
         | Rider
