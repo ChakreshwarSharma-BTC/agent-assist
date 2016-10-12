@@ -1,9 +1,9 @@
 .form-horizontal.form-label-left
-  = f.fields_for :nominee do |f|
+  = f.simple_fields_for :nominee do |f|
     .form-group
       label.control-label.col-md-3.align
         | relation
       .col-md-6
-        = f.select :relation, options_for_select(Nominee.formatted_relation, @nominee.relation), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select"}
-    = f.fields_for :personal_info do |f|
+        = f.select :relation, options_for_select(Nominee.formatted_relation, @nominee.relation), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control select", required: true, label: false}
+    = f.simple_fields_for :personal_info do |f|
       = render partial: 'devise/registrations/common_info_fields', locals: {f: f}

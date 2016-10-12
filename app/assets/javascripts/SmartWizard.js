@@ -59,8 +59,14 @@ function SmartWizard(target, options) {
         this.contentWidth = $this.elmStepContainer.width();
 
         $($this.buttons.next).click(function() {
+           if($('form').valid())
+           {
             $this.goForward();
             return false;
+           } 
+           else{
+            return false;
+           }
         });
         $($this.buttons.previous).click(function() {
             $this.goBackward();
@@ -445,5 +451,4 @@ $.fn.smartWizard.defaults = {
     onShowStep: null,  // triggers when showing a step
     onFinish: null  // triggers when Finish button is clicked
 };
-
 })(jQuery);

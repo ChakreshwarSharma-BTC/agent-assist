@@ -1,4 +1,4 @@
- #modal.modal.fade
+#modal.modal.fade
   .modal-dialog
     .modal-content
       .modal-header
@@ -14,7 +14,8 @@
       .modal-footer
         = check_box_tag 'notification_checked'
         | DoNotDistrub
- javascript:
+        
+javascript:
   (function($){
     AgentAssist.Common.notification();
      if(#{current_user.notification} == false)
