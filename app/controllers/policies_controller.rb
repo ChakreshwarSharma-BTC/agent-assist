@@ -51,6 +51,7 @@ class PoliciesController < ApplicationController
     policy= Policy.new(policies_params)
     new_user
     policy.user = @user
+    policy.renewal_date = Date.today
     if policy.save!
       redirect_to policies_path
       flash[:success] = t('.success')
@@ -108,6 +109,10 @@ class PoliciesController < ApplicationController
     @policies_expire = @policy.weekly_expire_policy
     @policy_all = @policy - @policies_expire
     end
+  end
+
+  def update_notification
+    current_user.update(notification: true)
   end
 
   def filter_policies

@@ -13,9 +13,10 @@ html
           .main_container
             = render partial: 'layouts/header'
             = render partial: 'layouts/sidebar'
-            - if Policy.any?
-              - if !current_user.notification
-                = render partial: "shared/premium_reminder", locals: { policies: @premium_reminder }
+            - if current_page?(agent_dashboard_path)
+              - if Policy.any?
+                - if !current_user.notification
+                  = render partial: "shared/premium_reminder", locals: { policies: @premium_reminder }
             = yield 
     -else
       body.login

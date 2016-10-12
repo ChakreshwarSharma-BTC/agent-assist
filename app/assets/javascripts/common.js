@@ -32,9 +32,10 @@ AgentAssist.Common = {
       var notification_value = $(this).is(':checked');
       $.ajax({
         type:'GET',
-        url: '/premium_reminder',
+        url: 'policies/update_notification',
         data: {notification: notification_value}
       });
+      $('#modal').modal('hide');
     });
   },
   dateTimePicker: function(){
