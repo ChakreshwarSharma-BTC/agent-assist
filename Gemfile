@@ -14,7 +14,6 @@ gem 'cocoon'
 gem 'font-awesome-rails'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'mysql2'
 gem 'devise'
 gem 'config'
 gem 'rolify'
@@ -45,6 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'pry-rails'
+  gem 'mysql2'
   gem 'pry-nav'
 end
 
