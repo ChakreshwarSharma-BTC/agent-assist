@@ -1,46 +1,56 @@
 .right_col
-  .row
-    .col-md-12
-      .x_panel
-        .x_title
-          h2
-          | Policy Details
-          .clearfix
-          .x_content
-            .table-responsive
-              = render partial: 'policy_show'
-      .x_panel
-        .x_title
-          h2
-          | Personal Details
-          .clearfix
-          .x_content   
-            .table-responsive       
-              = render partial: 'personal_detail_show'
-      - if @policy.life_insurance.present?      
+  .col-md-12
+    .row
+      .col-md-6.col-sm-6.col-xs-12
         .x_panel
           .x_title
             h2
-            | Life Insuranes
+            | Policy Details
+            .clearfix
+            .x_content
+              .table-responsive.scrollbar
+                = render partial: 'policy_show'
+      .col-md-6.col-sm-6.col-xs-12
+        .x_panel
+          .x_title
+            h2
+            | Personal Details
+            .clearfix
+            .x_content   
+              .table-responsive.scrollbar      
+                = render partial: 'personal_detail_show'
+  .col-md-12
+    .row
+      .col-md-6
+        - if @policy.life_insurance.present?      
+          .x_panel
+            .x_title
+              h2
+              | Life Insuranes
+              .clearfix
+              .x_content     
+                .table-responsive.scrollbar      
+                  = render partial: 'life_insurance_show'
+        - elsif @policy.vehicle.present?      
+          .x_panel
+            .x_title
+            | Vehicle details
             .clearfix
             .x_content     
-              .table-responsive       
-                = render partial: 'life_insurance_show' 
-      - if @policy.vehicle.present?      
-        .x_panel
-          .x_title
-          | Vehicle details
-          .clearfix
-          .x_content     
-            .table-responsive       
-              = render partial: 'vehicle_detail_show'                
-      - if @policy.nominee.present?        
-        .x_panel
-          .x_title
-            h2
-            | Nominee detail
-            .clearfix
-              .x_content     
-                .table-responsive       
-                  = render partial: 'nominee_detail_show'           
+              .table-responsive.scrollbar       
+                = render partial: 'vehicle_detail_show'
+      .col-md-6                
+        - if @policy.nominee.present?        
+          .x_panel
+            .x_title
+              h2
+              | Nominee detail
+              .clearfix
+                .x_content     
+                  .table-responsive.scrollbar       
+                    = render partial: 'nominee_detail_show'  
+  .col-md-12
+    .pull-right
+      = link_to "Back", policies_path, class: "btn btn-primary bn-space"
+      = link_to "Edit",edit_policy_path(@policy), class: "btn btn-default bn-space"       
 = javascript_include_tag 'sidebar'
