@@ -178,3 +178,7 @@ label.error {
 .font-bold{
   font-weight: bold;
 }
+.table>thead>tr>td,
+.table>tbody>tr>td{
+  padding: 7px;
+}

@@ -1,19 +1,19 @@
-thead
-  tr.headings
-    th.column-title
-      | Policy number
-    th.column-title
-      | Category
-    th.Company
-      | Company    
-    th.column-title
-      | Policy holder name
-    th.column-title
-      | Plan name
-    th.column-title
-      | Start date 
-    th.column-title
-      | End date
-    - unless (action_name == 'policy_reminder' || action_name == 'premium_reminder')
-      th.colum-title
-        | Action 
+- no_sort_link = @policies.blank?
+tr.headings
+  th.column-title
+    | Policy number
+  th.column-title
+    | Category
+  th.Company
+    | Company    
+  th.column-title
+    | Policy holder name
+  th.column-title
+    | Plan name
+  th.column-title
+    = resource_sortable(resource_class: Policy,  resources_path: :filter_policies_path, column: 'start_date', title: 'Start Date', no_link: no_sort_link)
+  th.column-title
+    = resource_sortable(resource_class: Policy,  resources_path: :filter_policies_path, column: 'end_date', title: 'End Date', no_link: no_sort_link)
+  - unless action_name == 'new' || action_name == 'premium_reminder'
+    th.colum-title
+      | Action

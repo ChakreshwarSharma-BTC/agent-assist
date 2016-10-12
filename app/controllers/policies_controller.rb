@@ -1,7 +1,8 @@
 class PoliciesController < ApplicationController
   before_action :authenticate_user!
   before_action :new_policy, only: [:new, :customer_list, :category_fields, :companies, :plans]
-  before_action :set_policy , only: [:show ,:edit, :update , :destroy]
+  before_action :set_policy , only: [:show , :edit, :update , :destroy]
+  before_action :set_policies, only: [:index, :filter_policies]
 
   def new
     @plan = @policy.build_plan
@@ -15,7 +16,11 @@ class PoliciesController < ApplicationController
   end
 
   def index
-    @policies = Policy.all.order(created_at: :asc)
+    @policies = paginated(@policies)
+    respond_to do |format|
+      format.html { render 'policies/index' }
+      format.js { render 'policies/filter_policies' }
+    end
   end
 
   def edit
@@ -105,20 +110,11 @@ class PoliciesController < ApplicationController
     end
   end
 
-  def search
-    if params[:search].present?
-      @policy = Policy.search_by_name(params[:search])
-      @company = Company.find_by(name: params[:search])
-      if @company.present?
-        ids = @company.company_categories.ids
-        @policy = Policy.company_category(ids)
-      end
-      @category = Category.find_by(name: params[:search])
-      if @category.present?
-        ids = @category.company_categories.ids
-        @policy = Policy.company_category(ids)
-      end 
-    end
+  def filter_policies
+    @policies = @policies.search_by_policy_number(params[:policy_number]) if params[:policy_number].present?
+    @policies = @policies.search_by_date(params[:date].to_date) if params[:date].present?
+    @policies = sort_and_paginate(@policies) if @policies.present?
+    render 'policies/filter_policies'
   end
 
   private
@@ -135,5 +131,9 @@ class PoliciesController < ApplicationController
 
   def set_policy
     @policy = Policy.find(params[:id])
+  end
+
+  def set_policies
+    @policies = Policy.all
   end
 end

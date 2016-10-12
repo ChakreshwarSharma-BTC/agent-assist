@@ -11,16 +11,21 @@
         .x_content
           - if @policies.present?
             .pull-right
-              = render partial: 'search'
+              = form_tag filter_policies_path, method: :get, remote: true do            
+                = text_field_tag :policy_number, nil, placeholder: 'Enter Policy Number'
+                = text_field_tag :date, nil, placeholder: 'Enter Date'
+                = submit_tag :Submit
             .list-space
             .table-responsive
               table.table.table-striped.jambo_table.bulk_action
-                = render partial: 'list_header'
+                thead#policy_list_head
+                  = render partial: 'list_header'
                 tbody#policy_list_body
                  = render partial: 'list_body', locals: { policies: @policies }
             .box-footer.clearfix
               .pagination.pagination-sm.no-margin.pull-right
-                .text-right
+                .pull-right
+                  = paginate @policies, controller: 'policies', action: 'index', remote: true if @policies.present?
           - else
             = render partial: "shared/no_data_available_message", locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'

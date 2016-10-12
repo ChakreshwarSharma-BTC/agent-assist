@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get 'customer_list' => 'policies#customer_list'
       get 'companies' =>  'policies#companies'
       get 'plans' => 'policies#plans'
+      get 'filter_policies' => 'policies#filter_policies', as: 'filter'
     end
   end
 

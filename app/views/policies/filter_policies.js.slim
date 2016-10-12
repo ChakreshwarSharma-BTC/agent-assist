@@ -1,0 +1,3 @@
+|$('#policy_list_head').html("#{j render(partial: 'policies/list_header')}");
+|$('#policy_list_body').html("#{j render(partial: 'policies/list_body', locals: { policies: @policies }) }");
+|$('.pagination').html('#{escape_javascript(paginate(@policies, params: {controller: 'policies', action: 'filter_policies'}, remote: true))if @policies.present?}');
