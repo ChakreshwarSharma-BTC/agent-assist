@@ -1,76 +1,76 @@
 .left_col {
-    background: #2A3F54
+  background: #2A3F54;
 }
 .nav-sm .container.body .col-md-3.left_col {
     min-height: 100%;
     width: 70px;
     padding: 0;
     z-index: 9999;
-    position: absolute
+    position: absolute;
 }
 .nav-sm .container.body .col-md-3.left_col.menu_fixed {
     position: fixed;
-    height: 100%
+    height: 100%;
 }
 .nav-sm .container.body .col-md-3.left_col .mCSB_container,
 .nav-sm .container.body .col-md-3.left_col .mCustomScrollBox {
-    overflow: visible
+    overflow: visible;
 }
 .nav-sm .hidden-small {
-    visibility: hidden
+    visibility: hidden;
 }
 .nav-sm .container.body .right_col {
     padding: 10px 20px;
     margin-left: 70px;
-    z-index: 2
+    z-index: 2;
 }
 .nav-sm .navbar.nav_title {
-    width: 70px
+    width: 70px;
 }
 .nav-sm .navbar.nav_title a span {
-    display: none
+    display: none;
 }
 .nav-sm .navbar.nav_title a i {
     font-size: 27px;
-    margin: 13px 0 0 3px
+    margin: 13px;
 }
 .site_title i {
     border: 1px solid #EAEAEA;
     padding: 5px 6px;
-    border-radius: 50%
+    border-radius: 50%;
 }
 .nav-sm .main_container .top_nav {
     display: block;
     margin-left: 70px;
-    z-index: 2
+    z-index: 2;
 }
 .nav-sm .nav.side-menu li a {
     text-align: center !important;
     font-weight: 400;
     font-size: 10px;
-    padding: 10px 5px
+    padding: 10px 5px;
 }
 .nav-sm .nav.child_menu li.active,
 .nav-sm .nav.side-menu li.active-sm {
-    border-right: 5px solid #1ABB9C
+    border-right: 5px solid #1ABB9C;
 }
 .nav-sm ul.nav.child_menu ul,
 .nav-sm .nav.side-menu li.active-sm ul ul {
     position: static;
     width: 200px;
-    background: none
+    background: none;
 }
 .nav-sm>.nav.side-menu>li.active-sm>a {
-    color: #1ABB9C !important
+    color: #1ABB9C !important;
 }
 .nav-sm .nav.side-menu li a i.toggle-up {
-    display: none !important
+    display: none !important;
 }
 .nav-sm .nav.side-menu li a i {
     font-size: 25px !important;
     text-align: center;
     width: 100% !important;
-    margin-bottom: 5px
+    margin-bottom: 5px;
 }
 .nav-sm ul.nav.child_menu {
     left: 100%;
@@ -79,19 +79,19 @@
     width: 210px;
     z-index: 4000;
     background: #3E5367;
-    display: none
+    display: none;
 }
 .nav-sm ul.nav.child_menu li {
-    padding: 0 10px
+    padding: 0 10px;
 }
 .nav-sm ul.nav.child_menu li a {
-    text-align: left !important
+    text-align: left !important;
 }
 .nav-sm .profile {
-    display: none
+    display: none;
 }
 .menu_section {
-    margin-bottom: 35px
+    margin-bottom: 35px;
 }
 .menu_section h3 {
     padding-left: 23px;
@@ -102,14 +102,14 @@
     font-size: 11px;
     margin-bottom: 0;
     margin-top: 0;
-    text-shadow: 1px 1px #000
+    text-shadow: 1px 1px #000;
 }
 .menu_section>ul {
-    margin-top: 10px
+    margin-top: 10px;
 }
 .profile_pic {
     width: 35%;
-    float: left
+    float: left;
 }
 .img-circle.profile_img {
     width: 70%;
@@ -119,39 +119,39 @@
     position: inherit;
     margin-top: 20px;
     border: 1px solid rgba(52, 73, 94, 0.44);
-    padding: 4px
+    padding: 4px;
 }
 .profile_info {
     padding: 25px 10px 10px;
     width: 65%;
-    float: left
+    float: left;
 }
 .profile_info span {
     font-size: 13px;
     line-height: 30px;
-    color: #BAB8B8
+    color: #BAB8B8;
 }
 .profile_info h2 {
     font-size: 14px;
     color: #ECF0F1;
     margin: 0;
-    font-weight: 300
+    font-weight: 300;
 }
 .profile.img_2 {
-    text-align: center
+    text-align: center;
 }
 .profile.img_2 .profile_pic {
-    width: 100%
+    width: 100%;
 }
 .profile.img_2 .profile_pic .img-circle.profile_img {
     width: 50%;
-    margin: 10px 0 0
+    margin: 10px 0 0;
 }
 .profile.img_2 .profile_info {
     padding: 15px 10px 0;
     width: 100%;
     margin-bottom: 10px;
-    float: left
+    float: left;
 }
 .main_menu span.fa {
     float: right;
@@ -159,21 +159,21 @@
     margin-top: 5px;
     font-size: 10px;
     min-width: inherit;
-    color: #C4CFDA
+    color: #C4CFDA;
 }
 .active a span.fa {
     text-align: right !important;
-    margin-right: 4px
+    margin-right: 4px;
 }
 .nav-sm .menu_section {
-    margin: 0
+    margin: 0;
 }
 .nav-sm span.fa,
 .nav-sm .menu_section h3 {
-    display: none
+    display: none;
 }
 .nav-sm li li span.fa {
-    display: inline-block
+    display: inline-block;
 }
 .nav_menu {
     float: left;
@@ -181,11 +181,11 @@
     border-bottom: 1px solid #D9DEE4;
     margin-bottom: 10px;
     width: 100%;
-    position: relative
+    position: relative;
 }
 @media (min-width: 480px) {
     .nav_menu {
-        position: static
+        position: static;
     }
 }
 .nav-md .container.body .col-md-3.left_col {
@@ -2277,10 +2277,8 @@ textarea:focus {
     background-color: #f5f5f5;
     background-image: linear-gradient(to bottom, #fff, #e6e6e6);
     background-repeat: repeat-x;
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
     border-color: #e6e6e6 #e6e6e6 #bfbfbf;
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
     border: 1px solid #cccccc;
     border-bottom-color: #b3b3b3;
     border-radius: 4px;
@@ -2634,8 +2632,6 @@ ul.widget_tally .count {
     border-bottom: 1px solid rgba(101, 204, 182, 0.16);
     padding-bottom: 15px;
     border-radius: 4px;
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
-    filter: progid: DXImageTransform.Microsoft.gradient(enabled=false);
     padding-bottom: 10px;
     box-shadow: 0 4px 6px -6px #222
 }
@@ -3418,7 +3414,6 @@ form:after {
 .button {
     background: #f7f9fa;
     background: linear-gradient(top, #f7f9fa 0%, #f0f0f0 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f7f9fa', endColorstr='#f0f0f0', GradientType=0);
     -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
     -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
