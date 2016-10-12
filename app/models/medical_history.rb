@@ -1,3 +1,3 @@
 class MedicalHistory < ApplicationRecord
-  blongs_to :policy
+  belongs_to :policy
 end
