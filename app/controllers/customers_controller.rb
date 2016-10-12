@@ -24,7 +24,11 @@ class CustomersController < ApplicationController
   end
 
   def update
-    @customer.update_attributes(customer_params)
+    if @customer.update_attributes(customer_params)
+      flash[:success] = "You have updated customer successfully!"
+    else
+      flash[:error] = "You have not updated customer successfully!"
+    end
     redirect_to customers_path 
   end
 
@@ -32,8 +36,10 @@ class CustomersController < ApplicationController
     @customer = User.new(customer_params.merge!({password: Settings.user.password}))
     if @customer.save
       redirect_to customers_path
+      flash[:success] = "You have created customer successfully!"
     else
       render :new
+      flash[:error] = "You have not created customer successfully!"
     end
   end
 
