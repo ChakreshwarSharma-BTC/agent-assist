@@ -51,7 +51,7 @@ class CustomersController < ApplicationController
   def create_member
     @family_member = FamilyMember.new(family_member_params)
     if @family_member.save
-      Family.create(user_id: @customer.id, family_member_id: family_member.id)  
+      Family.create(user_id: @customer.id, family_member_id: @family_member.id)  
       redirect_to customer_path
     else
       render 'customers/family/new'
@@ -68,6 +68,7 @@ class CustomersController < ApplicationController
   end
 
   def show_member
+    @relation_with_customer = Relation.find(@family_member.relation_with_customer).relation_type
     render 'customers/family/show'
   end
 
@@ -87,8 +88,8 @@ class CustomersController < ApplicationController
   private
   def customer_params
     params.require(:user).permit(:email, :password, :password_confirmation, :is_active, :primary_phone_no, :user_type,
-      personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender],
-      family_member_attributes: [ { personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender ]}, :relation_with_customer, :health, :death_age, :death_year, :death_reason, :_destroy],
+      personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id],
+      family_member_attributes: [ { personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender]}, :relation_with_customer, :health, :death_age, :death_year, :death_reason, :_destroy],
       address_attributes: [:street_1, :street_2, :city, :state, :pincode, :address_type])
   end
 

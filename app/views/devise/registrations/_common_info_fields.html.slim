@@ -13,7 +13,7 @@
 .form-group
   = page_class('Date of Birth')
   .col-md-6
-    = f.text_field :date_of_birth, class: 'form-control date_picker'
+    = f.text_field :date_of_birth, class: 'form-control date_picker', required: true, label: false
 .form-group
   = page_class('Gender')
   .col-md-6
@@ -21,4 +21,5 @@
     | Male
     = f.radio_button :gender, 'female', class:"radio-inline"
     | Female
-= javascript_include_tag 'register'
+javascript:
+  AgentAssist.Common.showDatePicker('.date_picker');
