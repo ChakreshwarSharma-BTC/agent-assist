@@ -4,8 +4,9 @@
    *= require 'common.min'
 */
 $icon-font-path: "bootstrap/";
-@import 'bootstrap';
 @import 'bootstrap-sprockets';
+@import 'bootstrap';
 @import 'bootstrap-datetimepicker';
 @import 'font-awesome';
 @import 'select2';
+@import 'green'

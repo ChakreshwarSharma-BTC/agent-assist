@@ -17,8 +17,8 @@
           .form-group
             - if devise_mapping.rememberable? 
               .field.remember-me
-                = f.check_box :remember_me, checked: false
-                |  remember me
+                = f.check_box :remember_me, class: 'form-control'
+                |  Remember Me
             .actions
               = f.submit "Sign in", class: "btn btn-primary"
           .form-group.
@@ -31,3 +31,8 @@
                   = link_to "Sign up", new_registration_path(resource_name)
           .clearfix
           .separator
+
+= javascript_include_tag 'register'
+javascript:
+  AgentAssist.Common.bindIcheck();        
+  AgentAssist.Register.validateForm('.btn');
