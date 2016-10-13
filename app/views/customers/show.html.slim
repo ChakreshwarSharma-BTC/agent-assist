@@ -4,7 +4,7 @@
       .x_panel
         .x_title
           h2
-            | Show 
+            | Customer 
           .clearfix
         .x_content
         table.table
@@ -27,6 +27,7 @@
                = render partial: 'address'
         .clearfix
         .separator
+        = link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-info'
         h2
           | Family List
           .separator
