@@ -17,6 +17,7 @@
 //= require moment
 //= require bootstrap
 //= require bootstrap-datetimepicker
+//= require icheck.min
 //= require common
 //= require cocoon
 //= require turbolinks

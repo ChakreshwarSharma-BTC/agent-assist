@@ -55,11 +55,19 @@ AgentAssist.Common = {
     });
     AgentAssist.Common.dateTimePicker();
   },
+  bindIcheck: function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-green',
+      radioClass: 'iradio_square-green',
+      increaseArea: '20%'
+    });
+  },
   documentOnReady: function (){
-    AgentAssist.Common.selectDropDown();
-    AgentAssist.Common.Flash_message();
-    AgentAssist.Common.ajaxLoader();
-    AgentAssist.Common.showDatePicker('.date_picker');
+    this.selectDropDown();
+    this.Flash_message();
+    this.ajaxLoader();
+    this.showDatePicker('.date_picker');
+    this.bindIcheck();
   }
 };
 $(document).ready(function(){

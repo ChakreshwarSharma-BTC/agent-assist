@@ -74,6 +74,11 @@ AgentAssist.Register = {
       }
     });
   },
+  validateForm: function (selector){
+    $(selector).on('click', function(){
+      $('form').valid();
+    });
+  },
   documentOnReady: function (){
     this.autoCompleteLocation('#user_address_attributes_0_city');
     this.autoCompleteLocation('#user_address_attributes_1_city');

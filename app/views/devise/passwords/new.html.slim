@@ -10,11 +10,11 @@
               label-control
             = f.input :email, class: "form-control", autofocus: true, required: true, label: false
           .form-group
-            .col-md-6.col-sm-offset-7
+            .col-md-6.forgot-password
               button.btn.btn-primary type = "submit"
                 | Reset Password
-        .form-group.sign-in-link
-          - if controller_name != 'sessions'
-            = link_to "Sign in", new_session_path(resource_name)
+            .col-md-6.sign-in-link
+            - if controller_name != 'sessions'
+              = link_to "Sign in", new_session_path(resource_name)
         .clearfix
         .separator
