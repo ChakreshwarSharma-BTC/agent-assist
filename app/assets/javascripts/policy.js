@@ -179,14 +179,14 @@ AgentAssist.Policy = {
     }
   },
   documentOnReady: function (){
-    this.Policy.policyCompanies();
-    this.Policy.showDatePicker();
-    this.Policy.wizardSlideSteps();
-    this.Policy.formSubmit();
-    this.Policy.userDetails();
-    this.Policy.buttonSubmit();
-    this.Policy.policyType();
-    this.Policy.autoCompleteLocationPolicy('#policy_address_attributes_city');
+    this.policyCompanies();
+    this.showDatePicker();
+    this.wizardSlideSteps();
+    this.formSubmit();
+    this.userDetails();
+    this.buttonSubmit();
+    this.policyType();
+    this.autoCompleteLocationPolicy('#policy_address_attributes_city');
   }
 };
 $(document).ready(function(){
