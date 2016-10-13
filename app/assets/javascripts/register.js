@@ -75,11 +75,11 @@ AgentAssist.Register = {
     });
   },
   documentOnReady: function (){
-    AgentAssist.Register.autoCompleteLocation('#user_address_attributes_0_city');
-    AgentAssist.Register.autoCompleteLocation('#user_address_attributes_1_city');
-    AgentAssist.Register.addressType();
-    AgentAssist.Register.wizardSlideSteps();
-    AgentAssist.Register.formSubmit();
+    this.autoCompleteLocation('#user_address_attributes_0_city');
+    this.autoCompleteLocation('#user_address_attributes_1_city');
+    this.addressType();
+    this.wizardSlideSteps();
+    this.formSubmit();
   }
 };
 $(document).ready(function(){
