@@ -16,11 +16,18 @@
     = f.text_field :date_of_birth, class: 'form-control date_picker', required: true, label: false
 .form-group
   = page_class('Gender')
-  .col-md-6
-    = f.radio_button :gender,'male'
-    | Male
-    = f.radio_button :gender, 'female'
-    | Female
+  - if current_page?( new_user_registration_path)
+    .col-md-6.gender_radio_button
+      = f.radio_button :gender,'male'
+      |  Male 
+      = f.radio_button :gender, 'female'
+      |  Female
+  - else
+    .col-md-6
+      = f.radio_button :gender, 'male'
+      |  Male 
+      = f.radio_button :gender, 'female'
+      |  Female
 javascript:
   AgentAssist.Common.showDatePicker('.date_picker');
   AgentAssist.Common.bindIcheck();
