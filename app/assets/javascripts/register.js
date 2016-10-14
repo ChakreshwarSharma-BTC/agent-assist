@@ -79,20 +79,27 @@ AgentAssist.Register = {
       $('form').valid();
     });
   },
-  Email_validation: function(){
-   $('#user_email').on('change', function(){
-      $.ajax({
-        type: 'GET',
-        url: '/customers/new',
-        data: {
-          email: $('#user_email').val()
-        }
-      });
+  selectDropDown: function(){
+    $(".select").select2().change(function(){
+      $(this).valid();
     });
+    $("#customer").select2({});
+  },
+  Email_validation: function(){
+   // $('#user_email').on('change', function(){
+   //    $.ajax({
+   //      type: 'GET',
+   //      url: '/customers/new',
+   //      data: {
+   //        email: $('#user_email').val()
+   //      }
+   //    });
+   //  });
   },
   documentOnReady: function (){
     this.autoCompleteLocation('#user_address_attributes_0_city');
     this.autoCompleteLocation('#user_address_attributes_1_city');
+    this.selectDropDown();
     this.addressType();
     this.wizardSlideSteps();
     this.formSubmit();
