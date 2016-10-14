@@ -4,12 +4,10 @@ h2
 = f.simple_fields_for :address do |a|
   = render partial: 'devise/registrations/common_address_fields', locals: {a: a}
   .form-group
-    .col-md-6
-      label.label-control
-        | same as permanent address
+    label.control-label.col-md-3.align
+      | same as permanent address
     .col-md-6
       = check_box_tag 'checkbox_check'
-        | DoNotDistrub
     = a.hidden_field :address_type, value: 'temporary'
 #checked_form
   .x_title1
