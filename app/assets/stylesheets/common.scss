@@ -168,11 +168,18 @@ color:#fcf8e3!important;
 
 
 .flash-message-box {
-position:absolute;
-top:0;
-left:0;
-width:100%;
-z-index:1000;
+  position:absolute;
+  top:0;
+  left:230px;
+  width:88%;
+  z-index:1000;
+}
+.flash-message-login{
+  position:absolute;
+  align:center;
+  left:0;
+  width:100%;
+  z-index:1000;
 }
 
 .action-space {
