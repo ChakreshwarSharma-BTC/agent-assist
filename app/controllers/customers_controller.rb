@@ -21,8 +21,7 @@ class CustomersController < ApplicationController
 
   def new
     @customer = User.new
-    @email_found = User.where(email: params[:email]).count > 0 
-    binding.pry
+    @email_found = User.where(email: params[:email]).count > 0
   end
 
   def update
