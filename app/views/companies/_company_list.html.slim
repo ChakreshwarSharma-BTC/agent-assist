@@ -2,9 +2,4 @@
   tr
     td
       = company.name
-    td
-      = link_to(edit_company_path(company), class: "action-icon-company") do
-        i.fa.fa-edit.action-space[title="Edit"]
-      = link_to(company_path(company),method: :delete, data: {confirm: 'Are you sure you want to delete the company?'}, class: "action-icon-company") do
-        i.fa.fa-trash.action-space[title="Delete"] 
 = javascript_include_tag 'sidebar'

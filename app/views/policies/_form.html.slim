@@ -5,37 +5,32 @@
         a.selected href="#step-1" 
           span.step_no 1
           span.step_descr
-            | Step 1
-            br
-            small Step 1 Policy Details
+            | Policy Details
       li
         a.disabled href="#step-2"  
           span.step_no 2
           span.step_descr
-            | Step 2
-            br
-            small Step 2 Insurance Details
+          - if @category_id == 1
+            | Insurance Details
+          - elsif @category_id == 2
+            | Vehicle Details
+          -else
+            | 
       li
         a.disabled href="#step-3" 
           span.step_no 3
           span.step_descr
-            | Step 3
-            br
-            small Step 3 Personal Details
+            | Personal Details
       li
         a.disabled href="#step-4" 
           span.step_no 4
           span.step_descr
-            | Step 4
-            br
-            small Step 4 Nominee Details
+            | Nominee Details
       li
         a.disabled href="#step-5"
           span.step_no 5
           span.step_descr
-            | Step 5
-            br
-            small Step 5 Address
+            | Address
     .stepContainer
       = simple_form_for @policy do |f|
         = render partial: 'wizard_steps', locals: {f: f, plan: @plan}

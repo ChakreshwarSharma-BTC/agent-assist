@@ -6,7 +6,7 @@
           h2
             | Customer Details
           .pull-right
-              = link_to 'Add', new_customer_path, class: "btn btn-primary pull-right add-btn-padding"
+              = link_to 'Add', new_customer_path, class: "btn btn-primary pull-right add-btn-padding", title:"Add"
           .clearfix
         .x_content
           - if @customers.present?
@@ -14,7 +14,7 @@
               = form_tag filter_customers_path, method: :get, remote: true do
                 = text_field_tag 'customer_name', nil, placeholder: 'Customer Name'
                 = text_field_tag 'email', nil, placeholder: 'Email'
-                = button_tag 'Search'
+                = button_tag 'Search', title:"Search"
             .list-space
             .table-responsive
               table.table.table-striped.jambo_table.bulk_action
@@ -27,5 +27,5 @@
                 .pull-right
                   = paginate @customers, controller: 'customers', action: 'index', remote: true if @customers.present?
           - else
-            = render partial: "shared/no_data_available_message", locals: { message: 'Plans' }
+            = render partial: "shared/no_data_available_message", locals: { message: 'Customers' }
 = javascript_include_tag 'sidebar'

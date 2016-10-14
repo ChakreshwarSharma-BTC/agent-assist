@@ -16,7 +16,7 @@ class User < ApplicationRecord
   scope :do_not_disturb, ->(current_user) { current_user.update_attributes(notification: true) }
   attr_accessor :user_type
   # validation
-  validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
+  validates :email, uniqueness: true
   validates :primary_phone_no, presence: true, numericality: true, length: {is: 10}
   #cout the user
   scope :customers, -> { with_role :customer }

@@ -1,11 +1,5 @@
 AgentAssist = {};
 AgentAssist.Common = {
-  selectDropDown: function(){
-    $(".select").select2().change(function(){
-      $(this).valid();
-    });
-    $("#policy_plan_attributes_company_category_id, #policy_plan_id, policy_CategoryCompany_company_id").select2({});
-  },
   Flash_message: function(){
     $(".flash_msg").delay(5000).slideUp(3000).fadeOut();
   },
@@ -41,7 +35,8 @@ AgentAssist.Common = {
   dateTimePicker: function(){
     $('.date_picker').datetimepicker({
       format: 'DD/MM/YYYY',
-      maxDate: moment()
+      maxDate: moment(),
+      useCurrent: false
     });
   },
   showDatePicker: function(){
@@ -56,7 +51,6 @@ AgentAssist.Common = {
     AgentAssist.Common.dateTimePicker();
   },
   documentOnReady: function (){
-    AgentAssist.Common.selectDropDown();
     AgentAssist.Common.Flash_message();
     AgentAssist.Common.ajaxLoader();
     AgentAssist.Common.showDatePicker('.date_picker');

@@ -221,6 +221,12 @@ width:100px;
 display:block;
 }
 
-.select2-container .select2-selection--single,.select2-search--dropdown,.select2-container--open .select2-dropdown {
-width:465px!important;
+.form-group .select2-container {
+  position: relative;
+  z-index: 2;
+  float: left;
+  width: 100%;
+  margin-bottom: 0;
+  display: table;
+  table-layout: fixed;
 }

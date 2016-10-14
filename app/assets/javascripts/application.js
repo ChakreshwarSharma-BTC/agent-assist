@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.inputmask
 //= require jquery.validate.min
 //= require jquery_ujs
 //= require jquery.blockUI

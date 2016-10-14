@@ -1,4 +1,10 @@
 AgentAssist.Policy = {
+  selectDropDown: function(){
+    $(".select").select2().change(function(){
+      $(this).valid();
+    });
+    $("#policy_plan_attributes_company_category_id, #policy_user_id, #policy_mod_of_payment, #policy_premium_mod, #company_name, #plan_name").select2({});
+  },
   policyCompanies: function(){
     $('#policy_plan_attributes_company_category_id').on('change', function(){
       if($(this).prop('selectedIndex') == 0)
@@ -142,6 +148,7 @@ AgentAssist.Policy = {
     AgentAssist.Policy.userDetails();
     AgentAssist.Policy.buttonSubmit();
     AgentAssist.Policy.policyType();
+    AgentAssist.Policy.selectDropDown();
   }
 };
 $(document).ready(function(){

@@ -21,6 +21,8 @@ class CustomersController < ApplicationController
 
   def new
     @customer = User.new
+    @email_found = User.where(email: params[:email]).count > 0 
+    binding.pry
   end
 
   def update
@@ -89,6 +91,9 @@ class CustomersController < ApplicationController
     @customers = @customers.select('personal_infos.first_name, users.*').joins(:personal_info) if params[:sort] == 'first_name'
     @customers = sort_and_paginate(@customers) if @customers.present?
     render 'customers/filter_customers'
+  end
+  def email
+
   end
 
   private

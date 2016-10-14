@@ -8,13 +8,13 @@
           label.control-label.col-md-6
             | Email
           .col-md-6
-            = f.input :email, class:"form-control", required: true, label: false
+            = f.input :email, class:"form-control", required: true, label: false, maxlength: 10
         .form-group
           label.control-label.col-md-6
             | Phone no.
             label-control
           .col-md-6
-            = f.input :primary_phone_no,class:"form-control", required: true, label: false    
+            = f.input :primary_phone_no,class:"form-control", required: true, label: false
         = render partial: 'informable_fields', locals: {f: f}
         .form-group
           label.control-label.col-md-6

@@ -1,25 +1,25 @@
 .row.top_tiles
-  .animated.flipInY.col-md-4
+  .animated.flipInY.col-md-4 = link_to customers_path
     .tile-stats
       .icon
         i.fa.fa-group
       .count
         = customer_count
       h3
-         = link_to "Total Customer", customers_path
-  .animated.flipInY.col-md-4
+       | Total Customer
+  .animated.flipInY.col-md-4 = link_to policies_path
     .tile-stats
       .icon
         i.fa.fa-file-powerpoint-o
       .count
         = policy_count
       h3
-        = link_to "Total Policy", policies_path
-  .animated.flipInY.col-md-4
+       | Total Policy
+  .animated.flipInY.col-md-4 = link_to companies_path
     .tile-stats
       .icon
         i.fa.fa-building-o
       .count
         = company_count
       h3
-        = link_to "Total Company", companies_path
+       | Total Company
