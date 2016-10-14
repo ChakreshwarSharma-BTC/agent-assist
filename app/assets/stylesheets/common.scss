@@ -222,7 +222,11 @@ display:block;
 }
 
 .gender_radio_button {
-  margin-left: 230px;
-  margin-top: -23px;
-  margin-bottom: 17px;
+  padding-left: 10px; 
+  width: inherit; 
+  border-left-width: 10px; 
+}
+.gender_radio_button label {
+  margin-left: 5px;
+  margin-right: 5px;
 }
