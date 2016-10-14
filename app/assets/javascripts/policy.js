@@ -140,15 +140,60 @@ AgentAssist.Policy = {
       }
     });
   },
+  autoCompleteLocationPolicy: function (selector) {
+    $(selector).on('focus', function(){
+      autocomplete = new google.maps.places.Autocomplete($(selector)[0],
+        {
+          types: ['geocode'],
+          componentRestrictions: {country: 'in'}
+        });
+      autocomplete.addListener('place_changed', AgentAssist.Policy.getAddress);
+    });
+  },
+  getAddress: function () {
+    var address = {
+      locality: 'long_name',
+      administrative_area_level_1: 'long_name',
+      postal_code: 'short_name'
+    };
+    var place = autocomplete.getPlace();
+    if(place != null)
+    {
+      AgentAssist.Policy.fillAddress(place, address);
+    }
+  },
+  fillAddress: function (place, address) {
+    for (var i = 0; i < place.address_components.length; i++)
+    {
+      var addressType = place.address_components[i].types[0];
+      var val = place.address_components[i][address[addressType]];
+      switch(addressType)
+      {
+        case 'locality':
+          $('#policy_address_attributes_city').val(val);
+          break;
+        case 'administrative_area_level_1':
+          $('#policy_address_attributes_state').val(val);
+          break;
+        case 'postal_code':
+          $('#policy_address_attributes_pincode').val(val);
+          break;
+        default:
+          $('#policy_address_attributes_pincode').val('');
+          break;
+      }
+    }
+  },
   documentOnReady: function (){
-    AgentAssist.Policy.policyCompanies();
-    AgentAssist.Policy.showDatePicker();
-    AgentAssist.Policy.wizardSlideSteps();
-    AgentAssist.Policy.formSubmit();
-    AgentAssist.Policy.userDetails();
-    AgentAssist.Policy.buttonSubmit();
-    AgentAssist.Policy.policyType();
-    AgentAssist.Policy.selectDropDown();
+    this.policyCompanies();
+    this.showDatePicker();
+    this.wizardSlideSteps();
+    this.formSubmit();
+    this.userDetails();
+    this.buttonSubmit();
+    this.policyType();
+    this.autoCompleteLocationPolicy('#policy_address_attributes_city');
+    this.selectDropDown();
   }
 };
 $(document).ready(function(){

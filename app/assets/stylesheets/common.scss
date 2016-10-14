@@ -121,7 +121,7 @@ padding:20px 10px 10px!important;
 }
 
 .remember-me {
-margin-right:248px;
+margin-right:238px;
 margin-bottom:-22px;
 }
 
@@ -142,11 +142,11 @@ margin-left:-23px;
 }
 
 .sign-in-link {
-margin-left:290px;
+  margin-right: -51px;
 }
 
 .btn-reset-password {
-margin-left:5px;
+margin-left:-10px;
 }
 
 .confirm-password-label {
@@ -166,23 +166,6 @@ background-color:#B20000!important;
 color:#fcf8e3!important;
 }
 
-.modal_footer {
-text-align:left;
-border-top:1px solid #E5E5E5;
-padding:15px;
-}
-
-.modal_display {
-overflow-y:initial!important;
-width:600px!important;
-position:fixed;
-top:0;
-right:0;
-left:0;
-z-index:1050;
-outline:0;
-margin:200px auto;
-}
 
 .flash-message-box {
 position:absolute;

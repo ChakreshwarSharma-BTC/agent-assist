@@ -74,6 +74,11 @@ AgentAssist.Register = {
       }
     });
   },
+  validateForm: function (selector){
+    $(selector).on('click', function(){
+      $('form').valid();
+    });
+  },
   Email_validation: function(){
    $('#user_email').on('change', function(){
       $.ajax({
@@ -86,12 +91,12 @@ AgentAssist.Register = {
     });
   },
   documentOnReady: function (){
-    AgentAssist.Register.autoCompleteLocation('#user_address_attributes_0_city');
-    AgentAssist.Register.autoCompleteLocation('#user_address_attributes_1_city');
-    AgentAssist.Register.addressType();
-    AgentAssist.Register.wizardSlideSteps();
-    AgentAssist.Register.formSubmit();
-    AgentAssist.Register.Email_validation();
+    this.autoCompleteLocation('#user_address_attributes_0_city');
+    this.autoCompleteLocation('#user_address_attributes_1_city');
+    this.addressType();
+    this.wizardSlideSteps();
+    this.formSubmit();
+    this.Email_validation();
   }
 };
 $(document).ready(function(){

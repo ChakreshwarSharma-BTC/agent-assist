@@ -17,9 +17,10 @@
 .form-group
   = page_class('Gender')
   .col-md-6
-    = f.radio_button :gender,'male', class:"radio-inline"
+    = f.radio_button :gender,'male'
     | Male
-    = f.radio_button :gender, 'female', class:"radio-inline"
+    = f.radio_button :gender, 'female'
     | Female
 javascript:
   AgentAssist.Common.showDatePicker('.date_picker');
+  AgentAssist.Common.bindIcheck();

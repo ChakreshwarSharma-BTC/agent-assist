@@ -34,3 +34,6 @@
               = f.submit class: "btn btn-primary btn-space" 
               = link_to "Cancel", user_session_path, class: "btn btn-default btn-space-width"
 = javascript_include_tag 'register'
+javascript:
+  AgentAssist.Common.bindIcheck();
+  AgentAssist.Register.validateForm('.btn');

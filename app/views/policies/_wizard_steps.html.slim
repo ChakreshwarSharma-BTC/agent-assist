@@ -21,3 +21,7 @@ policy.form-horizontal.form-label-left
     = render partial: 'nominee_details', locals: {f: f, nominee: @nominee, nominee_personal_info: @nominee_personal_info }
   #step-5.content
     = render partial: 'address_details', locals: {f: f, address: @address}
+
+= javascript_include_tag 'sidebar'
+= javascript_include_tag 'policy'
+= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Settings.google.maps_api.key}&libraries=places"

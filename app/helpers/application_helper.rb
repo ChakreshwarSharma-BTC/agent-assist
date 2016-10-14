@@ -25,7 +25,7 @@ module ApplicationHelper
    
   def page_class(lbl)
     if (lbl == "Middle Name")
-      current_page?(controller: 'registrations', action: 'new')  ? content_tag(:label, lbl, class: "label-control col-md-6 align") : content_tag(:label, lbl, class: "label-control col-md-3 align")
+      current_page?(controller: 'registrations', action: 'new') ||  current_page?(controller: 'registrations', action: 'create') ? content_tag(:label, lbl, class: "label-control col-md-6 align") : content_tag(:label, lbl, class: "label-control col-md-3 align")
     else
       current_page?(controller: 'registrations', action: 'new')  ? content_tag(:label, lbl, class: "control-label col-md-6 align") : content_tag(:label, lbl, class: "control-label col-md-3 align")
     end

@@ -1,7 +1,7 @@
 class Policy < ApplicationRecord
   belongs_to :plan
   accepts_nested_attributes_for :plan  
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   accepts_nested_attributes_for :user
   has_one :bank
   has_one :medical_history
