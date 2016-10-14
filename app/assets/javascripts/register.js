@@ -61,7 +61,7 @@ AgentAssist.Register = {
     }
   },
   addressType: function () {
-    $('#checkbox_check').on('click', function() {
+    $('#checkbox_check').on('ifToggled', function() {
       if ($(this).prop('checked')) {
         $('div#checked_form input').prop('disabled', true);
         $('#checked_form').hide();

@@ -22,7 +22,7 @@ AgentAssist.Common = {
     });
   },
   notification: function(){
-    $('#notification_checked').on('change', function(){
+    $('#notification_checked').on('ifToggled', function(){
       var notification_value = $(this).is(':checked');
       $.ajax({
         type:'GET',
