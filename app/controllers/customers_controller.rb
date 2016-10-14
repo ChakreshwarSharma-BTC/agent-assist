@@ -22,6 +22,11 @@ class CustomersController < ApplicationController
   def new
     @customer = User.new
     @email_found = User.where(email: params[:email]).count > 0
+    if(@email_found == true)
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def update

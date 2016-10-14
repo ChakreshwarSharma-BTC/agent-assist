@@ -13,6 +13,11 @@ class PoliciesController < ApplicationController
     @personal_info = @policy.build_personal_info
     @nominee = @policy.build_nominee
     @nominee_personal_info = @nominee.build_personal_info
+    if(@email_found == true)
+      respond_to do |format|
+        format.js
+      end
+    end
   end
 
   def index
@@ -39,6 +44,7 @@ class PoliciesController < ApplicationController
   def new_user
     user_attributes = params[:policy][:user_attributes]
     personal_info = params[:policy][:personal_info_attributes].permit!
+    @email_found = User.where(email: user_attributes[:email]).count > 0
     @user = User.find_or_create_by(email: user_attributes[:email]) do |u|
       u.password = Settings.user.password
       u.primary_phone_no = user_attributes[:primary_phone_no]

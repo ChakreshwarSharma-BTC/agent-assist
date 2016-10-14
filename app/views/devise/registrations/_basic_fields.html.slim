@@ -3,10 +3,9 @@
     | Email
     label-control
   .col-md-6
-    = f.input :email, autofocus: true, class: 'form-control', required: true, label: false
+    = f.input :email, autofocus: true, class: 'form-control', required: true, label: false, input_html: { class: 'check_email'}
   .col-md-3
-    - if(@email_found == true)
-      #email
+    #email_value
 .form-group
   label.control-label.col-md-3 for="primary_phone_no" 
     | Primary Phone No

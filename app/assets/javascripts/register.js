@@ -86,15 +86,15 @@ AgentAssist.Register = {
     $("#customer").select2({});
   },
   Email_validation: function(){
-   // $('#user_email').on('change', function(){
-   //    $.ajax({
-   //      type: 'GET',
-   //      url: '/customers/new',
-   //      data: {
-   //        email: $('#user_email').val()
-   //      }
-   //    });
-   //  });
+   $('.check_email').on('change', function(){
+      $.ajax({
+        type: 'GET',
+        url: '/customers/new',
+        data: {
+          email: $('#user_email').val()
+        }
+      });
+    });
   },
   documentOnReady: function (){
     this.autoCompleteLocation('#user_address_attributes_0_city');
@@ -111,5 +111,4 @@ $(document).ready(function(){
   $("#user_primary_phone_no").inputmask("9999999999");
   $("#user_address_attributes_0_pincode").inputmask("999999");
   $("#user_address_attributes_1_pincode").inputmask("999999");
-  $("#email").fadeIn().text("Name required.");
 });

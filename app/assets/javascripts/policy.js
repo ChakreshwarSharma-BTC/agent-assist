@@ -3,7 +3,7 @@ AgentAssist.Policy = {
     $(".select").select2().change(function(){
       $(this).valid();
     });
-    $("#customer,#select2-policy_nominee_attributes_relation-container,#policy_plan_attributes_company_category_id, #user_id, #policy_user_id, #policy_mod_of_payment, #policy_premium_mod, #company_name, #plan_name").select2({});
+    $("#nominee_detail,#customer,#select2-policy_nominee_attributes_relation-container,#policy_plan_attributes_company_category_id, #user_id, #policy_user_id, #policy_mod_of_payment, #policy_premium_mod, #company_name, #plan_name").select2({});
   },
   policyCompanies: function(){
     $('#policy_plan_attributes_company_category_id').on('change', function(){
@@ -59,6 +59,17 @@ AgentAssist.Policy = {
           $('#policy_personal_info_attributes_middle_name').val(response.personal_info.middle_name);
           $('#policy_personal_info_attributes_date_of_birth').val(response.personal_info.date_of_birth);
           $('#policy_personal_info_attributes_gender').val(response.personal_info.gender);          
+        }
+      });
+    });
+  },
+  emailValidation: function(){
+   $('#policy_user_attributes_email').on('change', function(){
+      $.ajax({
+        type: 'GET',
+        url: '/customers/new',
+        data: {
+          email: $('#policy_user_attributes_email').val()        
         }
       });
     });
@@ -235,6 +246,7 @@ AgentAssist.Policy = {
     this.autoCompleteLocationPolicy('#policy_address_attributes_city');
     this.selectDropDown();
     this.premiumAmount();
+    this.emailValidation();
   }
 };
 $(document).ready(function(){
