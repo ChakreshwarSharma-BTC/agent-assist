@@ -184,6 +184,40 @@ AgentAssist.Policy = {
       }
     }
   },
+  premiumAmount: function() {
+    $('#policy_premium_mod').on('change',function(){
+
+      var start_date = $('#policy_start_date').val();
+      var start_year = new Date(start_date.split('/').reverse().join('/')).getFullYear();
+      var end_date = $('#policy_end_date').val();
+      var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear()
+      var total_amount = $('#policy_total_amount').val();
+      var premium_mod = $(this).val();
+
+      var total_year = end_year - start_year
+      var policy_amt = total_amount / total_year
+
+      console.log(premium_mod);
+      switch(premium_mod)
+      {
+        case 'quarterly':
+          val =  policy_amt / 4
+          $('#policy_premium_amount').val(val);
+          break;
+        case 'half_year':
+          val =  policy_amt / 2
+          $('#policy_premium_amount').val(val);
+          break;
+        case 'yearly':
+          val =  policy_amt
+          $('#policy_premium_amount').val(val);
+          break;
+        default:
+          $(this).val('');
+          break;
+      }
+    });
+  },
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
@@ -194,6 +228,7 @@ AgentAssist.Policy = {
     this.policyType();
     this.autoCompleteLocationPolicy('#policy_address_attributes_city');
     this.selectDropDown();
+    this.premiumAmount();
   }
 };
 $(document).ready(function(){
