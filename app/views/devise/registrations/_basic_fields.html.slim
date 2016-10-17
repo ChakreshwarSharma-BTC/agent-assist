@@ -14,4 +14,4 @@
     = f.input :primary_phone_no, class: 'form-control', required: true, label: false
 
 javascript:
-  AgentAssist.Common.bindMaskedInput('#user_primary_phone_no', '9999999999');
+  AgentAssist.Common.bindMaskedInput('#user_primary_phone_no', "#{Settings.masked_value.primary_phone_no}");

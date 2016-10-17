@@ -4,3 +4,6 @@ policy:
   day: 7
 pagination:
   default: 4
+masked_value:
+  pincode: 999999
+  primary_phone_no: 9999999999
