@@ -39,6 +39,7 @@
     padding: 5px 6px;
     border-radius: 50%;
 }
+.nav-sm .site_title{padding-left:0}
 .nav-sm .main_container .top_nav {
     display: block;
     margin-left: 70px;
@@ -1166,6 +1167,12 @@ table.jambo_table tbody tr.selected {
 table.jambo_table tbody tr.selected td {
     border-top: 1px solid rgba(38, 185, 154, 0.4);
     border-bottom: 1px solid rgba(38, 185, 154, 0.4)
+}
+table.jambo_table thead th a {
+    color: #fff
+}
+table.jambo_table thead th a:hover {
+    color: #1ABB9C
 }
 .dataTables_paginate a {
     background: #ff0000

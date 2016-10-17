@@ -3,7 +3,8 @@
     tbody
       tr.policy_color
         td 
-          = policy.policy_number
+          = link_to(policy_path(policy), class: "tooltips", title: 'View Policy') do
+            = policy.policy_number
         td 
           = policy.plan.company_category.category.name
         td
