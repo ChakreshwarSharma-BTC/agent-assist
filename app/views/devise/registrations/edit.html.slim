@@ -6,8 +6,9 @@
           = page_class('Email')
           .col-md-6
             = f.input :email, autofocus: true, required: true, label: false
-        = f.simple_fields_for resource.personal_info do |f|
-          = render partial: 'common_info_fields', locals: {f: f}
+        - if resource.personal_info.present?
+          = f.simple_fields_for resource.personal_info do |f|
+            = render partial: 'common_info_fields', locals: {f: f}
         .form-group
           = page_class('Password')
           .col-md-6
