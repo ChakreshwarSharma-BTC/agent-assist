@@ -209,30 +209,23 @@ AgentAssist.Policy = {
       var policy_amt = total_amount / total_year
 
       console.log(premium_mod);
-
+      var val = 0.00;
       if(total_year > 1)
       {
         switch(premium_mod)
         {
           case 'quarterly':
             val =  policy_amt / 4
-            $('#policy_premium_amount').val(val).toFixed(2);
             break;
           case 'half_year':
             val =  policy_amt / 2
-            $('#policy_premium_amount').val(val).toFixed(2);
             break;
           case 'yearly':
             val =  policy_amt
-            $('#policy_premium_amount').val(val).toFixed(2);
-            break;
-          default:
-            $('#policy_premium_amount').val('');
             break;
         }
-      }else{
-        $('#policy_premium_amount').val(0.00);
       }
+      $('#policy_premium_amount').val(val.toFixed(2));
     });
   },
   documentOnReady: function (){
