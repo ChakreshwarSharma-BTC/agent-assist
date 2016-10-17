@@ -216,15 +216,15 @@ AgentAssist.Policy = {
         {
           case 'quarterly':
             val =  policy_amt / 4
-            $('#policy_premium_amount').val(val.toFixed(2));
+            $('#policy_premium_amount').val(val).toFixed(2);
             break;
           case 'half_year':
             val =  policy_amt / 2
-            $('#policy_premium_amount').val(val.toFixed(2));
+            $('#policy_premium_amount').val(val).toFixed(2);
             break;
           case 'yearly':
             val =  policy_amt
-            $('#policy_premium_amount').val(val.toFixed(2));
+            $('#policy_premium_amount').val(val).toFixed(2);
             break;
           default:
             $('#policy_premium_amount').val('');
