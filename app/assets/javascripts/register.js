@@ -79,6 +79,11 @@ AgentAssist.Register = {
       $('form').valid();
     });
   },
+  validateFields: function(form){
+    $('form input').on('focusout', function(){
+      $(this).valid();
+    });
+  },
   selectDropDown: function(){
     $(".select").select2().change(function(){
       $(this).valid();
@@ -108,7 +113,4 @@ AgentAssist.Register = {
 };
 $(document).ready(function(){
   AgentAssist.Register.documentOnReady();
-  $("#user_primary_phone_no").inputmask("9999999999");
-  $("#user_address_attributes_0_pincode").inputmask("999999");
-  $("#user_address_attributes_1_pincode").inputmask("999999");
 });

@@ -1,5 +1,4 @@
 class RegistrationsController < Devise::RegistrationsController
-
   def create
     build_resource(sign_up_params)
      if resource.save
@@ -13,6 +12,13 @@ class RegistrationsController < Devise::RegistrationsController
       flash[:error] = @user.errors.full_messages.to_sentence
     end
   end
+
+  def update
+    personal_info = params[:user][:personal_info].permit!
+    current_user.personal_info.update_attributes(personal_info)
+    super
+  end
+
   private
   def sign_up_params
     params.require(:user).permit(:email, :password, :password_confirmation, :is_active, :primary_phone_no, 
