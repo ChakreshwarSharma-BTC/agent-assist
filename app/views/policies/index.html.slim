@@ -6,15 +6,18 @@
           h2
             | Policies Details
           .pull-right
-            = link_to 'Add', new_policy_path, class: "btn btn-primary pull-right add-btn-padding", title: "Add"
+            = link_to 'Add', new_policy_path, class: 'btn btn-primary pull-right add-btn-padding', title: 'Add'
           .clearfix
         .x_content
-          - if @policies.present?
+          - if @policies.present?  
             .pull-right
-              = form_tag filter_policies_path, method: :get, remote: true do            
-                = text_field_tag :policy_number, nil, placeholder: 'Enter Policy Number'
-                = text_field_tag :date, nil, placeholder: 'Enter Date'
-                = submit_tag :Submit
+              = form_tag filter_policies_path, method: :get, class: 'form-inline', remote: true do    
+                .form-group        
+                  = text_field_tag :policy_number, nil, placeholder: 'Enter Policy Number', class:'form-control action-space'
+                .form-group
+                  = text_field_tag :date, nil, placeholder: 'Enter Date',class:'form-control action-space'
+                .form-group
+                  = submit_tag :Search, class: 'btn btn-primary button_search'
             .list-space
             .table-responsive
               table.table.table-striped.jambo_table.bulk_action
@@ -27,6 +30,6 @@
                 .pull-right
                   = paginate @policies, controller: 'policies', action: 'index', remote: true if @policies.present?
           - else
-            = render partial: "shared/no_data_available_message", locals: { message: 'Policies' }
+            = render partial: 'shared/no_data_available_message', locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'
