@@ -57,6 +57,11 @@ AgentAssist.Common = {
       increaseArea: '20%'
     });
   },
+  bindMaskedInput: function(selector, maskedValue){
+    $(selector).inputmask(maskedValue, { "clearIncomplete": true }).bind('blur.mask', function () {
+      $(this).change().focusout();
+    });
+  },
   documentOnReady: function (){
     this.Flash_message();
     this.ajaxLoader();
