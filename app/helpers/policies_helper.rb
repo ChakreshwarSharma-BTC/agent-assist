@@ -12,10 +12,6 @@ module PoliciesHelper
   end
 
   def policy_reminder(policy)
-    if policy.end_date < Settings.policy.day.days.from_now.beginning_of_day
-       'policy_color'
-    else
-      ''
-    end
+    (policy.end_date < Settings.policy.day.days.from_now.beginning_of_day && action_name == 'policy_reminder') ? 'policy_color' : ''
   end
 end
