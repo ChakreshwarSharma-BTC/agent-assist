@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   scope 'agent' do
-    get '/' => 'agent#dashboard', as: 'agent_dashboard' 
+    get '/dashboard' => 'agent#dashboard', as: 'agent_dashboard' 
   end
 
   resources :policies do
