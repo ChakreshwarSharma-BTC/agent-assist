@@ -8,9 +8,7 @@ Rails.application.routes.draw do
     root 'devise/sessions#new'
   end
 
-  scope 'agent' do
-    get '/' => 'agent#dashboard', as: 'agent_dashboard' 
-  end
+  get '/dashboard' => 'agent#dashboard', as: 'agent_dashboard'  
 
   resources :policies do
     resources :nominees
