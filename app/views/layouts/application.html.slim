@@ -13,7 +13,7 @@ html
             = render partial: 'layouts/sidebar'
             = render partial: 'layouts/header'
             .flash-message-box
-              = render partial: "shared/flash_message"
+              = render partial: 'shared/flash_message'
             - if current_page?(agent_dashboard_path)
               - if Policy.any?
                 - if !current_user.notification
