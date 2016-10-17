@@ -14,6 +14,6 @@ tr.headings
     = resource_sortable(resource_class: Policy,  resources_path: :filter_policies_path, column: 'start_date', title: 'Start Date', no_link: no_sort_link)
   th.column-title
     = resource_sortable(resource_class: Policy,  resources_path: :filter_policies_path, column: 'end_date', title: 'End Date', no_link: no_sort_link)
-  - unless action_name == 'policy_reminder' || action_name == 'dashboard'
+  - unless action_name == 'dashboard'
     th.column-title.th
       =  t('.action')

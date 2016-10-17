@@ -1169,10 +1169,10 @@ table.jambo_table tbody tr.selected td {
     border-bottom: 1px solid rgba(38, 185, 154, 0.4)
 }
 table.jambo_table thead th a {
-    color: #fff
+  color: #fff
 }
 table.jambo_table thead th a:hover {
-    color: #1ABB9C
+  color: #1ABB9C
 }
 .dataTables_paginate a {
     background: #ff0000
