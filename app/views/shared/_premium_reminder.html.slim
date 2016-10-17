@@ -13,10 +13,12 @@
             = render partial: 'policies/list_body', locals: { policies: @premium_reminder }
       .modal-footer
         = check_box_tag 'notification_checked'
-        | DoNotDistrub
+        span.do-not-disturb-button
+          | Do Not Distrub
 javascript:
   if(#{current_user.notification} == false)
   {
     $('#modal').modal();
   }
-  AgentAssist.Common.notification();  
+  AgentAssist.Common.notification();
+  AgentAssist.Common.bindIcheck();
