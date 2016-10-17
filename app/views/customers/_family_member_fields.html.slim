@@ -4,4 +4,5 @@
   = link_to_remove_association "<i class='fa fa-trash-o fa-lg'></i> Remove Member".html_safe, f,  { wrapper_class: 'new_family', class: 'btn btn-danger' }
 = javascript_include_tag 'sidebar'
 javascript:
+  AgentAssist.Register.validateFields();
   AgentAssist.Common.showDatePicker('.date_picker');

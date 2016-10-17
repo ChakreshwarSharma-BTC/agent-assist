@@ -3,7 +3,7 @@
     | Email
     label-control
   .col-md-6
-    = f.input :email, autofocus: true, class: 'form-control', required: true, label: false, input_html: { class: 'check_email'}
+    = f.input :email, autofocus: true, class: 'form-control', required: true, label: false, input_html: { class: 'check_email' }
   .col-md-3
     #email_value
 .form-group
@@ -12,3 +12,6 @@
     label-control
   .col-md-6 
     = f.input :primary_phone_no, class: 'form-control', required: true, label: false
+
+javascript:
+  AgentAssist.Common.bindMaskedInput('#user_primary_phone_no', "#{Settings.masked_value.primary_phone_no}");

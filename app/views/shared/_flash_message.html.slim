@@ -4,7 +4,7 @@
       li
         - flash.each do |name, message|
           - if message.present?
-            .align-center.alert *{class: [bootstrap_class(name)]}
+            .align-center.alert_info *{class: [bootstrap_class(name)]}
               .close[data-dismiss="alert" aria-hidden="true"]
                 | x
               .center-text
