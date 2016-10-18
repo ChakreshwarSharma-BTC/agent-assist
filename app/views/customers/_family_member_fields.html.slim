@@ -2,7 +2,9 @@
   = render partial: 'personal_info_fields', locals: {f: f}
   = render partial: 'devise/registrations/common_family_fields', locals: {f: f}
   = link_to_remove_association "<i class='fa fa-trash-o fa-lg'></i> Remove Member".html_safe, f,  { wrapper_class: 'new_family', class: 'btn btn-danger' }
+
 = javascript_include_tag 'sidebar'
 javascript:
   AgentAssist.Common.validateFields();
+  AgentAssist.Register.addressType();
   AgentAssist.Common.showDatePicker('.date_picker');
