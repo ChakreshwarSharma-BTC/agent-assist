@@ -43,8 +43,8 @@ en:
         same_as_present: 'Same as present'
         present_address: 'Present Address'
   customers:
-    new:
-      customer_information: 'Customer Information'
+    field:
+      basic_info: 'Basic Information'
       personal_info: 'Personal Info'
       family_details: 'Family details'
       address: 'Address'
