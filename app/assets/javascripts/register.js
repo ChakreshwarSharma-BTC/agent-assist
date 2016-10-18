@@ -79,11 +79,6 @@ AgentAssist.Register = {
       $('form').valid();
     });
   },
-  validateFields: function(form){
-    $('form input').on('focusout', function(){
-      $(this).valid();
-    });
-  },
   selectDropDown: function(){
     $(".select").select2().change(function(){
       $(this).valid();
