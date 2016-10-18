@@ -29,8 +29,6 @@ class Policy < ApplicationRecord
   #validation
    validates :policy_number, :start_date, :end_date, :premium_amount, :total_amount, presence: true
 
-  #display policy list in desending order
-  scope :policy_desc_order, -> {order("end_date DESC")}
   #cout the policy
   scope :policy_count, -> {count}
   #count renewal policy
