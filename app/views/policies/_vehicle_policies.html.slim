@@ -3,29 +3,38 @@
     label.control-label.col-md-3
       | Registration Number
     .col-md-6
-      = f.input :registration_number,class:"form-control", required: true, label: false
+      = f.input :registration_number,class:'form-control', required: true, label: false
   .form-group
     label.control-label.col-md-3
       | Vehicle name
     .col-md-6
-      = f.input :name,class:"form-control", required: true, label: false
+      = f.input :name,class:'form-control', required: true, label: false
   .form-group
     label.control-label.col-md-3
       | Ncb
     .col-md-6
-      = f.input :ncb,class:"form-control", required: true, label: false
+      = f.input :ncb,class:'form-control', required: true, label: false
   .form-group
     label.control-label.col-md-3 
       | Accessory
     .col-md-6
-      .checkbox1
-        = f.check_box :idv_accessory
-        | &nbsp; Idv accessory
-        br
-        = f.check_box :electrical_accessory
-        | &nbsp; Electrical accessory
-        br
-        = f.check_box :non_electrical_accessory
-        | &nbsp; Non Electrical Accessory
+      .checkbox
+          label
+            .checkbox1
+              = f.check_box :idv_accessory
+              span.checkbox_lic
+                | Idv accessory
+      .checkbox
+          label
+            .checkbox1
+              = f.check_box :electrical_accessory
+              span.checkbox_lic
+                | Electrical accessory
+      .checkbox
+          label
+            .checkbox1
+              = f.check_box :non_electrical_accessory
+              span.checkbox_lic
+                | Non Electrical Accessory
 javascript:
   AgentAssist.Common.bindIcheck();        
