@@ -33,6 +33,8 @@ en:
       success: 'Policy removed successfully!'
     policy_rmeinder:
       reminders: 'Reminders'
+    index:
+      policies: 'Policies'
   premium_reminder:
     premium_reminder: 'Premium Reminder'
     do_not_disturb: 'Do Not Disturb'
