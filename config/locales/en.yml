@@ -44,7 +44,7 @@ en:
         present_address: 'Present Address'
   customers:
     field:
-      basic_info: 'Basic Information'
+      basic_info: 'Basic Info'
       personal_info: 'Personal Info'
       family_details: 'Family details'
       address: 'Address'
