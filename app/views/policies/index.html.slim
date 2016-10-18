@@ -33,10 +33,3 @@
             = render partial: 'shared/no_data_available_message', locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'
-javascript: 
-  $(document).ready(function(){
-    $('#date').datetimepicker({
-      format: 'DD/MM/YYYY',
-      useCurrent: false,
-    });
-  });
