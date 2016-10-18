@@ -1,21 +1,22 @@
 .form-group
-  = page_class('First Name')
-  .col-md-6
-    = f.input :first_name, class:"form-control", required: true, label: false
+  label.control-label.col-md-3
+    | First Name
+  = field_class(f.input :first_name, class: 'form-control', required: true, label: false)
 .form-group
-  = page_class('Middle Name')
-  .col-md-6
-    = f.input :middle_name,class:"form-control", required: false, label: false
+  label.label-control.col-md-3.align
+    | Middle Name
+  = field_class(f.input :middle_name, class: 'form-control', required: false, label: false)
 .form-group
-  = page_class('Last Name')
-  .col-md-6
-    = f.input :last_name,class:"form-control", required: true, label: false
+  label.control-label.col-md-3
+    | Last Name
+  = field_class(f.input :last_name, class: 'form-control', required: true, label: false)
 .form-group
-  = page_class('Date of Birth')
-  .col-md-6
-    = f.text_field :date_of_birth, class: 'form-control date_picker', required: true, label: false
+  label.control-label.col-md-3
+    | Date of Birth
+  = field_class(f.text_field :date_of_birth, class: 'form-control date_picker', required: true, label: false)
 .form-group
-  = page_class('Gender')
+  label.control-label.col-md-3
+    | Gender
   .col-md-6.gender_radio_button
     = f.radio_button :gender, 'male'
     = f.label 'Male'

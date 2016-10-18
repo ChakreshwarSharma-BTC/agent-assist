@@ -13,6 +13,7 @@
         = user.policies_count
       td
         = link_to customer_path(user) do
-          i.fa.fa-file-text-o.action-space[title='show']
+            i.fa.fa-eye.action-space[title = 'show']
         = link_to(customer_path(user),method: :delete,data: {confirm: 'Are you sure you want to delete the customer?'}) do
-        	i.fa.fa-trash.action-space[title="Delete"]
+        	i.fa.fa-trash.action-space[title = 'Delete']
+= javascript_include_tag 'sidebar'

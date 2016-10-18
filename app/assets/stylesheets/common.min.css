@@ -3320,7 +3320,6 @@ form:after {
 }
 .login_content {
     margin: 0 auto;
-    padding: 50px 0 0;
     position: relative;
     text-align: center;
     text-shadow: 0 1px 0 #fff;
@@ -3430,6 +3429,11 @@ form:after {
 }
 .login_content form input[type="submit"],
 #content form .submit {
+    float: left;
+    margin-left: 0px
+}
+.btn_sign_in
+{
     float: left;
     margin-left: 285px
 }
