@@ -19,12 +19,32 @@ en:
     destroy:
       success: 'Company removed successfully!'
   policies:
+    list_header:
+      policy_no: 'Policy No'
+      company: 'Company'
+      policy_holder: 'Policy Holder'
+      plan: 'Plan'
+      action: 'Action'
     create:
       success: 'Policy added successfully!'
     update:
       success: 'Policy updated successfully!'
     destroy:
       success: 'Policy removed successfully!'
+    policy_rmeinder:
+      reminders: 'Reminders'
   premium_reminder:
     premium_reminder: 'Premium Reminder'
-    do_not_disturb: 'Do Not Distrub'
+    do_not_disturb: 'Do Not Disturb'
+  devise:
+    registrations:
+      address_fields:
+        address: 'Address'
+        same_as_present: 'Same as present'
+        present_address: 'Present Address'
+  customers:
+    field:
+      basic_info: 'Basic Info'
+      personal_info: 'Personal Info'
+      family_details: 'Family details'
+      address: 'Address'
