@@ -3,29 +3,38 @@
     label.control-label.col-md-3
       | Policy term  
     .col-md-6
-      = f.input :policy_term,class:"form-control", required: true, label: false
+      = f.input :policy_term, class:'form-control', required: true, label: false
   .form-group
     label.control-label.col-md-3
       | Educational
     .col-md-6
-      = f.input :education_qualification,class:"form-control", required: true, label: false 
+      = f.input :education_qualification, class:'form-control', required: true, label: false 
   .form-group
     label.control-label.col-md-3
       | Annual income
     .col-md-6
-      = f.input :annual_income,class:"form-control", required: true, label: false
+      = f.input :annual_income, class:'form-control', required: true, label: false
   .form-group
       label.control-label.col-md-3
         | Rider
       .col-md-6
-        .checkbox1
-          = f.check_box :term_rider
-          | &nbsp; Term rider
-          br
-          = f.check_box :critical_illness
-          | &nbsp; Criticle illness
-          br
-          = f.check_box :with_accident_cover
-          | &nbsp; With Accidental cover
+        .checkbox
+          label
+            .checkbox1
+              = f.check_box :term_rider
+              span.checkbox_lic
+                | Term rider
+        .checkbox
+          label
+            .chekbox1
+              = f.check_box :critical_illness
+              span.checkbox_lic
+                | Criticle illness
+        .checkbox
+          label
+            .checkbox1
+              = f.check_box :with_accident_cover
+              span.checkbox_lic
+                | With Accidental cover
 javascript:
-  AgentAssist.Common.bindIcheck();          
+  AgentAssist.Common.bindIcheck();
