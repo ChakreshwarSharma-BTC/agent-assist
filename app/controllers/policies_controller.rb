@@ -111,10 +111,6 @@ class PoliciesController < ApplicationController
 
   def policy_reminder
     @policy = paginated(Policy.policy_desc_order)
-    if @policy.present?
-    @policies_expire = @policy.weekly_expire_policy
-    @policy_all = @policy - @policies_expire
-    end
   end
 
   def update_notification

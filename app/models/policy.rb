@@ -29,10 +29,6 @@ class Policy < ApplicationRecord
   #validation
    validates :policy_number, :start_date, :end_date, :premium_amount, :total_amount, presence: true
 
-  #scope
-  scope :weekly_expire_policy, -> { time_range = (DateTime.now.beginning_of_day...Settings.policy.day.days.from_now.beginning_of_day)
-  where(end_date: time_range) }
-
   #display policy list in desending order
   scope :policy_desc_order, -> {order("end_date DESC")}
   #cout the policy

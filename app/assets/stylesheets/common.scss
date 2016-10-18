@@ -13,7 +13,6 @@
 
 .login_wrapper {
   position:relative;
-  right:-8cm!important;
   margin:5% auto 0;
 }
 
@@ -228,6 +227,9 @@ margin-bottom:-22px;
 }
 .do-not-disturb-button {
   margin-left: 5px;
+}
+.th, .td{
+  width: 120px;
 }
 .alert_info {
   border: 1px solid transparent;
