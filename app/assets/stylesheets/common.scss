@@ -241,3 +241,22 @@ margin-bottom:-22px;
   margin-left: 15px;
   margin-top: 3px;
 }
+.bootstrap-datetimepicker-widget {
+  color: #3B84A0
+}
+td.day{
+  position:relative
+}
+
+td.day.disabled:hover:before {
+  content: "You can't select future date";
+  color: red;
+  background-color: white;
+  top: -22px;
+  position: absolute;
+  width: 136px;
+  left: -34px;
+  z-index: 1000;
+  text-align: center;
+  padding: 2px
+}
