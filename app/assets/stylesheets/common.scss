@@ -248,7 +248,7 @@ td.day{
 }
 
 td.day.disabled:hover:before {
-  content: 'You can't select future date';
+  content: "You can't select future date";
   color: red;
   background-color: white;
   top: -22px;
