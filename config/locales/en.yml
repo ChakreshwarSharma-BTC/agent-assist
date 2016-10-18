@@ -36,3 +36,15 @@ en:
   premium_reminder:
     premium_reminder: 'Premium Reminder'
     do_not_disturb: 'Do Not Disturb'
+  devise:
+    registrations:
+      address_fields:
+        address: 'Address'
+        same_as_present: 'Same as present'
+        present_address: 'Present Address'
+  customers:
+    new:
+      customer_information: 'Customer Information'
+      personal_info: 'Personal Info'
+      family_details: 'Family details'
+      address: 'Address'

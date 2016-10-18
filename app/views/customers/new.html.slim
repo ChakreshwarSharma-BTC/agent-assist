@@ -4,7 +4,7 @@
       .x_panel
         .x_title
           h2
-            | Customer Information 
+            = t('.customer_information')
           .clearfix
         .x_content
           #wizard.form_wizard.wizard_horizontal
@@ -13,17 +13,17 @@
                 a.selected href="#step-1"  
                   span.step_no 1
                   span.step_descr
-                    | Personal Info
+                    = t('.personal_info')
               li
                 a.disabled href="#step-2"  
                   span.step_no 2
                   span.step_descr
-                    | Family details
+                    = t('.family_details')
               li
                 a.disabled href="#step-3" 
                   span.step_no 3
                   span.step_descr
-                    | Address
+                    = t('.address')
             .stepContainer
               = simple_form_for @customer, url: customers_path  do |f|
                 - @customer.build_personal_info
