@@ -22,13 +22,9 @@ module ApplicationHelper
       flash_type.to_s
     end
   end
-   
-  def page_class(lbl)
-    if (lbl == "Middle Name")
-      current_page?(controller: 'registrations', action: 'new') ||  current_page?(controller: 'registrations', action: 'create') ? content_tag(:label, lbl, class: "label-control col-md-6 align") : content_tag(:label, lbl, class: "label-control col-md-3 align")
-    else
-      current_page?(controller: 'registrations', action: 'new')  ? content_tag(:label, lbl, class: "control-label col-md-6 align") : content_tag(:label, lbl, class: "control-label col-md-3 align")
-    end
+
+  def field_class(field)
+    current_page?(controller: 'registrations', action: 'new') ||  current_page?(controller: 'registrations', action: 'create') ? content_tag(:div, field, class: 'col-md-7') : content_tag(:div, field, class: 'col-md-6') 
   end
 
   def resource_sortable(resource_class:,  resources_path:, column: , title: nil, no_link: false)

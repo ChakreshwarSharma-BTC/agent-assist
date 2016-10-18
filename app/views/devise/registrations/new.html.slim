@@ -1,40 +1,40 @@
 .col-md-12
   .login_wrapper.registration_space
-    section.login_content
-      = simple_form_for(resource, as: resource_name, url: registration_path(resource_name),  html: {class:"form-horizontal"}) do |f|
-        - resource.build_personal_info
-        h1 Sign Up
-        .form-group
-          label.control-label.col-md-6
-            | Email
-          .col-md-6
-            = f.input :email, class:"form-control", required: true, label: false
-        .form-group
-          label.control-label.col-md-6
-            | Phone no.
-            label-control
-          .col-md-6
-            = f.input :primary_phone_no,class:"form-control", required: true, label: false
-        = render partial: 'informable_fields', locals: {f: f}
-        .form-group
-          label.control-label.col-md-6
-            | Password
-            label-control
-          .col-md-6
-            = f.input :password,class:"form-control", required: true, label: false
-        .form-group
-          label.control-label.col-md-6 
-            | Confirm Password
-            label-control
-          .col-md-6
-            = f.input :password_confirmation,class:"form-control", required: true, label: false
-        .form-group
-          .col-md-12
-            .pull-right
-              = f.submit class: 'btn btn-primary btn-space', id: 'validate_user'
-              = link_to 'Log In', new_session_path(resource_name), class: 'btn btn-info btn-space'
-              = button_tag 'Reset', type: :reset, class: 'btn btn-default btn-space'
-
+      section
+        = simple_form_for(resource, as: resource_name, url: registration_path(resource_name),  html: {class:"form-horizontal"}) do |f|
+          - resource.build_personal_info
+          .login_content
+            h1 Sign Up
+          .form-group
+            label.control-label.col-md-3
+              | Email
+            .col-md-7
+              = f.input :email, class:"form-control", required: true, label: false
+          .form-group
+            label.control-label.col-md-3
+              | Phone no.
+              label-control
+            .col-md-7
+              = f.input :primary_phone_no,class:"form-control", required: true, label: false
+          = render partial: 'informable_fields', locals: {f: f}
+          .form-group
+            label.control-label.col-md-3
+              | Password
+              label-control
+            .col-md-7
+              = f.input :password,class:"form-control", required: true, label: false
+          .form-group
+            label.control-label.col-md-3 
+              | Confirm Password
+              label-control
+            .col-md-7
+              = f.input :password_confirmation,class:"form-control", required: true, label: false
+          .form-group
+            .col-md-12
+              .col-md-6.col-md-offset-3.text-left
+                = f.submit class: 'btn btn-primary', id: 'validate_user'
+                = button_tag 'Reset', type: :reset, class: 'btn btn-default'
+                = link_to 'Log In', new_session_path(resource_name)
 = javascript_include_tag 'register'
 javascript:
   AgentAssist.Common.bindIcheck();
