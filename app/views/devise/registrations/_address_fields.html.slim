@@ -1,18 +1,18 @@
 .x_title
 h2
-| Address 
+= t('.address')
 = f.simple_fields_for :address do |a|
   = render partial: 'devise/registrations/common_address_fields', locals: {a: a}
   .form-group
-    label.control-label.col-md-3.align
-      | same as permanent address
+    label.label-control.col-md-3.align
+      = t('.same_as_present')
     .col-md-6
       = check_box_tag 'checkbox_check'
     = a.hidden_field :address_type, value: 'temporary'
 #checked_form
   .x_title1
   h2
-  | Permanent Address
+  = t('.present_address')
   = f.simple_fields_for :address do |a|  
     = render partial: 'devise/registrations/common_address_fields', locals: {a: a}
     = a.hidden_field :address_type, value: 'permanent'

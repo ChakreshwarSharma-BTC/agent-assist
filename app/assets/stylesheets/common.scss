@@ -13,7 +13,6 @@
 
 .login_wrapper {
   position:relative;
-  right:-8cm!important;
   margin:5% auto 0;
 }
 
@@ -229,6 +228,9 @@ margin-bottom:-22px;
 .do-not-disturb-button {
   margin-left: 5px;
 }
+.th, .td{
+  width: 120px;
+}
 .alert_info {
   border: 1px solid transparent;
   border-radius: 4px!important;
@@ -237,4 +239,23 @@ margin-bottom:-22px;
 .button_search{
   margin-left: 15px;
   margin-top: 3px;
+}
+.bootstrap-datetimepicker-widget {
+  color: #3B84A0
+}
+td.day{
+  position:relative
+}
+
+td.day.disabled:hover:before {
+  content: 'You can't select future date';
+  color: red;
+  background-color: white;
+  top: -22px;
+  position: absolute;
+  width: 136px;
+  left: -34px;
+  z-index: 1000;
+  text-align: center;
+  padding: 2px
 }
