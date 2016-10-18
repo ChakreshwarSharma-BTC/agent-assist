@@ -50,6 +50,11 @@ AgentAssist.Common = {
     });
     AgentAssist.Common.dateTimePicker();
   },
+  validateFields: function(){
+    $('form input').on('focusout', function(){
+      $(this).valid();
+    });
+  },
   bindIcheck: function () {
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-green',
@@ -67,6 +72,7 @@ AgentAssist.Common = {
     this.ajaxLoader();
     this.showDatePicker('.date_picker');
     this.bindIcheck();
+    this.notification();
   }
 };
 $(document).ready(function(){

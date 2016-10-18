@@ -11,9 +11,8 @@
 #step-3.content1
   step_3.form-horizontal.form-label-left
     = render partial: 'devise/registrations/address_fields', locals: {f: f}
-= javascript_include_tag 'register'
-= javascript_include_tag 'sidebar'
-= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{Settings.google.maps_api.key}&libraries=places"
 
+= javascript_include_tag 'sidebar'
+= javascript_include_tag 'register'
 javascript:
-  AgentAssist.Register.validateFields();
+  AgentAssist.Common.validateFields();
