@@ -7,3 +7,4 @@ pagination:
 masked_value:
   pincode: 999999
   primary_phone_no: 9999999999
+  death_year: 9999
