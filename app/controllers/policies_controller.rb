@@ -110,7 +110,7 @@ class PoliciesController < ApplicationController
   end
 
   def policy_reminder
-    @policy = paginated(Policy.policy_desc_order)
+    @policy = paginated(Policy.policy_asc_order)
   end
 
   def update_notification
