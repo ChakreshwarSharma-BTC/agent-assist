@@ -39,12 +39,6 @@ AgentAssist.Common = {
       useCurrent: false
     });
   },
-  searchDateTimePicker: function(){
-    $('#date').datetimepicker({
-      format: 'DD/MM/YYYY',
-      useCurrent: false
-    });
-  },
   showDatePicker: function(){
     $('.date_picker').each(function(index, date_picker){
       var db_date = $(this).attr('value');
@@ -72,7 +66,6 @@ AgentAssist.Common = {
     this.Flash_message();
     this.ajaxLoader();
     this.showDatePicker('.date_picker');
-    this.searchDateTimePicker();
     this.bindIcheck();
   }
 };

@@ -4,7 +4,7 @@
       .x_panel
         .x_title
           h2
-            | Policies Details
+            = t('.policies')
           .pull-right
             = link_to 'Add', new_policy_path, class: 'btn btn-primary pull-right add-btn-padding', title: 'Add'
           .clearfix
@@ -33,3 +33,10 @@
             = render partial: 'shared/no_data_available_message', locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'
+javascript: 
+  $(document).ready(function(){
+    $('#date').datetimepicker({
+      format: 'DD/MM/YYYY',
+      useCurrent: false,
+    });
+  });
