@@ -198,36 +198,60 @@ AgentAssist.Policy = {
       }
     }
   },
-  premiumAmount: function() {
-    $('#policy_premium_mod').on('change',function(){
-
+  hideControll: function(){
+    $("#policy_end_date").on("dp.change", function (e) {
       var start_date = $('#policy_start_date').val();
       var start_year = new Date(start_date.split('/').reverse().join('/')).getFullYear();
       var end_date = $('#policy_end_date').val();
-      var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear()
-      var total_amount = $('#policy_total_amount').val();
-      var premium_mod = $(this).val();
-
+      var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear();
       var total_year = end_year - start_year
-      var policy_amt = total_amount / total_year
-
-      var val = 0.00;
-      if(total_year > 1)
-      {
-        switch(premium_mod)
-        {
-          case 'quarterly':
-            val =  policy_amt / 4
-            break;
-          case 'half_year':
-            val =  policy_amt / 2
-            break;
-          case 'yearly':
-            val =  policy_amt
-            break;
-        }
+      if(total_year <= 1){
+        $('div#policy_payment_mode input').prop('disabled', true);
+        $('#policy_payment_mode').hide();
+      }else{
+        $('div#policy_payment_mode input').prop('disabled', false);
+        $('#policy_payment_mode').show();
       }
-      $('#policy_premium_amount').val(val.toFixed(2));
+    });
+  },
+  countPremiumAmount: function() {
+    var start_date = $('#policy_start_date').val();
+    var start_year = new Date(start_date.split('/').reverse().join('/')).getFullYear();
+    var end_date = $('#policy_end_date').val();
+    var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear();
+    var total_amount = $('#policy_total_amount').val();
+    var premium_mod = $('#policy_premium_mod').val();
+
+    var total_year = end_year - start_year
+    var policy_amt = total_amount / total_year
+
+    var val = 0.00;
+    if(total_year > 1)
+    {
+      switch(premium_mod)
+      {
+        case 'quarterly':
+          val =  policy_amt / 4
+          break;
+        case 'half_year':
+          val =  policy_amt / 2
+          break;
+        case 'yearly':
+          val =  policy_amt
+          break;
+      }
+    }
+    $('#policy_premium_amount').val(val.toFixed(2));
+  },
+  premiumAmount: function() {
+    $('#policy_premium_mod, #policy_mod_of_payment').on('change',function(){
+      AgentAssist.Policy.countPremiumAmount();
+    });
+    $('#policy_start_date, #policy_end_date').on('dp.change', function (e) {
+      AgentAssist.Policy.countPremiumAmount();
+    });
+    $('#policy_total_amount').on('input',function(){
+      AgentAssist.Policy.countPremiumAmount();
     });
   },
   searchDateTimePicker: function(){
@@ -253,6 +277,7 @@ AgentAssist.Policy = {
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
+    this.hideControll();
     this.wizardSlideSteps();
     this.formSubmit();
     this.userDetails();
