@@ -19,6 +19,7 @@ gem 'config'
 gem 'rolify'
 gem 'cancancan'
 gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 gem 'slim-rails'
 gem 'select2-rails',  git: 'https://github.com/argerim/select2-rails.git'
 # Use jquery as the JavaScript library
