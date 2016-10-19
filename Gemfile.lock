@@ -56,6 +56,9 @@ GEM
     autoprefixer-rails (6.5.1)
       execjs
     bcrypt (3.1.11)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -226,6 +229,7 @@ PLATFORMS
 
 DEPENDENCIES
   blockuijs-rails!
+  bootstrap-kaminari-views
   bootstrap-sass
   bootstrap3-datetimepicker-rails (~> 4.17.37)
   byebug
