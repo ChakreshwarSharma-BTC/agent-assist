@@ -84,11 +84,8 @@
   content:"*";
   color:red;
 }
-
-.label {
-  display:inline-block;
-  text-align:left;
-  padding:0;
+.control:after{
+   content:"";
 }
 
 .registration_space {

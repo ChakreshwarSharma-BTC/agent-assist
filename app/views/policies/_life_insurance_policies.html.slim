@@ -15,26 +15,26 @@
     .col-md-6
       = f.input :annual_income, class:'form-control', required: true, label: false
   .form-group
-      label.control-label.col-md-3
-        | Rider
-      .col-md-6
-        .checkbox
-          label
-            .checkbox1
-              = f.check_box :term_rider
-              span.checkbox_lic
-                | Term rider
-        .checkbox
-          label
-            .chekbox1
-              = f.check_box :critical_illness
-              span.checkbox_lic
-                | Critical illness
-        .checkbox
-          label
-            .checkbox1
-              = f.check_box :with_accident_cover
-              span.checkbox_lic
-                | With Accidental cover
+    label.control-label.control.col-md-3
+      | Rider
+    .col-md-6
+      .checkbox
+        label
+          .checkbox1
+            = f.check_box :term_rider
+            span.checkbox_lic
+              | Term rider
+      .checkbox
+        label
+          .chekbox1
+            = f.check_box :critical_illness
+            span.checkbox_lic
+              | Critical illness
+      .checkbox
+        label
+          .checkbox1
+            = f.check_box :with_accident_cover
+            span.checkbox_lic
+              | With Accidental cover
 javascript:
   AgentAssist.Common.bindIcheck();

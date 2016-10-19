@@ -13,11 +13,6 @@ class PoliciesController < ApplicationController
     @personal_info = @policy.build_personal_info
     @nominee = @policy.build_nominee
     @nominee_personal_info = @nominee.build_personal_info
-    if(@email_found == true)
-      respond_to do |format|
-        format.js
-      end
-    end
   end
 
   def index
@@ -58,13 +53,17 @@ class PoliciesController < ApplicationController
     new_user
     policy.user = @user
     policy.renewal_date = Date.today
-    if policy.save!
+    if policy.save
       redirect_to policies_path
       flash[:success] = t('.success')
     else
       flash[:error] = policy.errors.full_messages.to_sentence
       render :new
     end
+  end
+
+  def policy_number
+    @policy = Policy.where(policy_number: params[:policy_number])
   end
 
   def update

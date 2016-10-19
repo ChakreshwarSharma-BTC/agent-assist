@@ -90,25 +90,6 @@ AgentAssist.Policy = {
       $('form').submit();
     })
   },
-   showDatePicker: function(){
-    $('#policy_personal_info_attributes_date_of_birth').datetimepicker({
-      format: "DD/MM/YYYY"
-    });
-    $('#policy_start_date').datetimepicker({
-      format: "DD/MM/YYYY",
-      useCurrent: true
-    });
-    $('#policy_end_date').datetimepicker({
-      format: "DD/MM/YYYY",
-      useCurrent: false,
-    });
-    $("#policy_start_date").on("dp.change", function (e) {
-        $('#policy_end_date').data("DateTimePicker").minDate(e.date);
-    });
-    $("#policy_end_date").on("dp.change", function (e) {
-        $('#policy_start_date').data("DateTimePicker").maxDate(e.date);
-    });
-  },
   policySearch: function(){
     $('#search_tag').on('click', function(){
       $.ajax({
@@ -197,14 +178,12 @@ AgentAssist.Policy = {
   },
   premiumAmount: function() {
     $('#policy_premium_mod').on('change',function(){
-
       var start_date = $('#policy_start_date').val();
       var start_year = new Date(start_date.split('/').reverse().join('/')).getFullYear();
       var end_date = $('#policy_end_date').val();
       var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear()
       var total_amount = $('#policy_total_amount').val();
       var premium_mod = $(this).val();
-
       var total_year = end_year - start_year
       var policy_amt = total_amount / total_year
 
@@ -227,10 +206,37 @@ AgentAssist.Policy = {
       $('#policy_premium_amount').val(val.toFixed(2));
     });
   },
+  policyValidation: function(){
+    $('#policy_policy_number').on('change', function(){
+      $.ajax({
+        url: '/policies/policy_number',
+        data: { policy_number: $('#policy_policy_number').val() }
+      });
+    });
+  },
   searchDateTimePicker: function(){
     $('#date').datetimepicker({
       format: 'DD/MM/YYYY',
       useCurrent: false,
+    });
+  },
+   showDatePicker: function(){
+    $('#policy_personal_info_attributes_date_of_birth').datetimepicker({
+      format: "DD/MM/YYYY"
+    });
+    $('#policy_start_date').datetimepicker({
+      format: "DD/MM/YYYY",
+      useCurrent: true
+    });
+    $('#policy_end_date').datetimepicker({
+      format: "DD/MM/YYYY",
+      useCurrent: false,
+    });
+    $("#policy_start_date").on("dp.change", function (e) {
+        $('#policy_end_date').data("DateTimePicker").minDate(e.date);
+    });
+    $("#policy_end_date").on("dp.change", function (e) {
+        $('#policy_start_date').data("DateTimePicker").maxDate(e.date);
     });
   },
   documentOnReady: function (){
@@ -246,6 +252,7 @@ AgentAssist.Policy = {
     this.premiumAmount();
     this.emailValidation();
     this.searchDateTimePicker();
+    this.policyValidation();
   }
 };
 $(document).ready(function(){

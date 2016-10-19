@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get 'plans' => 'policies#plans'
       get 'filter_policies' => 'policies#filter_policies', as: 'filter'
       get 'update_notification' => 'policies#update_notification'
+      get 'policy_number' => 'policies#policy_number'
     end
   end
 

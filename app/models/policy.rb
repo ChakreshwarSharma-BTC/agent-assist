@@ -27,7 +27,8 @@ class Policy < ApplicationRecord
   enum premium_mod: { quarterly: 0, half_year: 1,  yearly: 2 }
 
   #validation
-   validates :policy_number, :start_date, :end_date, :premium_amount, :total_amount, presence: true
+   validates :start_date, :end_date, :premium_amount, :total_amount, presence: true
+   validates :policy_number, uniqueness: true, presence: true
 
   #cout the policy
   scope :policy_count, -> {count}

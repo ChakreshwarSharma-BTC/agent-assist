@@ -13,13 +13,13 @@ html
           .main_container
             = render partial: 'layouts/sidebar'
             = render partial: 'layouts/header'
-            .flash-message-box
-              = render partial: 'shared/flash_message'
             - if current_page?(agent_dashboard_path)
               - if Policy.any?
                 - if !current_user.notification
                   = render partial: "shared/premium_reminder", locals: { policies: @premium_reminder }
+            = render partial: 'shared/flash_message'
             = yield 
+
     -else
       body.login
         = yield
