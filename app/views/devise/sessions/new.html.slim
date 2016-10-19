@@ -3,7 +3,7 @@
     .flash-message-login
       = render partial: "shared/flash_message"
     .animate.form.login_form
-      section.login_content
+      section.login_content.login_page_content
         = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           h1 Login
           .form-group
