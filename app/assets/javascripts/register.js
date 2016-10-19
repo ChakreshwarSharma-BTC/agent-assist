@@ -93,23 +93,19 @@ AgentAssist.Register = {
 
 
   validateEmailFormat: function(email){
-    var rejex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return rejex.test(email);
+    var regex= /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(email);
   },
 
   emailValidation: function(){
       $('.check_email').on('change', function(){
         var email = $('#user_email').val();
         var email_check = AgentAssist.Register.validateEmailFormat(email);
-        if(email_check)
-        {
+        if(email_check){
           $.ajax({
-          type: 'GET',
-          url: '/customers/check_email',
-          data: {
-            email: $('#user_email').val()
-          }
-        });
+            url: '/customers/check_email',
+            data: { email: $('#user_email').val() }
+          });
         }
       });
      },
