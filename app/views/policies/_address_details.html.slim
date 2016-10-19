@@ -1,2 +1,5 @@
 = f.simple_fields_for :address do |a|
   = render partial: 'devise/registrations/common_address_fields', locals: {a: a}
+
+javascript:
+  AgentAssist.Common.bindMaskedInput('#policy_address_attributes_pincode', "#{Settings.masked_value.pincode}");

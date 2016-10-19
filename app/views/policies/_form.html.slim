@@ -34,3 +34,8 @@
     .stepContainer
       = simple_form_for @policy do |f|
         = render partial: 'wizard_steps', locals: {f: f, plan: @plan}
+- if action_name == 'new'
+  javascript:  
+    $(document).on('ready', function(){
+      $('form input').val('');
+    })

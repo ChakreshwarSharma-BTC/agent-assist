@@ -67,6 +67,9 @@ AgentAssist.Common = {
       $(this).change().focusout();
     });
   },
+  appendBtnInWizard: function(html){
+    $('.actionBar').append(html);
+  },
   documentOnReady: function (){
     this.Flash_message();
     this.ajaxLoader();
