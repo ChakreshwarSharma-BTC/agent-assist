@@ -65,6 +65,9 @@ function SmartWizard(target, options) {
             return false;
            } 
            else{
+            $('form .select2').each(function(index, element){
+                ($(element).prev('label.error')).insertAfter($(this));
+            })
             return false;
            }
         });
