@@ -35,9 +35,9 @@ Rails.application.routes.draw do
     end
     collection do
       get 'filter_customers' => 'customers#filter_customers', as: 'filter'
+      get 'check_email' => 'customers#check_email'
     end
   end
 
   get :policy_reminder, to: 'policies#policy_reminder'
-
 end

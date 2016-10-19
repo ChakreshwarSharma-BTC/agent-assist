@@ -90,17 +90,29 @@ AgentAssist.Register = {
     });
     $("#customer").select2({});
   },
-  Email_validation: function(){
-   $('.check_email').on('change', function(){
-      $.ajax({
-        type: 'GET',
-        url: '/customers/new',
-        data: {
-          email: $('#user_email').val()
+
+
+  validateEmailFormat: function(email){
+    var rejex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return rejex.test(email);
+  },
+
+  emailValidation: function(){
+      $('.check_email').on('change', function(){
+        var email = $('#user_email').val();
+        var email_check = AgentAssist.Register.validateEmailFormat(email);
+        if(email_check)
+        {
+          $.ajax({
+          type: 'GET',
+          url: '/customers/check_email',
+          data: {
+            email: $('#user_email').val()
+          }
+        });
         }
       });
-    });
-  },
+     },
   documentOnReady: function (){
     this.autoCompleteLocation('#user_address_attributes_0_city');
     this.autoCompleteLocation('#user_address_attributes_1_city');
@@ -108,7 +120,7 @@ AgentAssist.Register = {
     this.addressType();
     this.wizardSlideSteps();
     this.formSubmit();
-    this.Email_validation();
+    this.emailValidation();
   }
 };
 $(document).ready(function(){

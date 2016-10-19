@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_customer, except: [:index, :new, :create, :filter_customers]
+  before_action :set_customer, except: [:index, :new, :create, :filter_customers, :check_email]
   before_action :set_family_member, only: [:show_member, :edit_member, :update_member, :destroy_member]
   before_action :set_customers, only: [:index, :filter_customers]
 
@@ -21,12 +21,6 @@ class CustomersController < ApplicationController
 
   def new
     @customer = User.new
-    @email_found = User.where(email: params[:email]).count > 0
-    if(@email_found == true)
-      respond_to do |format|
-        format.js
-      end
-    end
   end
 
   def update
@@ -47,6 +41,10 @@ class CustomersController < ApplicationController
       render :new
       flash[:error] = "You have not created customer successfully!"
     end
+  end
+
+  def check_email
+    @email = User.where(email: params[:email])
   end
 
   def destroy
@@ -95,9 +93,6 @@ class CustomersController < ApplicationController
     @customers = @customers.select('personal_infos.first_name, users.*').joins(:personal_info) if params[:sort] == 'first_name'
     @customers = sort_and_paginate(@customers) if @customers.present?
     render 'customers/filter_customers'
-  end
-  def email
-
   end
 
   private
