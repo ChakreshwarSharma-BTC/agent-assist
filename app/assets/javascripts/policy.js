@@ -208,7 +208,6 @@ AgentAssist.Policy = {
       var total_year = end_year - start_year
       var policy_amt = total_amount / total_year
 
-      console.log(premium_mod);
       var val = 0.00;
       if(total_year > 1)
       {
@@ -228,6 +227,12 @@ AgentAssist.Policy = {
       $('#policy_premium_amount').val(val.toFixed(2));
     });
   },
+  searchDateTimePicker: function(){
+    $('#date').datetimepicker({
+      format: 'DD/MM/YYYY',
+      useCurrent: false,
+    });
+  },
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
@@ -240,6 +245,7 @@ AgentAssist.Policy = {
     this.selectDropDown();
     this.premiumAmount();
     this.emailValidation();
+    this.searchDateTimePicker();
   }
 };
 $(document).ready(function(){

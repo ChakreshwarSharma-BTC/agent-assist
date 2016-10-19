@@ -19,9 +19,11 @@
   label.label-control.col-md-3.align
     | Death Year
   .col-md-6
-    = f.text_field :death_year, placeholder: 'Death Year', class: 'form-control'
+    = f.text_field :death_year, placeholder: 'Death Year', class: 'form-control', id: 'death_year'
 .form-group
   label.label-control.col-md-3.align for="Death Reason" 
     | Death Reason
   .col-md-6
     = f.input :death_reason, placeholder: 'Death Reason', class: 'form-control', required: false, label: false
+javascript:
+  AgentAssist.Common.bindMaskedInput('#death_year', "#{Settings.masked_value.death_year}");

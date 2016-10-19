@@ -9,8 +9,6 @@
   label.control-label.col-md-3 
     | Primary Phone No
     label-control
-  .col-md-6 
-    = f.input :primary_phone_no, class: 'form-control', required: true, label: false
-
+  = field_class(f.input :primary_phone_no, class: 'form-control', required: true, label: false)
 javascript:
   AgentAssist.Common.bindMaskedInput('#user_primary_phone_no', "#{Settings.masked_value.primary_phone_no}");

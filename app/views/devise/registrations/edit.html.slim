@@ -1,24 +1,24 @@
-.col-md-6
+.col-md-12
   .login_wrapper.registration_space
     section
       = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f|
-        .form-group
-          = page_class('Email')
-          .col-md-6
-            = f.input :email, autofocus: true, required: true, label: false
+        = render partial: 'basic_fields', locals: {f: f}
         - if resource.personal_info.present?
           = f.simple_fields_for resource.personal_info do |f|
             = render partial: 'common_info_fields', locals: {f: f}
         .form-group
-          = page_class('Password')
+          label.control-label.col-md-3
+            | Password
           .col-md-6
             = f.input :password, autocomplete: "off", label: false
         .form-group
-          = page_class('Password Confirmation')
+          label.control-label.col-md-3
+            | Confirm Password
           .col-md-6
             = f.input :password_confirmation, autocomplete: "off", label: false
         .form-group
-          = page_class('Current Password')
+          label.control-label.col-md-3
+            | Current Password
           .col-md-6
             = f.input :current_password, autocomplete: "off", required: true, label: false
         .form-group

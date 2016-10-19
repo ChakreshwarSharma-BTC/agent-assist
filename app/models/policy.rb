@@ -29,21 +29,19 @@ class Policy < ApplicationRecord
   #validation
    validates :policy_number, :start_date, :end_date, :premium_amount, :total_amount, presence: true
 
-  #display policy list in desending order
-  scope :policy_desc_order, -> {order("end_date DESC")}
   #cout the policy
   scope :policy_count, -> {count}
   #count renewal policy
   scope :policy_renewal, -> {where(renewal_date: Date.current - Settings.policy.day)}
   scope :search_by_policy_number, ->(search) { where('policy_number like :policy_number', policy_number: "%#{search}%") }  
-  scope :search_by_date, ->(search) { where('start_date like :start_date or end_date like :end_date or renewal_date like :renewal_date', start_date: "%#{search}%", end_date: "%#{search}%", renewal_date: "%#{search}%")}  
+  scope :search_by_date, ->(search) { where('start_date LIKE :start_date or end_date LIKE :end_date or renewal_date LIKE :renewal_date', start_date: "%#{search}%", end_date: "%#{search}%", renewal_date: "%#{search}%")}  
   scope :company_category, -> (company_category_ids) { joins(:plan).where('company_category_id in :ids', ids: company_category_ids) }
 
   # Weekly premium date
   def self.weekly_premium_date
     date_range = (Date.today...Settings.policy.day.days.from_now)
     Policy.all.each do |policy|
-      policy if date_range.include?(policy.renewal_date)   
+      policy if date_range.include?(policy.renewal_date)
     end
   end
 

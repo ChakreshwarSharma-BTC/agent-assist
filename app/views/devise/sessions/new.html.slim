@@ -3,7 +3,7 @@
     .flash-message-login
       = render partial: "shared/flash_message"
     .animate.form.login_form
-      section.login_content
+      section.login_content.login_page_content
         = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           h1 Login
           .form-group
@@ -21,16 +21,15 @@
               .field.remember-me
                 = f.check_box :remember_me, class: 'form-control'
                 |  Remember Me
-            .actions
-              = f.submit "Sign in", class: "btn btn-primary"
+              .btn_sign_in
+                = f.submit "Sign in", class: "btn btn-primary"
           .form-group.
             .col-md-5.col-sm-offset-8.forgot-password
-              - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-                = link_to "Forgot password?", new_password_path(resource_name)
+              = link_to "Forgot password?", new_password_path(resource_name)
+          .form-group  
             .col-sm-offset-3
               .pull-right
-                - if devise_mapping.registerable? && controller_name != 'registrations'
-                  = link_to "Sign up", new_registration_path(resource_name)
+                = link_to "Sign up", new_registration_path(resource_name)
           .clearfix
           .separator
 = javascript_include_tag 'register'

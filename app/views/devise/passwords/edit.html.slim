@@ -1,9 +1,9 @@
-.col-md-6
+.col-md-12
   .login_wrapper.login_space
     .animate.form.login_form
       section.login_content
         = simple_form_for resource, as: resource_name, url: password_path(resource_name), html: { method: :put } do |f|
-          h1 Change your password
+          h1 Reset Password
           = f.hidden_field :reset_password_token
           .form-group
             label.control-label.col-md-6.log-in-password-label
@@ -17,11 +17,9 @@
               label-control
             = f.input :password_confirmation, class: "form-control", required: true, label: false
           .form-group
-            .col-md-5.col-sm-offset-6
-              button.btn.btn-primary type = "submit"
-                | Submit New Password
-        .form-group.sign-in-link
-          - if controller_name != 'sessions'
-            = link_to "Log in", new_session_path(resource_name)
+            .col-md-8.text-left.reset_pwd_btn
+              button.btn.btn-primary type = 'submit'
+                | Reset Password
+              = link_to "Log in", new_session_path(resource_name)
         .clearfix
         .separator

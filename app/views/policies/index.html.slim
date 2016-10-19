@@ -4,7 +4,7 @@
       .x_panel
         .x_title
           h2
-            | Policies Details
+            = t('.policies')
           .pull-right
             = link_to 'Add', new_policy_path, class: 'btn btn-primary pull-right add-btn-padding', title: 'Add'
           .clearfix
@@ -28,7 +28,7 @@
             .box-footer.clearfix
               .pagination.pagination-sm.no-margin.pull-right
                 .pull-right
-                  = paginate @policies, controller: 'policies', action: 'index', remote: true if @policies.present?
+                  = paginate @policies, controller: 'policies', action: 'index', theme: 'twitter-bootstrap-3', remote: true if @policies.present?
           - else
             = render partial: 'shared/no_data_available_message', locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'
