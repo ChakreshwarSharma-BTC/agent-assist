@@ -26,4 +26,5 @@
   .col-md-6
     = f.input :death_reason, placeholder: 'Death Reason', class: 'form-control', required: false, label: false
 javascript:
+  $('select').select2();
   AgentAssist.Common.bindMaskedInput('#death_year', "#{Settings.masked_value.death_year}");
