@@ -15,7 +15,7 @@
             .box-footer.clearfix
               .pagination.pull-right
                 .text-right
-                  = paginate @policy
+                  = paginate @policy, theme: 'twitter-bootstrap-3'
           - else
             = render partial: "shared/no_data_available_message", locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'
