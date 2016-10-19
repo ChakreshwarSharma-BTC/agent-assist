@@ -208,7 +208,6 @@ AgentAssist.Policy = {
       var total_year = end_year - start_year
       var policy_amt = total_amount / total_year
 
-      console.log(premium_mod);
       var val = 0.00;
       if(total_year > 1)
       {
