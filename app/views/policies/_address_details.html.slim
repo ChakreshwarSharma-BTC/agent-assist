@@ -1,5 +1,25 @@
 = f.simple_fields_for :address do |a|
+  = "#{a.object.address_type.titleize} Address"
   = render partial: 'devise/registrations/common_address_fields', locals: {a: a}
+  - if action_name == 'new'
+    .form-group
+      label.label-control.col-md-3.align
+        = t('.same_as_present')
+      .col-md-6
+        = check_box_tag 'checkbox_check'
+      = a.hidden_field :address_type, value: 'temporary'
+    #checked_form
+      .x_title1
+      h2
+      = t('.present_address')
+      = f.simple_fields_for :address do |a|  
+  		= render partial: 'devise/registrations/common_address_fields', locals: {a: a}
+        = a.hidden_field :address_type, value: 'permanent'
 
+= javascript_include_tag 'policy'
 javascript:
-  AgentAssist.Common.bindMaskedInput('#policy_address_attributes_pincode', "#{Settings.masked_value.pincode}");
+  $('#policy_address_attributes_1_pincode')
+  AgentAssist.Policy.autoCompleteLocationPolicy('#policy_address_attributes_0_city');
+  AgentAssist.Policy.autoCompleteLocationPolicy('#policy_address_attributes_1_city');
+  AgentAssist.Common.bindMaskedInput('#policy_address_attributes_0_pincode', "#{Settings.masked_value.pincode}");
+  AgentAssist.Common.bindMaskedInput('#policy_address_attributes_1_pincode', "#{Settings.masked_value.pincode}");

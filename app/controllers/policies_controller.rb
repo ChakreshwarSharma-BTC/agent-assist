@@ -6,7 +6,7 @@ class PoliciesController < ApplicationController
 
   def new
     @plan = @policy.build_plan
-    @address = @policy.build_address
+    @address = @policy.address.build
     @life_insurance = @policy.build_life_insurance
     @vehicle = @policy.build_vehicle
     @user = @policy.build_user
@@ -92,7 +92,7 @@ class PoliciesController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       format.json  { render :json => {:user => @user, 
-                                  :personal_info => @user.personal_info }}
+                                  :personal_info => @user.personal_info, address: @user.address }}
     end
   end
 
@@ -132,7 +132,7 @@ class PoliciesController < ApplicationController
      user_attributes: [:id, :email, :primary_phone_no],
      personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id],
      vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory, :id],
-     address_attributes: [:id, :city, :state, :pincode, :street_1, :street_2],
+     address_attributes: [:id, :city, :state, :pincode, :street_1, :street_2, :address_type],
      life_insurance_attributes: [:policy_term, :education_qualification, :annual_income, :term_rider, :critical_illness, :with_accident_cover, :id],
      nominee_attributes: [:id, :relation,{ personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id ]}])
   end
