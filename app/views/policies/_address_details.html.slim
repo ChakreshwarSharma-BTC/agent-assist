@@ -18,7 +18,6 @@
 
 = javascript_include_tag 'policy'
 javascript:
-  $('#policy_address_attributes_1_pincode')
   AgentAssist.Policy.autoCompleteLocationPolicy('#policy_address_attributes_0_city');
   AgentAssist.Policy.autoCompleteLocationPolicy('#policy_address_attributes_1_city');
   AgentAssist.Common.bindMaskedInput('#policy_address_attributes_0_pincode', "#{Settings.masked_value.pincode}");
