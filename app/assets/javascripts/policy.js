@@ -158,10 +158,13 @@ AgentAssist.Policy = {
           types: ['geocode'],
           componentRestrictions: {country: 'in'}
         });
-      autocomplete.addListener('place_changed', AgentAssist.Policy.getAddress);
+      autocomplete.addListener('place_changed', function (){
+        AgentAssist.Policy.getAddress(selector);
+      });
     });
   },
-  getAddress: function () {
+  getAddress: function (selector) {
+    var selector_id = selector.match(/\d+/)[0];
     var address = {
       locality: 'long_name',
       administrative_area_level_1: 'long_name',
@@ -170,10 +173,10 @@ AgentAssist.Policy = {
     var place = autocomplete.getPlace();
     if(place != null)
     {
-      AgentAssist.Policy.fillAddress(place, address);
+      AgentAssist.Policy.fillAddress(place, address, selector_id);
     }
   },
-  fillAddress: function (place, address) {
+  fillAddress: function (place, address, selector_id) {
     for (var i = 0; i < place.address_components.length; i++)
     {
       var addressType = place.address_components[i].types[0];
@@ -181,16 +184,16 @@ AgentAssist.Policy = {
       switch(addressType)
       {
         case 'locality':
-          $('#policy_address_attributes_city').val(val);
+          $('#policy_address_attributes_'+selector_id+'_city').val(val);
           break;
         case 'administrative_area_level_1':
-          $('#policy_address_attributes_state').val(val);
+          $('#policy_address_attributes_'+selector_id+'_state').val(val);
           break;
         case 'postal_code':
-          $('#policy_address_attributes_pincode').val(val);
+          $('#policy_address_attributes_'+selector_id+'_pincode').val(val);
           break;
         default:
-          $('#policy_address_attributes_pincode').val('');
+          $('#policy_address_attributes_'+selector_id+'_pincode').val('');
           break;
       }
     }
@@ -233,6 +236,20 @@ AgentAssist.Policy = {
       useCurrent: false,
     });
   },
+  policyAddressType: function () {
+    $('#checkbox_check').on('ifToggled', function() {
+      if ($(this).prop('checked')) {
+        $('div#checked_form input').prop('disabled', true);
+        $('#checked_form').hide();
+        $('#policy_address_attributes_0_address_type').val('permanent');
+      }
+      else {
+        $('div#checked_form input').prop('disabled', false);
+        $('#policy_address_attributes_1_address_type').val('temporary');
+        $('#checked_form').show();
+      }
+    });
+  },
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
@@ -241,11 +258,11 @@ AgentAssist.Policy = {
     this.userDetails();
     this.buttonSubmit();
     this.policyType();
-    this.autoCompleteLocationPolicy('#policy_address_attributes_city');
     this.selectDropDown();
     this.premiumAmount();
     this.emailValidation();
     this.searchDateTimePicker();
+    this.policyAddressType();
   }
 };
 $(document).ready(function(){
