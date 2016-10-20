@@ -36,7 +36,7 @@ class PoliciesController < ApplicationController
   def show
   end
 
-  def new_user
+  def policy_user
     user_attributes = params[:policy][:user_attributes]
     personal_info = params[:policy][:personal_info_attributes].permit!
     @email_found = User.where(email: user_attributes[:email]).count > 0
@@ -45,18 +45,16 @@ class PoliciesController < ApplicationController
       u.primary_phone_no = user_attributes[:primary_phone_no]
       u.add_role :customer
       u.personal_info = PersonalInfo.new(personal_info)
+      if u.address.blank?
+        address_attributes = params[:policy][:address_attributes].permit!
+        u.address.new([address_attributes['0'], address_attributes['1']])
+      end
     end
   end
 
   def create
-    policy= Policy.new(policies_params)
-    new_user
-    policy.user = @user
-    if @user.address.blank?
-      address_attributes = params[:policy][:address_attributes].permit!
-      @user.address.new([address_attributes['0'], address_attributes['1']])
-      @user.save
-    end
+    policy = Policy.new(policies_params)
+    policy.user = policy_user
     policy.renewal_date = Date.today
     if policy.save
       redirect_to policies_path
@@ -73,21 +71,12 @@ class PoliciesController < ApplicationController
 
   def update
     if @policy.update_attributes(policies_params)
-      update_user_address
       flash[:success] = t('.success')
       AgentMailer.update_policy(@policy, current_user).deliver_now
     else
       flash[:error] = @policy.errors.full_messages.to_sentence
     end
     redirect_to policies_path
-  end
-
-  def update_user_address
-    user = @policy.user
-    address_attributes = params[:policy][:address_attributes].permit!
-    address_attributes.each { |key, address| address.delete :id } 
-    user.address.type_of_address('permanent').update(address_attributes['0'])
-    user.address.type_of_address('temporary').update(address_attributes['1'])
   end
 
   def destroy

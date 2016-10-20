@@ -28,5 +28,9 @@ policy.form-horizontal.form-label-left
 - if action_name == 'edit'
   javascript:
     $(document).on('ready page:load', function(){
+      var total_year = AgentAssist.Policy.totalPolicyYear('#policy_start_date', '#policy_end_date');
+      if(total_year <= 1){
+        $('#policy_payment_mode').remove();
+      }
       AgentAssist.Common.appendBtnInWizard("<a class='btn btn-info' href='/policies'>Back</a>");
     })
