@@ -2,7 +2,7 @@
   .form-group
     label.control-label.col-md-3 
      | Customer
-    .col-md-6
+    .col-md-6.form-group
       = f.select :user_id, options_for_select(User.with_role(:customer).map{ |u| [u.full_name_with_email, u.id]}), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control required: false, label: false"}
 #personal_details
   = f.simple_fields_for :user do |f|
