@@ -14,7 +14,7 @@ class Policy < ApplicationRecord
   accepts_nested_attributes_for :life_insurance
   has_one :personal_info, as: :informable, dependent: :destroy
   accepts_nested_attributes_for :personal_info
-  has_many :address, as: :addressable, dependent: :destroy  
+  has_many :address, as: :addressable, dependent: :destroy  # policy can have temporary and permanent address  
   accepts_nested_attributes_for :address
   
   # 0 for floater, 1 for individual and 2 for group plan type

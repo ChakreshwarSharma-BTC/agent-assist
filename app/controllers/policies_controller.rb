@@ -52,6 +52,11 @@ class PoliciesController < ApplicationController
     policy= Policy.new(policies_params)
     new_user
     policy.user = @user
+    if @user.address.blank?
+      address_attributes = params[:policy][:address_attributes].permit!
+      @user.address.new([address_attributes['0'], address_attributes['1']])
+      @user.save
+    end
     policy.renewal_date = Date.today
     if policy.save
       redirect_to policies_path
@@ -68,12 +73,21 @@ class PoliciesController < ApplicationController
 
   def update
     if @policy.update_attributes(policies_params)
+      update_user_address
       flash[:success] = t('.success')
       AgentMailer.update_policy(@policy, current_user).deliver_now
     else
       flash[:error] = @policy.errors.full_messages.to_sentence
     end
     redirect_to policies_path
+  end
+
+  def update_user_address
+    user = @policy.user
+    address_attributes = params[:policy][:address_attributes].permit!
+    address_attributes.each { |key, address| address.delete :id } 
+    user.address.type_of_address('permanent').update(address_attributes['0'])
+    user.address.type_of_address('temporary').update(address_attributes['1'])
   end
 
   def destroy
