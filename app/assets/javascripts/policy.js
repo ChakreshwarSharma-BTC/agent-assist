@@ -198,7 +198,7 @@ AgentAssist.Policy = {
       }
     }
   },
-  hideControll: function(){
+  hidePremiumFields: function(){
     $("#policy_end_date").on("dp.change", function (e) {
       var total_year = AgentAssist.Policy.totalPolicyYear('#policy_start_date', '#policy_end_date');  
       if(total_year <= 1){
@@ -282,7 +282,7 @@ AgentAssist.Policy = {
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
-    this.hideControll();
+    this.hidePremiumFields();
     this.wizardSlideSteps();
     this.formSubmit();
     this.userDetails();
