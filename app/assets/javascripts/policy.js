@@ -58,7 +58,7 @@ AgentAssist.Policy = {
           $('#policy_personal_info_attributes_last_name').val(response.personal_info.last_name);
           $('#policy_personal_info_attributes_middle_name').val(response.personal_info.middle_name);
           $('#policy_personal_info_attributes_date_of_birth').val(response.personal_info.date_of_birth);
-          $('#policy_personal_info_attributes_gender').val(response.personal_info.gender);          
+          $('#policy_personal_info_attributes_gender_'+response.personal_info.gender).iCheck('check');          
         }
       });
     });
