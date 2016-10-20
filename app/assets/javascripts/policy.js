@@ -90,6 +90,25 @@ AgentAssist.Policy = {
       $('form').submit();
     })
   },
+   showDatePicker: function(){
+    $('#policy_personal_info_attributes_date_of_birth').datetimepicker({
+      format: "DD/MM/YYYY"
+    });
+    $('#policy_start_date').datetimepicker({
+      format: "DD/MM/YYYY",
+      useCurrent: true
+    });
+    $('#policy_end_date').datetimepicker({
+      format: "DD/MM/YYYY",
+      useCurrent: false,
+    });
+    $("#policy_start_date").on("dp.change", function (e) {
+        $('#policy_end_date').data("DateTimePicker").minDate(e.date);
+    });
+    $("#policy_end_date").on("dp.change", function (e) {
+        $('#policy_start_date').data("DateTimePicker").maxDate(e.date);
+    });
+  },
   policySearch: function(){
     $('#search_tag').on('click', function(){
       $.ajax({
@@ -139,10 +158,13 @@ AgentAssist.Policy = {
           types: ['geocode'],
           componentRestrictions: {country: 'in'}
         });
-      autocomplete.addListener('place_changed', AgentAssist.Policy.getAddress);
+      autocomplete.addListener('place_changed', function (){
+        AgentAssist.Policy.getAddress(selector);
+      });
     });
   },
-  getAddress: function () {
+  getAddress: function (selector) {
+    var selector_id = selector.match(/\d+/)[0];
     var address = {
       locality: 'long_name',
       administrative_area_level_1: 'long_name',
@@ -151,10 +173,10 @@ AgentAssist.Policy = {
     var place = autocomplete.getPlace();
     if(place != null)
     {
-      AgentAssist.Policy.fillAddress(place, address);
+      AgentAssist.Policy.fillAddress(place, address, selector_id);
     }
   },
-  fillAddress: function (place, address) {
+  fillAddress: function (place, address, selector_id) {
     for (var i = 0; i < place.address_components.length; i++)
     {
       var addressType = place.address_components[i].types[0];
@@ -162,48 +184,74 @@ AgentAssist.Policy = {
       switch(addressType)
       {
         case 'locality':
-          $('#policy_address_attributes_city').val(val);
+          $('#policy_address_attributes_'+selector_id+'_city').val(val);
           break;
         case 'administrative_area_level_1':
-          $('#policy_address_attributes_state').val(val);
+          $('#policy_address_attributes_'+selector_id+'_state').val(val);
           break;
         case 'postal_code':
-          $('#policy_address_attributes_pincode').val(val);
+          $('#policy_address_attributes_'+selector_id+'_pincode').val(val);
           break;
         default:
-          $('#policy_address_attributes_pincode').val('');
+          $('#policy_address_attributes_'+selector_id+'_pincode').val('');
           break;
       }
     }
   },
-  premiumAmount: function() {
-    $('#policy_premium_mod').on('change',function(){
+  hideControll: function(){
+    $("#policy_end_date").on("dp.change", function (e) {
       var start_date = $('#policy_start_date').val();
       var start_year = new Date(start_date.split('/').reverse().join('/')).getFullYear();
       var end_date = $('#policy_end_date').val();
-      var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear()
-      var total_amount = $('#policy_total_amount').val();
-      var premium_mod = $(this).val();
+      var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear();
       var total_year = end_year - start_year
-      var policy_amt = total_amount / total_year
-
-      var val = 0.00;
-      if(total_year > 1)
-      {
-        switch(premium_mod)
-        {
-          case 'quarterly':
-            val =  policy_amt / 4
-            break;
-          case 'half_year':
-            val =  policy_amt / 2
-            break;
-          case 'yearly':
-            val =  policy_amt
-            break;
-        }
+      if(total_year <= 1){
+        $('div#policy_payment_mode input').prop('disabled', true);
+        $('#policy_payment_mode').hide();
+      }else{
+        $('div#policy_payment_mode input').prop('disabled', false);
+        $('#policy_payment_mode').show();
       }
-      $('#policy_premium_amount').val(val.toFixed(2));
+    });
+  },
+  countPremiumAmount: function() {
+    var start_date = $('#policy_start_date').val();
+    var start_year = new Date(start_date.split('/').reverse().join('/')).getFullYear();
+    var end_date = $('#policy_end_date').val();
+    var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear();
+    var total_amount = $('#policy_total_amount').val();
+    var premium_mod = $('#policy_premium_mod').val();
+
+    var total_year = end_year - start_year
+    var policy_amt = total_amount / total_year
+
+    var val = 0.00;
+    if(total_year > 1)
+    {
+      switch(premium_mod)
+      {
+        case 'quarterly':
+          val =  policy_amt / 4
+          break;
+        case 'half_year':
+          val =  policy_amt / 2
+          break;
+        case 'yearly':
+          val =  policy_amt
+          break;
+      }
+    }
+    $('#policy_premium_amount').val(val.toFixed(2));
+  },
+  premiumAmount: function() {
+    $('#policy_premium_mod, #policy_mod_of_payment').on('change',function(){
+      AgentAssist.Policy.countPremiumAmount();
+    });
+    $('#policy_start_date, #policy_end_date').on('dp.change', function (e) {
+      AgentAssist.Policy.countPremiumAmount();
+    });
+    $('#policy_total_amount').on('input',function(){
+      AgentAssist.Policy.countPremiumAmount();
     });
   },
   policyValidation: function(){
@@ -220,38 +268,34 @@ AgentAssist.Policy = {
       useCurrent: false,
     });
   },
-   showDatePicker: function(){
-    $('#policy_personal_info_attributes_date_of_birth').datetimepicker({
-      format: "DD/MM/YYYY"
-    });
-    $('#policy_start_date').datetimepicker({
-      format: "DD/MM/YYYY",
-      useCurrent: true
-    });
-    $('#policy_end_date').datetimepicker({
-      format: "DD/MM/YYYY",
-      useCurrent: false,
-    });
-    $("#policy_start_date").on("dp.change", function (e) {
-        $('#policy_end_date').data("DateTimePicker").minDate(e.date);
-    });
-    $("#policy_end_date").on("dp.change", function (e) {
-        $('#policy_start_date').data("DateTimePicker").maxDate(e.date);
+  policyAddressType: function () {
+    $('#checkbox_check').on('ifToggled', function() {
+      if ($(this).prop('checked')) {
+        $('div#checked_form input').prop('disabled', true);
+        $('#checked_form').hide();
+        $('#policy_address_attributes_0_address_type').val('permanent');
+      }
+      else {
+        $('div#checked_form input').prop('disabled', false);
+        $('#policy_address_attributes_1_address_type').val('temporary');
+        $('#checked_form').show();
+      }
     });
   },
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
+    this.hideControll();
     this.wizardSlideSteps();
     this.formSubmit();
     this.userDetails();
     this.buttonSubmit();
     this.policyType();
-    this.autoCompleteLocationPolicy('#policy_address_attributes_city');
     this.selectDropDown();
     this.premiumAmount();
     this.emailValidation();
     this.searchDateTimePicker();
+    this.policyAddressType();
     this.policyValidation();
   }
 };

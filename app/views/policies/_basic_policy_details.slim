@@ -3,7 +3,7 @@
     label.control-label.col-md-3 
       | Category
     .col-md-6
-      = p.select :company_category_id, options_for_select(Category.all.map{|c| [c.name, c.id]}, @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control", required: true, label: false}
+      = p.select :company_category_id, options_for_select(Category.all.map{|c| [c.name, c.id]}, @category_id), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: 'form-control', required: true, label: false}
   - if action_name == 'edit'
     = render partial: 'companies'
     = render partial: 'plans'
@@ -14,29 +14,30 @@
   label.control-label.col-md-3
     | Start Date
   .col-md-6
-    = f.text_field :start_date,class:"form-control select2",value: start_date
+    = f.text_field :start_date, class: 'form-control', value: start_date
 .form-group
   label.control-label.col-md-3
     | End Date
   .col-md-6
-    = f.text_field :end_date,class:"form-control",value: end_date
+    = f.text_field :end_date, class: 'form-control',value: end_date
 .form-group
   label.control-label.col-md-3
     | Total Amount
   .col-md-6
     = f.input :total_amount,class:"form-control", required: true, label: false
-.form-group
-  label.control-label.col-md-3
-    | Pay mode
-  .col-md-6
-    = f.select :mod_of_payment, options_for_select(Policy.formatted_mod_of_payment, @policy.mod_of_payment), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control", required: true, label: false}
-.form-group
-  label.control-label.col-md-3
-    | Premium Mod
-  .col-md-6
-    = f.select :premium_mod, options_for_select(Policy.formatted_premium_mod, @policy.premium_mod), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control", required: true, label: false}
-.form-group
-  label.control-label.col-md-3
-    | Premium amount
-  .col-md-6
-    = f.input :premium_amount,class:"form-control", required: true, label: false, readonly: true
+#policy_payment_mode
+  .form-group
+    label.control-label.col-md-3
+      | Pay mode
+    .col-md-6
+      = f.select :mod_of_payment, options_for_select(Policy.formatted_mod_of_payment, @policy.mod_of_payment), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control", required: true, label: false}
+  .form-group
+    label.control-label.col-md-3
+      | Premium Mod
+    .col-md-6
+      = f.select :premium_mod, options_for_select(Policy.formatted_premium_mod, @policy.premium_mod), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION}, {class: "form-control", required: true, label: false}
+  .form-group
+    label.control-label.col-md-3
+      | Premium amount
+    .col-md-6
+      = f.input :premium_amount,class:"form-control", required: true, label: false, readonly: true
