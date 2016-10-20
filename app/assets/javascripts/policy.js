@@ -58,7 +58,7 @@ AgentAssist.Policy = {
           $('#policy_personal_info_attributes_last_name').val(response.personal_info.last_name);
           $('#policy_personal_info_attributes_middle_name').val(response.personal_info.middle_name);
           $('#policy_personal_info_attributes_date_of_birth').val(response.personal_info.date_of_birth);
-          $('#policy_personal_info_attributes_gender').val(response.personal_info.gender);          
+          $('#policy_personal_info_attributes_gender_'+response.personal_info.gender).iCheck('check');          
         }
       });
     });
@@ -198,13 +198,9 @@ AgentAssist.Policy = {
       }
     }
   },
-  hideControll: function(){
+  hidePremiumFields: function(){
     $("#policy_end_date").on("dp.change", function (e) {
-      var start_date = $('#policy_start_date').val();
-      var start_year = new Date(start_date.split('/').reverse().join('/')).getFullYear();
-      var end_date = $('#policy_end_date').val();
-      var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear();
-      var total_year = end_year - start_year
+      var total_year = AgentAssist.Policy.totalPolicyYear('#policy_start_date', '#policy_end_date');  
       if(total_year <= 1){
         $('div#policy_payment_mode input').prop('disabled', true);
         $('#policy_payment_mode').hide();
@@ -215,16 +211,10 @@ AgentAssist.Policy = {
     });
   },
   countPremiumAmount: function() {
-    var start_date = $('#policy_start_date').val();
-    var start_year = new Date(start_date.split('/').reverse().join('/')).getFullYear();
-    var end_date = $('#policy_end_date').val();
-    var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear();
     var total_amount = $('#policy_total_amount').val();
-    var premium_mod = $('#policy_premium_mod').val();
-
-    var total_year = end_year - start_year
+    var premium_mod = $('#policy_premium_mod').val();    
+    var total_year = AgentAssist.Policy.totalPolicyYear('#policy_start_date', '#policy_end_date');
     var policy_amt = total_amount / total_year
-
     var val = 0.00;
     if(total_year > 1)
     {
@@ -242,6 +232,13 @@ AgentAssist.Policy = {
       }
     }
     $('#policy_premium_amount').val(val.toFixed(2));
+  },
+  totalPolicyYear: function(start_date, end_date){
+    var start_date = $('#policy_start_date').val();
+    var start_year = new Date(start_date.split('/').reverse().join('/')).getFullYear();
+    var end_date = $('#policy_end_date').val();
+    var end_year = new Date(end_date.split('/').reverse().join('/')).getFullYear();
+    return total_year = end_year - start_year
   },
   premiumAmount: function() {
     $('#policy_premium_mod, #policy_mod_of_payment').on('change',function(){
@@ -285,7 +282,7 @@ AgentAssist.Policy = {
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
-    this.hideControll();
+    this.hidePremiumFields();
     this.wizardSlideSteps();
     this.formSubmit();
     this.userDetails();
