@@ -1,35 +1,32 @@
-.right_col
-  .row
-    .col-md-12
-      .x_panel
-        .x_title
-          h2
-            = t('.policies')
+.x_panel
+  .x_title
+    h2
+      = t('.policies')
+    .pull-right
+      = link_to 'Add', new_policy_path, class: 'btn btn-primary pull-right add-btn-padding', title: 'Add'
+    .clearfix
+  .x_content
+    - if @policies.present?  
+      .pull-right
+        = form_tag filter_policies_path, method: :get, class: 'form-inline', remote: true do    
+          .form-group        
+            = text_field_tag :policy_number, nil, placeholder: 'Enter Policy Number', class:'form-control action-space'
+          .form-group
+            = text_field_tag :date, nil, placeholder: 'Enter Date',class:'form-control action-space'
+          .form-group
+            = submit_tag :Search, class: 'btn btn-primary button_search'
+      .list-space
+      .table-responsive
+        table.table.table-striped.jambo_table.bulk_action
+          thead#policy_list_head
+            = render partial: 'list_header'
+          tbody#policy_list_body
+           = render partial: 'list_body', locals: { policies: @policies }
+      .box-footer.clearfix
+        .pagination.pagination-sm.no-margin.pull-right
           .pull-right
-            = link_to 'Add', new_policy_path, class: 'btn btn-primary pull-right add-btn-padding', title: 'Add'
-          .clearfix
-        .x_content
-          - if @policies.present?  
-            .pull-right
-              = form_tag filter_policies_path, method: :get, class: 'form-inline', remote: true do    
-                .form-group        
-                  = text_field_tag :policy_number, nil, placeholder: 'Enter Policy Number', class:'form-control action-space'
-                .form-group
-                  = text_field_tag :date, nil, placeholder: 'Enter Date',class:'form-control action-space'
-                .form-group
-                  = submit_tag :Search, class: 'btn btn-primary button_search'
-            .list-space
-            .table-responsive
-              table.table.table-striped.jambo_table.bulk_action
-                thead#policy_list_head
-                  = render partial: 'list_header'
-                tbody#policy_list_body
-                 = render partial: 'list_body', locals: { policies: @policies }
-            .box-footer.clearfix
-              .pagination.pagination-sm.no-margin.pull-right
-                .pull-right
-                  = paginate @policies, controller: 'policies', action: 'index', theme: 'twitter-bootstrap-3', remote: true if @policies.present?
-          - else
-            = render partial: 'shared/no_data_available_message', locals: { message: 'Policies' }
+            = paginate @policies, controller: 'policies', action: 'index', theme: 'twitter-bootstrap-3', remote: true if @policies.present?
+    - else
+      = render partial: 'shared/no_data_available_message', locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'policy'

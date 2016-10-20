@@ -1,32 +1,29 @@
-.right_col
-  .row
-    .col-md-12
-      .x_panel
-        .x_title
-          h2
-            = t('.basic_info')
-          .clearfix
-        .x_content
-          #wizard.form_wizard.wizard_horizontal
-            ul.wizard_steps.anchor
-              li
-                a.selected href="#step-1"  
-                  span.step_no 1
-                  span.step_descr
-                    = t('.personal_info')
-              li
-                a.disabled href="#step-2"  
-                  span.step_no 2
-                  span.step_descr
-                    = t('.family_details')
-              li
-                a.disabled href="#step-3" 
-                  span.step_no 3
-                  span.step_descr
-                    = t('.address')
-            .stepContainer
-              = simple_form_for @customer, url: customers_path  do |f|
-                - @customer.build_personal_info
-                - @customer.address.build
-                = f.hidden_field :user_type, value: 'customer'
-                = render partial: 'wizard_steps', locals: {f: f, customer: @customer}
+.x_panel
+  .x_title
+    h2
+      = t('.basic_info')
+    .clearfix
+  .x_content
+    #wizard.form_wizard.wizard_horizontal
+      ul.wizard_steps.anchor
+        li
+          a.selected href="#step-1"  
+            span.step_no 1
+            span.step_descr
+              = t('.personal_info')
+        li
+          a.disabled href="#step-2"  
+            span.step_no 2
+            span.step_descr
+              = t('.family_details')
+        li
+          a.disabled href="#step-3" 
+            span.step_no 3
+            span.step_descr
+              = t('.address')
+      .stepContainer
+        = simple_form_for @customer, url: customers_path  do |f|
+          - @customer.build_personal_info
+          - @customer.address.build
+          = f.hidden_field :user_type, value: 'customer'
+          = render partial: 'wizard_steps', locals: {f: f, customer: @customer}

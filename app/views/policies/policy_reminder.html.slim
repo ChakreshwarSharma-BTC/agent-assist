@@ -1,21 +1,18 @@
-.right_col
-  .row
-    .col-md-12
-      .x_panel
-        .x_title
-          h2
-            = t('.reminders')
-          .clearfix
-        .x_content
-          - if @policy.present?
-            .table-responsive
-              table.table.table-striped.jambo_table.bulk_action
-                = render partial: 'list_header'
-                = render partial: 'list_body', locals: { policies: @policy }
-            .box-footer.clearfix
-              .pagination.pull-right
-                .text-right
-                  = paginate @policy
-          - else
-            = render partial: "shared/no_data_available_message", locals: { message: 'Policies' }
+.x_panel
+  .x_title
+    h2
+      = t('.reminders')
+    .clearfix
+  .x_content
+    - if @policy.present?
+      .table-responsive
+        table.table.table-striped.jambo_table.bulk_action
+          = render partial: 'list_header'
+          = render partial: 'list_body', locals: { policies: @policy }
+      .box-footer.clearfix
+        .pagination.pull-right
+          .text-right
+            = paginate @policy
+    - else
+      = render partial: "shared/no_data_available_message", locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'

@@ -17,9 +17,11 @@ html
               - if Policy.any?
                 - if !current_user.notification
                   = render partial: "shared/premium_reminder", locals: { policies: @premium_reminder }
-            = render partial: 'shared/flash_message'
-            = yield 
-
+            .right_col
+              .row
+              .col-md-12
+                = render partial: 'shared/flash_message'
+                = yield 
     -else
       body.login
         = yield

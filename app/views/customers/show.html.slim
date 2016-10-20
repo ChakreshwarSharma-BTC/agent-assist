@@ -1,35 +1,32 @@
-.right_col
-  .row
-    .col-md-12
-      .x_panel
-        .x_title
-          h2
-            | Customer 
-          .clearfix
-        .x_content
-        table.table
-          tbody
-            tr
-              th Name :
-              td 
-               = @customer.personal_info.full_name
-            tr
-              th Email : 
-              td
-               = @customer.email
-            tr
-              th Date of Birth :
-              td 
-               = @customer.personal_info.date_of_birth
-            tr
-              th Address :
-              td 
-               = render partial: 'address'
-        .clearfix
-        .separator
-        = link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-info'
-        h2
-          | Family List
-          .separator
-        = render partial: 'customers/family/index', locals: {family: @family, customer: @customer}
+.x_panel
+  .x_title
+    h2
+      | Customer 
+    .clearfix
+  .x_content
+  table.table
+    tbody
+      tr
+        th Name :
+        td 
+         = @customer.personal_info.full_name
+      tr
+        th Email : 
+        td
+         = @customer.email
+      tr
+        th Date of Birth :
+        td 
+         = @customer.personal_info.date_of_birth
+      tr
+        th Address :
+        td 
+         = render partial: 'address'
+  .clearfix
+  .separator
+  = link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-info'
+  h2
+    | Family List
+    .separator
+  = render partial: 'customers/family/index', locals: {family: @family, customer: @customer}
 = javascript_include_tag 'sidebar'

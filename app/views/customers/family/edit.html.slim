@@ -1,17 +1,14 @@
-.right_col
-  .row
-    .col-md-12
-      .x_panel
-        .x_title
-          h2
-            | Edit 
-          .clearfix
-        .x_content
-          .stepContainer
-            .form-horizontal.form-label-left
-              = simple_form_for @family_member, url: update_family_member_customer_path do |f|
-                = f.simple_fields_for :personal_info do |f|
-                  = render partial: 'devise/registrations/common_info_fields', locals: {f: f}
-                = render partial: 'devise/registrations/common_family_fields', locals: {f: f}
-                = f.submit 'Update', class: 'btn btn-success'
+.x_panel
+  .x_title
+    h2
+      | Edit 
+    .clearfix
+  .x_content
+    .stepContainer
+      .form-horizontal.form-label-left
+        = simple_form_for @family_member, url: update_family_member_customer_path do |f|
+          = f.simple_fields_for :personal_info do |f|
+            = render partial: 'devise/registrations/common_info_fields', locals: {f: f}
+          = render partial: 'devise/registrations/common_family_fields', locals: {f: f}
+          = f.submit 'Update', class: 'btn btn-success'
 = javascript_include_tag 'sidebar'

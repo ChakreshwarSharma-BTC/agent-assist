@@ -1,44 +1,41 @@
-.right_col
-  .row
-    .col-md-12
-      .x_panel
-        .x_title
-          h2
-            | Show 
-          .clearfix
-        .x_content
-        table.table
-          tbody
-            tr
-              th Name :
-              td 
-                = @family_member.personal_info.full_name
-            tr
-              th Date of Birth :
-              td 
-                = @family_member.personal_info.date_of_birth
-            tr
-              th Gender :
-              td 
-                = @family_member.personal_info.gender
-            tr
-              th Gender :
-              td 
-                = @family_member.health
-            tr
-              th Death Age :
-              td
-                = @family_member.death_age
-            tr
-              th Death Year :
-              td
-                = @family_member.death_year
-            tr
-              th Death Reason :
-              td
-                = @family_member.death_reason
-            tr
-              th Relation :
-              td
-                = @relation_with_customer
+.x_panel
+  .x_title
+    h2
+      | Show 
+    .clearfix
+  .x_content
+  table.table
+    tbody
+      tr
+        th Name :
+        td 
+          = @family_member.personal_info.full_name
+      tr
+        th Date of Birth :
+        td 
+          = @family_member.personal_info.date_of_birth
+      tr
+        th Gender :
+        td 
+          = @family_member.personal_info.gender
+      tr
+        th Gender :
+        td 
+          = @family_member.health
+      tr
+        th Death Age :
+        td
+          = @family_member.death_age
+      tr
+        th Death Year :
+        td
+          = @family_member.death_year
+      tr
+        th Death Reason :
+        td
+          = @family_member.death_reason
+      tr
+        th Relation :
+        td
+          = @relation_with_customer
 = javascript_include_tag 'sidebar'
