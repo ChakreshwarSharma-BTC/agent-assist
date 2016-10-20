@@ -58,7 +58,7 @@ AgentAssist.Policy = {
           $('#policy_personal_info_attributes_last_name').val(response.personal_info.last_name);
           $('#policy_personal_info_attributes_middle_name').val(response.personal_info.middle_name);
           $('#policy_personal_info_attributes_date_of_birth').val(response.personal_info.date_of_birth);
-          $('#policy_personal_info_attributes_gender').val(response.personal_info.gender);          
+          $('#policy_personal_info_attributes_gender_'+response.personal_info.gender).iCheck('check');          
         }
       });
     });
@@ -198,7 +198,7 @@ AgentAssist.Policy = {
       }
     }
   },
-  hideControll: function(){
+  hidePremiumFields: function(){
     $("#policy_end_date").on("dp.change", function (e) {
       var total_year = AgentAssist.Policy.totalPolicyYear('#policy_start_date', '#policy_end_date');  
       if(total_year <= 1){
@@ -282,7 +282,7 @@ AgentAssist.Policy = {
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
-    this.hideControll();
+    this.hidePremiumFields();
     this.wizardSlideSteps();
     this.formSubmit();
     this.userDetails();
