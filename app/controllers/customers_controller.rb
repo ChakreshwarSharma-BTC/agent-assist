@@ -25,7 +25,7 @@ class CustomersController < ApplicationController
 
   def update
     if @customer.update_attributes(customer_params)
-      flash[:success] = "You have updated customer successfully!"
+      flash[:success] = t('.success')
     else
       flash[:error] = @customer.errors.full_messages.to_sentence
     end
@@ -36,7 +36,7 @@ class CustomersController < ApplicationController
     @customer = User.new(customer_params.merge!({password: Settings.user.password}))
     if @customer.save
       redirect_to customers_path
-      flash[:success] = "You have created customer successfully!"
+      flash[:success] = t('.success')
     else
       render :new
       flash[:error] = @customer.errors.full_messages.to_sentence
@@ -49,7 +49,7 @@ class CustomersController < ApplicationController
 
   def destroy
     if @customer.destroy
-      flash[:success] = "Customer Removed successfully!"
+      flash[:success] = t('.success')
     else
       flash[:error] = @customer.errors.full_messages.to_sentence
     end
@@ -66,7 +66,7 @@ class CustomersController < ApplicationController
     if @family_member.save
       Family.create(user_id: @customer.id, family_member_id: @family_member.id)  
       redirect_to customer_path
-      flash[:success] = "You have created family member successfully!"
+      flash[:success] = t('.success')
     else
       render 'customers/family/new'
       flash[:error] = @family_member.errors.full_messages.to_sentence
@@ -79,7 +79,7 @@ class CustomersController < ApplicationController
 
   def update_member
     if @family_member.update_attributes(family_member_params)
-      flash[:success] = "You have updated family member successfully!"
+      flash[:success] = t('.success')
     else
       flash[:error] = @family_member.errors.full_messages.to_sentence
     end
@@ -93,7 +93,7 @@ class CustomersController < ApplicationController
 
   def destroy_member
     if Family.find_by(family_member_id: params['member_id']).destroy!
-      flash[:success] = "Family member Removed successfully"
+      flash[:success] = t('.success')
     else
       flash[:error] = @family_member.errors.full_messages.to_sentence
     end
