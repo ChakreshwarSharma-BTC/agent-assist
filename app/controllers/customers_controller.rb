@@ -27,7 +27,7 @@ class CustomersController < ApplicationController
     if @customer.update_attributes(customer_params)
       flash[:success] = "You have updated customer successfully!"
     else
-      flash[:error] = "You have not updated customer successfully!"
+      flash[:error] = @customer.errors.full_messages.to_sentence
     end
     redirect_to customers_path 
   end
@@ -39,7 +39,7 @@ class CustomersController < ApplicationController
       flash[:success] = "You have created customer successfully!"
     else
       render :new
-      flash[:error] = "You have not created customer successfully!"
+      flash[:error] = @customer.errors.full_messages.to_sentence
     end
   end
 
@@ -48,9 +48,12 @@ class CustomersController < ApplicationController
   end
 
   def destroy
-    if @customer.destroy!
-      redirect_to customers_path 
+    if @customer.destroy
+      flash[:success] = "Customer Removed successfully!"
+    else
+      flash[:error] = @customer.errors.full_messages.to_sentence
     end
+    redirect_to customers_path
   end
 
   def new_member
@@ -63,8 +66,10 @@ class CustomersController < ApplicationController
     if @family_member.save
       Family.create(user_id: @customer.id, family_member_id: @family_member.id)  
       redirect_to customer_path
+      flash[:success] = "You have created family member successfully!"
     else
       render 'customers/family/new'
+      flash[:error] = @family_member.errors.full_messages.to_sentence
     end
   end
 
@@ -73,7 +78,11 @@ class CustomersController < ApplicationController
   end
 
   def update_member
-    @family_member.update_attributes(family_member_params)
+    if @family_member.update_attributes(family_member_params)
+      flash[:success] = "You have updated family member successfully!"
+    else
+      flash[:error] = @family_member.errors.full_messages.to_sentence
+    end
     redirect_to customer_path
   end
 
@@ -83,7 +92,11 @@ class CustomersController < ApplicationController
   end
 
   def destroy_member
-    Family.find_by(family_member_id: params['member_id']).destroy!
+    if Family.find_by(family_member_id: params['member_id']).destroy!
+      flash[:success] = "Family member Removed successfully"
+    else
+      flash[:error] = @family_member.errors.full_messages.to_sentence
+    end
     redirect_to customer_path
   end
 

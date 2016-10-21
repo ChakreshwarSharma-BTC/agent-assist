@@ -4,38 +4,44 @@
       | Show 
     .clearfix
   .x_content
-  table.table
-    tbody
-      tr
-        th Name :
-        td 
-          = @family_member.personal_info.full_name
-      tr
-        th Date of Birth :
-        td 
-          = @family_member.personal_info.date_of_birth
-      tr
-        th Gender :
-        td 
-          = @family_member.personal_info.gender
-      tr
-        th Gender :
-        td 
-          = @family_member.health
-      tr
-        th Death Age :
-        td
-          = @family_member.death_age
-      tr
-        th Death Year :
-        td
-          = @family_member.death_year
-      tr
-        th Death Reason :
-        td
-          = @family_member.death_reason
-      tr
-        th Relation :
-        td
-          = @relation_with_customer
+    table.table
+      tbody
+        tr
+          th Name :
+          td 
+            = @family_member.personal_info.full_name
+        tr
+          th Date of Birth :
+          td 
+            = @family_member.personal_info.date_of_birth
+        tr
+          th Gender :
+          td 
+            = @family_member.personal_info.gender
+        tr
+          th Gender :
+          td 
+            = @family_member.health
+        - if @family_member.death_age.present?
+          tr
+            th Death Age :
+            td
+              = @family_member.death_age
+        - if @family_member.death_year.present?
+          tr
+            th Death Year :
+            td
+              = @family_member.death_year
+        - if @family_member.death_reason.present?
+          tr
+            th Death Reason :
+            td
+              = @family_member.death_reason
+        tr
+          th Relation :
+          td
+            = @relation_with_customer
+  .x_footer
+    .pull-right
+      = link_to 'Back', customer_path, class: 'btn btn-info btn-space-width'
 = javascript_include_tag 'sidebar'
