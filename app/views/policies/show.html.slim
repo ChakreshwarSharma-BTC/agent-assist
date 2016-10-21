@@ -1,6 +1,6 @@
 .col-md-12
   .row
-    .col-md-6.col-sm-6.col-xs-12
+    .col-md-6
       .x_panel
         .x_title
           h2
@@ -9,7 +9,7 @@
           .x_content
             .table-responsive.scrollbar
               = render partial: 'policy_show'
-    .col-md-6.col-sm-6.col-xs-12
+    .col-md-6
       .x_panel
         .x_title
           h2
@@ -50,6 +50,6 @@
                   = render partial: 'nominee_detail_show'  
 .col-md-12
   .pull-right
-    = link_to "Back", policies_path, class: "btn btn-primary bn-space"
+    = link_to "Back", :back, class: "btn btn-primary bn-space"
     = link_to "Edit",edit_policy_path(@policy), class: "btn btn-default bn-space"       
 = javascript_include_tag 'sidebar'
