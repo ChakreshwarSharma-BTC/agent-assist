@@ -4,12 +4,14 @@
       | New Member 
     .clearfix
   .x_content
-    .stepContainer
-      - if @family_member.errors.any?
-        = @family_member.errors.messages
-      = simple_form_for @family_member, url: create_family_member_customer_path(@customer) do |f|
-        .form-horizontal.form-label-left
-          = render partial: 'personal_info_fields', locals: {f: f}
-          = render partial: 'devise/registrations/common_family_fields', locals: {f: f}
-          = f.submit 'Submit', class: 'btn btn-success'
+    = simple_form_for @family_member, url: create_family_member_customer_path(@customer) do |f|
+      .form-horizontal.form-label-left
+        = render partial: 'personal_info_fields', locals: {f: f}
+        = render partial: 'devise/registrations/common_family_fields', locals: {f: f}
+      .pull-right.btn-align
+        = f.submit 'Submit', class: 'btn btn-success btn-space-width'
+        = link_to 'Back', customer_path, class: 'btn btn-info btn-space-width'
 = javascript_include_tag 'sidebar'
+= javascript_include_tag 'register'
+javascript:
+  AgentAssist.Register.validateForm('.btn.btn-success');

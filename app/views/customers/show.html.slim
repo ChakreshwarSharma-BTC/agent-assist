@@ -24,9 +24,22 @@
          = render partial: 'address'
   .clearfix
   .separator
-  = link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-info'
-  h2
-    | Family List
-    .separator
-  = render partial: 'customers/family/index', locals: {family: @family, customer: @customer}
+  .from-group
+    .col-md-12
+      .pull-right
+        = link_to 'Edit', edit_customer_path(@customer), class: 'btn btn-info btn-space-width'
+  .clearfix
+  .form-group
+    .col-md-4
+      h2
+        | Family List
+    .col-md-8
+      .pull-right
+        = link_to 'Add Member', new_family_member_customer_path, class: 'btn btn-info btn-space-width'
+  .clearfix
+  .separator
+  - if @family.present?
+    = render partial: 'customers/family/index', locals: {family: @family, customer: @customer}
+  - else
+    = render partial: "shared/no_data_available_message", locals: { message: 'Family Members' }
 = javascript_include_tag 'sidebar'

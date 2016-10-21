@@ -50,3 +50,17 @@ en:
       personal_info: 'Personal Info'
       family_details: 'Family details'
       address: 'Address'
+    create:
+      success: 'You have created customer successfully!'
+    update:
+      success: 'You have updated customer successfully!'
+    destroy:
+      success: 'Customer Removed successfully!'
+    family_member:
+      create:
+        success: 'You have created family member successfully!'
+      destroy:
+        success: 'Family member Removed successfully'
+      update:
+        success: 'You have updated family member successfully!'
+
