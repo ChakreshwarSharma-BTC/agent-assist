@@ -35,7 +35,7 @@ class Policy < ApplicationRecord
   #count renewal policy
   scope :policy_renewal, -> {where(renewal_date: Date.current - Settings.policy.day)}
   scope :search_by_policy_number, ->(search) { where('policy_number like :policy_number', policy_number: "%#{search}%") }  
-  scope :search_by_date, ->(search) { where('start_date LIKE :start_date or end_date LIKE :end_date or renewal_date LIKE :renewal_date', start_date: "%#{search}%", end_date: "%#{search}%", renewal_date: "%#{search}%")}  
+  scope :search_by_date, ->(search) { where('start_date =? OR end_date =? OR renewal_date =?', search, search, search)}
   scope :company_category, -> (company_category_ids) { joins(:plan).where('company_category_id in :ids', ids: company_category_ids) }
 
   # Weekly premium date
