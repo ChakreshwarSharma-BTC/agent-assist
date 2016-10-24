@@ -16,6 +16,7 @@
         span.do-not-disturb-button
           = t('.do_not_disturb')
 javascript:
+  AgentAssist.Common.bindIcheck();
   if(#{current_user.notification} == false)
   {
     $('#modal').modal();
