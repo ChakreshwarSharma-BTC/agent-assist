@@ -3,4 +3,8 @@
     h2
       | New Policy Details
     .clearfix
-  = render partial: 'form'  
+  = render partial: 'form'
+javascript:
+  $(document).ready(function(){
+    $('.actionBar').append('<a href="/policies" class="btn btn-danger">Cancel</a>');
+  });

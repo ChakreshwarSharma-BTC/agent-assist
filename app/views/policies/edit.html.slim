@@ -6,3 +6,6 @@
   = render partial: 'form'
 javascript:
   AgentAssist.Policy.hidePremiumFields();
+  $(document).ready(function(){
+    $('.actionBar').append('<a href="/policies" class="btn btn-danger">Cancel</a>');
+  });

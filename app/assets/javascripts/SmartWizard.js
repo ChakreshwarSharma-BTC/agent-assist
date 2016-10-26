@@ -23,8 +23,7 @@ function SmartWizard(target, options) {
     this.buttons = {
         next : $('<a>'+options.labelNext+'</a>').attr("href","#").addClass("buttonNext"),
         previous : $('<a>'+options.labelPrevious+'</a>').attr("href","#").addClass("buttonPrevious"),
-        finish  : $('<a>'+options.labelFinish+'</a>').attr("href","#").addClass("buttonFinish"),
-        cancel  : $('<a>'+options.labelCancel+'</a>').attr("href","/policies").addClass("buttonCancel")
+        finish  : $('<a>'+options.labelFinish+'</a>').attr("href","#").addClass("buttonFinish")
     };
 
     /*
@@ -56,7 +55,6 @@ function SmartWizard(target, options) {
         elmActionBar.append($this.buttons.finish)
                     .append($this.buttons.next)
                     .append($this.buttons.previous)
-                    .append($this.buttons.cancel);
         $this.target.append(elmActionBar);
         this.contentWidth = $this.elmStepContainer.width();
 
@@ -451,7 +449,6 @@ $.fn.smartWizard.defaults = {
     labelNext:'Next',
     labelPrevious:'Previous',
     labelFinish:'Finish',
-    labelCancel:'cancel',
     noForwardJumping: false,
     onLeaveStep: null, // triggers when leaving a step
     onShowStep: null,  // triggers when showing a step

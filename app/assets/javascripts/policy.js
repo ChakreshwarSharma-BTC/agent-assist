@@ -84,7 +84,6 @@ AgentAssist.Policy = {
     $('.buttonNext').addClass('btn btn-success');
     $('.buttonPrevious').addClass('btn btn-primary');
     $('.buttonFinish').addClass('btn btn-default');
-    $('.buttonCancel').addClass('btn btn-danger');
   },
   buttonSubmit: function(){
     $('.buttonFinish').on('click', function(){
@@ -211,6 +210,7 @@ AgentAssist.Policy = {
       }
     });
   },
+
   countPremiumAmount: function() {
     var total_amount = $('#policy_total_amount').val();
     var premium_mod = $('#policy_premium_mod').val();    
@@ -280,6 +280,7 @@ AgentAssist.Policy = {
       }
     });
   },
+  
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
