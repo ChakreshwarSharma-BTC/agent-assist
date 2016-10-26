@@ -74,7 +74,7 @@ function SmartWizard(target, options) {
            }
         });
         $($this.buttons.previous).click(function() {
-            $this.goBackward();
+            $this.goForward();
             return false;
         });
         $($this.buttons.finish).click(function() {
