@@ -84,6 +84,7 @@ AgentAssist.Policy = {
     $('.buttonNext').addClass('btn btn-success');
     $('.buttonPrevious').addClass('btn btn-primary');
     $('.buttonFinish').addClass('btn btn-default');
+    $('.buttonCancel').addClass('btn btn-danger');
   },
   buttonSubmit: function(){
     $('.buttonFinish').on('click', function(){
