@@ -4,7 +4,7 @@
       .icon
         i.fa.fa-group
       .count
-        = customer_count
+        = stats[:total_customers]
       h3
        | Total Customer
   .animated.flipInY.col-md-4 = link_to policies_path
@@ -12,7 +12,7 @@
       .icon
         i.fa.fa-file-powerpoint-o
       .count
-        = policy_count
+        = stats[:total_policies]
       h3
        | Total Policy
   .animated.flipInY.col-md-4 = link_to companies_path
@@ -20,6 +20,6 @@
       .icon
         i.fa.fa-building-o
       .count
-        = company_count
+        = stats[:total_companies]
       h3
        | Total Company

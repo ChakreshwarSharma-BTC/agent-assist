@@ -48,7 +48,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = User.new(customer_params.merge!({password: Settings.user.password}))
+    @customer = User.new(customer_params.merge!({password: Settings.user.password, created_by: current_user.id}))
     if @customer.save
       redirect_to customers_path
       flash[:success] = t('.success')
@@ -136,7 +136,7 @@ class CustomersController < ApplicationController
   end
 
   def set_customers
-    @customers = User.with_role :customer
+    @customers =  User.where(created_by: current_user).with_role :customer
   end
 
   def set_customer

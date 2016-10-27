@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 # Creating Categories with the default information.
-User.find_or_create_by(email:"agent@gmail.com") do |u|
+User.find_or_create_by(email: 'agent@ex.com') do |u|
   u.password = '12345678'
   u.primary_phone_no = '0123456789'
   u.add_role :agent
