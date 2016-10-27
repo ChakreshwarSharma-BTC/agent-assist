@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_customer, except: [:index, :new, :create, :filter_customers, :check_email, :existing_member, :family_member]
-  before_action :set_family_member, only: [:show_member, :edit_member, :update_member, :destroy_member, :family_member]
+  before_action :set_customer, except: [:index, :new, :create, :filter_customers, :check_email, :existing_member, :member]
+  before_action :set_family_member, only: [:show_member, :edit_member, :update_member, :destroy_member, :member]
   before_action :set_customers, only: [:index, :filter_customers, :existing_member]
 
   def index
@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
     render 'customers/existing_member/family_members'
   end
 
-  def family_member
+  def member
     customer_address = User.find(params[:customer_id]).address
     render json: { personal_info: @family_member.personal_info, address: customer_address }
   end
@@ -136,7 +136,7 @@ class CustomersController < ApplicationController
   end
 
   def set_customers
-    @customers = User.where(created_by: current_user).with_role :customer
+    @customers = User.agent_customers(current_user)
   end
 
   def set_customer

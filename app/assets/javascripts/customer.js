@@ -1,15 +1,11 @@
 AgentAssist.Customer = {
   existingMember: function(){
     $('#existing_member').on('ifToggled', function(){
-      if($('#existing_member').prop('checked'))
-      {
+      if($('#existing_member').prop('checked')){
         $.ajax({
-          type:'GET',
           url: '/customers/existing_member/members'
         });
-      }
-      else
-      {
+      } else{
         $('#members').html('');
         $('#family_members').html('');
       }
@@ -18,12 +14,9 @@ AgentAssist.Customer = {
   familyMembers: function(){
     $('#search_customer').on('change', function(){
       var customer = $(this).val();
-      if(customer != '')
-      {
+      if(customer){
         $.ajax({
-          type:'GET',
-          url: '/customers/existing_member/family_members',
-          data: {id: customer}
+          url: '/customers/existing_member/family_members', data: {id: customer}
         });
       }
     });
@@ -32,32 +25,13 @@ AgentAssist.Customer = {
     $('#family_member').on('change', function(){
       var member = $(this).val();
       var customer = $('#search_customer').val();
-      if($(this).val() != ''){
+      if(member && customer){
         $.ajax({
-          type:'GET',
-          url: '/customers/existing_member/family_member',
+          url: '/customers/existing_member/member',
           data: { member_id: member, customer_id: customer },
-          success: function(response)
-          {
+          success: function(response){
             AgentAssist.Common.fillUserPersonalInfo('user', response);
             AgentAssist.Common.getUserAddress('user', response);
-            $("#wizard").smartWizard('disableStep', 2);
-          }
-        });
-      }
-    });
-  },
-  addFamily: function(){
-    $('#family_member').on('change', function(){
-      var member = $(this).val();
-      if($(this).val() != ''){
-        $.ajax({
-          type:'GET',
-          url: '/customers/existing_member/family_member',
-          data: { member_id: member },
-          success: function(response)
-          {
-            AgentAssist.Common.fillUserPersonalInfo('user', response);
           }
         });
       }

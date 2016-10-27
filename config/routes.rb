@@ -36,8 +36,8 @@ Rails.application.routes.draw do
     end
     collection do
       get 'existing_member/members' => 'customers#existing_member'
-      get 'existing_member/family_member' => 'customers#family_member'
       get 'existing_member/family_members' => 'customers#family_members'
+      get 'existing_member/member' => 'customers#member'
       get 'filter_customers' => 'customers#filter_customers', as: 'filter'
       get 'check_email' => 'customers#check_email'
     end

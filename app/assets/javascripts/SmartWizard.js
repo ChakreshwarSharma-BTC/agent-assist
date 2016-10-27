@@ -59,15 +59,10 @@ function SmartWizard(target, options) {
         this.contentWidth = $this.elmStepContainer.width();
 
         $($this.buttons.next).click(function() {
-           if($('form').valid())
-           {
-            if($('#email_value').html() != ''){
-                return false;
-            }
+           if($('form').valid()){
             $this.goForward();
             return false;
-           } 
-           else{
+           } else{
             $('form .select2').each(function(index, element){
                 ($(element).prev('label.error')).insertAfter($(this));
             })
