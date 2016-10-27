@@ -54,11 +54,7 @@ AgentAssist.Policy = {
         success: function (response) {
           $('#policy_user_attributes_email').val(response.user.email);
           $('#policy_user_attributes_primary_phone_no').val(response.user.primary_phone_no);
-          $('#policy_personal_info_attributes_first_name').val(response.personal_info.first_name);
-          $('#policy_personal_info_attributes_last_name').val(response.personal_info.last_name);
-          $('#policy_personal_info_attributes_middle_name').val(response.personal_info.middle_name);
-          $('#policy_personal_info_attributes_date_of_birth').val(response.personal_info.date_of_birth);
-          $('#policy_personal_info_attributes_gender_'+response.personal_info.gender).iCheck('check');          
+          AgentAssist.Common.fillUserPersonalInfo('policy', response);
         }
       });
     });

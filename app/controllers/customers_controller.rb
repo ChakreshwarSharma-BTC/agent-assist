@@ -1,8 +1,8 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_customer, except: [:index, :new, :create, :filter_customers, :check_email]
-  before_action :set_family_member, only: [:show_member, :edit_member, :update_member, :destroy_member]
-  before_action :set_customers, only: [:index, :filter_customers]
+  before_action :set_customer, except: [:index, :new, :create, :filter_customers, :check_email, :existing_member, :family_member]
+  before_action :set_family_member, only: [:show_member, :edit_member, :update_member, :destroy_member, :family_member]
+  before_action :set_customers, only: [:index, :filter_customers, :existing_member]
 
   def index
     @customers = paginated(@customers)
@@ -21,6 +21,21 @@ class CustomersController < ApplicationController
 
   def new
     @customer = User.new
+  end
+
+  def existing_member
+    @customers = @customers.joins(:family)
+    render 'customers/existing_member/members'
+  end
+
+  def family_members
+    @family_members = @customer.family_member
+    render 'customers/existing_member/family_members'
+  end
+
+  def family_member
+    customer_address = User.find(params[:customer_id]).address
+    render json: { personal_info: @family_member.personal_info, address: customer_address }
   end
 
   def update

@@ -35,6 +35,9 @@ Rails.application.routes.draw do
       delete 'family_member/destroy/:member_id' => 'customers#destroy_member', as: 'destroy_family_member'
     end
     collection do
+      get 'existing_member/members' => 'customers#existing_member'
+      get 'existing_member/family_member' => 'customers#family_member'
+      get 'existing_member/family_members' => 'customers#family_members'
       get 'filter_customers' => 'customers#filter_customers', as: 'filter'
       get 'check_email' => 'customers#check_email'
     end

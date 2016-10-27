@@ -67,6 +67,48 @@ AgentAssist.Common = {
       $(this).change().focusout();
     });
   },
+  fillUserPersonalInfo: function(selector, response){
+    $("input[name='"+selector+"[personal_info_attributes][first_name]']").val(response.personal_info.first_name);
+    $("input[name='"+selector+"[personal_info_attributes][middle_name]']").val(response.personal_info.middle_name);  
+    $("input[name='"+selector+"[personal_info_attributes][last_name]']").val(response.personal_info.last_name);  
+    $("input[name='"+selector+"[personal_info_attributes][date_of_birth]']").val(response.personal_info.date_of_birth);    
+    $("[id='"+selector+"_personal_info_attributes_"+response.personal_info.gender+"']").iCheck('check');
+  },
+  getUserAddress: function(selector, response){
+    if(response.address.length == 1)
+    {   
+      $('#checkbox_check').iCheck('check');
+    }
+    var permanent_address = response.address[0];
+    var temp_address = response.address[1];
+
+    var permanent_address_fields = { street_1: "#"+selector+"_address_attributes_0_street_1",
+                                street_2: "#"+selector+"_address_attributes_0_street_2",
+                                city:     "#"+selector+"_address_attributes_0_city",
+                                state:    "#"+selector+"_address_attributes_0_state",
+                                pincode:  "#"+selector+"_address_attributes_0_pincode",
+                              };
+    var temp_address_fields = { street_1: "#"+selector+"_address_attributes_1_street_1",
+                                street_2: "#"+selector+"_address_attributes_1_street_2",
+                                city:     "#"+selector+"_address_attributes_1_city",
+                                state:    "#"+selector+"_address_attributes_1_state",
+                                pincode:  "#"+selector+"_address_attributes_1_pincode",
+                              };
+
+    if(permanent_address)
+    {
+      AgentAssist.Common.fillUserAddress(permanent_address, permanent_address_fields)
+    }
+    if(temp_address)
+    {
+      AgentAssist.Common.fillUserAddress(temp_address, temp_address_fields)
+    }
+  },
+  fillUserAddress: function(address_type, address_fields){
+    $.each(address_type, function(field, value){
+      $(address_fields[field]).val(value);
+    });
+  },
   documentOnReady: function (){
     this.Flash_message();
     this.ajaxLoader();

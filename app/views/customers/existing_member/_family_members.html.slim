@@ -1,0 +1,6 @@
+.form-group
+	label.control-label.col-md-3
+		| Family Members
+	= field_class(select_tag 'family_member', options_for_select( @family_members.map{|f| [f.personal_info.full_name, f.id]}), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION, class: 'form-control required: false, label: false'})
+javascript:
+  AgentAssist.Customer.familyMember();

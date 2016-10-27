@@ -1,0 +1,6 @@
+.form-group
+  label.control-label.col-md-3
+    | Customer
+  = field_class(select_tag :search_customer, options_for_select(customers.map{ |c| [c.email, c.id]}), {prompt: ApplicationHelper::DEFAULT_SELECT_OPTION, class: 'form-control'})
+javascript:
+  AgentAssist.Customer.familyMembers();
