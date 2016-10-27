@@ -61,6 +61,9 @@ function SmartWizard(target, options) {
         $($this.buttons.next).click(function() {
            if($('form').valid())
            {
+            if($('#email_value').html() != ''){
+                return false;
+            }
             $this.goForward();
             return false;
            } 
@@ -72,7 +75,7 @@ function SmartWizard(target, options) {
            }
         });
         $($this.buttons.previous).click(function() {
-            $this.goForward();
+            $this.goBackward();
             return false;
         });
         $($this.buttons.finish).click(function() {
