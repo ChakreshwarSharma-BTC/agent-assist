@@ -136,7 +136,7 @@ class CustomersController < ApplicationController
   end
 
   def set_customers
-    @customers =  User.where(created_by: current_user).with_role :customer
+    @customers = User.where(created_by: current_user).with_role :customer
   end
 
   def set_customer
