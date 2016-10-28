@@ -28,7 +28,7 @@ AgentAssist.Customer = {
       if(member && customer){
         $.ajax({
           url: '/customers/existing_member/member',
-          data: { member_id: member, customer_id: customer },
+          data: { member_id: member, id: customer },
           success: function(response){
             AgentAssist.Common.fillUserPersonalInfo('user', response);
             AgentAssist.Common.getUserAddress('user', response);
