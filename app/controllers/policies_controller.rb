@@ -53,7 +53,7 @@ class PoliciesController < ApplicationController
   end
 
   def create
-    policy = Policy.new(policies_params)
+    policy = Policy.new(policies_params.merge!({created_by: current_user.id}))
     policy.user = policy_user
     policy.renewal_date = Date.today
     if policy.save
@@ -144,6 +144,6 @@ class PoliciesController < ApplicationController
   end
 
   def set_policies
-    @policies = Policy.all
+    @policies = Policy.agent_policies(current_user)
   end
 end

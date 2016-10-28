@@ -1,4 +1,5 @@
 - if @email.present?
-  |$("#email_value").text("Email already exists.");
+  |$("label[for='user_email']").remove();
+  |$('#user_email').after("<label for='user_email' generated='true' class='error' style='display: none;'>Email already exists</label>");
 -else
-  |$("#email_value").text("");
+  |$("label[for='user_email']").remove();

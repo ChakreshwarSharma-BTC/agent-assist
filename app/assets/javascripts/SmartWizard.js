@@ -59,12 +59,10 @@ function SmartWizard(target, options) {
         this.contentWidth = $this.elmStepContainer.width();
 
         $($this.buttons.next).click(function() {
-           if($('form').valid())
-           {
+           if($('form').valid()){
             $this.goForward();
             return false;
-           } 
-           else{
+           } else{
             $('form .select2').each(function(index, element){
                 ($(element).prev('label.error')).insertAfter($(this));
             })
@@ -72,7 +70,7 @@ function SmartWizard(target, options) {
            }
         });
         $($this.buttons.previous).click(function() {
-            $this.goForward();
+            $this.goBackward();
             return false;
         });
         $($this.buttons.finish).click(function() {

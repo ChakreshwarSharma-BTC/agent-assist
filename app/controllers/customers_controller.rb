@@ -1,8 +1,8 @@
 class CustomersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_customer, except: [:index, :new, :create, :filter_customers, :check_email]
-  before_action :set_family_member, only: [:show_member, :edit_member, :update_member, :destroy_member]
-  before_action :set_customers, only: [:index, :filter_customers]
+  before_action :set_customer, except: [:index, :new, :create, :filter_customers, :check_email, :existing_member]
+  before_action :set_family_member, only: [:show_member, :edit_member, :update_member, :destroy_member, :member]
+  before_action :set_customers, only: [:index, :filter_customers, :existing_member]
 
   def index
     @customers = paginated(@customers)
@@ -23,6 +23,20 @@ class CustomersController < ApplicationController
     @customer = User.new
   end
 
+  def existing_member
+    @customers = @customers.joins(:family)
+    render 'customers/existing_member/members'
+  end
+
+  def family_members
+    @family_members = @customer.family_member
+    render 'customers/existing_member/family_members'
+  end
+
+  def member
+    render json: { personal_info: @family_member.personal_info, address: @customer.address }
+  end
+
   def update
     if @customer.update_attributes(customer_params)
       flash[:success] = t('.success')
@@ -33,7 +47,7 @@ class CustomersController < ApplicationController
   end
 
   def create
-    @customer = User.new(customer_params.merge!({password: Settings.user.password}))
+    @customer = User.new(customer_params.merge!({password: Settings.user.password, created_by: current_user.id}))
     if @customer.save
       redirect_to customers_path
       flash[:success] = t('.success')
@@ -121,11 +135,11 @@ class CustomersController < ApplicationController
   end
 
   def set_customers
-    @customers = User.with_role :customer
+    @customers = User.agent_customers(current_user)
   end
 
   def set_customer
-    @customer = User.find(params[:id])
+    @customer = User.agent_customers(current_user).find(params[:id])
   end
 
   def set_family_member

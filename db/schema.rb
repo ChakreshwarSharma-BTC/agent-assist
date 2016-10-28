@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013044807) do
+ActiveRecord::Schema.define(version: 20161027085857) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "addressable_type"
@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(version: 20161013044807) do
     t.integer  "user_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "created_by"
     t.index ["end_date"], name: "index_policies_on_end_date", using: :btree
     t.index ["plan_id"], name: "index_policies_on_plan_id", using: :btree
     t.index ["policy_number"], name: "index_policies_on_policy_number", using: :btree
@@ -231,6 +232,7 @@ ActiveRecord::Schema.define(version: 20161013044807) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.integer  "policies_count"
+    t.integer  "created_by"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

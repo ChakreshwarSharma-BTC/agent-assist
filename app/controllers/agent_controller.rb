@@ -2,8 +2,9 @@ class AgentController < ApplicationController
   before_action :authenticate_user!
 
   def dashboard
-    @policy_count = Policy.policy_count
-    @customer_count = User.customers.count
-    @company_count = Company.company_count
+    no_of_policies = Policy.agent_policies(current_user).count
+    no_of_customers = User.agent_customers(current_user).count
+    no_of_companies = Company.company_count
+    @stats = { no_of_customers: no_of_customers, no_of_policies: no_of_policies, no_of_companies: no_of_companies }
   end
 end

@@ -1,6 +1,13 @@
 #step-1.content
   step_1.form-horizontal.form-label-left
-    = render partial: 'devise/registrations/basic_fields', locals: {f: f} 
+    .form-group
+      label.col-md-3.align
+        | Existing Member
+      label-control
+        = field_class(check_box :existing_member, 'Existing Member?', id: 'existing_member')
+    #members
+    #family_members
+    = render partial: 'devise/registrations/basic_fields', locals: {f: f}
     = render partial: 'devise/registrations/informable_fields', locals: {f: f}
 #step-2.content1
   step_2.form-horizontal.form-label-left
@@ -14,5 +21,6 @@
 
 = javascript_include_tag 'sidebar'
 = javascript_include_tag 'register'
+= javascript_include_tag 'customer'
 javascript:
   AgentAssist.Common.validateFields();
