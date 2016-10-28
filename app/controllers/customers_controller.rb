@@ -34,8 +34,7 @@ class CustomersController < ApplicationController
   end
 
   def member
-    customer_address = @customer.address
-    render json: { personal_info: @family_member.personal_info, address: customer_address }
+    render json: { personal_info: @family_member.personal_info, address: @customer.address }
   end
 
   def update
