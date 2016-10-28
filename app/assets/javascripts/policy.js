@@ -55,6 +55,7 @@ AgentAssist.Policy = {
           $('#policy_user_attributes_email').val(response.user.email);
           $('#policy_user_attributes_primary_phone_no').val(response.user.primary_phone_no);
           AgentAssist.Common.fillUserPersonalInfo('policy', response);
+          AgentAssist.Common.getUserAddress('policy', response)
         }
       });
     });
