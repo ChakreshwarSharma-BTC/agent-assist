@@ -277,7 +277,6 @@ AgentAssist.Policy = {
       }
     });
   },
-  
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
@@ -293,6 +292,8 @@ AgentAssist.Policy = {
     this.searchDateTimePicker();
     this.policyAddressType();
     this.policyValidation();
+    this.autoCompleteLocationPolicy('#policy_address_attributes_0_city');
+    this.autoCompleteLocationPolicy('#policy_address_attributes_1_city');
   }
 };
 $(document).ready(function(){

@@ -16,9 +16,6 @@
   		= render partial: 'devise/registrations/common_address_fields', locals: {a: a}
         = a.hidden_field :address_type, value: 'permanent'
 
-= javascript_include_tag 'policy'
 javascript:
-  AgentAssist.Policy.autoCompleteLocationPolicy('#policy_address_attributes_0_city');
-  AgentAssist.Policy.autoCompleteLocationPolicy('#policy_address_attributes_1_city');
   AgentAssist.Common.bindMaskedInput('#policy_address_attributes_0_pincode', "#{Settings.masked_value.pincode}");
   AgentAssist.Common.bindMaskedInput('#policy_address_attributes_1_pincode', "#{Settings.masked_value.pincode}");
