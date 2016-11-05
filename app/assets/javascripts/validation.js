@@ -1,0 +1,126 @@
+AgentAssist.Validation = {
+  validateForm: function(){
+    $('form').validate({
+      rules: {
+        'user[email]': { required: true, email: true },
+        'user[primary_phone_no]': { required: true },
+        'user[current_password]': { required: true },
+        'user[personal_info_attributes][first_name]': { required: true },
+        'user[personal_info_attributes][last_name]': { required: true },
+        'user[personal_info_attributes][date_of_birth]': { required: true },
+        'user[address_attributes][0][street_1]': { required: true },
+        'user[address_attributes][0][city]': { required: true },
+        'user[address_attributes][0][state]': { required: true },
+        'user[address_attributes][0][pincode]': { required: true },
+        'user[address_attributes][1][street_1]': { required: true },
+        'user[address_attributes][1][city]': { required: true },
+        'user[address_attributes][1][state]': { required: true },
+        'user[address_attributes][1][pincode]': { required: true },
+        'policy[plan_attributes][company_category_id]': { required: true },
+        'company_id': { required: true },
+        'policy[plan_id]': { required: true },
+        'policy[start_date]': { required: true },
+        'policy[end_date]': { required: true },
+        'policy[total_amount]': { required: true },
+        'policy[mod_of_payment]': { required: true },
+        'policy[premium_mod]': { required: true },
+        'policy[renewal_date]': { required: true },
+        'policy[renewal_date]': { required: true },
+        'policy[last_renewed_on]': { required: true },   
+        'policy[policy_number]': { required: true },
+        'policy[life_insurance_attributes][policy_term]': { required: true },
+        'policy[life_insurance_attributes][education_qualification]': { required: true },
+        'policy[life_insurance_attributes][annual_income]': { required: true },
+        'policy[user_attributes][email]': { required: true },
+        'policy[user_attributes][primary_phone_no]': { required: true },
+        'policy[personal_info_attributes][first_name]': { required: true },
+        'policy[personal_info_attributes][last_name]': { required: true },
+        'policy[personal_info_attributes][date_of_birth]': { required: true },
+        'policy[nominee_attributes][relation]': { required: true },
+        'policy[nominee_attributes][personal_info_attributes][first_name]': { required: true },
+        'policy[nominee_attributes][personal_info_attributes][last_name]': { required: true },
+        'policy[nominee_attributes][personal_info_attributes][date_of_birth]': { required: true },
+        'policy[address_attributes][0][street_1]': { required: true },
+        'policy[address_attributes][0][city]': { required: true },
+        'policy[address_attributes][0][state]': { required: true },
+        'policy[address_attributes][0][pincode]': { required: true },
+        'policy[address_attributes][1][street_1]': { required: true },
+        'policy[address_attributes][1][city]': { required: true },
+        'policy[address_attributes][1][state]': { required: true },
+        'policy[address_attributes][1][pincode]': { required: true },
+        'family_member[personal_info_attributes][first_name]': { required: true },
+        'family_member[personal_info_attributes][last_name]': { required: true },
+        'family_member[personal_info_attributes][date_of_birth]': { required: true },
+        'family_member[relation_with_customer]': { required: true },
+        'family_member[health]': { required: true }
+      },
+      messages: {
+        'user[email]': 'Please enter a valid email address',
+        'user[primary_phone_no]': 'Please enter Primary Phone No',
+        'user[current_password]': 'Please enter Current Password',
+        'user[personal_info_attributes][first_name]': 'Please enter First Name',
+        'user[personal_info_attributes][last_name]': 'Please enter Last Name',
+        'user[personal_info_attributes][date_of_birth]': 'Please Select Date of Birth',
+        'user[address_attributes][0][street_1]': 'Please enter the Street 1',
+        'user[address_attributes][0][city]': 'Please enter the City',
+        'user[address_attributes][0][state]': 'Please enter the State',
+        'user[address_attributes][0][pincode]': 'Please enter the Pincode',
+        'user[address_attributes][1][street_1]': 'Please enter the Street 1',
+        'user[address_attributes][1][city]': 'Please enter the City',
+        'user[address_attributes][1][state]': 'Please enter the State',
+        'user[address_attributes][1][pincode]': 'Please enter the Pincode',
+        'policy[plan_attributes][company_category_id]': 'Please Select Category',
+        'company_id': 'Please Select Company',
+        'policy[plan_id]': 'Please Select Plan',
+        'policy[start_date]': 'Please Select Start Date',
+        'policy[end_date]': 'Please Select End Date',
+        'policy[total_amount]': 'Please enter Total Amount',
+        'policy[mod_of_payment]': 'Please Select Payment mode',
+        'policy[premium_mod]': 'Please Select Premium mode',
+        'policy[renewal_date]': 'Please Select Renewal Date',
+        'policy[last_renewed_on]': 'Please Select Last Renewal Date',
+        'policy[policy_number]': 'Please enter Policy number',
+        'policy[life_insurance_attributes][policy_term]': 'Please enter Policy term',
+        'policy[life_insurance_attributes][education_qualification]': 'Please enter Education Qualification',
+        'policy[life_insurance_attributes][annual_income]': 'Please enter Annual Income',
+        'policy[user_attributes][email]': 'Please enter a valid email address',
+        'policy[user_attributes][primary_phone_no]': 'Please enter Primary Phone number',
+        'policy[personal_info_attributes][first_name]': 'Please enter First Name',
+        'policy[personal_info_attributes][last_name]': 'Please enter Last Name',
+        'policy[personal_info_attributes][date_of_birth]': 'Please enter Date of Birth',
+        'policy[nominee_attributes][relation]': 'Please Select Relation with Nominee',
+        'policy[nominee_attributes][personal_info_attributes][first_name]': 'Please enter First Name',
+        'policy[nominee_attributes][personal_info_attributes][last_name]': 'Please enter Last Name',
+        'policy[nominee_attributes][personal_info_attributes][date_of_birth]': 'Please Select Date of Birth',
+        'policy[address_attributes][0][street_1]': 'Please enter Street 1',
+        'policy[address_attributes][0][city]': 'Please enter City',
+        'policy[address_attributes][0][state]': 'Please enter State',
+        'policy[address_attributes][0][pincode]': 'Please enter Pincode',
+        'policy[address_attributes][1][street_1]': 'Please enter Street 1',
+        'policy[address_attributes][1][city]': 'Please enter City',
+        'policy[address_attributes][1][state]': 'Please enter State',
+        'policy[address_attributes][1][pincode]': 'Please enter Pincode',
+        'family_member[personal_info_attributes][first_name]': 'Please enter First Name',
+        'family_member[personal_info_attributes][last_name]': 'Please enter Last Name',
+        'family_member[personal_info_attributes][date_of_birth]': 'Please select Date of Birth',
+        'family_member[relation_with_customer]': 'Please select Relation with Customer',
+        'family_member[health]': 'Please enter health related details of member'
+      }
+    });
+  },
+  removeValidationMessage: function(){
+    $('form input').on('focusout', function(){
+      if($(this).valid)
+      {
+        $(this).next('label').html('');
+      }
+    });
+  },
+  documentOnReady: function(){
+    this.validateForm();
+    this.removeValidationMessage();
+  }
+}
+$(document).ready(function(){
+  AgentAssist.Validation.documentOnReady();
+});

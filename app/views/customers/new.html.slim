@@ -22,7 +22,7 @@
             span.step_descr
               = t('.address')
       .stepContainer
-        = simple_form_for @customer, url: customers_path  do |f|
+        = simple_form_for @customer, url: customers_path do |f|
           - @customer.build_personal_info
           - @customer.address.build
           = f.hidden_field :user_type, value: 'customer'

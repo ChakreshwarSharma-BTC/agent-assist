@@ -55,6 +55,7 @@ AgentAssist.Policy = {
           $('#policy_user_attributes_email').val(response.user.email);
           $('#policy_user_attributes_primary_phone_no').val(response.user.primary_phone_no);
           AgentAssist.Common.fillUserPersonalInfo('policy', response);
+          AgentAssist.Common.getUserAddress('policy', response)
         }
       });
     });
@@ -276,7 +277,6 @@ AgentAssist.Policy = {
       }
     });
   },
-  
   documentOnReady: function (){
     this.policyCompanies();
     this.showDatePicker();
@@ -292,6 +292,8 @@ AgentAssist.Policy = {
     this.searchDateTimePicker();
     this.policyAddressType();
     this.policyValidation();
+    this.autoCompleteLocationPolicy('#policy_address_attributes_0_city');
+    this.autoCompleteLocationPolicy('#policy_address_attributes_1_city');
   }
 };
 $(document).ready(function(){

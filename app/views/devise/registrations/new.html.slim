@@ -25,7 +25,8 @@
                 = f.submit class: 'btn btn-primary', id: 'validate_user'
                 = button_tag 'Reset', type: :reset, class: 'btn btn-default'
                 = link_to 'Log In', new_session_path(resource_name)
+
 = javascript_include_tag 'register'
+= javascript_include_tag 'validation'
 javascript:
   AgentAssist.Common.bindIcheck();
-  AgentAssist.Register.validateForm('#validate_user');

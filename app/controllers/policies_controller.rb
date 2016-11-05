@@ -92,10 +92,7 @@ class PoliciesController < ApplicationController
     user = @policy.build_user
     personal_info = @policy.build_personal_info
     @user = User.find(params[:id])
-    respond_to do |format|
-      format.json  { render :json => {:user => @user, 
-                                  :personal_info => @user.personal_info }}
-    end
+    render json: { user: @user, personal_info: @user.personal_info, address: @user.address }
   end
 
   def companies
