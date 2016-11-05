@@ -110,8 +110,7 @@ AgentAssist.Validation = {
   },
   removeValidationMessage: function(){
     $('form input').on('focusout', function(){
-      if($(this).valid)
-      {
+      if($(this).valid){
         $(this).next('label').html('');
       }
     });
