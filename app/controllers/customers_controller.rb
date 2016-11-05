@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:check_email]
   before_action :set_customer, except: [:index, :new, :create, :filter_customers, :check_email, :existing_member]
   before_action :set_family_member, only: [:show_member, :edit_member, :update_member, :destroy_member, :member]
   before_action :set_customers, only: [:index, :filter_customers, :existing_member]

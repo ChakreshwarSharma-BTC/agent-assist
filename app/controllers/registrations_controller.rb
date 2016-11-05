@@ -13,8 +13,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    personal_info = params[:user][:personal_info].permit!
-    current_user.personal_info.update_attributes(personal_info)
+    if params[:user][:personal_info].present?
+      personal_info = params[:user][:personal_info].permit!
+      current_user.personal_info.update_attributes(personal_info)
+    end
     super
   end
 
