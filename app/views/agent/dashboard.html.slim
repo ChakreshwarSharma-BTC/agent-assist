@@ -1,7 +1,8 @@
-.x_panel
-  .x_title
-    h2
-      | Dashboard
-    .clearfix
-  = render partial: 'dashboard_statistics', locals: { stats: @stats }
+= render partial: 'dashboard_statistics', locals: { stats: @stats }
+h2.title
+  | Premium Reminder
+table.table.table-bordered
+  tbody
+    = render partial: 'policies/list_header'
+    = render partial: 'policies/list_body', locals: { policies: @premium_reminder }
 = javascript_include_tag 'sidebar'

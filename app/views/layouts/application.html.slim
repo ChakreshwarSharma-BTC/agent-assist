@@ -13,10 +13,6 @@ html
           .main_container
             = render partial: 'layouts/sidebar'
             = render partial: 'layouts/header'
-            - if current_page?(agent_dashboard_path)
-              - if Policy.any?
-                - if !current_user.notification
-                  = render partial: "shared/premium_reminder", locals: { policies: @premium_reminder }
             .right_col
               .row
               .col-md-12

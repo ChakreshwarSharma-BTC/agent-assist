@@ -3839,6 +3839,7 @@ fieldset {
     left: auto;
     width: 0
 }
+.remove_fields{margin-left:250px}
 .form_wizard .loader {
     display: none
 }
