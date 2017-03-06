@@ -1,4 +1,5 @@
 class Policy < ApplicationRecord
+  include PgSearch
   belongs_to :plan
   accepts_nested_attributes_for :plan  
   belongs_to :user, counter_cache: true
@@ -36,6 +37,11 @@ class Policy < ApplicationRecord
   scope :search_by_date, ->(search) { where('start_date =? OR end_date =? OR renewal_date =?', search, search, search)}
   scope :company_category, -> (company_category_ids) { joins(:plan).where('company_category_id in :ids', ids: company_category_ids) }
   scope :agent_policies, ->(agent) { where(created_by: agent) }
+
+  pg_search_scope :search_by_keyword, against: [:policy_number],
+   associated_against: {
+    personal_info: [:first_name, :last_name], plan: :name
+  }
 
   # Weekly premium date
   def self.weekly_premium_date

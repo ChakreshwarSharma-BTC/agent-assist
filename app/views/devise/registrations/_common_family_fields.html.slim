@@ -11,10 +11,11 @@
   .col-md-6
     = f.input :health, placeholder: 'Health', class: 'form-control', required: true, label: false
 .form-group
-  label.control-label.col-md-3.align
+  label.col-md-3.align
     | Death? 
     label-control
-      = check_box_tag 'Death', id: 'death_checkbox'
+  .col-md-6
+    = check_box_tag 'death_check_box', '', false,  class: 'death_check_box'
 .death_fields
   .form-group
     label.label-control.col-md-3.align
@@ -31,12 +32,12 @@
       | Death Reason
     .col-md-6
       = f.input :death_reason, placeholder: 'Death Reason', class: 'form-control', required: false, label: false
+= javascript_include_tag 'sidebar'
 javascript:
-    $('.death_fields').hide();
+  $('.death_fields').hide();
   $('select').select2();
   AgentAssist.Common.bindMaskedInput('#death_year', "#{Settings.masked_value.death_year}");
-  
-  $('#death_checkbox').on('ifToggled', function(){
+  $('.death_check_box').on('ifToggled', function(){
     if($(this).is(':checked')){$('.death_fields').show();}
     else{$('.death_fields').hide();}
   });

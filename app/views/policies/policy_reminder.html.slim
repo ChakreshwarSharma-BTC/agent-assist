@@ -4,15 +4,24 @@
       = t('.reminders')
     .clearfix
   .x_content
-    - if @policy.present?
+    - if @policies.present?
+      .pull-right
+        = form_tag filter_policies_path, method: :get, class: 'form-inline', remote: true do
+          .form-group
+            = text_field_tag :search_query, nil, placeholder: 'Enter Keyword', class:'form-control action-space'
+          .form-group
+            = button_tag 'Search', title: 'Search', class: 'btn btn-primary button_search'
+      .list-space
       .table-responsive
         table.table.table-striped.jambo_table.bulk_action
-          = render partial: 'list_header'
-          = render partial: 'list_body', locals: { policies: @policy }
+          thead#policy_list_head
+            = render partial: 'list_header'
+          tbody#policy_list_body
+            = render partial: 'list_body', locals: { policies: @policies }
       .box-footer.clearfix
         .pagination.pull-right
           .text-right
-          	= paginate @policy, theme: 'twitter-bootstrap-3'
+          	= paginate @policies, theme: 'twitter-bootstrap-3'
     - else
       = render partial: "shared/no_data_available_message", locals: { message: 'Policies' }
 = javascript_include_tag 'sidebar'

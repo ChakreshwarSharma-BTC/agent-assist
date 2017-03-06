@@ -47,7 +47,8 @@ class PoliciesController < ApplicationController
       u.personal_info = PersonalInfo.new(personal_info)
       if u.address.blank?
         address_attributes = params[:policy][:address_attributes].permit!
-        u.address.new([address_attributes['0'], address_attributes['1']])
+        user_address = address_attributes['1'].present? ? [address_attributes['0'], address_attributes['1']] : address_attributes['0']
+        u.address.new(user_address)
       end
     end
   end
@@ -109,7 +110,7 @@ class PoliciesController < ApplicationController
   end
 
   def policy_reminder
-    @policy = paginated(Policy.order("end_date ASC"))
+    @policies = paginated(Policy.order("end_date ASC"))
   end
 
   def update_notification
@@ -117,8 +118,7 @@ class PoliciesController < ApplicationController
   end
 
   def filter_policies
-    @policies = @policies.search_by_policy_number(params[:policy_number]) if params[:policy_number].present?
-    @policies = @policies.search_by_date(params[:date].to_date) if params[:date].present?
+    @policies = @policies.search_by_keyword(params[:search_query]) if params[:search_query].present?
     @policies = @policies.select('plans.company_category_id, policies.*').joins(:plan) if params[:sort] == 'company_category_id'
     @policies = sort_and_paginate(@policies) if @policies.present?
     render 'policies/filter_policies'

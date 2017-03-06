@@ -9,10 +9,8 @@
     - if @policies.present?  
       .pull-right
         = form_tag filter_policies_path, method: :get, class: 'form-inline', remote: true do    
-          .form-group        
-            = text_field_tag :policy_number, nil, placeholder: 'Enter Policy Number', class:'form-control action-space'
           .form-group
-            = text_field_tag :date, nil, placeholder: 'Enter Date',class:'form-control action-space'
+            = text_field_tag :search_query, nil, placeholder: 'Enter Keyword', class:'form-control action-space'
           .form-group
             = submit_tag :Search, class: 'btn btn-primary button_search'
       .list-space
