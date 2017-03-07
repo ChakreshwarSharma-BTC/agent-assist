@@ -45,17 +45,6 @@ AgentAssist.Common = {
       useCurrent: false
     });
   },
-  showDatePicker: function(){
-    $('.date_picker').each(function(index, date_picker){
-      var db_date = $(this).attr('value');
-      if(db_date != null)
-      {
-        var set_date =  db_date.split('-').reverse().join('/');
-        $(this).val(set_date);
-      }
-    });
-    AgentAssist.Common.dateTimePicker();
-  },
   validateFields: function(){
     $('form input').on('focusout', function(){
       $(this).valid();
@@ -118,7 +107,7 @@ AgentAssist.Common = {
   documentOnReady: function (){
     this.Flash_message();
     this.ajaxLoader();
-    this.showDatePicker('.date_picker');
+    this.dateTimePicker();
     this.bindIcheck();
     this.notification();
   }

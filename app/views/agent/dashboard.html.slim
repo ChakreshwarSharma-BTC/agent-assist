@@ -3,7 +3,9 @@
   h2.title
     | Premium Reminder
   table.table.table-bordered
-    tbody
+    thead#reminder_head
       = render partial: 'policies/list_header'
+    tbody#reminder_body
       = render partial: 'policies/list_body', locals: { policies: @premium_reminder }
+  = paginate @premium_reminder, theme: 'twitter-bootstrap-3', remote: true
 = javascript_include_tag 'sidebar'

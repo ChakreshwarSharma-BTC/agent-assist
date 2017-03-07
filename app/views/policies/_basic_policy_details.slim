@@ -45,9 +45,15 @@
   label.control-label.col-md-3
     | Renewal Date
   .col-md-6
-    = f.text_field :renewal_date, class:"form-control date_picker"
+    - if !f.object.new_record?
+      = f.text_field :renewal_date, value: f.object.renewal_date.strftime('%d/%m/%Y'), class:"form-control date_picker"
+    - else
+      = f.text_field :renewal_date, class:"form-control date_picker"
 .form-group
   label.control-label.col-md-3
     | last_renewed_on
   .col-md-6
-    = f.text_field :last_renewed_on, class:"form-control date_picker"
+    - if !f.object.new_record?
+      = f.text_field :last_renewed_on, value: f.object.last_renewed_on.strftime('%d/%m/%Y'), class:"form-control date_picker"
+    - else
+      = f.text_field :last_renewed_on, class:"form-control date_picker"

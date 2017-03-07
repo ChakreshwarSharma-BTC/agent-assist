@@ -13,7 +13,10 @@
 .form-group
   label.control-label.col-md-3
     | Date of Birth
-  = field_class(f.text_field :date_of_birth, class: 'form-control bday_picker', required: true, label: false)
+  - if !f.object.new_record?
+    = field_class(f.text_field :date_of_birth, value: f.object.date_of_birth.strftime('%d/%m/%Y'), class: 'form-control bday_picker', required: true, label: false)
+  - else
+    = field_class(f.text_field :date_of_birth, class: 'form-control bday_picker', required: true, label: false)
 .form-group
   label.control-label.col-md-3
     | Gender

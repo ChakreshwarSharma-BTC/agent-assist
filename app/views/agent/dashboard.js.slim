@@ -1,0 +1,2 @@
+| $('#reminder_body').html("#{j render(partial: 'policies/list_body', locals: { policies: @premium_reminder }) }");
+| $('.pagination').html('#{escape_javascript(paginate(@premium_reminder, params: {controller: 'agent', action: 'dashboard'}, theme: 'twitter-bootstrap-3', remote: true)) if @premium_reminder.present?}');
