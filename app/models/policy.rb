@@ -33,8 +33,8 @@ class Policy < ApplicationRecord
 
   #count renewal policy
   scope :policy_renewal, -> {where(renewal_date: Date.current - Settings.policy.day)}
-  scope :search_by_policy_number, ->(search) { where('policy_number like :policy_number', policy_number: "%#{search}%") }  
-  scope :search_by_date, ->(search) { where('start_date =? OR end_date =? OR renewal_date =?', search, search, search)}
+  # scope :search_by_policy_number, ->(search) { where('policy_number like :policy_number', policy_number: "%#{search}%") }  
+  # scope :search_by_date, ->(search) { where('start_date =? OR end_date =? OR renewal_date =?', search, search, search)}
   scope :company_category, -> (company_category_ids) { joins(:plan).where('company_category_id in :ids', ids: company_category_ids) }
   scope :agent_policies, ->(agent) { where(created_by: agent) }
 
@@ -42,6 +42,9 @@ class Policy < ApplicationRecord
    associated_against: {
     personal_info: [:first_name, :last_name], plan: :name
   }
+
+  scope :by_company_name, -> (search) { joins(plan: {company_category: :company}).where('companies.name ilike :name', name: "%#{search}%") }
+  scope :by_category_name, -> (search) { joins(plan: {company_category: :category}).where('categories.name ilike :name', name: "%#{search}%") }
 
   # Weekly premium date
   def self.weekly_premium_date

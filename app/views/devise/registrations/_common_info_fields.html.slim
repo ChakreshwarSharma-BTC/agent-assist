@@ -13,7 +13,7 @@
 .form-group
   label.control-label.col-md-3
     | Date of Birth
-  = field_class(f.text_field :date_of_birth, class: 'form-control date_picker', required: true, label: false)
+  = field_class(f.text_field :date_of_birth, class: 'form-control bday_picker', required: true, label: false)
 .form-group
   label.control-label.col-md-3
     | Gender
@@ -23,5 +23,5 @@
     = f.radio_button :gender, 'female'
     = f.label 'Female'
 javascript:
-  AgentAssist.Common.showDatePicker('.date_picker');
+  AgentAssist.Common.birthDatePicker();
   AgentAssist.Common.bindIcheck();

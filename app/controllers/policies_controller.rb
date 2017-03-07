@@ -118,8 +118,15 @@ class PoliciesController < ApplicationController
   end
 
   def filter_policies
-    @policies = @policies.search_by_keyword(params[:search_query]) if params[:search_query].present?
-    @policies = @policies.select('plans.company_category_id, policies.*').joins(:plan) if params[:sort] == 'company_category_id'
+    if params[:search_query].present?
+      policy_by_category = @policies.by_category_name(params[:search_query])
+      @policies = policy_by_category if policy_by_category.present?
+      policy_by_company = @policies.by_company_name(params[:search_query])
+      @policies = policy_by_company if policy_by_company.present?
+      policy_by_keyword = @policies.search_by_keyword(params[:search_query])
+      @policies = policy_by_keyword if policy_by_keyword.present?
+    end
+    @policies = @policies.select('plans.company_category_id, policies.*').joins(:plan) if params[:sort] == 'company_category_id'    
     @policies = sort_and_paginate(@policies) if @policies.present?
     render 'policies/filter_policies'
   end

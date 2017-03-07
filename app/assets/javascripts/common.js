@@ -35,7 +35,13 @@ AgentAssist.Common = {
   dateTimePicker: function(){
     $('.date_picker').datetimepicker({
       format: 'DD/MM/YYYY',
-      maxDate: moment(),
+      useCurrent: false
+    });
+  },
+  birthDatePicker: function(){
+    $('.bday_picker').datetimepicker({
+      format: 'DD/MM/YYYY',
+      maxDate: new Date(),
       useCurrent: false
     });
   },
