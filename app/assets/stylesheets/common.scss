@@ -272,3 +272,8 @@ td.day.disabled:hover:before {
 .btn-align{
   margin-right: 380px;
 }
+.ui-autocomplete {
+  overflow-y: auto;
+  z-index: 9999;
+  max-height: 200px;
+}

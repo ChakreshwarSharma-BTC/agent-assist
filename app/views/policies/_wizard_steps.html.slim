@@ -4,7 +4,7 @@ policy.form-horizontal.form-label-left
   #step-2.content
     - if @category_id.present?
       = render partial: 'common_policy_fields', locals: {f: f}
-      - if(@category_id == 1)
+      - if(@category_id == '1')
         = render partial: 'life_insurance_policies', locals: {f: f, life_insurance: @life_insurance} 
       - else
         = render partial: 'vehicle_policies', locals: {f: f, vehicle: @vehicle} 
@@ -29,6 +29,10 @@ policy.form-horizontal.form-label-left
 - if action_name == 'edit'
   javascript:
     $(document).on('ready', function(){
+      $('div#companies input').prop('disabled', false);
+      $('#companies').show();
+      $('div#plans input').prop('disabled', false);
+      $('#plans').show();
       var total_year = AgentAssist.Policy.totalPolicyYear('#policy_start_date', '#policy_end_date');
       if(total_year <= 1){
         $('#policy_payment_mode').remove();

@@ -2,6 +2,7 @@
    *= require_self
    *= require 'common'
    *= require 'common.min'
+   *= require jquery-ui/autocomplete
 */
 $icon-font-path: "bootstrap/";
 @import 'bootstrap-sprockets';

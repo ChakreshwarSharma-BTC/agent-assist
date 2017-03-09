@@ -24,13 +24,16 @@ class PoliciesController < ApplicationController
   end
 
   def edit
-    @category_id = @policy.plan.company_category.category_id
+    @category = @policy.plan.company_category.category.name
+    @company = @policy.plan.company_category.company.name
     @company_id = @policy.plan.company_category.company_id
-    @plan_id = @policy.plan_id
-    @companies = Category.find(@company_id).companies
+    @plan = @policy.plan.name
+    @category_id = @policy.plan.company_category.category_id
+    # @companies = Category.find(@company_id).companies
     company_categories = CompanyCategory.find_by(company: @company_id, category_id: @category_id)
-    @plans = company_categories.plans
+    # @plans = company_categories.plans
     @nominee = @policy.nominee
+    @life_insurance = @policy.life_insurance
   end
 
   def show
@@ -54,7 +57,7 @@ class PoliciesController < ApplicationController
   end
 
   def create
-    policy = Policy.new(policies_params.merge!({created_by: current_user.id}))
+    policy = Policy.new(policies_params.merge!({created_by: current_user.id, plan_id: params[:plan_id]}))
     policy.user = policy_user
     policy.renewal_date = Date.today
     if policy.save
@@ -88,7 +91,7 @@ class PoliciesController < ApplicationController
     end
     redirect_to policies_path
   end
-  
+
   def customer_list
     user = @policy.build_user
     personal_info = @policy.build_personal_info
@@ -96,13 +99,31 @@ class PoliciesController < ApplicationController
     render json: { user: @user, personal_info: @user.personal_info, address: @user.address }
   end
 
+  def customers
+    render json: User.with_role(:customer).map { |c| [c.personal_info.full_name, c.id] }
+  end
+
+  def categories
+    if params[:category_name].present?
+      categories = Category.by_name(params[:category_name])
+      render json: categories.pluck(:name, :id)
+    end
+  end
+
   def companies
-    @companies = Category.find(params[:category]).companies
+    if params[:company_name].present?
+      category = Category.find(params[:category_name])
+      companies = category.companies.by_name(params[:company_name])
+      render json: companies.pluck(:name, :id)
+    end
   end
 
   def plans
-    company_categories = CompanyCategory.find_by(company: params[:company], category_id: params[:category])
-    @plans = company_categories.plans
+    if params[:plan].present?
+      company_categories = CompanyCategory.find_by(company_id: params[:company], category_id: params[:category])
+      plans = company_categories.plans.by_name(params[:plan])
+      render json: plans.pluck(:name, :id)
+    end
   end
 
   def new_policy
@@ -134,7 +155,7 @@ class PoliciesController < ApplicationController
   private
   def policies_params
     params.require(:policy).permit(
-     :id, :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :play_type, :plan_id, :user_id,
+     :id, :mod_of_payment, :policy_number, :start_date, :end_date, :premium_mode, :premium_amount, :premium_mod, :total_amount, :renewal_date, :last_renewed_on, :user_id,
      user_attributes: [:id, :email, :primary_phone_no],
      personal_info_attributes: [:first_name, :middle_name, :last_name, :date_of_birth, :gender, :id],
      vehicle_attributes: [:registration_number, :name, :ncb, :idv_accessory, :electrical_accessory, :non_electrical_accessory, :id],

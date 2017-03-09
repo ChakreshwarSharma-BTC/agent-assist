@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :policies do
     resources :nominees
     collection do
+      get 'customers' => 'policies#customers'
+      get 'categories' => 'policies#categories'
       get 'customer_list' => 'policies#customer_list'
       get 'companies' =>  'policies#companies'
       get 'plans' => 'policies#plans'

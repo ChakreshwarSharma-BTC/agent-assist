@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui/widgets/autocomplete
 //= require jquery.inputmask
 //= require jquery.validate.min
 //= require jquery_ujs

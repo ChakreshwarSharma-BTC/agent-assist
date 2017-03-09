@@ -2,12 +2,5 @@
   label.control-label.col-md-3
     | Plan
   .col-md-6
-    = select_tag 'policy[plan_id]', options_from_collection_for_select(@plans, :id, :name, selected: @plan_id), {include_blank: '-- Select One --', id: "plan_name", class: "form-control", required: true, label: false}
-
-javascript:
-  if("#{action_name}" == 'edit'){
-
-    $('#policy_plan_attributes_company_category_id').prop('disabled', true);
-    $('#company_name').prop('disabled', true);
-    $('#plan_name').prop('disabled', false);
-  }
+    = text_field_tag 'policy[plan_attributes][name]', nil, class: 'form-control', value: @plan
+    = hidden_field_tag 'plan_id'

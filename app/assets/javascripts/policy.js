@@ -3,53 +3,124 @@ AgentAssist.Policy = {
     $(".select").select2().change(function(){
       $(this).valid();
     });
-    $("#nominee_detail,#customer,#select2-policy_nominee_attributes_relation-container,#policy_plan_attributes_company_category_id, #user_id, #policy_user_id, #policy_mod_of_payment, #policy_premium_mod, #company_name, #plan_name").select2({});
+    $("#nominee_detail,#customer,#select2-policy_nominee_attributes_relation-container,  #policy_mod_of_payment, #policy_premium_mod").select2({});
   },
-  policyCompanies: function(){
-    $('#policy_plan_attributes_company_category_id').on('change', function(){
-      if($(this).prop('selectedIndex') == 0)
-      {
-        $('#companies').html('');
-        $('#plans').html('');
-      }
-      else
+  searchCategory: function(){
+    $('#policy_plan_attributes_company_category').autocomplete({
+      minLength: 3,
+      source: function (request, response) {        
+        $.ajax({
+          url: '/policies/categories',
+          dataType: 'JSON',
+          data: { category_name: request.term },
+          success: function(data) {
+            var list = new Array();
+            $.each(data, function(index){
+              list[index] = { label: this[0], id: this[1] };
+            });
+            response(list);
+          }
+        });
+      },
+      select: function( event, ui ) {
+        if( ui.item.id != undefined ) {
+          $('#policy_plan_attributes_company_category_id').attr('value', ui.item.id);
+          $('#policy_plan_attributes_company_category').val(ui.item.label);
+        };
+      },
+      change: function (){
+        if($(this).val() == ''){
+          $('div#companies input').prop('disabled', true);
+          $('div#plans input').prop('disabled', true);
+          $('#companies').hide();
+          $('#plans').hide();
+          $('div#vehicle_fields input').prop('disabled', true);
+          $('#vehicle_fields').hide();
+          $('div#lic_fields input').prop('disabled', true);
+          $('#lic_fields').hide();
+
+        }
+        else{
+          $('div#companies input').prop('disabled', false);
+          $('#companies').show();
+          $('#company').focus();
+          if($('#policy_plan_attributes_company_category_id').attr('value') == 1)
       { 
+        $('div#lic_fields input').prop('disabled', false);
+        $('#lic_fields').show();
+        $('div#vehicle_fields input').prop('disabled', true);
+        $('#vehicle_fields').hide();
+      }
+      if($('<div id="policy_plan_attributes_company_category_id"></div>').attr('value') == 2)
+      {
+        $('div#vehicle_fields input').prop('disabled', false);
+        $('#vehicle_fields').show();
+        $('div#lic_fields input').prop('disabled', true);
+        $('#lic_fields').hide();
+      }
+        }
+      }
+    });
+  },
+  searchCompany: function(){
+    $('#company').autocomplete({
+      minLength: 3,
+      source: function (request, response) {        
         $.ajax({
-          type: 'GET',
           url: '/policies/companies',
-          data: {
-            category: $(this).val()
+          dataType: 'JSON',
+          data: { company_name: request.term, category_name: $('#policy_plan_attributes_company_category_id').attr('value')  },
+          success: function(data) {
+            var list = new Array();
+            $.each(data, function(index){
+              list[index] = { label: this[0], id: this[1] };
+            });
+            response(list);
           }
         });
+      },
+      select: function( event, ui ) {
+        if( ui.item.id != undefined ) {
+          $('#company').val(ui.item.label);
+          $('#company_id').attr('value', ui.item.id);
+        };
+      },
+      change: function (){
+        if($(this).val() == ''){
+          $('div#plans input').prop('disabled', true);
+          $('#plans').hide();
+        }
+        else{
+          $('div#plans input').prop('disabled', false);
+          $('#plans').show();
+          $('#policy_plan_attributes_name').focus();
+        }
       }
     });
   },
-  policyPlans: function(){
-    $('#company_name').on('change', function(){
-      if($(this).prop('selectedIndex') == 0)
-      {
-        $('#plans').html('');
-      }
-      else
-      {
+  searchUser: function(){
+    $('#policy_user_id').autocomplete({
+      minLength: 3,
+      source: function (request, response) {        
         $.ajax({
-          type: 'GET',
-          url: '/policies/plans',
-          data: {
-            category: $('#policy_plan_attributes_company_category_id').val(),
-            company: $(this).val()
+          url: '/policies/customers',
+          dataType: 'JSON',
+          success: function(data) {
+            var list = new Array();
+            $.each(data, function(index){
+              list[index] = { label: this[0], id: this[1] };
+            });
+            response(list);
           }
         });
-      }
-    });
-  },
-  userDetails: function(){
-    $('#policy_user_id').on('change', function(){
-      $.ajax({
+      },
+      select: function( event, ui ) {
+        if( ui.item.id != undefined ) {
+           $.ajax({
         type: "GET",
         url: "/policies/customer_list",
         data: {
-          id : $(this).val()
+          id : ui.item.id
         },
         success: function (response) {
           $('#policy_user_attributes_email').val(response.user.email);
@@ -58,6 +129,60 @@ AgentAssist.Policy = {
           AgentAssist.Common.getUserAddress('policy', response)
         }
       });
+        };
+      },
+    });
+  },
+  searchPlan: function(){
+    $('#policy_plan_attributes_name').autocomplete({
+      minLength: 3,
+      source: function (request, response) {        
+        $.ajax({
+          url: '/policies/plans',
+          dataType: 'JSON',
+          data: { plan: request.term,
+            company: $('#company_id').val(),
+            category: $('#policy_plan_attributes_company_category_id').attr('value')
+          },
+          success: function(data) {
+            var list = new Array();
+            $.each(data, function(index){
+              list[index] = { label: this[0], id: this[1] };
+            });
+            response(list);
+          }
+        });
+      },
+      select: function( event, ui ) {
+        if( ui.item.id != undefined ) {
+          $('#policy_plan_attributes_name').val(ui.item.label);
+          $('#plan_id').attr('value', ui.item.id);
+        };
+      },
+    });
+  },
+  searchNominee: function(){
+    $('#nominee').autocomplete({
+      minLength: 3,
+      source: function (request, response) {        
+        $.ajax({
+          url: '/policies/nominee_relations',
+          dataType: 'JSON',
+          success: function(data) {
+            var list = new Array();
+            $.each(data, function(index){
+              list[index] = { label: this[0], id: this[1] };
+            });
+            response(list);
+            console.log(list);
+          }
+        });
+      },
+      select: function( event, ui ) {
+        if( ui.item.id != undefined ) {
+          $('#nominee').attr('value', ui.item.id);
+        };
+      },
     });
   },
   emailValidation: function(){
@@ -132,14 +257,14 @@ AgentAssist.Policy = {
     $('div#lic_fields input').prop('disabled', true);
     $('#lic_fields').hide();
     $('#policy_plan_attributes_company_category_id').on('change', function(){
-      if($(this).val() == 1)
+      if($(this).attr('value') == 1)
       { 
         $('div#lic_fields input').prop('disabled', false);
         $('#lic_fields').show();
         $('div#vehicle_fields input').prop('disabled', true);
         $('#vehicle_fields').hide();
       }
-      if($(this).val() == 2)
+      if($(this).attr('value') == 2)
       {
         $('div#vehicle_fields input').prop('disabled', false);
         $('#vehicle_fields').show();
@@ -210,7 +335,7 @@ AgentAssist.Policy = {
 
   countPremiumAmount: function() {
     var total_amount = $('#policy_total_amount').val();
-    var premium_mod = $('#policy_premium_mod').val();    
+    var premium_mod = $("input:radio[name='policy[premium_mod]']:checked").val();    
     var total_year = AgentAssist.Policy.totalPolicyYear('#policy_start_date', '#policy_end_date');
     var policy_amt = total_amount / total_year
     var val = 0.00;
@@ -239,7 +364,10 @@ AgentAssist.Policy = {
     return total_year = end_year - start_year
   },
   premiumAmount: function() {
-    $('#policy_premium_mod, #policy_mod_of_payment').on('change',function(){
+    $("[name='policy[premium_mod]']").on('ifToggled', function(){
+      AgentAssist.Policy.countPremiumAmount();
+    });
+    $("#policy_mod_of_payment").on('change',function(){
       AgentAssist.Policy.countPremiumAmount();
     });
     $('#policy_start_date, #policy_end_date').on('dp.change', function (e) {
@@ -278,12 +406,15 @@ AgentAssist.Policy = {
     });
   },
   documentOnReady: function (){
-    this.policyCompanies();
+    $('#companies, #plans').hide();
+    this.searchCategory();
+    this.searchCompany();
+    this.searchPlan();
+    this.searchUser();
     this.showDatePicker();
     this.hidePremiumFields();
     this.wizardSlideSteps();
     this.formSubmit();
-    this.userDetails();
     this.buttonSubmit();
     this.policyType();
     this.selectDropDown();

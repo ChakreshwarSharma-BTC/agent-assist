@@ -17,6 +17,7 @@ gem 'bootstrap-kaminari-views'
 gem 'slim-rails'
 gem 'select2-rails',  git: 'https://github.com/argerim/select2-rails.git'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem "chartkick"

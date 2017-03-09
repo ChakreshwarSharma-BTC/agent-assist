@@ -1,5 +1,9 @@
 table.table
- tr 
+  tr 
   th Nominee relation
   td
-   = @policy.nominee.relation
+    = @policy.nominee.relation
+  tr
+  th Full Name
+  td
+    = @policy.nominee.personal_info.full_name
