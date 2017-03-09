@@ -4,7 +4,7 @@ policy.form-horizontal.form-label-left
   #step-2.content
     - if @category_id.present?
       = render partial: 'common_policy_fields', locals: {f: f}
-      - if(@category_id == '1')
+      - if(@category_id == 1)
         = render partial: 'life_insurance_policies', locals: {f: f, life_insurance: @life_insurance} 
       - else
         = render partial: 'vehicle_policies', locals: {f: f, vehicle: @vehicle} 

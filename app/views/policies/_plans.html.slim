@@ -2,5 +2,8 @@
   label.control-label.col-md-3
     | Plan
   .col-md-6
-    = text_field_tag 'policy[plan_attributes][name]', nil, class: 'form-control', value: @plan
+    - if @policy.new_record?
+      = text_field_tag 'policy[plan_attributes][name]', nil, class: 'form-control'
+    - else
+      = text_field_tag 'policy[plan_attributes][name]', nil, class: 'form-control', value: @plan
     = hidden_field_tag 'plan_id'
