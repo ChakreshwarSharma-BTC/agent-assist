@@ -162,25 +162,17 @@ AgentAssist.Policy = {
     });
   },
   searchNominee: function(){
-    $('#nominee').autocomplete({
+    $('#relation').autocomplete({
       minLength: 3,
-      source: function (request, response) {        
-        $.ajax({
-          url: '/policies/nominee_relations',
-          dataType: 'JSON',
-          success: function(data) {
-            var list = new Array();
-            $.each(data, function(index){
-              list[index] = { label: this[0], id: this[1] };
-            });
-            response(list);
-            console.log(list);
-          }
-        });
-      },
+      source: [{ label: 'Mother', value: 'mother', id: 0},
+               { label: 'Son', value: 'son', id: 1},
+               { label: 'Father', value: 'father', id: 2},
+               { label: 'Daughter', value: 'daughter', id: 3},
+               { label: 'Brother', value: 'brother', id: 4}],
       select: function( event, ui ) {
         if( ui.item.id != undefined ) {
-          $('#nominee').attr('value', ui.item.id);
+          $(this).attr(ui.item.label);
+          $('#policy_nominee_attributes_relation').attr('value', ui.item.value);
         };
       },
     });
@@ -411,6 +403,7 @@ AgentAssist.Policy = {
     this.searchCompany();
     this.searchPlan();
     this.searchUser();
+    this.searchNominee();
     this.showDatePicker();
     this.hidePremiumFields();
     this.wizardSlideSteps();
